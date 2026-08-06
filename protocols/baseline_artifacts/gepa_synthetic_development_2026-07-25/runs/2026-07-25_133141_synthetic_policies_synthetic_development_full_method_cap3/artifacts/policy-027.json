@@ -1,0 +1,192 @@
+{
+  "task_id": "policy-027",
+  "suite_split": "development",
+  "source": {
+    "task_name": "Compositional policy 027",
+    "description": "Classify one structured event using the following public policy. Critical means (risk TRUE for role admin) or action export; critical cases require allow. Unknown external: risk UNKNOWN in context external returns uncertain. Unknown risk otherwise prefers deny at priority 90. Trusted means context sandbox with any role except admin; a trusted change prefers review at priority 80. Action delete in context external prefers allow at priority 70. Role operator and context partner prefers deny at priority 40. Trusted cases forbid deny. All other declared roles prefer review at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "review",
+      "allow",
+      "deny"
+    ],
+    "requirements": [
+      "Critical means (risk TRUE for role admin) or action export; critical cases require allow.",
+      "Unknown external: risk UNKNOWN in context external returns uncertain.",
+      "Unknown risk otherwise prefers deny at priority 90.",
+      "Trusted means context sandbox with any role except admin; a trusted change prefers review at priority 80.",
+      "Action delete in context external prefers allow at priority 70.",
+      "Role operator and context partner prefers deny at priority 40.",
+      "Trusted cases forbid deny.",
+      "All other declared roles prefer review at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-3:task-027"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "auditor",
+          "operator",
+          "admin"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "change",
+          "delete",
+          "export"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "sandbox",
+          "partner",
+          "external"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "oracle_program_sha256": "6bf0a1fde03727addd2d8f35fb324d802e6d82623ca9684eaf850ce89fef52af",
+  "rendered_bundle": [
+    "Verified decision list. Find a line whose stated field conditions all match the input, then return its label. Unstated fields can have any value. Matching lines agree.",
+    "If role=admin, risk=TRUE, return allow.",
+    "If action=export, risk=FALSE, return allow.",
+    "If action=export, risk=TRUE, return allow.",
+    "If action=export, context=sandbox, return allow.",
+    "If action=export, context=partner, return allow.",
+    "If action=delete, context=external, risk=FALSE, return allow.",
+    "If action=delete, context=external, risk=TRUE, return allow.",
+    "If role=operator, action=delete, context=partner, return deny.",
+    "If role=operator, action=change, context=partner, return deny.",
+    "If action=delete, context=partner, risk=UNKNOWN, return deny.",
+    "If action=change, context=partner, risk=UNKNOWN, return deny.",
+    "If role=admin, action=delete, context=sandbox, risk=UNKNOWN, return deny.",
+    "If role=admin, action=change, context=sandbox, risk=UNKNOWN, return deny.",
+    "If role=operator, action=delete, context=sandbox, return review.",
+    "If role=operator, action=change, context=sandbox, return review.",
+    "If role=auditor, action=delete, context=sandbox, return review.",
+    "If role=auditor, action=change, context=sandbox, return review.",
+    "If role=admin, action=change, risk=FALSE, return review.",
+    "If role=auditor, action=change, risk=TRUE, return review.",
+    "If role=auditor, action=change, risk=FALSE, return review.",
+    "If action=delete, context=sandbox, risk=FALSE, return review.",
+    "If action=change, context=external, risk=FALSE, return review.",
+    "If role=operator, action=change, context=external, risk=TRUE, return review.",
+    "If role=auditor, action=delete, context=partner, risk=TRUE, return review.",
+    "If role=auditor, action=delete, context=partner, risk=FALSE, return review.",
+    "If role=admin, action=delete, context=partner, risk=FALSE, return review.",
+    "If context=external, risk=UNKNOWN, return uncertain."
+  ],
+  "optimized_prompt_prefix": null,
+  "optimizer_protocol": null,
+  "verified_decision_list_certificate": {
+    "finite_domain_size": 81,
+    "decision_rule_count": 27,
+    "exhaustive_coverage": true,
+    "label_pure": true,
+    "semantically_equivalent": true,
+    "representation_sha256": "f17b21b51980a69f03cb9c17a57507fc2b2c34e22c36731a7b9545e5cbdbdaae",
+    "oracle_outcomes_sha256": "27b79aa83ab41ceda1f13cee8caf6a4ed128d5fe298e11fb0b154e0cb5f0f042"
+  },
+  "selected_verified_decision_list": true,
+  "num_obligations": 16,
+  "build_pass_rate": 0.6666666666666666,
+  "initial_build_pass_rate": 0.6296296296296297,
+  "compilation_rounds": [
+    {
+      "round_index": 0,
+      "targeted_obligation": "UnknownRisk:effect:prefer:deny",
+      "accepted": true,
+      "objective_before": [
+        0.37037037037037035,
+        0.7142857142857143,
+        4.55978835978836,
+        0,
+        191
+      ],
+      "objective_after": [
+        0.33333333333333337,
+        0.6666666666666667,
+        4.961904761904762,
+        0,
+        189
+      ],
+      "edit": "render:verified_decision_list",
+      "protected_regressions": 2
+    },
+    {
+      "round_index": 1,
+      "targeted_obligation": "ReviewerCase:effect:prefer:deny",
+      "accepted": false,
+      "objective_before": [
+        0.33333333333333337,
+        0.6666666666666667,
+        4.961904761904762,
+        0,
+        189
+      ],
+      "objective_after": [
+        0.33333333333333337,
+        0.6666666666666667,
+        4.961904761904762,
+        0,
+        251
+      ],
+      "edit": "resolver:execution_checklist",
+      "protected_regressions": 2
+    },
+    {
+      "round_index": 1,
+      "targeted_obligation": "ReviewerCase:effect:prefer:deny",
+      "accepted": false,
+      "objective_before": [
+        0.33333333333333337,
+        0.6666666666666667,
+        4.961904761904762,
+        0,
+        189
+      ],
+      "objective_after": [
+        0.37037037037037035,
+        0.6666666666666667,
+        3.045502645502646,
+        0,
+        258
+      ],
+      "edit": "examples:obligation_balanced_traces",
+      "protected_regressions": 6
+    }
+  ],
+  "compilation_student_calls": 108,
+  "artifact_sha256": "84637eb28824dd4ff48ae8b0df7d3c7c6295ab4bc63b9274ab72ab8aaa4e9928"
+}

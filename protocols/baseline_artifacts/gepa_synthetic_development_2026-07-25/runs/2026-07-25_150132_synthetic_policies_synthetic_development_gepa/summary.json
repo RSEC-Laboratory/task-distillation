@@ -1,0 +1,341 @@
+{
+  "total_wall_seconds": 1636.4839999999967,
+  "teacher_tokens": {
+    "input": 65775,
+    "output": 63028
+  },
+  "student_tokens": {
+    "input": 900183,
+    "output": 3034
+  },
+  "task_metrics": {
+    "dataset": "synthetic_policies",
+    "suite_version": "compositional-policies-v2",
+    "suite_split": "development",
+    "manifest_sha256": "5178717ac578469da4eea18f168f4af0a49a0315b2e1eec5708356f840647c2f",
+    "baseline": "gepa",
+    "accuracy": 0.4583333333333333,
+    "macro_task_accuracy": 0.4583333333333333,
+    "solved_task_rate": 0.0,
+    "accuracy_wilson_95": {
+      "low": 0.3931930847274052,
+      "high": 0.5249297293379752,
+      "descriptive_only": true
+    },
+    "num_final_examples": 216,
+    "num_task_groups": 8,
+    "inferential_unit": "independently generated policy task",
+    "benchmark_labels_used_during_compilation": true,
+    "final_labels_used_during_compilation": false,
+    "student_calls": {
+      "compilation": 909,
+      "audit": 216,
+      "final": 216
+    },
+    "teacher_calls": 64,
+    "task_metrics": [
+      {
+        "task_id": "policy-000",
+        "accuracy": 0.5925925925925926,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.6296296296296297
+      },
+      {
+        "task_id": "policy-027",
+        "accuracy": 0.3333333333333333,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.4444444444444444
+      },
+      {
+        "task_id": "policy-012",
+        "accuracy": 0.5925925925925926,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.5185185185185185
+      },
+      {
+        "task_id": "policy-021",
+        "accuracy": 0.4074074074074074,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.37037037037037035
+      },
+      {
+        "task_id": "policy-029",
+        "accuracy": 0.5185185185185185,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.7037037037037037
+      },
+      {
+        "task_id": "policy-015",
+        "accuracy": 0.3333333333333333,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.4074074074074074
+      },
+      {
+        "task_id": "policy-038",
+        "accuracy": 0.5185185185185185,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.48148148148148145
+      },
+      {
+        "task_id": "policy-034",
+        "accuracy": 0.37037037037037035,
+        "solved": false,
+        "num_examples": 27,
+        "audit_accuracy": 0.4074074074074074
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "models": {
+      "student": {
+        "backend": "ollama",
+        "model": "qwen2.5:1.5b",
+        "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "base_url": "http://127.0.0.1:11434",
+        "seed": 0,
+        "temperature": 0,
+        "context_tokens": 32768,
+        "thinking": false
+      },
+      "optimizer": {
+        "backend": "anthropic",
+        "model": "claude-sonnet-4-5-20250929"
+      }
+    },
+    "packages": {
+      "anthropic": "0.118.0",
+      "datasets": "5.0.0",
+      "gepa": "0.1.4",
+      "sentence-transformers": "5.6.0",
+      "torch": "2.13.0",
+      "transformers": "5.14.1"
+    },
+    "source": {
+      "snapshot_sha256": "8a26b19d0521b580057d27ac08c43c6b23a2dd41ae3cbc9f61c3008defaaf629",
+      "file_count": 53,
+      "files": [
+        {
+          "path": "configs/bbh_object_counting_few_shot_cot.yaml",
+          "sha256": "390786cc57cc3572ee117de0566197cac23adaabeee31a636cac05f52fc9ad79"
+        },
+        {
+          "path": "configs/bbh_object_counting_zero_shot_cot.yaml",
+          "sha256": "ce5ffceb35e6306be9064bb8ecc88ca6e856dd5163e6595e95823f49731cb94f"
+        },
+        {
+          "path": "configs/bbh_word_sorting_zero_shot_cot.yaml",
+          "sha256": "e30db10086a44b5d317a347c97bb782aa74a51b4f16c1fe456890e14e4d7d388"
+        },
+        {
+          "path": "configs/guidance_humaneval_question_level.yaml",
+          "sha256": "7a8cdf1a992b35939a6f40dc179f19515315325bb84451b043828dbc0803c9f4"
+        },
+        {
+          "path": "configs/guidance_humaneval_task_level.yaml",
+          "sha256": "d3804be5b8ec2d87f5462a12129f41526097f8f03d03025a28d9b2273df51745"
+        },
+        {
+          "path": "configs/guidance_open_question_level.yaml",
+          "sha256": "b34082efb2aa0efa3ce3519ea4317166808cfc1f887045ee4787e2e5d0fd90df"
+        },
+        {
+          "path": "configs/guidance_open_task_level.yaml",
+          "sha256": "79f4d131d30325f156649821a245abbcbaf77d933f4a8784281828bb72c22b0d"
+        },
+        {
+          "path": "configs/rulearena_airline_one_shot.yaml",
+          "sha256": "db2d977997695f74f67ec637aaaa0a8bee64ff12cdeb6bc97733362fb56aa086"
+        },
+        {
+          "path": "configs/rulearena_airline_zero_shot.yaml",
+          "sha256": "aa266676b1ee7e052fa624e707d24bab126ed79bad75454866f4033bd4c84e6b"
+        },
+        {
+          "path": "configs/rules_full.yaml",
+          "sha256": "1438d1482f1703650098a92d218e3c4fa6112723cd8405c0eb3fb29332fac2ba"
+        },
+        {
+          "path": "configs/rules_synthetic_full.yaml",
+          "sha256": "da4f7dee550bcb839a7893c4af97da5713718b3487741ca2cac913e27c5e7e27"
+        },
+        {
+          "path": "configs/rules_synthetic_raw.yaml",
+          "sha256": "fbb7b3f796ec515fd0672a08cd278f5087cea787f2bc90a67419d493803d109c"
+        },
+        {
+          "path": "configs/rules_test_driven.yaml",
+          "sha256": "200414fe77e3317a8e0ce421ff0c96c64311d0287993ac90253a5e888526941e"
+        },
+        {
+          "path": "gui/app.py",
+          "sha256": "a07c1a76da50f75cf19416e0f12e80e14a17b3066b8ce9bfcc3b77277bde5e07"
+        },
+        {
+          "path": "gui/pages/1_configure.py",
+          "sha256": "b8980748b7eb66ab3ae6d8de1a1054920a6a0698eef68a7706c6e9b0209fbe63"
+        },
+        {
+          "path": "gui/pages/2_monitor.py",
+          "sha256": "90be8f6e99ac7ad299876324fba169e69b1b94742f874ae55fe53e86370b69e7"
+        },
+        {
+          "path": "gui/pages/3_browse.py",
+          "sha256": "842f28ac8f325a16b769ed1a0baf7cc16d72100ef70049d965000d3d6b515f5b"
+        },
+        {
+          "path": "pyproject.toml",
+          "sha256": "a0d6297442f931382c1060f4ee91d657c7f4f3420cdd8ce1c47cadf55a77079a"
+        },
+        {
+          "path": "scripts/download_data.py",
+          "sha256": "888a4fe452d4bdd9c8b802b7182d6b838dbb19f86dd58e21617df36bb62a1244"
+        },
+        {
+          "path": "scripts/run_study_matrix.py",
+          "sha256": "1a0185b7ebdc8545da3372f2af20a01ee07db7d0118e7a9dac0ea89b02282b3d"
+        },
+        {
+          "path": "scripts/smoke_docker_sandbox.py",
+          "sha256": "600e23f9f87c9e3cfceb93391917b6a03b26f5b6ecae5b9f8e6bce64cfce5fe8"
+        },
+        {
+          "path": "src/taskcompiler/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/taskcompiler/config.py",
+          "sha256": "b13f3ac45d9c6bf1ab92be2c9ed5c88346f04c5ec75758d1225268ab7ab6355c"
+        },
+        {
+          "path": "src/taskcompiler/dsl/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/taskcompiler/dsl/ast.py",
+          "sha256": "9f84b159e16eeb0af461e7a2f0401a30d4236c3308c8c0d004f7438181678bc3"
+        },
+        {
+          "path": "src/taskcompiler/dsl/interpreter.py",
+          "sha256": "71c9d73590c290ce1b0f6a3e1f077b4f0cbbaeb8f8a281d13fa317c493c85d8f"
+        },
+        {
+          "path": "src/taskcompiler/dsl/mutate.py",
+          "sha256": "51a0903d02f03c372a168adc3bfbddb7da85d2b07a98593b378025177ee8e14f"
+        },
+        {
+          "path": "src/taskcompiler/dsl/parser.py",
+          "sha256": "fc719409c22b69b80e97e60ab0cbd30e1d4a1b7a70de0e78cbbcbac9a1e15b43"
+        },
+        {
+          "path": "src/taskcompiler/evidence.py",
+          "sha256": "83f17183c864cf878044b99073a36cb5a3f1ece037a425875df89bd3de6040fa"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/bbh.py",
+          "sha256": "79e45f27f6f356f9af6220086e69428bcf3d3f7345e6ee7728a52959b37cf7f3"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/gepa_baseline.py",
+          "sha256": "3ecc87d4df13cffa02e76fad63215c5323cde91945a0c820f429622469f16dc0"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/humaneval_exec.py",
+          "sha256": "d15dc212ce39a5a765eb35d7d016bdebb069b902d80b84d17f162140020e4750"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/pipeline.py",
+          "sha256": "9eeed21522772ab8c0a742941d903d247dbe49182d82e89cd9be2cb5523c58da"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/rulearena.py",
+          "sha256": "44e9c7a2dfc944c5dd35447e09fa39a946c0359ab49c47a7d3b629358181270b"
+        },
+        {
+          "path": "src/taskcompiler/guidance_track/textgrad_baseline.py",
+          "sha256": "e5012db6c86ff494132d1dd187740b5bc701d2ad4f0e9f53b30e3dad542c8f2b"
+        },
+        {
+          "path": "src/taskcompiler/metrics.py",
+          "sha256": "60bc8f9245082d3a95ba007e5fca70715fb597140a9a334e1e5dd428b3db9686"
+        },
+        {
+          "path": "src/taskcompiler/route.py",
+          "sha256": "9f4fcd7aed81b4492e6ec5997264388885713f9936fb1d08e8e20ac7e51be5f2"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/contract_nli.py",
+          "sha256": "6092a29c5e4f5da316320bb4373d7b8c8e8e4e2dd938e1ebc5899fd7e7e65a64"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/pipeline.py",
+          "sha256": "c151b638ee56d5dc26c3b9b90047d95f14aa9601e78c3addb2e1dad66755d872"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/prompts.py",
+          "sha256": "2f12e31b7843eb893394eaccf97a81e6587b1e866217d37c6aa49f3fff8245b8"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/synthetic_policies.py",
+          "sha256": "1aaac1ef8040164f14d829977236c7971327556b66302214161d82873705f51b"
+        },
+        {
+          "path": "src/taskcompiler/rules_track/text_predicates.py",
+          "sha256": "cc4c57548781c385877725592ffb771516945602dc117668a574ac302dcec2df"
+        },
+        {
+          "path": "src/taskcompiler/run.py",
+          "sha256": "714030f5d0d9c07bebcf8bf608db2cc628f77e3c6d9ba54834b5a223518befc8"
+        },
+        {
+          "path": "src/taskcompiler/sandbox.py",
+          "sha256": "272a180af059a47d7f4a97fe64b8e7203de19f386275a154b8bdeb39233fa3be"
+        },
+        {
+          "path": "src/taskcompiler/schema.py",
+          "sha256": "35b0e27ea7c9538d1398bc2f152750a70a886f99ba06b2ba530ccd29d33ed886"
+        },
+        {
+          "path": "src/taskcompiler/statistics.py",
+          "sha256": "fc110c9f07f40a2577a643fab3169955c39a31282ea397c85d282ae2e93497f1"
+        },
+        {
+          "path": "src/taskcompiler/stub_track.py",
+          "sha256": "e67c5fc4e952db6cb52ea39540423f6f37d3e45e5dbae3be20440e41663240b9"
+        },
+        {
+          "path": "src/taskcompiler/student.py",
+          "sha256": "f0e3331a7ace7a32a5d443bfa985663220d8d1774b57d35843f8f8c7039b0661"
+        },
+        {
+          "path": "src/taskcompiler/teacher.py",
+          "sha256": "2efd2d9b940ffe6e58dd033f49a0e6d7a72bd4d6ba4910f00e5f5e952237a01e"
+        },
+        {
+          "path": "src/taskcompiler/translate.py",
+          "sha256": "a0ac2723dae7d1be88a3b62d735d0f11ca96d9bb27ea20a7b19b6f68810fc31a"
+        },
+        {
+          "path": "src/taskcompiler/verify.py",
+          "sha256": "b685f54eca6a367b6ce9e69c93f2da04214fdaba6fa6eaeba64df4e7b791b5af"
+        }
+      ]
+    }
+  }
+}

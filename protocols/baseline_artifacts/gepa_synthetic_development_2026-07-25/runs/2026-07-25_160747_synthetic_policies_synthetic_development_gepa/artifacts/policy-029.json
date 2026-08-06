@@ -1,0 +1,108 @@
+{
+  "task_id": "policy-029",
+  "suite_split": "development",
+  "source": {
+    "task_name": "Compositional policy 029",
+    "description": "Classify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action delete; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted change prefers allow at priority 80. Action export in context sandbox prefers deny at priority 70. Role guest and context partner prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "allow",
+      "deny",
+      "review"
+    ],
+    "requirements": [
+      "Critical means (risk TRUE in context sandbox) or action delete; critical cases require deny.",
+      "Unknown external: risk UNKNOWN in context sandbox returns uncertain.",
+      "Unknown risk otherwise prefers review at priority 90.",
+      "Trusted means role analyst, or context internal with FALSE risk; a trusted change prefers allow at priority 80.",
+      "Action export in context sandbox prefers deny at priority 70.",
+      "Role guest and context partner prefers review at priority 40.",
+      "Trusted cases forbid review.",
+      "All other declared roles prefer allow at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-1:task-029"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "analyst",
+          "guest",
+          "operator"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "change",
+          "export",
+          "delete"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "internal",
+          "partner",
+          "sandbox"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "oracle_program_sha256": "f5606dc70cffa7732fcb61630788a03366060d79296c66ab09d369e219814687",
+  "rendered_bundle": null,
+  "optimized_prompt_prefix": "Task: Classify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action delete; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted change prefers allow at priority 80. Action export in context sandbox prefers deny at priority 70. Role guest and context partner prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nCompiled rules:\n- Definition Dangerous: ((event.risk is TRUE) and (event.context is sandbox)) or (event.action is delete).\n- Definition Trusted: (event.role is analyst) or ((event.context is internal) and (event.risk is FALSE)).\n- If Dangerous, then it must be labeled deny.\n- If (event.risk is UNKNOWN) and (event.context is sandbox), then return uncertain.\n- If event.risk is UNKNOWN, then it should usually be labeled review with priority 90 (higher priorities win).\n- If (Trusted) and (event.action is change), then it should usually be labeled allow with priority 80 (higher priorities win).\n- If (event.context is sandbox) and (event.action is export), then it should usually be labeled deny with priority 70 (higher priorities win).\n- If (event.role is guest) and (event.context is partner), then it should usually be labeled review with priority 40 (higher priorities win).\n- If Trusted, then it must not be labeled review.\n- If event.role is one of (analyst, guest, operator), then it should usually be labeled allow with priority 1 (higher priorities win).\n- Resolution: apply only rules whose complete condition is true. A required label overrides preferences. Conflicting required labels, an explicit abstention, or an equal-priority preference tie returns uncertain. Ignore forbidden labels, then choose the remaining highest-priority preference. If nothing decides, return uncertain.\n\nCRITICAL INSTRUCTIONS FOR EVALUATION:\n\n1. **Evaluate ALL conditions carefully**: Check each definition and rule condition against the event attributes. Both parts of compound conditions (using \"and\"/\"or\") must be evaluated correctly.\n\n2. **Apply rules in strict precedence order**:\n   - FIRST: Check for immediate \"return uncertain\" rules (e.g., risk UNKNOWN in sandbox)\n   - SECOND: Check for \"must be labeled\" (required labels) - these ALWAYS override preferences\n   - THIRD: Check for \"must not be labeled\" (forbidden labels) - eliminate these from consideration\n   - FOURTH: Collect all applicable preference rules and select the highest priority\n   - FIFTH: If nothing decides, return uncertain\n\n3. **Required labels (\"must\") override everything**: If a condition triggers a \"must be labeled X\" rule, that label wins regardless of any preferences. The Dangerous definition is particularly important - if EITHER condition is true ((risk TRUE AND context sandbox) OR (action delete)), then deny is required.\n\n4. **Immediate return rules**: Some rules say \"return uncertain\" directly - these bypass the normal resolution process when their conditions are met.\n\n5. **Forbidden labels**: If a rule says \"must not be labeled X\", remove X from all consideration, even if it appears in preferences.\n\n6. **Work step-by-step**: \n   - Evaluate each definition (Dangerous, Trusted) explicitly\n   - List which rules have TRUE conditions\n   - Separate required labels, forbidden labels, and preferences\n   - Apply resolution logic systematically\n\n7. **Answer format**: Output only the single label (deny, allow, review, or uncertain) with no additional explanation.",
+  "optimizer_protocol": {
+    "implementation": "official_gepa_package",
+    "gepa_version": "0.1.4",
+    "metric_call_budget": 108,
+    "metric_calls_used": 126,
+    "task_model_calls": 126,
+    "reflection_calls": 7,
+    "num_candidates": 3,
+    "best_candidate_index": 1,
+    "best_build_accuracy": 0.5555555555555556,
+    "reflection_minibatch_size": 3,
+    "candidate_selection": "pareto",
+    "merge": false,
+    "validation_policy": "full_eval_on_build",
+    "audit_access_during_optimization": false,
+    "final_access_during_optimization": false,
+    "seed": 0
+  },
+  "verified_decision_list_certificate": null,
+  "selected_verified_decision_list": false,
+  "num_obligations": 16,
+  "build_pass_rate": 0.5555555555555556,
+  "initial_build_pass_rate": null,
+  "compilation_rounds": [],
+  "compilation_student_calls": 126,
+  "artifact_sha256": "e34ee2d0dc3077a841d3d5e20540ec0d83da7e0f67fe398d10b57c5444c6e087"
+}

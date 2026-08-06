@@ -1,0 +1,14 @@
+{
+  "teacher_selection": "lineage_matched",
+  "teacher_backend": "openrouter",
+  "teacher_model": "meta-llama/llama-3.1-70b-instruct",
+  "student_model": "llama3.2:3b",
+  "canonical_student": "meta-llama/Llama-3.2-3B-Instruct",
+  "documented_logit_teachers": [
+    "meta-llama/Llama-3.1-8B-Instruct",
+    "meta-llama/Llama-3.1-70B-Instruct"
+  ],
+  "source_run": "2026-07-27_002647_bbh_bbh_counting_llama32_3b_parent70_dev20",
+  "teacher_received_evaluation_examples": false,
+  "student_weights_updated": false
+}

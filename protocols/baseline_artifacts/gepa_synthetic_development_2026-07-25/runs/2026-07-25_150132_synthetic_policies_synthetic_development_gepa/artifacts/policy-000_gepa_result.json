@@ -1,0 +1,45 @@
+{
+  "protocol": {
+    "implementation": "official_gepa_package",
+    "gepa_version": "0.1.4",
+    "metric_call_budget": 108,
+    "metric_calls_used": 111,
+    "task_model_calls": 111,
+    "reflection_calls": 9,
+    "num_candidates": 2,
+    "best_candidate_index": 1,
+    "best_build_accuracy": 0.4444444444444444,
+    "reflection_minibatch_size": 3,
+    "candidate_selection": "pareto",
+    "merge": false,
+    "validation_policy": "full_eval_on_build",
+    "audit_access_during_optimization": false,
+    "final_access_during_optimization": false,
+    "seed": 0
+  },
+  "best_prompt": "Task: Classify a structured event using a public policy framework with definitions, required labels, preferences with priorities, and forbidden labels.\n\nInput format: You will receive an event object with fields like role, action, context, and risk.\n\nPolicy evaluation process:\n1. **Evaluate all definitions first**: Check which defined conditions (like Dangerous, Trusted) are true based on the event fields.\n\n2. **Identify applicable rules**: A rule applies only if its complete condition evaluates to true given the event fields and any true definitions.\n\n3. **Categorize applicable rules**:\n   - **Required labels** (\"must be labeled X\"): These override everything\n   - **Forbidden labels** (\"must not be labeled X\"): These eliminate labels from consideration\n   - **Preferences** (\"should usually be labeled X with priority N\"): These compete based on priority\n   - **Explicit abstentions** (\"return uncertain\"): These immediately return uncertain\n\n4. **Apply resolution logic in this order**:\n   a. If any rule explicitly returns uncertain (abstention), return uncertain immediately\n   b. If there are conflicting required labels (multiple different \"must\" labels), return uncertain\n   c. If there is exactly one required label, check if it's forbidden; if not forbidden, return it (required labels override all preferences)\n   d. Remove any labels that are forbidden\n   e. Among remaining preferences, select the label with the highest priority number (higher numbers win)\n   f. If the highest priority has a tie between different labels, return uncertain\n   g. If no rules apply or decide, return uncertain\n\n5. **Output format**: Return only the single label name (like \"allow\", \"deny\", \"review\") or \"uncertain\" - nothing else.\n\nCritical reminders:\n- Required labels (\"must\") always beat preferences (\"should usually\"), regardless of preference priority\n- Among preferences, higher priority numbers win (90 beats 80 beats 70, etc.)\n- Evaluate ALL conditions carefully - a rule only applies if its complete condition is true\n- Boolean logic: \"or\" means at least one condition is true, \"and\" means all conditions must be true, \"not\" negates a condition",
+  "candidate_prompts": [
+    {
+      "system_prompt": "Task: Classify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require review. Unknown external: risk UNKNOWN in context internal returns uncertain. Unknown risk otherwise prefers deny at priority 90. Trusted means role is admin outside context internal; a trusted export prefers allow at priority 80. Action inspect in context internal prefers review at priority 70. Role operator or context partner prefers deny at priority 40. Trusted cases forbid deny. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nCompiled rules:\n- Definition Dangerous: (event.risk is TRUE) or (event.action is change).\n- Definition Trusted: (event.role is admin) and (not (event.context is internal)).\n- If Dangerous, then it must be labeled review.\n- If (event.risk is UNKNOWN) and (event.context is internal), then return uncertain.\n- If event.risk is UNKNOWN, then it should usually be labeled deny with priority 90 (higher priorities win).\n- If (Trusted) and (event.action is export), then it should usually be labeled allow with priority 80 (higher priorities win).\n- If (event.context is internal) and (event.action is inspect), then it should usually be labeled review with priority 70 (higher priorities win).\n- If (event.role is operator) or (event.context is partner), then it should usually be labeled deny with priority 40 (higher priorities win).\n- If Trusted, then it must not be labeled deny.\n- If event.role is one of (admin, operator, auditor), then it should usually be labeled allow with priority 1 (higher priorities win).\n- Resolution: apply only rules whose complete condition is true. A required label overrides preferences. Conflicting required labels, an explicit abstention, or an equal-priority preference tie returns uncertain. Ignore forbidden labels, then choose the remaining highest-priority preference. If nothing decides, return uncertain."
+    },
+    {
+      "system_prompt": "Task: Classify a structured event using a public policy framework with definitions, required labels, preferences with priorities, and forbidden labels.\n\nInput format: You will receive an event object with fields like role, action, context, and risk.\n\nPolicy evaluation process:\n1. **Evaluate all definitions first**: Check which defined conditions (like Dangerous, Trusted) are true based on the event fields.\n\n2. **Identify applicable rules**: A rule applies only if its complete condition evaluates to true given the event fields and any true definitions.\n\n3. **Categorize applicable rules**:\n   - **Required labels** (\"must be labeled X\"): These override everything\n   - **Forbidden labels** (\"must not be labeled X\"): These eliminate labels from consideration\n   - **Preferences** (\"should usually be labeled X with priority N\"): These compete based on priority\n   - **Explicit abstentions** (\"return uncertain\"): These immediately return uncertain\n\n4. **Apply resolution logic in this order**:\n   a. If any rule explicitly returns uncertain (abstention), return uncertain immediately\n   b. If there are conflicting required labels (multiple different \"must\" labels), return uncertain\n   c. If there is exactly one required label, check if it's forbidden; if not forbidden, return it (required labels override all preferences)\n   d. Remove any labels that are forbidden\n   e. Among remaining preferences, select the label with the highest priority number (higher numbers win)\n   f. If the highest priority has a tie between different labels, return uncertain\n   g. If no rules apply or decide, return uncertain\n\n5. **Output format**: Return only the single label name (like \"allow\", \"deny\", \"review\") or \"uncertain\" - nothing else.\n\nCritical reminders:\n- Required labels (\"must\") always beat preferences (\"should usually\"), regardless of preference priority\n- Among preferences, higher priority numbers win (90 beats 80 beats 70, etc.)\n- Evaluate ALL conditions carefully - a rule only applies if its complete condition is true\n- Boolean logic: \"or\" means at least one condition is true, \"and\" means all conditions must be true, \"not\" negates a condition"
+    }
+  ],
+  "candidate_build_scores": [
+    0.4074074074074074,
+    0.4444444444444444
+  ],
+  "parents": [
+    [
+      null
+    ],
+    [
+      0
+    ]
+  ],
+  "discovery_eval_counts": [
+    0,
+    45
+  ]
+}

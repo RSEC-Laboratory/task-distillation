@@ -1,0 +1,65 @@
+TASK COMPILER REVIEWER ARCHIVE
+
+Purpose
+
+This folder recomputes the quantitative results reported in the paper from
+retained prediction records. It requires no model server, network access,
+credential, or API call.
+
+Requirement
+
+Python 3.10 or newer. The verifier uses only the Python standard library.
+
+Run
+
+    python verify.py
+
+The command checks every file against MANIFEST.json, rescoring predictions,
+validating paired cases and model identities, and recomputing the bootstrap
+intervals and exact McNemar value. A successful run prints JSON with
+"status": "passed".
+
+Included evidence (matches Table 1 and Table 2 / the reported text in
+draft.tex; nothing else is shipped here -- see the top-level README.txt for
+what got left out and why)
+
+1. Main confirmation: 24 generated task instances, three matched conditions,
+   648 final cases per condition, task-level bootstrap, certificates,
+   fallback, teacher calls, corrections, and student-call accounting.
+
+2. Gemma sensitivity: 16 complete task triplets plus two recorded syntax
+   failures. The registered raw fallback is assigned to all three conditions
+   on the two failed tasks. This is a sensitivity analysis, not a complete
+   second confirmation.
+
+3. Routing ablation: two development tasks whose full-list and routed runs
+   use identical frozen instruction bundles.
+
+4. TextGrad comparison: 100 paired BBH Object Counting test predictions,
+   token accounting, and an exact two-sided McNemar calculation. The 75%
+   score is our matched local adaptation, not the TextGrad paper's published
+   91.9% result with GPT-3.5-Turbo-0125 and GPT-4o feedback. The retained
+   predictions also verify that the transferred TextGrad prompt scores 76%
+   on our local student.
+
+5. GEPA comparison: three runs per method on eight generated development
+   tasks. The compiler receives executable semantic access, while GEPA
+   receives a natural-language policy and labeled build cases. This is not
+   a comparison of the complete teacher-generated pipeline with GEPA.
+
+File layout
+
+    verify.py                 Offline verifier and statistical calculations
+    config/protocols.json     Frozen study settings and claim boundaries
+    predictions/*.json        Run metadata with private paths removed
+    predictions/*.jsonl       Recorded item-level predictions
+    MANIFEST.json             File sizes and SHA-256 checksums
+
+Reproducibility boundary
+
+The archive reproduces every included numerical result from the observed
+predictions. Certificate, correction, token, and call counts come from
+retained run metadata. The package does not replay DSL verification or
+regenerate model responses. Exact regeneration would depend on external
+model weights, provider behavior, and model servers, so it cannot be
+guaranteed offline.
