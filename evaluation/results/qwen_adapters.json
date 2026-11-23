@@ -1,0 +1,116 @@
+{
+  "counting": {
+    "counting_adapter": {
+      "correct": 86,
+      "total": 100,
+      "accuracy": 0.86,
+      "initial_correct": 61,
+      "local_corrections": 36,
+      "all_preparation_and_final_attempts": {
+        "attempted": 137,
+        "completed": 137,
+        "failed": 0,
+        "unfinished_outcome_unknown": 0,
+        "attempts_by_role": {
+          "teacher": 1,
+          "student": 136
+        },
+        "known_input_tokens": 20042,
+        "known_output_tokens": 16359,
+        "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+      }
+    },
+    "counting_textgrad": {
+      "correct": 65,
+      "total": 100,
+      "accuracy": 0.65,
+      "initial_correct": 65,
+      "local_corrections": 0,
+      "all_preparation_and_final_attempts": {
+        "attempted": 1520,
+        "completed": 1520,
+        "failed": 0,
+        "unfinished_outcome_unknown": 0,
+        "attempts_by_role": {
+          "student": 1436,
+          "teacher": 84
+        },
+        "known_input_tokens": 409917,
+        "known_output_tokens": 187203,
+        "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+      }
+    },
+    "counting_transfer": {
+      "correct": 60,
+      "total": 100,
+      "accuracy": 0.6,
+      "initial_correct": 60,
+      "local_corrections": 0,
+      "all_preparation_and_final_attempts": {
+        "attempted": 100,
+        "completed": 100,
+        "failed": 0,
+        "unfinished_outcome_unknown": 0,
+        "attempts_by_role": {
+          "student": 100
+        },
+        "known_input_tokens": 14415,
+        "known_output_tokens": 9167,
+        "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+      }
+    }
+  },
+  "nlp_conditions": {
+    "raw_definition": {
+      "correct": 22,
+      "total": 80,
+      "accuracy": 0.275
+    },
+    "positive_examples": {
+      "correct": 41,
+      "total": 80,
+      "accuracy": 0.5125
+    },
+    "parent_one_shot": {
+      "correct": 33,
+      "total": 80,
+      "accuracy": 0.4125
+    },
+    "validated_full": {
+      "correct": 40,
+      "total": 80,
+      "accuracy": 0.5
+    },
+    "validated_routed": {
+      "correct": 44,
+      "total": 80,
+      "accuracy": 0.55
+    }
+  },
+  "nlp_attempts": {
+    "attempted": 301,
+    "completed": 301,
+    "failed": 0,
+    "unfinished_outcome_unknown": 0,
+    "attempts_by_role": {
+      "teacher": 10,
+      "student": 291
+    },
+    "known_input_tokens": 216131,
+    "known_output_tokens": 5275,
+    "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+  },
+  "interrupted_predecessor_attempts": {
+    "attempted": 41,
+    "completed": 40,
+    "failed": 0,
+    "unfinished_outcome_unknown": 1,
+    "attempts_by_role": {
+      "student": 41
+    },
+    "known_input_tokens": 3393,
+    "known_output_tokens": 5349,
+    "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+  },
+  "scope": "Submitted exploratory Qwen adapter panels; counting has unequal runtime assistance. Positive-example fallback is retained in the four-task NLP panel. Completed algorithm runs and interrupted project overhead are shown separately."
+}

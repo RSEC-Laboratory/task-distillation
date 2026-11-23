@@ -3,21 +3,21 @@ THIRD-PARTY SOFTWARE AND DATA
 This release includes project code and retained research records. It does not
 redistribute model weights or grant new rights to third-party material.
 
-Software dependencies are listed in task-compiler/pyproject.toml and pinned for
+Software dependencies are listed in pyproject.toml and pinned for
 the recorded inference environment in requirements-inference.txt. Each remains
 under its own distribution license.
 
 BIG-Bench Hard source: https://github.com/suzgunmirac/BIG-Bench-Hard
-The retained upstream notice is task-compiler/data/bbh_official/LICENSE.
+The retained upstream notice is data/bbh_official/LICENSE.
 
 TextGrad source: https://github.com/zou-group/textgrad
-The retained upstream notice is task-compiler/data/textgrad_official/LICENSE.
+The retained upstream notice is data/textgrad_official/LICENSE.
 The included source snapshot supports the recorded TextGrad comparison.
 
 Super-NaturalInstructions source:
 https://github.com/allenai/natural-instructions
-The exact commit and task-file hashes are in external/superni.json.
-Task metadata is covered by external/SUPERNI_LICENSE.txt. Task instances have
+The exact commit and task-file hashes are in data/superni/sources.json.
+Task metadata is covered by data/superni/LICENSE.txt. Task instances have
 their original dataset licenses, listed in that manifest; some upstream entries
 are marked Unknown. Complete upstream task corpora are fetched separately.
 

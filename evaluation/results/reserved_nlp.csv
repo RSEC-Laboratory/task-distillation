@@ -1,0 +1,6 @@
+section,correct,total,accuracy
+conditions/raw_definition,233,400,0.5825
+conditions/positive_examples,210,400,0.525
+conditions/parent_one_shot,210,400,0.525
+conditions/validated_full,210,400,0.525
+conditions/validated_routed,210,400,0.525

@@ -1,0 +1,329 @@
+{
+  "cohorts": {
+    "llama": {
+      "tasks": 24,
+      "conditions": {
+        "raw_original": {
+          "correct": 112,
+          "total": 648,
+          "accuracy": 0.1728395061728395,
+          "invalid_labels": 277
+        },
+        "raw_labels": {
+          "correct": 199,
+          "total": 648,
+          "accuracy": 0.30709876543209874,
+          "invalid_labels": 0
+        },
+        "initial_prose": {
+          "correct": 316,
+          "total": 648,
+          "accuracy": 0.4876543209876543,
+          "invalid_labels": 0
+        },
+        "initial_list": {
+          "correct": 421,
+          "total": 648,
+          "accuracy": 0.6496913580246914,
+          "invalid_labels": 0
+        },
+        "final_prose": {
+          "correct": 301,
+          "total": 648,
+          "accuracy": 0.4645061728395062,
+          "invalid_labels": 0
+        },
+        "final_list": {
+          "correct": 403,
+          "total": 648,
+          "accuracy": 0.6219135802469136,
+          "invalid_labels": 0
+        },
+        "selected_full": {
+          "correct": 410,
+          "total": 648,
+          "accuracy": 0.6327160493827161,
+          "invalid_labels": 0
+        },
+        "selected_routed": {
+          "correct": 512,
+          "total": 648,
+          "accuracy": 0.7901234567901234,
+          "invalid_labels": 0
+        }
+      },
+      "contrasts": {
+        "raw_labels minus raw_original": {
+          "difference": 0.13425925925925924,
+          "descriptive_95_interval": [
+            0.07407407407407407,
+            0.19598765432098764
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "initial_list minus initial_prose": {
+          "difference": 0.16203703703703703,
+          "descriptive_95_interval": [
+            0.10802469135802469,
+            0.21450617283950615
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_list minus initial_list": {
+          "difference": -0.027777777777777776,
+          "descriptive_95_interval": [
+            -0.07407407407407407,
+            0.013888888888888888
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_prose minus initial_prose": {
+          "difference": -0.02314814814814815,
+          "descriptive_95_interval": [
+            -0.0632716049382716,
+            0.02314814814814815
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_list minus final_prose": {
+          "difference": 0.1574074074074074,
+          "descriptive_95_interval": [
+            0.08950617283950617,
+            0.21913580246913578
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus selected_full": {
+          "difference": 0.1574074074074074,
+          "descriptive_95_interval": [
+            0.10802469135802469,
+            0.2098765432098765
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_full minus final_list": {
+          "difference": 0.010802469135802469,
+          "descriptive_95_interval": [
+            -0.035493827160493825,
+            0.05401234567901234
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus raw_labels": {
+          "difference": 0.48302469135802467,
+          "descriptive_95_interval": [
+            0.4104938271604938,
+            0.5509259259259259
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus initial_prose": {
+          "difference": 0.3024691358024691,
+          "descriptive_95_interval": [
+            0.2376543209876543,
+            0.35802469135802467
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 24,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        }
+      },
+      "direct_execution_with_same_fresh_description_fallback": {
+        "correct": 609,
+        "total": 648,
+        "accuracy": 0.9398148148148148
+      },
+      "approved_tasks": 23
+    },
+    "gemma": {
+      "tasks": 18,
+      "conditions": {
+        "raw_original": {
+          "correct": 202,
+          "total": 486,
+          "accuracy": 0.4156378600823045,
+          "invalid_labels": 16
+        },
+        "raw_labels": {
+          "correct": 197,
+          "total": 486,
+          "accuracy": 0.4053497942386831,
+          "invalid_labels": 0
+        },
+        "initial_prose": {
+          "correct": 265,
+          "total": 486,
+          "accuracy": 0.5452674897119342,
+          "invalid_labels": 0
+        },
+        "initial_list": {
+          "correct": 356,
+          "total": 486,
+          "accuracy": 0.7325102880658436,
+          "invalid_labels": 0
+        },
+        "final_prose": {
+          "correct": 270,
+          "total": 486,
+          "accuracy": 0.5555555555555556,
+          "invalid_labels": 0
+        },
+        "final_list": {
+          "correct": 372,
+          "total": 486,
+          "accuracy": 0.7654320987654321,
+          "invalid_labels": 0
+        },
+        "selected_full": {
+          "correct": 386,
+          "total": 486,
+          "accuracy": 0.7942386831275721,
+          "invalid_labels": 0
+        },
+        "selected_routed": {
+          "correct": 419,
+          "total": 486,
+          "accuracy": 0.8621399176954733,
+          "invalid_labels": 0
+        }
+      },
+      "contrasts": {
+        "raw_labels minus raw_original": {
+          "difference": -0.0102880658436214,
+          "descriptive_95_interval": [
+            -0.04938271604938271,
+            0.028806584362139915
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "initial_list minus initial_prose": {
+          "difference": 0.18724279835390945,
+          "descriptive_95_interval": [
+            0.12757201646090535,
+            0.24279835390946503
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_list minus initial_list": {
+          "difference": 0.03292181069958847,
+          "descriptive_95_interval": [
+            -0.008230452674897118,
+            0.07613168724279834
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_prose minus initial_prose": {
+          "difference": 0.0102880658436214,
+          "descriptive_95_interval": [
+            -0.012345679012345678,
+            0.03497942386831275
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "final_list minus final_prose": {
+          "difference": 0.20987654320987653,
+          "descriptive_95_interval": [
+            0.13580246913580246,
+            0.279835390946502
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus selected_full": {
+          "difference": 0.06790123456790123,
+          "descriptive_95_interval": [
+            0.03497942386831275,
+            0.10493827160493827
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_full minus final_list": {
+          "difference": 0.028806584362139915,
+          "descriptive_95_interval": [
+            -0.0020576131687242796,
+            0.0720164609053498
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus raw_labels": {
+          "difference": 0.4567901234567901,
+          "descriptive_95_interval": [
+            0.345679012345679,
+            0.5555555555555556
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        },
+        "selected_routed minus initial_prose": {
+          "difference": 0.3168724279835391,
+          "descriptive_95_interval": [
+            0.23456790123456792,
+            0.3888888888888889
+          ],
+          "resamples": 10000,
+          "seed": 20261120,
+          "unit_count": 18,
+          "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+        }
+      },
+      "direct_execution_with_same_fresh_description_fallback": {
+        "correct": 439,
+        "total": 486,
+        "accuracy": 0.9032921810699589
+      },
+      "approved_tasks": 15
+    }
+  },
+  "primary_rows": 9072,
+  "diagnostic_sentinels": 336,
+  "physical_attempts": 8058,
+  "transport_failures": 0,
+  "scope": "Fresh inference on retained historical families. Intervals resample whole tasks; this is not independent-family confirmation."
+}

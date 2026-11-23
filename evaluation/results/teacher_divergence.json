@@ -1,0 +1,93 @@
+{
+  "tasks": [
+    {
+      "task": "policy-000",
+      "identical_initial_request": true,
+      "identical_initial_response": true,
+      "initial_program_available": [
+        false,
+        false
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": null
+    },
+    {
+      "task": "policy-001",
+      "identical_initial_request": true,
+      "identical_initial_response": false,
+      "initial_program_available": [
+        true,
+        true
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": 12
+    },
+    {
+      "task": "policy-002",
+      "identical_initial_request": true,
+      "identical_initial_response": true,
+      "initial_program_available": [
+        true,
+        true
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": 0
+    },
+    {
+      "task": "policy-003",
+      "identical_initial_request": true,
+      "identical_initial_response": true,
+      "initial_program_available": [
+        true,
+        true
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": 0
+    },
+    {
+      "task": "policy-004",
+      "identical_initial_request": true,
+      "identical_initial_response": false,
+      "initial_program_available": [
+        true,
+        false
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": null
+    },
+    {
+      "task": "policy-005",
+      "identical_initial_request": true,
+      "identical_initial_response": true,
+      "initial_program_available": [
+        true,
+        true
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": 0
+    },
+    {
+      "task": "policy-006",
+      "identical_initial_request": true,
+      "identical_initial_response": true,
+      "initial_program_available": [
+        true,
+        true
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": 0
+    },
+    {
+      "task": "policy-007",
+      "identical_initial_request": true,
+      "identical_initial_response": false,
+      "initial_program_available": [
+        true,
+        false
+      ],
+      "domain_inputs": 81,
+      "program_output_disagreements": null
+    }
+  ],
+  "scope": "Separate generated responses differed before student selection. This replay does not identify a hardware/kernel root cause."
+}

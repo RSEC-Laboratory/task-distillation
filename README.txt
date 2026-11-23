@@ -1,121 +1,84 @@
-TASK DISTILLATION: CODE AND REPRODUCTION
+TASK DISTILLATION
 
-This artifact includes the implementation, retained programs and predictions,
-and scripts for checking the reported results. Submitted experiments and
-additional controlled measurements are identified separately in the output.
+Implementation and evaluation of checked task preparation for frozen language
+models. Source code, experiment definitions, saved predictions, and calculated
+results are separated below.
 
-QUICK START (PYTHON 3.11 OR NEWER)
+START HERE
 
-Extract the complete archive, or clone the repository, then run:
+    evaluation/results/main_studies.csv       Main Llama/Gemma and counting results
+    evaluation/results/matched_gepa.csv       Matched native GEPA comparison
+    evaluation/results/instruction_ablation.csv
+                                             Label, rendering, and routing controls
+    evaluation/results/README.txt             Full results index and interpretation
+    experiments/index.csv                    Experiment-to-record/result crosswalk
 
-    python -B run.py
+REPRODUCE THE RESULTS
 
-The default command needs only the Python standard library. It verifies file
-hashes, reconstructs large JSONL records in outputs/workspace, executes the
-retained DSL programs with the included interpreter, and recomputes numerical
-results from saved predictions. It does not call models, contact an API, or
-require a GPU. Results are written to outputs/results.
+Python 3.11 or newer is sufficient. From the repository root:
 
-Large records are split into files smaller than 6 MB for anonymous hosting.
-run.py reassembles them byte for byte. Do not copy only the source folder.
+    python -B -m evaluation
 
-WHAT IS CHECKED
+This checks release hashes, executes retained DSL programs, checks public
+repairs and rendering equivalence, and recomputes every saved-prediction panel.
+No model, API key, GPU, or network connection is needed. Recomputed tables and
+reports are written to evaluation/results/reproduced/. Distributed reference
+tables remain in evaluation/results/.
 
-1. Program execution, accepted public repairs, and rendered finite decisions.
-2. Main Llama/Gemma conditions and the original routing comparison.
-3. The native matched GEPA panel and symmetric execution fallbacks.
-4. Counting, TextGrad, and Super-NaturalInstructions comparison records.
-5. Additional matched-label/rendering/routing controls, a common-checker
-   counting control, public-example lookups, and reserved NLP outcomes.
+    python -B -m evaluation --verify-only
 
-Failed compilation, task-description fallbacks, interrupted predecessor calls,
-and unsuccessful reserved-task conditions are retained. Program-only replay
-counts are distinguished from deployed student accuracy. Descriptive intervals
-over the reused task families do not establish independent-family transfer.
-The submitted Gemma aggregates use the registered description-fallback estimates
-for two syntax-failure tasks; the new matched pass measures its fallbacks anew.
+REPOSITORY LAYOUT
 
-CODE BUILD AND TESTS
+    src/taskcompiler/          Task compiler, DSL, checking, routing, and adapters
+    experiments/configs/       Configurations for the included experiment families
+    experiments/protocols/     Frozen experiment definitions and baseline artifacts
+    experiments/prepared/      Retained programs and instruction bundles
+    experiments/drivers/       Experiment execution and matched-baseline drivers
+    evaluation/               Scoring, statistics, program replay, and inference CLI
+    evaluation/records/       Raw predictions, calls, failures, and frozen inputs
+    evaluation/results/       Named CSV tables and detailed JSON results
+    tests/                    Compiler, baseline-boundary, and evaluation tests
+    data/                     Benchmark inputs, source pins, and upstream licenses
+    provenance/               File hashes and mappings of immutable record references
 
-The source package is in task-compiler/src/taskcompiler. All 81 source modules
-are retained byte-identically so the frozen source hashes remain checkable.
-No model weights or credentials are distributed.
+INSTALL THE IMPLEMENTATION
 
-The dependency-free interpreter checks can also be run separately:
-
-    python -B -S check_core.py --root outputs/workspace/task-compiler
-
-For the full Python package and selected software tests, create an environment:
-
-    python -m venv .venv
-
-Activate it, then run:
+Offline evaluation above uses only the standard library. For full experiment
+execution and software tests, create and activate a virtual environment, then:
 
     python -m pip install -r requirements-inference.txt
-    python -m pip install --no-deps -e ./task-compiler
-    python -m pytest -q task-compiler/tests -o addopts=
+    python -m pip install --no-deps -e .
+    python -m pytest -q
 
-The recorded environment used Python 3.12, torch 2.5.1 with CUDA 12.1, and the
-versions pinned in requirements-inference.txt. CPU installations can use the
-appropriate torch 2.5.1 wheel. Offline record reproduction requires none of
-these optional packages. Run the package in editable mode because experiment
-data paths are resolved beside src.
+The recorded inference environment used Python 3.12 and torch 2.5.1/CUDA 12.1;
+CPU execution can use the corresponding CPU torch wheel. Model weights and
+credentials are not included. Editable installation preserves the package's
+paths to benchmark inputs in this checkout.
 
-NEW STUDENT PREDICTIONS (OPTIONAL)
+FRESH STUDENT INFERENCE
 
-The retained predictions support numerical reproduction, not a guarantee that
-external model providers regenerate identical responses. The optional runner
-rerun_student.py sends recorded preparation prompts to an explicitly selected
-local Ollama endpoint and writes fresh outputs separately:
+With the recorded checkpoint already available in a local Ollama server:
 
-    python rerun_student.py --help
+    python -B -m evaluation.run_student --cohort llama --arm selected_routed --limit 5
 
-For example, after materializing the evidence and installing the recorded
-checkpoint in a local Ollama server:
+Add --plan-only to inspect requests without making model calls. Output defaults
+to a new evaluation/results/fresh_<timestamp>/ directory. This command uses the
+frozen preparation and generates new student responses; it does not rerun the
+teacher. It checks the checkpoint digest and retains every physical request.
 
-    python rerun_student.py --root outputs/workspace/task-compiler --cohort llama --arm selected_routed --limit 5 --output outputs/fresh-llama
+See experiments/README.txt for full experiment execution and required inputs.
 
-Add --plan-only to inspect the selected requests without contacting the server.
+EVIDENCE AND SCOPE
 
-It uses frozen task preparation and makes new student calls; it does not
-regenerate teacher programs. A compatible model must already be installed.
-No download or inference is triggered by the default reproduction command.
-The included historical experiment drivers preserve the study implementation;
-their original output paths and provider/cache assumptions are not portable
-entrypoints. Use the release runner for a fresh local student check.
+Saved-output reproduction and fresh model generation are distinct operations.
+The evaluation retains failed compilations, fallbacks, interrupted calls, and
+negative NLP results. Historical main-study values and additional controlled
+measurements are identified separately in the results index. Program execution
+is reported separately from student accuracy. All 81 framework source modules
+retain their original bytes; evaluation code and entrypoints use this layout.
 
-UPSTREAM NLP DATA (OPTIONAL)
-
-The default artifact checks recorded references and predictions without
-redistributing complete upstream task corpora. For independent source-instance
-revalidation or new NLP inference, read external/superni.json and then run:
-
-    python fetch_data.py
-    python -B run.py
-
-The downloader uses a fixed upstream commit, verifies download hashes, and
-reconstructs the recorded checkout newline convention. Original task-instance
-licenses remain applicable; the metadata license does not relicense instances.
-NLP request prompts containing upstream instances are represented by SHA-256
-digests in the published call evidence. Outputs, reference labels, call counts,
-errors, and chronology are retained. PROVENANCE.json records these transformations.
-
-FILE LAYOUT
-
-    run.py                   Integrity check and offline reproduction entrypoint
-    check_core.py            Execute the actual retained DSL programs
-    reproduce.py             Saved-prediction scoring and statistical checks
-    rerun_student.py         Optional new local student predictions
-    fetch_data.py            Optional pinned upstream data download
-    MANIFEST.json            Public release file hashes
-    DATA_PARTS.json          Split-record reconstruction instructions
-    PROVENANCE.json          Documented release transformations
-    external/                Upstream data pins and license notices
-    task-compiler/src/       Original implementation
-    task-compiler/reports/   Retained study records and configurations
-    task-compiler/runs/      Required run artifacts and comparison records
-
-The top-level entrypoints are authoritative for this release. Historical
-support data under reviewer_artifact are consumed by the scoring scripts;
-older development comparisons are not substituted for the native GEPA panel.
-Third-party license text and original model/data attribution are preserved.
+Large call logs are split below 6 MB per part for anonymous hosting and are
+reassembled with hash checks in evaluation/.cache/. Original references inside
+saved records are resolved through provenance/layout.json. Optional upstream
+NLP source checks require downloading the pinned datasets; see data/superni/.
+Third-party attributions and license information are in THIRD_PARTY_NOTICES.txt.

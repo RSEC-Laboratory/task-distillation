@@ -1,0 +1,5 @@
+section,correct,total,accuracy
+conditions/llama/hamming_nearest_vote,525,648,0.8101851851851852
+conditions/llama/minilm_1nn,304,648,0.4691358024691358
+conditions/gemma/hamming_nearest_vote,401,486,0.8251028806584362
+conditions/gemma/minilm_1nn,228,486,0.4691358024691358

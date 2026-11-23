@@ -1,0 +1,3 @@
+study,condition,correct,total,accuracy
+two_task_routing,full_list,25,54,0.46296296296296297
+two_task_routing,routed,43,54,0.7962962962962963

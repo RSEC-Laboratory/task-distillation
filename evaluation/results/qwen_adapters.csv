@@ -1,0 +1,9 @@
+section,correct,total,accuracy
+counting/counting_adapter,86,100,0.86
+counting/counting_textgrad,65,100,0.65
+counting/counting_transfer,60,100,0.6
+nlp_conditions/raw_definition,22,80,0.275
+nlp_conditions/positive_examples,41,80,0.5125
+nlp_conditions/parent_one_shot,33,80,0.4125
+nlp_conditions/validated_full,40,80,0.5
+nlp_conditions/validated_routed,44,80,0.55

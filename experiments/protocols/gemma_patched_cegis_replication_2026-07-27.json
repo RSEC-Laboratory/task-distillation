@@ -1,0 +1,51 @@
+{
+  "protocol_version": "2026-07-27.1",
+  "status": "stage_1_failed_futility",
+  "parent_node": "T9",
+  "stage_1_task_ids": [62, 79, 63, 57, 48, 75, 43, 73],
+  "stage_2_task_ids": [
+    49, 44, 76, 46, 68, 58, 51, 70,
+    59, 65, 71, 72, 56, 42, 66, 64
+  ],
+  "excluded_opened_task_ids": [77],
+  "method": {
+    "teacher_refine_with_audit": true,
+    "maximum_teacher_repair_rounds": 3,
+    "maximum_counterexample_patches": 3,
+    "exact_build_and_audit_required": true
+  },
+  "stage_1_gate": {
+    "exactly_verified_tasks_minimum": 6,
+    "positive_tasks_vs_raw_minimum": 6,
+    "positive_tasks_vs_one_shot_minimum": 6,
+    "check_futility_after_every_task": true
+  },
+  "full_gemma_gate": {
+    "tasks": 24,
+    "positive_tasks_vs_each_control_minimum": 17,
+    "paired_bootstrap_interval_above_zero": true,
+    "bootstrap_resamples": 100000,
+    "bootstrap_seed": 20260727
+  },
+  "models": {
+    "teacher": "google/gemma-2-27b-it",
+    "student": "gemma2:9b",
+    "student_backend": "ollama",
+    "ollama_base_url": "http://192.168.2.115:11434",
+    "remote_student_fallback_allowed": false
+  },
+  "next_requirement": {
+    "external_task_definition_benchmark": true
+  },
+  "stage_1_result": {
+    "tasks_attempted": 6,
+    "tasks_with_complete_conditions": 4,
+    "initial_dsl_parse_failures": 2,
+    "exactly_verified_tasks": 3,
+    "positive_tasks_vs_raw": 3,
+    "positive_tasks_vs_one_shot": 3,
+    "remaining_unopened_tasks": [43, 73],
+    "futile": true,
+    "passed": false
+  }
+}

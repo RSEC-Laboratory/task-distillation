@@ -1,0 +1,11 @@
+section,correct,total,accuracy
+students/qwen2.5:3b/conditions/raw,101,216,0.4675925925925926
+students/qwen2.5:3b/conditions/full,134,216,0.6203703703703703
+students/qwen2.5:3b/conditions/gepa,117,216,0.5416666666666666
+students/qwen2.5:3b/conditions/direct_dsl,127,216,0.5879629629629629
+students/qwen2.5:3b/conditions/direct_matched_fallback,155,216,0.7175925925925926
+students/llama3.2:3b/conditions/raw,81,216,0.375
+students/llama3.2:3b/conditions/full,107,216,0.49537037037037035
+students/llama3.2:3b/conditions/gepa,105,216,0.4861111111111111
+students/llama3.2:3b/conditions/direct_dsl,53,216,0.24537037037037038
+students/llama3.2:3b/conditions/direct_matched_fallback,111,216,0.5138888888888888

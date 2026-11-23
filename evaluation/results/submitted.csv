@@ -1,0 +1,17 @@
+section,correct,total,accuracy
+main_llama/conditions/raw,107,648,0.16512345679012347
+main_llama/conditions/one_shot,311,648,0.4799382716049383
+main_llama/conditions/full,517,648,0.7978395061728395
+main_llama/direct_execution_historical_description_fallback,610,648,0.941358024691358
+main_gemma/conditions/raw,202,486,0.4156378600823045
+main_gemma/conditions/one_shot,264,486,0.5432098765432098
+main_gemma/conditions/full,419,486,0.8621399176954733
+llama_counting/conditions/adapter,85,100,0.85
+llama_counting/conditions/textgrad,75,100,0.75
+llama_counting/conditions/published_prompt,76,100,0.76
+historical_nlp_adapters/students/llama/conditions/positive_examples,38,80,0.475
+historical_nlp_adapters/students/llama/conditions/routed_recorded,34,80,0.425
+historical_nlp_adapters/students/llama/conditions/routed_identical_prompt_fallback_corrected,35,80,0.4375
+historical_nlp_adapters/students/gemma/conditions/positive_examples,53,80,0.6625
+historical_nlp_adapters/students/gemma/conditions/routed_recorded,50,80,0.625
+historical_nlp_adapters/students/gemma/conditions/routed_identical_prompt_fallback_corrected,50,80,0.625

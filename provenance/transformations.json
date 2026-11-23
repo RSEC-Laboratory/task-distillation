@@ -1,0 +1,398 @@
+{
+  "source": "Retained study records and byte-identical framework source.",
+  "transformations": [
+    {
+      "path": "evaluation/records/matched_gepa/continuation_start.json",
+      "original_sha256": "d97276f05d10e3d5a15bbefda92ad014c1759d9ef8c257ab317fbe80f8d9578a",
+      "released_sha256": "18ec6f050fdfb43fa0771a8fa7e7aaa51444d3c8f6215b4493232f4d1a5a05e5",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-000-full.json",
+      "original_sha256": "3bf1bfe1ed153bf7c834076bce17299d736848fbb6f9e1a587714793d9bfb026",
+      "released_sha256": "0c0e711875e34cc517e0fde2c6bb0886331c43cf2f637a386a777fb37c3ec4c7",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-001-full.json",
+      "original_sha256": "2324a3113fd6cdea6b82d69c10d60d27ec019e0ef50b5112430be88e8eeee8d9",
+      "released_sha256": "9330102ceec4efb5a24652f4f8f29e06167dcb9a17f2e763f6817919fbba74c8",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-002-full.json",
+      "original_sha256": "a6a1533e70935c4462d8382a268a06d5d203a0f847c4497101f76c3550be8831",
+      "released_sha256": "4663ac0ad658f08d4ff5070f8af7cafecd5b3f5b0c2b2ec1403fba0dff0100b6",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-003-full.json",
+      "original_sha256": "58b08c79b69399bb3eeb31f0bbb0da7991c2a5391b517347283ce79bcdae5e95",
+      "released_sha256": "c1e8ec1b2f2ee9265ed8cf5defc0491a37209c7c66e5b498afac103a7f2f89dc",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-004-full.json",
+      "original_sha256": "1d9df5abd1547ae2bcc5c695b825b86dbdd5248007f5fd2af2d4f8a2f359fc4b",
+      "released_sha256": "acbef525bb643b48cdda3470e3b7ff1927a9c833d7941392b00424be0d61767c",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-005-full.json",
+      "original_sha256": "1f3cd623132efb35a1177f8a3ee9503d517a790610faa72ff83d90f696302169",
+      "released_sha256": "859ea5dcbb6c560a338875f6bcbbe345ea2aae432167abba751a4991c8970d2c",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-006-full.json",
+      "original_sha256": "32145dcf58905ab79a2171641406e0806180ccb204c6c6300b02cbc60262398b",
+      "released_sha256": "73681a7682af9512963f43aa9773046e69e995c8eedbedd54a1b7241c3e7b0d9",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/llama3.2_3b-policy-007-full.json",
+      "original_sha256": "87a1b395a8040c802768e7d721eefc2ed3fc1b075fcc27ab747d5177c1fdf448",
+      "released_sha256": "e921b5aa980a4127f3ad67ed2d692ef3586bca5d0eb57180d07d55d71dc0626e",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-000-full.json",
+      "original_sha256": "5063280f2cad8b44e895c506c365f5854c1c264deeeefab640cc25ee9e776ac0",
+      "released_sha256": "bc672a1a12de81ad4f4abf492ad7b09268707046ec24b32e4911d07c468ace60",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-001-full.json",
+      "original_sha256": "fcb578060caf10176fce0dc796fcb286bade277a66ea6472ab3f2b11745a5b1b",
+      "released_sha256": "7efcf7e43fb7004787e05fcf758864b9502ab6ff6a899da8f17d47963e6f3f4b",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-002-full.json",
+      "original_sha256": "86b4114cc654309d83b5561a211f00af1c4d7929f6de973df9c760b38169034e",
+      "released_sha256": "2555e3131e82b4bed7ba007dafd4882fb36f992ad096ebe9a8a20ac8204386bd",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-003-full.json",
+      "original_sha256": "b4cae8f1ce852956436b906f3bd9fa78fcc9eced459d011fe07dd19dbe6a985f",
+      "released_sha256": "2a501dd8de2b82eadd2f322818d11337363d2f7b7ab228193fbf0d85da8ff6da",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-004-full.json",
+      "original_sha256": "475c9ba82979f19841638439890f2d4b0532d47df3c96294dae0c1b8f2785501",
+      "released_sha256": "a02403616b0ee672bb1370403a6f72c9b360019e0a6964fa725daf1f17d386b4",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-005-full.json",
+      "original_sha256": "bea1be0f7d5c097d4cf3973bd2f6ea9b817e19343fd119cae3c111280848e009",
+      "released_sha256": "6f8d430c0a38f9ad11db138dec40a015206a86e8394228e7a4d847825ca4b240",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-006-full.json",
+      "original_sha256": "81073b26647dcbf41f73148fbe85209ad6eacf2b12de59c3eb69a167a190ea47",
+      "released_sha256": "e50aedf28770aba9fb9190a5f2ee380ee73a110b35721b0da5a7e17fd4c1cba3",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/prepared/qwen2.5_3b-policy-007-full.json",
+      "original_sha256": "8e8faa6fbb98c69c95db2a8590f2cf2445630d6d91f2627ca0d3ec87d5fc7d81",
+      "released_sha256": "c4fadb264c7bb20adce2e19f6b95a8772b50c969bdb3e297b7ca60efce2d3476",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/matched_gepa/router_identity.json",
+      "original_sha256": "b9f40d4cf69688c488d8802d9b0de5402156466f52e96f5706d9baf2f716fe03",
+      "released_sha256": "32b2b63d639791cb3b0041dcb400ae2d94fdb7a524fdcb1695f15d5739a79910",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/reserved_nlp/run/artifacts/model_calls.jsonl",
+      "original_sha256": "9d3af0e350d32df060299481121d1ff16fe2af22095f5a95cde0b6f21d23d6f1",
+      "released_sha256": "beda5a2d532b24a6261700e628772677af5c44d7a9e0ee814eef2916e84ab569",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 820,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/reserved_nlp/failed_schema/artifacts/model_calls.jsonl",
+      "original_sha256": "27ee0f553df9309d1c51f5241416e4539c53032556ab4ba4988d80ea2d8fd5db",
+      "released_sha256": "a9f61de71b864d2a66c55cff3fe226f7270da7056335b688d027b505b87c08d9",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 1,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/reserved_nlp/failed_schema_restart/artifacts/model_calls.jsonl",
+      "original_sha256": "ac8ed3668001c419b86cab589a447c87b1c0fd2cedd8548d1e29236598b954c4",
+      "released_sha256": "312d74c3fed53906ff8e795046caf18a6ce0cfe3a95a25f8f6b1457f9d512fa8",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 1,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "evaluation/records/qwen_adapters/superni/artifacts/model_calls.jsonl",
+      "original_sha256": "33b783e958ad412bc68f1acdfb698606fadafa0e1b0fff90fac0ee9b33a3d84e",
+      "released_sha256": "245b96a67c16e5d6e91c6fbffe36a0cacdab4d9cb3e8b55952db0ab9c21bfe48",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 301,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    }
+  ],
+  "omitted_upstream_data": "Full SuperNI task instance files are external; external/superni.json pins source and hashes.",
+  "excluded_categories": [
+    "credentials",
+    "git history",
+    "environments",
+    "model weights",
+    "private author drafts",
+    "walkthrough media",
+    "unrelated development documents"
+  ],
+  "layout_changes": [
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "previous_release_sha256": "7708e0fe019b842c642e6926702cf6ae559df4417304e1dc5a1bfa7e46ccb3e1",
+      "released_sha256": "d8b965b7e3d11ff57d8773850fa222cb2e8d7f5e486ae62ddff98f50dab9d8ef",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "data/superni/sources.json",
+      "previous_release_sha256": "05f9181238e47c910307432b7f63a0218c82c2cf3411a31548def533714fdd34",
+      "released_sha256": "d4898b16096b467ca85cfe43d6dfb5561c9678085cb6ceb79491c33afb1a2fb9",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/abstract_t1c_llama32_same_bundle_full_task0.yaml",
+      "previous_release_sha256": "4ed1118353558b1b3c0a61eabb762c3a12ec4c8cc552354a36d5bd6947cfcb0a",
+      "released_sha256": "cf293c6b1c1ea109482b4becfe394f22c609976388de8fc54745972cd9532958",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/abstract_t1c_llama32_same_bundle_full_task26.yaml",
+      "previous_release_sha256": "84e1102f188f4b825ebbd1d927ff174d31514237642c201230180b744c7c883f",
+      "released_sha256": "31ff605b69337c76fae5dacf67fbbbd3c7ba01b16ef3493c48cda7fae322b138",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/abstract_t1c_llama32_same_bundle_route_task0.yaml",
+      "previous_release_sha256": "4d3cf528672784be7b72c9e6e864d178bbff9e6c01b8f8ad0c75890102d7215d",
+      "released_sha256": "0f5b63a33adacb5ae1bd55a6b7e0e27215ce69daa0cd6526f80deb1a9895e24e",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/abstract_t1c_llama32_same_bundle_route_task26.yaml",
+      "previous_release_sha256": "c211e4ce5dbeb71abef09a8796f029a8f0a47d90cb804a993027fd1e74740287",
+      "released_sha256": "35c9eecf2790d68096b01475ae630bbfe7d42f368c2aa264d8307f996db381d9",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/bbh_object_counting_llama32_3b_textgrad_prompt_test100.yaml",
+      "previous_release_sha256": "4d82947f4084fddca2fb5a9f62075c4c075af35db20551db5b69e432cfd3f993",
+      "released_sha256": "fa02bedd44f7cc9d23199097483ddd304a89d45bdf88452e1ae15f119716b304",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/bbh_object_counting_llama32_3b_textgrad_tgd_test100.yaml",
+      "previous_release_sha256": "b97657e12684858e4780eddb6d00918f78d248d038ce81b8a20ca0ed6bbfeaf4",
+      "released_sha256": "77b364582338c2ccbddeae4804dfef211eba737eb675a09928b32fcec54cf81a",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/bbh_object_counting_llama32_3b_verified_parent70_test100.yaml",
+      "previous_release_sha256": "bfdc9fb08d1091cdaa12bdea6fc8b592092e7d0275a5925ddc02e8329ae7a8a7",
+      "released_sha256": "806a2045bcdac7074dcf027b3a51f00321442a541383f772039cb37a68455779",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/reserved_nlp/superni_reserved_llama.yaml",
+      "previous_release_sha256": "53ff2fd2c6e089189587b1e4cb3710e4c482354622b6758e30a72276fec9b299",
+      "released_sha256": "ada0cded65147fd7766efb736ae08846c8a187a3d0376c63658b875aaf453253",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/reserved_nlp/superni_reserved_schema_llama.yaml",
+      "previous_release_sha256": "89d442c24765b316cfaf360a0bbf0fbfbe2bc51e9c5d15bf1b702bf354cb721d",
+      "released_sha256": "6c7a67a96ff3971fd8b165da51bc62f49b86d2002a19853c02d19849aa3f99f4",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/reserved_nlp/superni_reserved_schema_transport_llama.yaml",
+      "previous_release_sha256": "23b08facb1400b56a0a2b1f8eca88a2f07ab5f2836dbe9b310743a4ef120ad1d",
+      "released_sha256": "4b2e18fafaa95fa7cf829647ff7c79de59d04ec10fe1f934c5c5e383b2624d2d",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/configs/superni_llama_development.yaml",
+      "previous_release_sha256": "faf820c029c9d7f19da27a66d2dba36415ced8d7d0f8bf4ef2c48624b20f2258",
+      "released_sha256": "88def13c8efe3e82d4849290e04c5be42c66b4323c9b1165013f1e4a8357f128",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "pyproject.toml",
+      "previous_release_sha256": "b71e368b38b1376a9bbbd0ec3430665354a9dbacff4f3e7609354b40854b5137",
+      "released_sha256": "34e5c27460f82859467a34d627fc4b900cab7843cb33eecde758176c90d39669",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/continue_matched_original.py",
+      "previous_release_sha256": "1ff932209958bf4425844159f116f7f2d658d979b2288f04ea10b3ffda870c87",
+      "released_sha256": "9df721e16c48e3e4a9c89eff7565c3c8a31cf368a0bf8087f9a0b316e5996a40",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/report_matched_original.py",
+      "previous_release_sha256": "e4b810f90d76b4f77056f4bce946753e601d46941c871b501d869af3ca2654af",
+      "released_sha256": "f52fc0356119acfd47fcf7bc2340bf1425aaa40eff88c8fe1e5d883b3574f127",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/report_matched_original_continuation.py",
+      "previous_release_sha256": "3ecfcb5dd06b06e44e98210d58aa0bf8dc77eed63ce52aba46eaaa97f04a5b05",
+      "released_sha256": "f4b612d66ed1b9027a36b03f2bb1ce1c5a4a2ce267314eaf61babc08902f532c",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/run_external_comparison.py",
+      "previous_release_sha256": "acca4de95f1a3322881584485d2e6304ca13a86f41efe4d65c9ca985bc1e165d",
+      "released_sha256": "1812b15cd856d19da51af10b2266a0e49b465b3a41cec64aa010be912da45b2e",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/run_matched_original.py",
+      "previous_release_sha256": "f17799efa8b3c5fb3c9b72264492b026ea2aeb7e5e28ba1de7d1f2e16c3740ad",
+      "released_sha256": "57ec5211b8484cbce827d5a6fdc0f7b32aebb3d3e125cbdb9aaf0985da2b6f06",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/run_t10_gemma_replication.py",
+      "previous_release_sha256": "9b937343429c75064f597272c58adbf58157f98a3d694c0a4e2eeee3e44d064e",
+      "released_sha256": "c5b34484351e0e05edd0ed60a283d64f12766b6f13e824b1ef04914e6cc25706",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/run_t14_gemma_generalized_confirmation.py",
+      "previous_release_sha256": "5de54c1aee3a2f6bfe9e5611847b0ff3e4cc35692d9141b7a3cd88bf1ec0036d",
+      "released_sha256": "7c8591e06689eba62609f002ae076846cb0c5406d6a982e61dad24544650e218",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "experiments/drivers/run_t9_confirmation.py",
+      "previous_release_sha256": "f3a313c5d5dbae3eed27573a764f4ff996b3d8f5d36bac957ae75c82c92ef0db",
+      "released_sha256": "125c034763d69383b086d0cb085ab5faaa27c0165a85aace5841398c6046adbb",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "tests/benchmarks/test_matched_original.py",
+      "previous_release_sha256": "4c89da2b1a78cd2a8012371a22a885bf343b5bd9bf2df10ae141b26db508ddec",
+      "released_sha256": "49fa893a9c952e00887569f9c46a7390dfa925c747aef6896e59ddde3e3e069c",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "tests/benchmarks/test_matched_original_continuation.py",
+      "previous_release_sha256": "56d28e00f9159ee9540887403fd9d42992adda965143c7383bf8900704c642a7",
+      "released_sha256": "7f5e168d76fe5a6615e801fbc7c36897c9abd2871299aabff4ab8a2fe44a6357",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    },
+    {
+      "path": "tests/test_spec_compiler.py",
+      "previous_release_sha256": "cefd3653f224bca22b119a4fa24f63b82f3fdacb2419f14362550c79a8ed7e4d",
+      "released_sha256": "39d0a5d1c75123ce53481ee3241dc71c9063a877ee0c96ce85de3b4623917b8a",
+      "reason": "Adapt project paths and local endpoint defaults for the structured release; scientific records unchanged."
+    }
+  ],
+  "source_modules": "All 81 framework modules are byte-identical to the retained implementation.",
+  "deduplicated_files": [
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_193400/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_193400/config.yaml",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/config.yaml"
+    },
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_193527/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_193527/config.yaml",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/config.yaml"
+    },
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_194026/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/gemma/2026-07-27_194026/config.yaml",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/config.yaml"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_170352/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_170419/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_170419/config.yaml",
+      "canonical": "evaluation/records/nlp_development/llama/2026-07-27_170352/config.yaml"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_170453/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_170453/config.yaml",
+      "canonical": "evaluation/records/nlp_development/llama/2026-07-27_170352/config.yaml"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_171303/artifacts/suite_manifest.json",
+      "canonical": "evaluation/records/nlp_development/gemma/2026-07-27_193330/artifacts/suite_manifest.json"
+    },
+    {
+      "path": "evaluation/records/nlp_development/llama/2026-07-27_171303/config.yaml",
+      "canonical": "evaluation/records/nlp_development/llama/2026-07-27_170352/config.yaml"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "conditions": {
+    "llama/hamming_nearest_vote": {
+      "correct": 525,
+      "total": 648,
+      "accuracy": 0.8101851851851852
+    },
+    "llama/minilm_1nn": {
+      "correct": 304,
+      "total": 648,
+      "accuracy": 0.4691358024691358
+    },
+    "gemma/hamming_nearest_vote": {
+      "correct": 401,
+      "total": 486,
+      "accuracy": 0.8251028806584362
+    },
+    "gemma/minilm_1nn": {
+      "correct": 228,
+      "total": 486,
+      "accuracy": 0.4691358024691358
+    }
+  },
+  "scope": "Both use 54 public labels. Supplementary protocol specified after observing the completed Llama cohort. Hamming selection recomputed; embedding labels checked against recorded neighbor IDs, without regenerating encoder embeddings."
+}

@@ -1,0 +1,102 @@
+{
+  "conditions": {
+    "raw_definition": {
+      "correct": 233,
+      "total": 400,
+      "accuracy": 0.5825
+    },
+    "positive_examples": {
+      "correct": 210,
+      "total": 400,
+      "accuracy": 0.525
+    },
+    "parent_one_shot": {
+      "correct": 210,
+      "total": 400,
+      "accuracy": 0.525
+    },
+    "validated_full": {
+      "correct": 210,
+      "total": 400,
+      "accuracy": 0.525
+    },
+    "validated_routed": {
+      "correct": 210,
+      "total": 400,
+      "accuracy": 0.525
+    }
+  },
+  "fallback_tasks": 20,
+  "physical_attempts_by_role": {
+    "teacher": 20,
+    "student": 800
+  },
+  "contrasts": {
+    "validated_routed minus raw_definition": {
+      "difference": -0.05750000000000001,
+      "descriptive_95_interval": [
+        -0.14750000000000002,
+        0.062499999999999986
+      ],
+      "resamples": 100000,
+      "seed": 20260727,
+      "unit_count": 20,
+      "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+    },
+    "validated_routed minus positive_examples": {
+      "difference": 0.0,
+      "descriptive_95_interval": [
+        0.0,
+        0.0
+      ],
+      "resamples": 100000,
+      "seed": 20260727,
+      "unit_count": 20,
+      "implementation": "Exact degenerate bootstrap distribution"
+    },
+    "validated_routed minus parent_one_shot": {
+      "difference": 0.0,
+      "descriptive_95_interval": [
+        0.0,
+        0.0
+      ],
+      "resamples": 100000,
+      "seed": 20260727,
+      "unit_count": 20,
+      "implementation": "Exact degenerate bootstrap distribution"
+    },
+    "validated_routed minus validated_full": {
+      "difference": 0.0,
+      "descriptive_95_interval": [
+        0.0,
+        0.0
+      ],
+      "resamples": 100000,
+      "seed": 20260727,
+      "unit_count": 20,
+      "implementation": "Exact degenerate bootstrap distribution"
+    }
+  },
+  "source_instance_validation": {
+    "tasks_checked": 0,
+    "expected_tasks": 20,
+    "status": "not_complete; saved-row references rescored, upstream files not redistributed"
+  },
+  "schema_enabled_configuration": {
+    "status": "unavailable",
+    "attempts": [
+      {
+        "failed_teacher_attempts": 1,
+        "successful_responses": 0,
+        "final_observations": 0
+      },
+      {
+        "failed_teacher_attempts": 1,
+        "successful_responses": 0,
+        "final_observations": 0
+      }
+    ],
+    "accuracy": null
+  },
+  "scope": "All twenty compilation-format failures and the two HTTP-429 attempts retained. No positive independent-transfer claim."
+}

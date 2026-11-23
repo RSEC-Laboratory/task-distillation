@@ -1,0 +1,10 @@
+study,condition,correct,total,accuracy
+main_llama,raw,107,648,0.16512345679012347
+main_llama,one_shot,311,648,0.4799382716049383
+main_llama,full,517,648,0.7978395061728395
+main_gemma,raw,202,486,0.4156378600823045
+main_gemma,one_shot,264,486,0.5432098765432098
+main_gemma,full,419,486,0.8621399176954733
+llama_counting,adapter,85,100,0.85
+llama_counting,textgrad,75,100,0.75
+llama_counting,published_prompt,76,100,0.76

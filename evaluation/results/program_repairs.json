@@ -1,0 +1,28 @@
+{
+  "accepted_changes_replayed": 72,
+  "repair_counts": {
+    "llama/teacher": 21,
+    "llama/insertion": 11,
+    "llama/condition_narrowing": 4,
+    "gemma/condition_narrowing": 17,
+    "gemma/insertion": 18,
+    "gemma/teacher": 1
+  },
+  "program_only_scores_reexecuted": {
+    "llama": {
+      "initial_correct": 604,
+      "final_correct": 627,
+      "total": 648
+    },
+    "gemma": {
+      "initial_correct": 385,
+      "final_correct": 424,
+      "total": 432
+    }
+  },
+  "approved_decision_lists_checked_over_81_inputs": {
+    "llama": 23,
+    "gemma": 15
+  },
+  "scope": "All accepted changes executed on 54 public cases. Program-only totals reexecuted from saved DSL; include unapproved parsed candidates and exclude two missing Gemma programs. Conversion agrees with generated programs, not necessarily with reference labels everywhere."
+}

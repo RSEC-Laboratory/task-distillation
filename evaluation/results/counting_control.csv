@@ -1,0 +1,5 @@
+section,correct,total,accuracy
+methods/counting_guidance/off,74,100,0.74
+methods/counting_guidance/on,86,100,0.86
+methods/textgrad_guidance/off,72,100,0.72
+methods/textgrad_guidance/on,76,100,0.76

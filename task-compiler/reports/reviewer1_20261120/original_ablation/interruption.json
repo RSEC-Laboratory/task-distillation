@@ -1,9 +1,0 @@
-{
-  "status": "incomplete",
-  "at_utc": "2026-11-20T16:59:13.594884+00:00",
-  "error_type": "RuntimeError",
-  "error": "Frozen resource limit reached",
-  "physical_attempts": 7831,
-  "primary_rows": 8856,
-  "elapsed_seconds": 7200.375
-}

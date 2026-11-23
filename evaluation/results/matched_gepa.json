@@ -1,0 +1,290 @@
+{
+  "students": {
+    "qwen2.5:3b": {
+      "conditions": {
+        "raw": {
+          "correct": 101,
+          "total": 216,
+          "accuracy": 0.4675925925925926
+        },
+        "full": {
+          "correct": 134,
+          "total": 216,
+          "accuracy": 0.6203703703703703
+        },
+        "gepa": {
+          "correct": 117,
+          "total": 216,
+          "accuracy": 0.5416666666666666
+        },
+        "direct_dsl": {
+          "correct": 127,
+          "total": 216,
+          "accuracy": 0.5879629629629629
+        },
+        "direct_matched_fallback": {
+          "correct": 155,
+          "total": 216,
+          "accuracy": 0.7175925925925926
+        }
+      },
+      "per_task": [
+        {
+          "task": "policy-000",
+          "correct": {
+            "raw": 6,
+            "full": 6,
+            "gepa": 16,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 6
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-001",
+          "correct": {
+            "raw": 11,
+            "full": 22,
+            "gepa": 12,
+            "direct_dsl": 25,
+            "direct_matched_fallback": 25
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-002",
+          "correct": {
+            "raw": 7,
+            "full": 7,
+            "gepa": 7,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 7
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-003",
+          "correct": {
+            "raw": 15,
+            "full": 15,
+            "gepa": 16,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 15
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-004",
+          "correct": {
+            "raw": 20,
+            "full": 18,
+            "gepa": 19,
+            "direct_dsl": 24,
+            "direct_matched_fallback": 24
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-005",
+          "correct": {
+            "raw": 11,
+            "full": 25,
+            "gepa": 16,
+            "direct_dsl": 26,
+            "direct_matched_fallback": 26
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-006",
+          "correct": {
+            "raw": 18,
+            "full": 25,
+            "gepa": 20,
+            "direct_dsl": 27,
+            "direct_matched_fallback": 27
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-007",
+          "correct": {
+            "raw": 13,
+            "full": 16,
+            "gepa": 11,
+            "direct_dsl": 25,
+            "direct_matched_fallback": 25
+          },
+          "program_available": true
+        }
+      ],
+      "full_minus_gepa": {
+        "difference": 0.07870370370370369,
+        "descriptive_95_interval": [
+          -0.08333333333333333,
+          0.2222222222222222
+        ],
+        "resamples": 10000,
+        "seed": 20261005,
+        "unit_count": 8,
+        "implementation": "Original native-report Python random.choices and indexed quantiles"
+      },
+      "preparation_attempts_by_role": {
+        "full": {
+          "teacher_optimization": 28,
+          "failed_attempts": 0,
+          "solver_optimization": 540
+        },
+        "gepa": {
+          "solver_optimization": 1404,
+          "teacher_optimization": 24,
+          "failed_attempts": 0
+        }
+      }
+    },
+    "llama3.2:3b": {
+      "conditions": {
+        "raw": {
+          "correct": 81,
+          "total": 216,
+          "accuracy": 0.375
+        },
+        "full": {
+          "correct": 107,
+          "total": 216,
+          "accuracy": 0.49537037037037035
+        },
+        "gepa": {
+          "correct": 105,
+          "total": 216,
+          "accuracy": 0.4861111111111111
+        },
+        "direct_dsl": {
+          "correct": 53,
+          "total": 216,
+          "accuracy": 0.24537037037037038
+        },
+        "direct_matched_fallback": {
+          "correct": 111,
+          "total": 216,
+          "accuracy": 0.5138888888888888
+        }
+      },
+      "per_task": [
+        {
+          "task": "policy-000",
+          "correct": {
+            "raw": 6,
+            "full": 6,
+            "gepa": 9,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 6
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-001",
+          "correct": {
+            "raw": 2,
+            "full": 2,
+            "gepa": 6,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 2
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-002",
+          "correct": {
+            "raw": 8,
+            "full": 8,
+            "gepa": 14,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 8
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-003",
+          "correct": {
+            "raw": 14,
+            "full": 14,
+            "gepa": 17,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 14
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-004",
+          "correct": {
+            "raw": 14,
+            "full": 14,
+            "gepa": 17,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 14
+          },
+          "program_available": false
+        },
+        {
+          "task": "policy-005",
+          "correct": {
+            "raw": 5,
+            "full": 24,
+            "gepa": 11,
+            "direct_dsl": 26,
+            "direct_matched_fallback": 26
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-006",
+          "correct": {
+            "raw": 18,
+            "full": 25,
+            "gepa": 20,
+            "direct_dsl": 27,
+            "direct_matched_fallback": 27
+          },
+          "program_available": true
+        },
+        {
+          "task": "policy-007",
+          "correct": {
+            "raw": 14,
+            "full": 14,
+            "gepa": 11,
+            "direct_dsl": 0,
+            "direct_matched_fallback": 14
+          },
+          "program_available": false
+        }
+      ],
+      "full_minus_gepa": {
+        "difference": 0.009259259259259259,
+        "descriptive_95_interval": [
+          -0.125,
+          0.17129629629629628
+        ],
+        "resamples": 10000,
+        "seed": 20261005,
+        "unit_count": 8,
+        "implementation": "Original native-report Python random.choices and indexed quantiles"
+      },
+      "preparation_attempts_by_role": {
+        "full": {
+          "teacher_optimization": 21,
+          "failed_attempts": 0,
+          "solver_optimization": 216
+        },
+        "gepa": {
+          "solver_optimization": 1410,
+          "teacher_optimization": 19,
+          "failed_attempts": 1
+        }
+      }
+    }
+  },
+  "scope": "Current native GEPA comparison: same 54 public labeled cases and call ceilings. All eight tasks retained. Execution-only and symmetric-fallback policies are reported separately.",
+  "boundary": "Saved output rescoring and call-budget checks. Does not rerun MiniLM routing or reproduce every original chronological/source-package audit."
+}

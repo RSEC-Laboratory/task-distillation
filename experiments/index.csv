@@ -1,0 +1,13 @@
+experiment,purpose,configuration,records,results
+main_llama,Original frozen-student main study,experiments/protocols/patched_cegis_confirmation_2026-07-27.json,evaluation/records/submitted,evaluation/results/main_studies.csv
+main_gemma,Original Gemma sensitivity study,experiments/protocols/gemma_generalized_confirmation_2026-07-27.json,evaluation/records/submitted,evaluation/results/main_studies.csv
+routing,Original two-task routing ablation,experiments/configs/abstract_t1c_llama32_same_bundle_route_task0.yaml,evaluation/records/submitted,evaluation/results/routing.csv
+native_gepa,Matched public labels and preparation budgets,evaluation/records/matched_gepa/protocol.json,evaluation/records/matched_gepa,evaluation/results/matched_gepa.csv
+llama_counting,Object counting versus TextGrad and prompt transfer,experiments/configs/bbh_object_counting_llama32_3b_verified_parent70_test100.yaml,evaluation/records/submitted,evaluation/results/main_studies.csv
+qwen_adapters,Qwen counting and NLP comparisons,experiments/configs/qwen,evaluation/records/qwen_adapters,evaluation/results/qwen_adapters.csv
+instruction_ablation,"Matched labels, instruction rendering and routing",evaluation/records/instruction_ablation/protocol.json,evaluation/records/instruction_ablation,evaluation/results/instruction_ablation.csv
+counting_control,Common runtime checker policy,evaluation/records/counting_control/protocol.json,evaluation/records/counting_control,evaluation/results/counting_control.csv
+public_lookup,Public-example nearest-neighbor controls,evaluation/records/public_lookup/protocol.json,evaluation/records/public_lookup,evaluation/results/public_lookup.csv
+reserved_nlp,Twenty reserved NLP tasks and schema transport failures,evaluation/records/reserved_nlp/protocol.json,evaluation/records/reserved_nlp,evaluation/results/reserved_nlp.csv
+program_repairs,Replay accepted repairs and finite conversions,evaluation/records/instruction_ablation/protocol.json,experiments/prepared/programs,evaluation/results/program_repairs.json
+teacher_divergence,Paired teacher requests and resulting programs,evaluation/records/matched_gepa/protocol.json,evaluation/records/matched_gepa,evaluation/results/teacher_divergence.json

@@ -1,7 +1,0 @@
-[12:36:28] audited run started: runs\2026-11-20_123628_superni_reviewer1_reserved20_schema70b_transport1_llama_20261120
-[12:36:30] stage started: load_superni_public_specifications
-[12:36:31] stage finished: load_superni_public_specifications (0.78s)
-[12:36:32] stage started: compile_validate_and_freeze_all_tasks
-[12:36:32] SuperNI artifact 1/20: task242_tweetqa_classification
-[12:36:32] stage failed: compile_validate_and_freeze_all_tasks: RuntimeError: OpenRouter request failed: HTTPSConnectionPool(host='openrouter.ai', port=443): Max retries exceeded with url: /api/v1/chat/completions (Caused by ResponseError('too many 429 error responses'))
-[12:36:32] run failed: RuntimeError: OpenRouter request failed: HTTPSConnectionPool(host='openrouter.ai', port=443): Max retries exceeded with url: /api/v1/chat/completions (Caused by ResponseError('too many 429 error responses'))

@@ -1,0 +1,277 @@
+{
+  "main_llama": {
+    "tasks": 24,
+    "final_cases_per_condition": 648,
+    "correct": {
+      "raw": 107,
+      "one_shot": 311,
+      "full": 517
+    },
+    "accuracy": {
+      "raw": 0.16512345679012347,
+      "one_shot": 0.4799382716049383,
+      "full": 0.7978395061728395
+    },
+    "full_minus_raw": {
+      "estimate": 0.6327160493827161,
+      "bootstrap_95": [
+        0.5509259259259259,
+        0.7021604938271605
+      ]
+    },
+    "full_minus_one_shot": {
+      "estimate": 0.3179012345679012,
+      "bootstrap_95": [
+        0.26080246913580246,
+        0.3703703703703704
+      ]
+    },
+    "certified_tasks": 23,
+    "full_higher_than_both": 23,
+    "teacher_calls": 61,
+    "deterministic_corrections": 11,
+    "tasks_with_corrections": 6,
+    "fallback_tasks": [
+      62
+    ],
+    "student_calls": 6372,
+    "family_gain_ranges": {
+      "raw": [
+        0.5370370370370371,
+        0.7248677248677249
+      ],
+      "one_shot": [
+        0.25396825396825395,
+        0.4126984126984127
+      ]
+    },
+    "scope": "24 generated instances from four rule families",
+    "conditions": {
+      "raw": {
+        "correct": 107,
+        "total": 648,
+        "accuracy": 0.16512345679012347
+      },
+      "one_shot": {
+        "correct": 311,
+        "total": 648,
+        "accuracy": 0.4799382716049383
+      },
+      "full": {
+        "correct": 517,
+        "total": 648,
+        "accuracy": 0.7978395061728395
+      }
+    },
+    "direct_execution_historical_description_fallback": {
+      "correct": 610,
+      "total": 648,
+      "accuracy": 0.941358024691358
+    }
+  },
+  "main_gemma": {
+    "tasks": 18,
+    "complete_task_triplets": 16,
+    "imputed_fallback_tasks": [
+      68,
+      72
+    ],
+    "cases_per_condition_after_fallback": 486,
+    "correct": {
+      "raw": 202,
+      "one_shot": 264,
+      "full": 419
+    },
+    "accuracy": {
+      "raw": 0.4156378600823045,
+      "one_shot": 0.5432098765432098,
+      "full": 0.8621399176954733
+    },
+    "full_minus_controls": {
+      "raw": {
+        "estimate": 0.4465020576131687,
+        "bootstrap_95": [
+          0.33539094650205764,
+          0.5452674897119342
+        ]
+      },
+      "one_shot": {
+        "estimate": 0.31893004115226337,
+        "bootstrap_95": [
+          0.23868312757201643,
+          0.3909465020576131
+        ]
+      }
+    },
+    "certified_complete_tasks": 15,
+    "full_higher_than_both": 15,
+    "scope": "conservative registered-fallback sensitivity",
+    "conditions": {
+      "raw": {
+        "correct": 202,
+        "total": 486,
+        "accuracy": 0.4156378600823045
+      },
+      "one_shot": {
+        "correct": 264,
+        "total": 486,
+        "accuracy": 0.5432098765432098
+      },
+      "full": {
+        "correct": 419,
+        "total": 486,
+        "accuracy": 0.8621399176954733
+      }
+    }
+  },
+  "two_task_routing": {
+    "tasks": 2,
+    "cases": 54,
+    "correct": {
+      "full_list": 25,
+      "routed": 43
+    },
+    "mean_available_instructions": 29.0,
+    "mean_delivered_instructions": 7.62962962962963,
+    "instruction_reduction": 0.7369093231162196,
+    "scope": "development ablation with identical bundles"
+  },
+  "llama_counting": {
+    "task": "BBH Object Counting",
+    "test_examples": 100,
+    "method_correct": 85,
+    "textgrad_correct": 75,
+    "difference": 0.1,
+    "comparison_type": "matched local TextGrad adaptation",
+    "published_textgrad_score": 0.919,
+    "published_score_reproduction": false,
+    "prompt_transfer_correct": 76,
+    "paired_gains": 17,
+    "paired_losses": 7,
+    "exact_mcnemar_two_sided": 0.06391465663909912,
+    "tokens": {
+      "method_teacher": 349,
+      "method_student_test": 39800,
+      "textgrad_teacher": 145921,
+      "textgrad_student_total": 592241
+    },
+    "scope": "one previously explored test task; descriptive comparison",
+    "conditions": {
+      "adapter": {
+        "correct": 85,
+        "total": 100,
+        "accuracy": 0.85
+      },
+      "textgrad": {
+        "correct": 75,
+        "total": 100,
+        "accuracy": 0.75
+      },
+      "published_prompt": {
+        "correct": 76,
+        "total": 100,
+        "accuracy": 0.76
+      }
+    }
+  },
+  "historical_nlp_adapters": {
+    "students": {
+      "llama": {
+        "tasks": 4,
+        "cases": 80,
+        "positive_examples_correct": 38,
+        "recorded_routed_correct": 34,
+        "identical_prompt_corrected_routed": 35,
+        "uncertified_tasks": 3,
+        "conditions": {
+          "positive_examples": {
+            "correct": 38,
+            "total": 80,
+            "accuracy": 0.475
+          },
+          "routed_recorded": {
+            "correct": 34,
+            "total": 80,
+            "accuracy": 0.425
+          },
+          "routed_identical_prompt_fallback_corrected": {
+            "correct": 35,
+            "total": 80,
+            "accuracy": 0.4375
+          }
+        }
+      },
+      "gemma": {
+        "tasks": 4,
+        "cases": 80,
+        "positive_examples_correct": 53,
+        "recorded_routed_correct": 50,
+        "identical_prompt_corrected_routed": 50,
+        "uncertified_tasks": 2,
+        "conditions": {
+          "positive_examples": {
+            "correct": 53,
+            "total": 80,
+            "accuracy": 0.6625
+          },
+          "routed_recorded": {
+            "correct": 50,
+            "total": 80,
+            "accuracy": 0.625
+          },
+          "routed_identical_prompt_fallback_corrected": {
+            "correct": 50,
+            "total": 80,
+            "accuracy": 0.625
+          }
+        }
+      }
+    },
+    "pooled_positive_examples_correct": 91,
+    "pooled_corrected_routed_correct": 85,
+    "pooled_cases": 160,
+    "scope": "negative four-task development gates; confirmation stayed sealed"
+  },
+  "additional_bbh": {
+    "student_totals": {
+      "llama": {
+        "raw": 23,
+        "few_shot": 16,
+        "compiled": 26
+      },
+      "gemma": {
+        "raw": 26,
+        "few_shot": 15,
+        "compiled": 34
+      },
+      "qwen": {
+        "raw": 43,
+        "few_shot": 47,
+        "compiled": 43
+      }
+    },
+    "pooled_correct_of_180": {
+      "raw": 92,
+      "few_shot": 78,
+      "compiled": 103
+    },
+    "compiled_minus_controls": {
+      "raw": {
+        "estimate": 0.06111111111111109,
+        "bootstrap_95": [
+          -0.027777777777777776,
+          0.17777777777777773
+        ]
+      },
+      "few_shot": {
+        "estimate": 0.1388888888888889,
+        "bootstrap_95": [
+          -0.03888888888888891,
+          0.3277777777777778
+        ]
+      }
+    },
+    "scope": "exploratory development gate; intervals include zero"
+  },
+  "scope": "Submitted historical records; failed Gemma tasks use the recorded fallback estimates. NLP diagnostics retain the documented identical-prompt fallback correction."
+}
