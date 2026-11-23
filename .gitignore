@@ -1,0 +1,12 @@
+outputs/
+external_data/
+.venv/
+.env
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+task-compiler/.cache/
+task-compiler/data/superni/tasks/

@@ -1,0 +1,782 @@
+{
+  "task_id": "policy-003",
+  "solver_model": "qwen2.5:3b",
+  "arm": "gepa",
+  "completed_at": "2026-10-06T14:16:30.743831+00:00",
+  "rows": [
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-00",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.5557672000004459
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-01",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2468151000002763
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-02",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.25499109999964276
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-03",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.280811999999969
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-04",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "external",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"external\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2505636999994749
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-05",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.25472650000028807
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-06",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2872107999992295
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-07",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.29197750000003
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-08",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.29076900000018213
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-09",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.28364200000032724
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-10",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.235374399999273
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-11",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.24048130000028323
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-12",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2620984999994107
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-13",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "external",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": null,
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"external\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2498751999992237
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-14",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2790236000000732
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-15",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.3568372999998246
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-16",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.3168915999995079
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-17",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "external",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"external\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.4325295999997252
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-18",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.35931189999973867
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-19",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "external",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": null,
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"external\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.3478624999997919
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-20",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.36286680000011984
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-21",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.41468280000026425
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-22",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.42988139999943087
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-23",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "external",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"external\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.3511404999999286
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-24",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"external\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.2534240000004502
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-25",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1098,
+      "output_tokens": 2,
+      "latency_seconds": 0.26210400000036316
+    },
+    {
+      "task_id": "policy-003",
+      "method": "native_gepa",
+      "case_id": "policy-003-final-26",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b349f7da997b1c331a7b4e4d74fe06baee260a61896caa96fbab0bda8a971847",
+      "system": "Perform task Compositional policy 003.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"auditor\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"delete\",\"approve\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"external\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, allow, deny, uncertain.\n\nTask instructions:\nTask: Compositional Policy 003 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `review`, `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: One of `admin`, `auditor`, `operator`  \n- `action`: One of `inspect`, `delete`, `approve`  \n- `context`: One of `partner`, `internal`, `external`  \n- `risk`: One of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `review`  \n- `allow`  \n- `deny`  \n- `uncertain`  \n\nRules and Logic:  \n\n1. **Critical Cases**:  \n   - If `risk == \"TRUE\"` and `role == \"operator\"`, or if `action == \"approve\"`, then the label must be `allow`.  \n\n2. **Unknown External Risk**:  \n   - If `context == \"external\"` and `risk == \"UNKNOWN\"`, the label is `uncertain`.  \n\n3. **Unknown Risk (Non-External)**:  \n   - If `risk == \"UNKNOWN\"` and `context != \"external\"`, the label prefers `deny` at priority 90.  \n\n4. **Trusted Context (Partner)**:  \n   - If `context == \"partner\"` and `role != \"operator\"`, then the label prefers `review` at priority 80.  \n   - **Trusted cases forbid deny** (i.e., `deny` is not allowed in trusted contexts).  \n\n5. **Delete in External Context**:  \n   - If `action == \"delete\"` and `context == \"external\"`, the label prefers `allow` at priority 70.  \n\n6. **Auditor in Internal Context**:  \n   - If `role == \"auditor\"` and `context == \"internal\"`, the label prefers `deny` at priority 40.  \n\n7. **Default Preference**:  \n   - For all other cases, the label prefers `review` at priority 1.  \n\n8. **Priority Resolution**:  \n   - Required labels override all preferences.  \n   - If there is a conflict or abstention, the label is `uncertain`.  \n   - Forbidden labels are removed; the remaining highest-priority preference wins.  \n\n9. **Forbidden Shortcuts**:  \n   - Use every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.  \n\n10. **Special Cases**:  \n    - If a rule explicitly forbids a label (e.g., `deny` in trusted contexts), that label is not considered.  \n    - If multiple rules apply, the label with the highest priority wins.  \n\nExamples:  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `allow` (Critical case: `action == \"approve\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}`  \n  Output: `review` (Trusted context: `context == \"partner\"` and `role != \"operator\"`)  \n\nInstructions for the Assistant:  \n- Parse the input event and extract all fields: `role`, `action`, `context`, and `risk`.  \n- Apply the rules in order of priority (highest to lowest).  \n- If multiple rules apply, select the label with the highest priority.  \n- If a required label is present, it overrides all preferences.  \n- If there is a conflict or abstention, return `uncertain`.  \n- If a label is explicitly forbidden (e.g., `deny` in trusted contexts), it is not considered.  \n- Always use the full set of fields as defined in the rules. Do not infer or skip any field.  \n- Return only the final label: `review`, `allow`, `deny`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1099,
+      "output_tokens": 2,
+      "latency_seconds": 0.2549127000002045
+    }
+  ],
+  "final_wall_seconds": 8.561999999999898,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 29653,
+        "output_tokens_known": 54,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 8.40657299999748
+      }
+    }
+  }
+}

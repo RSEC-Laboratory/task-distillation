@@ -1,0 +1,1256 @@
+{
+  "generated_at_utc": "2026-11-20T15:00:51.594613+00:00",
+  "new_model_calls": 0,
+  "scope": "Retrospective retained-record replay, not a new empirical sample.",
+  "initial_teacher_request_pairs": [
+    {
+      "task": "policy-000",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "7750c2048e477a4134d014877085acd8be186717af8e9ff3526a5859f5beb8b8",
+          "initial_response_sha256": "742f0c3ac88a439e7ac55debcf38a4fd77114cde50d2e67ce1c59aec61e0c327"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "7750c2048e477a4134d014877085acd8be186717af8e9ff3526a5859f5beb8b8",
+          "initial_response_sha256": "742f0c3ac88a439e7ac55debcf38a4fd77114cde50d2e67ce1c59aec61e0c327"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": true
+    },
+    {
+      "task": "policy-001",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "c25ff904c5e868dd20e702f0e981016be6cfef3c97735de53e8bbe5d0eac577b",
+          "initial_response_sha256": "58528a32428574d028aae9b486d50620140d8636f5ced498e5b7b1a5f2ee2b9b"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "c25ff904c5e868dd20e702f0e981016be6cfef3c97735de53e8bbe5d0eac577b",
+          "initial_response_sha256": "afaa67a4fc74ce4b1dd65dbdc40ae69858cfb30c47585bee8306e29a6ab34e05"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": false
+    },
+    {
+      "task": "policy-002",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "cbcfa672da71586714eb280f1e0af201087f72fc9726613789e0416f0924215a",
+          "initial_response_sha256": "c72c98dd9d4a97796beb9fc029d07a280b119570f8a7e17f2b865338d06a8e2e"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "cbcfa672da71586714eb280f1e0af201087f72fc9726613789e0416f0924215a",
+          "initial_response_sha256": "c72c98dd9d4a97796beb9fc029d07a280b119570f8a7e17f2b865338d06a8e2e"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": true
+    },
+    {
+      "task": "policy-003",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "e0b79cfa6da3fc480a86b9713c711890a7e59ee32ed8cf2c818d636bb2e02ed5",
+          "initial_response_sha256": "22ee143b07bfd1214a11dc1018abfad2c5554ed714f3816416f05b3f97b3e3d6"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "e0b79cfa6da3fc480a86b9713c711890a7e59ee32ed8cf2c818d636bb2e02ed5",
+          "initial_response_sha256": "22ee143b07bfd1214a11dc1018abfad2c5554ed714f3816416f05b3f97b3e3d6"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": true
+    },
+    {
+      "task": "policy-004",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "c64890ec107f392ab33f85cd108fcf501588236771850ddd3b8ce8c07e1931ed",
+          "initial_response_sha256": "b991e46d6da6aad29787552092c792da394ca5bf546ee9ccfbd0280d98834076"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "c64890ec107f392ab33f85cd108fcf501588236771850ddd3b8ce8c07e1931ed",
+          "initial_response_sha256": "87907f6c52893c98d06b0f15cf4baced1338ff2832c3d1d59210755799ca2de3"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": false
+    },
+    {
+      "task": "policy-005",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "1f2f6d267bee879fa8386ca433f4e2a23af9c045ea78bb7b317b0313e7bc5af1",
+          "initial_response_sha256": "4d428a1c94f7ffdebc372741cf0a537e08536b77f639cdfa335e83d5d2e96e44"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "1f2f6d267bee879fa8386ca433f4e2a23af9c045ea78bb7b317b0313e7bc5af1",
+          "initial_response_sha256": "4d428a1c94f7ffdebc372741cf0a537e08536b77f639cdfa335e83d5d2e96e44"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": true
+    },
+    {
+      "task": "policy-006",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "84402a98bf7d35327b41bf8acddccb78c88995626650dd4170f125785d94d6c0",
+          "initial_response_sha256": "7f625cb85cf3aefd064e3e0a2df891f2876b16cbad0caaa7a1db61e451045701"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "84402a98bf7d35327b41bf8acddccb78c88995626650dd4170f125785d94d6c0",
+          "initial_response_sha256": "7f625cb85cf3aefd064e3e0a2df891f2876b16cbad0caaa7a1db61e451045701"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": true
+    },
+    {
+      "task": "policy-007",
+      "models": {
+        "qwen2.5_3b": {
+          "initial_request_sha256": "2b5b94d496db4c86ce42909345578ef42ca0a4cd6c94b5d0d960056554171b66",
+          "initial_response_sha256": "e2242d43f65c4c3a3a7a0c553d60764110e8f1230bb79c9b6ec2ee6c316a24fc"
+        },
+        "llama3.2_3b": {
+          "initial_request_sha256": "2b5b94d496db4c86ce42909345578ef42ca0a4cd6c94b5d0d960056554171b66",
+          "initial_response_sha256": "39554313f2acec7829f66d36483eedb19381a2e8135b2b7174e1809d5e6ad429"
+        }
+      },
+      "identical_initial_request": true,
+      "identical_initial_response": false
+    }
+  ],
+  "identical_request_pairs": 8,
+  "different_response_pairs_under_identical_requests": 3,
+  "fallback_matched_direct_execution": {
+    "qwen2.5:3b": {
+      "correct": 155,
+      "total": 216,
+      "accuracy": 0.7175925925925926,
+      "fallback_tasks": 3
+    },
+    "llama3.2:3b": {
+      "correct": 111,
+      "total": 216,
+      "accuracy": 0.5138888888888888,
+      "fallback_tasks": 6
+    }
+  },
+  "accepted_repairs": [
+    {
+      "cohort": "llama",
+      "task_id": "policy-042",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 48,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles"
+      ],
+      "new_rule_names": [
+        "GuestRole"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-042",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-042",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-043",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 50,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "GuestOther"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-048",
+      "index": 1,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 51,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles"
+      ],
+      "new_rule_names": [
+        "DefaultDeny"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-048",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-048",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-049",
+      "index": 1,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 41,
+      "correct_public_after": 47,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "OtherDeclaredRoles",
+        "TrustedCase"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-049",
+      "index": 2,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 47,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-049",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-051",
+      "index": 1,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 51,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-057",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 46,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "TrustedDeny"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-057",
+      "index": 1,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles"
+      ],
+      "new_rule_names": [
+        "GuestSandbox"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-058",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 51,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles",
+        "UnknownRisk"
+      ],
+      "new_rule_names": [
+        "GuestInspectInternal"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-058",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-059",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 51,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "AdminReview"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-062",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownExternalCase",
+      "correct_public_before": 42,
+      "correct_public_after": 47,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownExternalCase"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-062",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 47,
+      "correct_public_after": 48,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-062",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 48,
+      "correct_public_after": 49,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-062",
+      "index": 5,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch3",
+      "correct_public_before": 49,
+      "correct_public_after": 50,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch3"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-063",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": [
+        "GuestInternal"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-064",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 50,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "OtherDeclaredRoles"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-065",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 48,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "GuestRole"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-065",
+      "index": 2,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "OtherAnalyst"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-066",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-066",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-068",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles"
+      ],
+      "new_rule_names": [
+        "TrustedExport"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-070",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 49,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "AnalystDeny"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-070",
+      "index": 2,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "ReviewOverride"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-071",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 51,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRolesCase"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-072",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:AdminOrExternal",
+      "correct_public_before": 51,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "AdminOrExternal"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-072",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-073",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedCase",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedCase"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-075",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "OtherRoles",
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-076",
+      "index": 1,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "AdminExternalCase"
+      ]
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-079",
+      "index": 0,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "AuditorPartner"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-042",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownExternal",
+      "correct_public_before": 34,
+      "correct_public_after": 39,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownExternal"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-042",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedForbidAllow",
+      "correct_public_before": 39,
+      "correct_public_after": 46,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedForbidAllow"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-042",
+      "index": 2,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedApprove",
+      "correct_public_before": 46,
+      "correct_public_after": 48,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedApprove"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-042",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 48,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "AuditorSandbox",
+        "Default",
+        "DeleteInternal",
+        "TrustedApprove",
+        "UnknownRisk"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-043",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 50,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-043",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-043",
+      "index": 5,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch3",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch3"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-046",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedForbidDeny",
+      "correct_public_before": 48,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedForbidDeny"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-049",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 40,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-058",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedForbidAllow",
+      "correct_public_before": 46,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedForbidAllow"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-058",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedChange",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedChange"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-059",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-059",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-065",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:CriticalCase",
+      "correct_public_before": 46,
+      "correct_public_after": 49,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-065",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 49,
+      "correct_public_after": 51,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-065",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 51,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-065",
+      "index": 5,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch3",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "SourceCounterexamplePatch2"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch3"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-066",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 47,
+      "correct_public_after": 51,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-066",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 51,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-066",
+      "index": 2,
+      "kind": "teacher",
+      "name": "<complete-program>",
+      "correct_public_before": 52,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-070",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedDeny",
+      "correct_public_before": 45,
+      "correct_public_after": 49,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedDeny"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-070",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:TrustedDeny",
+      "correct_public_before": 49,
+      "correct_public_after": 51,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "TrustedDeny"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-070",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 51,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-070",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 45,
+      "correct_public_after": 46,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 46,
+      "correct_public_after": 48,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 48,
+      "correct_public_after": 49,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "index": 5,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch3",
+      "correct_public_before": 49,
+      "correct_public_after": 50,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch3"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "index": 6,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch4",
+      "correct_public_before": 50,
+      "correct_public_after": 51,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch4"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownExternal",
+      "correct_public_before": 38,
+      "correct_public_after": 43,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownExternal"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 1,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:CriticalCase",
+      "correct_public_before": 43,
+      "correct_public_after": 47,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": []
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 3,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch1",
+      "correct_public_before": 47,
+      "correct_public_after": 51,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "Default",
+        "DeleteInSandbox",
+        "UnknownRisk"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch1"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 4,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch2",
+      "correct_public_before": 51,
+      "correct_public_after": 52,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch2"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 5,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch3",
+      "correct_public_before": 52,
+      "correct_public_after": 53,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "CriticalCase"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch3"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "index": 6,
+      "kind": "exact_counterexample_patch",
+      "name": "source-counterexample:SourceCounterexamplePatch4",
+      "correct_public_before": 53,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "SourceCounterexamplePatch3"
+      ],
+      "new_rule_names": [
+        "SourceCounterexamplePatch4"
+      ]
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-076",
+      "index": 0,
+      "kind": "local_exclusion",
+      "name": "local-exclusion:UnknownRisk",
+      "correct_public_before": 50,
+      "correct_public_after": 54,
+      "strict_nonregression_verified": true,
+      "existing_rule_conditions_changed": [
+        "UnknownRisk"
+      ],
+      "new_rule_names": []
+    }
+  ],
+  "repair_counts": [
+    {
+      "cohort": "gemma",
+      "kind": "exact_counterexample_patch",
+      "count": 18
+    },
+    {
+      "cohort": "gemma",
+      "kind": "local_exclusion",
+      "count": 17
+    },
+    {
+      "cohort": "gemma",
+      "kind": "teacher",
+      "count": 1
+    },
+    {
+      "cohort": "gemma",
+      "kind": "teacher_rejected",
+      "count": 12
+    },
+    {
+      "cohort": "llama",
+      "kind": "exact_counterexample_patch",
+      "count": 11
+    },
+    {
+      "cohort": "llama",
+      "kind": "local_exclusion",
+      "count": 4
+    },
+    {
+      "cohort": "llama",
+      "kind": "teacher",
+      "count": 21
+    },
+    {
+      "cohort": "llama",
+      "kind": "teacher_rejected",
+      "count": 16
+    }
+  ],
+  "program_only_scores_all_parsed_candidates": {
+    "llama": {
+      "initial_correct": 604,
+      "final_correct": 627,
+      "total": 648
+    },
+    "gemma": {
+      "initial_correct": 385,
+      "final_correct": 424,
+      "total": 432
+    }
+  },
+  "limits": [
+    "Observed response variation is not an identified hardware/kernel cause.",
+    "Program-only scores include unapproved candidates and exclude the two missing Gemma programs.",
+    "Existing local-exclusion repairs are distinct from the terminal exact-record insertion operator.",
+    "Public non-regression does not imply unseen-input correctness."
+  ]
+}

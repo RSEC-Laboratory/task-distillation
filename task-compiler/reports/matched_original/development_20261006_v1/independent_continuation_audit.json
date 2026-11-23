@@ -1,0 +1,308 @@
+{
+  "audit_id": "independent-matched-original-continuation-20261006-v1",
+  "status": "passed",
+  "audited_at": "2026-10-06T14:27:20.373516+00:00",
+  "auditor": "/root/continuation_audit",
+  "matrix": {
+    "prepared": 32,
+    "final": 64,
+    "ledgers": 80,
+    "final_student_attempts": 1296
+  },
+  "source_counts": {
+    "original": 85,
+    "recovery": 3,
+    "native": 93
+  },
+  "source_commits": {
+    "original": "ee4e859ac29cb307191545d459c850d40fe73928",
+    "recovery": "082baa95c9693bc5018c7cc5b8392884d15feb6d"
+  },
+  "validated": {
+    "current_copied_original_and_recovery_sources": true,
+    "installed_copied_native_gepa_distribution": true,
+    "pinned_model_runtime_and_router_identities": true,
+    "public_and_final_data_commitments": true,
+    "all_32_prepared_hashes_before_final_opening": true,
+    "all_24_completed_predecessor_artifacts_byte_unchanged": true,
+    "all_predecessor_files_unchanged_and_affected_ledger_exact_prefix": true,
+    "all_new_events_after_recovery_freeze_and_start": true,
+    "all_attempt_transport_terminal_token_and_seed_reconciliation": true,
+    "all_final_reference_scores_and_student_labels_recomputed": true,
+    "direct_control_reexecuted_from_generated_teacher_program": true,
+    "native_metric_history_and_actual_dispatches_reconciled": true,
+    "primary_and_fixed_secondary_match_report": true,
+    "bootstrap_recomputed_independently": true,
+    "deterministic_report_replay_without_extra_teacher_or_student_calls": true
+  },
+  "primary_all_eight_tasks": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "tasks": 8,
+      "correct": {
+        "raw": 101,
+        "full": 134,
+        "gepa": 117,
+        "direct_dsl": 127
+      },
+      "full_minus_gepa": 0.07870370370370369,
+      "descriptive_task_bootstrap_95_interval": [
+        -0.08333333333333333,
+        0.2222222222222222
+      ],
+      "wins_ties_losses": [
+        4,
+        1,
+        3
+      ]
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "tasks": 8,
+      "correct": {
+        "raw": 81,
+        "full": 107,
+        "gepa": 105,
+        "direct_dsl": 53
+      },
+      "full_minus_gepa": 0.009259259259259259,
+      "descriptive_task_bootstrap_95_interval": [
+        -0.125,
+        0.17129629629629628
+      ],
+      "wins_ties_losses": [
+        3,
+        0,
+        5
+      ]
+    }
+  ],
+  "fixed_amendment_llama_seven_task_diagnostic": {
+    "omitted_task": "policy-004",
+    "tasks": 7,
+    "mean_full_minus_gepa": 0.026455026455026454,
+    "scope": "Descriptive interruption diagnostic frozen before final opening; primary denominator unchanged."
+  },
+  "native_metric_accounting": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "logical_metric_calls": 1404,
+      "physical_student_attempts": 1404,
+      "zero_dispatch_guard_events": 0,
+      "guard_case_count": 0,
+      "guard_reason_counts": {}
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "logical_metric_calls": 1410,
+      "physical_student_attempts": 1410,
+      "zero_dispatch_guard_events": 0,
+      "guard_case_count": 0,
+      "guard_reason_counts": {}
+    }
+  ],
+  "cost_by_role": {
+    "solver_final": {
+      "attempted": 1296,
+      "model_response": 1296,
+      "known_input_tokens": 939489,
+      "known_output_tokens": 2700,
+      "known_latency_seconds": 534.4185192000032,
+      "unknown_input_calls": 0,
+      "unknown_output_calls": 0,
+      "unknown_latency_calls": 0
+    },
+    "teacher_optimization": {
+      "attempted": 92,
+      "model_response": 91,
+      "known_input_tokens": 95765,
+      "known_output_tokens": 55042,
+      "known_latency_seconds": 11271.405856799995,
+      "unknown_input_calls": 1,
+      "unknown_output_calls": 1,
+      "unknown_latency_calls": 1,
+      "model_failure": 1
+    },
+    "solver_optimization": {
+      "attempted": 3570,
+      "model_response": 3570,
+      "known_input_tokens": 2862682,
+      "known_output_tokens": 7420,
+      "known_latency_seconds": 4520.395574199999,
+      "unknown_input_calls": 0,
+      "unknown_output_calls": 0,
+      "unknown_latency_calls": 0
+    }
+  },
+  "cost_by_student_and_algorithm": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "arm": "full",
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 540,
+          "failed_calls": 0,
+          "input_tokens_known": 209946,
+          "output_tokens_known": 1160,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 447.1149137000175
+        },
+        "teacher_optimization": {
+          "attempted_calls": 28,
+          "failed_calls": 0,
+          "input_tokens_known": 33847,
+          "output_tokens_known": 9911,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1787.332842599998
+        }
+      },
+      "preparation_wall_seconds_known": 2245.5300000000016,
+      "wall_scope": "known lower bound for affected GEPA cell; other cells measured"
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "arm": "gepa",
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 1404,
+          "failed_calls": 0,
+          "input_tokens_known": 1252654,
+          "output_tokens_known": 2956,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1966.4964039999786
+        },
+        "teacher_optimization": {
+          "attempted_calls": 24,
+          "failed_calls": 0,
+          "input_tokens_known": 20389,
+          "output_tokens_known": 21059,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 4569.691007900004
+        }
+      },
+      "preparation_wall_seconds_known": 6538.922999999999,
+      "wall_scope": "known lower bound for affected GEPA cell; other cells measured"
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "arm": "full",
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 216,
+          "failed_calls": 0,
+          "input_tokens_known": 86225,
+          "output_tokens_known": 443,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 201.68313449999778
+        },
+        "teacher_optimization": {
+          "attempted_calls": 21,
+          "failed_calls": 0,
+          "input_tokens_known": 25535,
+          "output_tokens_known": 7548,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1384.5649406000007
+        }
+      },
+      "preparation_wall_seconds_known": 1594.0310000000004,
+      "wall_scope": "known lower bound for affected GEPA cell; other cells measured"
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "arm": "gepa",
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 1410,
+          "failed_calls": 0,
+          "input_tokens_known": 1313857,
+          "output_tokens_known": 2861,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1905.1011220000053
+        },
+        "teacher_optimization": {
+          "attempted_calls": 19,
+          "failed_calls": 1,
+          "input_tokens_known": 15994,
+          "output_tokens_known": 16524,
+          "unknown_input_usage_calls": 1,
+          "unknown_output_usage_calls": 1,
+          "latency_seconds": 3529.8170656999946
+        }
+      },
+      "preparation_wall_seconds_known": 5437.636860746386,
+      "wall_scope": "known lower bound for affected GEPA cell; other cells measured"
+    }
+  ],
+  "unknown_cost_scope": "One lost teacher attempt remains charged; its completion, tokens and duration are unobserved. Token and model-latency sums are known amounts/lower bounds, never asserted to be total actual cost. Encoder routing and local compiler computation are additional costs. Equal model-call ceilings are not equal total compute.",
+  "recovery": {
+    "retained_preparations": 24,
+    "exact_saved_solver_responses_replayed_without_dispatch": 57,
+    "affected_cell_cumulative_solver_attempts": 180,
+    "affected_cell_fresh_solver_dispatches": 123,
+    "affected_cell_teacher_attempts": 3,
+    "charged_teacher_unknown_attempts": 1,
+    "fresh_teacher_responses": 2,
+    "repeated_unanswered_teacher_request_matches_original": true
+  },
+  "posthoc_usable_program_control": {
+    "scope": "Added after complete outcome inspection; descriptive subset conditioned on availability, correlated same cases, no new model calls, no change to primary. Aggregate Full greater than direct control does not establish SLM necessity because no-program direct-control cells count wrong while Full can use Raw fallback.",
+    "models": [
+      {
+        "solver_model": "qwen2.5:3b",
+        "full_raw_fallback_tasks": 3,
+        "usable_teacher_program_tasks": 5,
+        "task_ids": [
+          "policy-001",
+          "policy-004",
+          "policy-005",
+          "policy-006",
+          "policy-007"
+        ],
+        "cases": 135,
+        "full_correct_in_usable_program_cells": 106,
+        "direct_teacher_dsl_correct_in_same_cells": 127
+      },
+      {
+        "solver_model": "llama3.2:3b",
+        "full_raw_fallback_tasks": 6,
+        "usable_teacher_program_tasks": 2,
+        "task_ids": [
+          "policy-005",
+          "policy-006"
+        ],
+        "cases": 54,
+        "full_correct_in_usable_program_cells": 49,
+        "direct_teacher_dsl_correct_in_same_cells": 53
+      }
+    ]
+  },
+  "reader": {
+    "adapter_path": "scripts/report_matched_original_continuation_v2.py",
+    "adapter_sha256": "89d3e8f13af1d1eecbda8997404a3089451a54167ac6727f837106ee6cc74103",
+    "frozen_reader_path": "scripts/report_matched_original_continuation.py",
+    "frozen_reader_sha256": "3ecfcb5dd06b06e44e98210d58aa0bf8dc77eed63ce52aba46eaaa97f04a5b05",
+    "scope": "Only inventory separators normalized in memory; frozen evidence and execution files unchanged."
+  },
+  "report_sha256": {
+    "summary.json": "53043b526915df717e4ccd1fe22f77734f246304f8745c5cbcadf4e312e13958",
+    "results.md": "9db1accf1c269e299da58949c67c9e973037aaa1f21c57856ec60ebc5db971c8"
+  },
+  "commitments": {
+    "completion_sha256": "4ce0538d00aaea8b3378db8cb1c6fdceff5dc2da06ce2f575fb7b4461df2f5cf",
+    "prepared_lock_sha256": "bdeccdc5d90cd96dc7b79d7343214a170bd72303999c981e11a479e4e7624656",
+    "final_opening_sha256": "d06208ba860ac01011985aef9bb0891ee790e5d54e34e870ff52e0c442c887b6"
+  },
+  "limitations": [
+    "Controlled development comparison on eight policies from four reused synthetic families per student; not fresh confirmation or a general NLP/SWE result.",
+    "Both descriptive task bootstrap intervals cross zero; small positive primary means do not establish robust superiority or novelty.",
+    "The compiler can enumerate input states from public schema and generated teacher program that also occur in the final split. The final file/reference labels were withheld; no universal unseen-state claim is made.",
+    "The direct teacher DSL performs better than Full within available-program cells; no-program control invalidity must be considered when interpreting aggregate totals."
+  ]
+}

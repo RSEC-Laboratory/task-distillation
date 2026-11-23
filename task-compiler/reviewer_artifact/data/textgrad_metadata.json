@@ -1,0 +1,84 @@
+{
+  "artifact_compilation_run_id": "2026-07-27_002647_bbh_bbh_counting_llama32_3b_parent70_dev20",
+  "artifact_sha256": "c456c1ad93deeb0370d7c5f7cb400f6bac6dec07220b3c78ebef019536754e07",
+  "information": {
+    "method_training_labels": false,
+    "method_validation_labels": false,
+    "textgrad_training_examples": 50,
+    "textgrad_validation_examples": 100
+  },
+  "interpretation": {
+    "comparison_type": "matched local TextGrad adaptation",
+    "local_score_source": "our Object Counting rerun with the frozen Llama 3.2 3B student and Llama 3.1 70B feedback model",
+    "not_a_published_score_reproduction": true,
+    "published_table_3": {
+      "object_counting": {
+        "cot_zero_shot": 0.778,
+        "textgrad": 0.919
+      },
+      "word_sorting": {
+        "cot_zero_shot": 0.767,
+        "textgrad": 0.798
+      }
+    }
+  },
+  "method_run_id": "2026-07-27_005006_bbh_bbh_counting_llama32_3b_verified_parent70_test100",
+  "method_source_snapshot_sha256": "2c911c08d1d018d9927cba12bf5e218432ee7296ce59c9af14f428fc5e766cdc",
+  "method_student": {
+    "backend": "ollama",
+    "context_tokens": 8192,
+    "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "model": "llama3.2:3b",
+    "seed": 0,
+    "temperature": 0,
+    "thinking": false
+  },
+  "method_tokens": {
+    "student_test": 39800,
+    "teacher_total": 349
+  },
+  "prompt_transfer": {
+    "accuracy": 0.76,
+    "run_id": "2026-07-27_004846_bbh_bbh_counting_llama32_3b_textgrad_prompt_test100",
+    "source_snapshot_sha256": "2c911c08d1d018d9927cba12bf5e218432ee7296ce59c9af14f428fc5e766cdc",
+    "student_digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "student_tokens": {
+      "input": 15615,
+      "output": 11990
+    }
+  },
+  "protocol": {
+    "batch_size": 3,
+    "deviation_from_published_script": "The test split was evaluated once after optimization instead of after every update.",
+    "epochs": 3,
+    "implementation": "official_textgrad_cached_source",
+    "seed": 20260727,
+    "student_seed": 0,
+    "test_split_previously_explored": true,
+    "test_access_during_optimization": false,
+    "test_examples": 100,
+    "textgrad_commit": "75e912e210864b61999781778cdf756d4468120f",
+    "train_examples": 50,
+    "updates": 12,
+    "updates_per_epoch": 4,
+    "validation_examples": 100
+  },
+  "split_manifest_sha256": "aec4c6d5d512bc2f8f3630c1bee710904983033faa5c65a8b0eb55b964f9caf3",
+  "study": "bbh_object_counting_test",
+  "textgrad_run_id": "2026-07-27_012913_bbh_bbh_counting_llama32_3b_textgrad_tgd_test100",
+  "textgrad_source_snapshot_sha256": "664ecf68541ccd5963ae1643cd991e4107e345b572266e1cf1e9dc7df48a6e89",
+  "textgrad_student": {
+    "backend": "ollama",
+    "context_tokens": 8192,
+    "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "model": "llama3.2:3b",
+    "seed": 0,
+    "temperature": 0,
+    "thinking": false
+  },
+  "textgrad_tokens": {
+    "student_test": 44901,
+    "student_total": 592241,
+    "teacher_total": 145921
+  }
+}

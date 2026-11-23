@@ -1,0 +1,3113 @@
+{
+  "status": "complete_audited_amended_development_comparison",
+  "protocol_id": "original-pipeline-native-gepa-development-20261005-v1",
+  "models": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "tasks": 8,
+      "total_cases": 216,
+      "correct": {
+        "raw": 101,
+        "full": 134,
+        "gepa": 117,
+        "direct_dsl": 127
+      },
+      "macro_accuracy": {
+        "raw": 0.46759259259259256,
+        "full": 0.6203703703703703,
+        "gepa": 0.5416666666666666,
+        "direct_dsl": 0.5879629629629629
+      },
+      "paired_full_minus_gepa": 0.07870370370370369,
+      "descriptive_task_bootstrap_95_interval": [
+        -0.08333333333333333,
+        0.2222222222222222
+      ],
+      "wins": 4,
+      "ties": 1,
+      "losses": 3,
+      "family_mean_difference": {
+        "0": -0.2037037037037037,
+        "1": 0.35185185185185186,
+        "2": 0.09259259259259259,
+        "3": 0.07407407407407407
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "tasks": 8,
+      "total_cases": 216,
+      "correct": {
+        "raw": 81,
+        "full": 107,
+        "gepa": 105,
+        "direct_dsl": 53
+      },
+      "macro_accuracy": {
+        "raw": 0.375,
+        "full": 0.49537037037037035,
+        "gepa": 0.4861111111111111,
+        "direct_dsl": 0.24537037037037035
+      },
+      "paired_full_minus_gepa": 0.009259259259259259,
+      "descriptive_task_bootstrap_95_interval": [
+        -0.125,
+        0.17129629629629628
+      ],
+      "wins": 3,
+      "ties": 0,
+      "losses": 5,
+      "family_mean_difference": {
+        "0": -0.1111111111111111,
+        "1": 0.16666666666666666,
+        "2": -0.018518518518518517,
+        "3": 0.0
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "family": 0,
+      "denominator": 27,
+      "correct": {
+        "raw": 6,
+        "full": 6,
+        "gepa": 16,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.37037037037037035
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "family": 1,
+      "denominator": 27,
+      "correct": {
+        "raw": 11,
+        "full": 22,
+        "gepa": 12,
+        "direct_dsl": 25
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.37037037037037035
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "family": 2,
+      "denominator": 27,
+      "correct": {
+        "raw": 7,
+        "full": 7,
+        "gepa": 7,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.0
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "family": 3,
+      "denominator": 27,
+      "correct": {
+        "raw": 15,
+        "full": 15,
+        "gepa": 16,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.037037037037037035
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "family": 0,
+      "denominator": 27,
+      "correct": {
+        "raw": 20,
+        "full": 18,
+        "gepa": 19,
+        "direct_dsl": 24
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.037037037037037035
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "family": 1,
+      "denominator": 27,
+      "correct": {
+        "raw": 11,
+        "full": 25,
+        "gepa": 16,
+        "direct_dsl": 26
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.3333333333333333
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "family": 2,
+      "denominator": 27,
+      "correct": {
+        "raw": 18,
+        "full": 25,
+        "gepa": 20,
+        "direct_dsl": 27
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.18518518518518517
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "family": 3,
+      "denominator": 27,
+      "correct": {
+        "raw": 13,
+        "full": 16,
+        "gepa": 11,
+        "direct_dsl": 25
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.18518518518518517
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "family": 0,
+      "denominator": 27,
+      "correct": {
+        "raw": 6,
+        "full": 6,
+        "gepa": 9,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.1111111111111111
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "family": 1,
+      "denominator": 27,
+      "correct": {
+        "raw": 2,
+        "full": 2,
+        "gepa": 6,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.14814814814814814
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "family": 2,
+      "denominator": 27,
+      "correct": {
+        "raw": 8,
+        "full": 8,
+        "gepa": 14,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.2222222222222222
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "family": 3,
+      "denominator": 27,
+      "correct": {
+        "raw": 14,
+        "full": 14,
+        "gepa": 17,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.1111111111111111
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "family": 0,
+      "denominator": 27,
+      "correct": {
+        "raw": 14,
+        "full": 14,
+        "gepa": 17,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": -0.1111111111111111
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "family": 1,
+      "denominator": 27,
+      "correct": {
+        "raw": 5,
+        "full": 24,
+        "gepa": 11,
+        "direct_dsl": 26
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.48148148148148145
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "family": 2,
+      "denominator": 27,
+      "correct": {
+        "raw": 18,
+        "full": 25,
+        "gepa": 20,
+        "direct_dsl": 27
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 0
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "prepared",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.18518518518518517
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "family": 3,
+      "denominator": 27,
+      "correct": {
+        "raw": 14,
+        "full": 14,
+        "gepa": 11,
+        "direct_dsl": 0
+      },
+      "invalid": {
+        "raw": 0,
+        "full": 0,
+        "gepa": 0,
+        "direct_dsl": 27
+      },
+      "deployment_status": {
+        "raw": null,
+        "full": "raw_fallback",
+        "gepa": "prepared",
+        "direct_dsl": null
+      },
+      "full_minus_gepa": 0.1111111111111111
+    }
+  ],
+  "preparation_costs": [
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "arm": "full",
+      "wall_seconds": 114.82899999999972,
+      "calls": {
+        "attempted_calls": 1,
+        "completed_calls": 1,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 1,
+            "failed_calls": 0,
+            "input_tokens_known": 639,
+            "output_tokens_known": 284,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 114.81897000000026
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "arm": "gepa",
+      "wall_seconds": 620.8910000000014,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 155003,
+            "output_tokens_known": 353,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 251.9919031999998
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1601,
+            "output_tokens_known": 1741,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 368.57839469999817
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "arm": "full",
+      "wall_seconds": 140.25,
+      "calls": {
+        "attempted_calls": 3,
+        "completed_calls": 3,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 3890,
+            "output_tokens_known": 1071,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 139.42018239999925
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "arm": "gepa",
+      "wall_seconds": 683.75,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 173070,
+            "output_tokens_known": 352,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 265.108529299996
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 2052,
+            "output_tokens_known": 2020,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 418.2988351999993
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "arm": "full",
+      "wall_seconds": 221.65600000000086,
+      "calls": {
+        "attempted_calls": 3,
+        "completed_calls": 3,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 4193,
+            "output_tokens_known": 1115,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 220.79909140000018
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "arm": "gepa",
+      "wall_seconds": 550.0150000000012,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 151894,
+            "output_tokens_known": 350,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 183.0538577999996
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1622,
+            "output_tokens_known": 1681,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 366.6433918999992
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "arm": "full",
+      "wall_seconds": 191.01599999999962,
+      "calls": {
+        "attempted_calls": 4,
+        "completed_calls": 4,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 6531,
+            "output_tokens_known": 1374,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 190.2026160000005
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "arm": "gepa",
+      "wall_seconds": 922.7970000000005,
+      "calls": {
+        "attempted_calls": 183,
+        "completed_calls": 183,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 180,
+            "failed_calls": 0,
+            "input_tokens_known": 178715,
+            "output_tokens_known": 368,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 312.7652657000035
+          },
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 2792,
+            "output_tokens_known": 2779,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 609.6958295999975
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "arm": "full",
+      "wall_seconds": 123.67200000000003,
+      "calls": {
+        "attempted_calls": 1,
+        "completed_calls": 1,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 1,
+            "failed_calls": 0,
+            "input_tokens_known": 639,
+            "output_tokens_known": 468,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 122.79047820000005
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "arm": "gepa",
+      "wall_seconds": 535.3858607463835,
+      "calls": {
+        "attempted_calls": 183,
+        "completed_calls": 182,
+        "failed_calls": 1,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 180,
+            "failed_calls": 0,
+            "input_tokens_known": 165281,
+            "output_tokens_known": 360,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 177.80115810000893
+          },
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 1,
+            "input_tokens_known": 1603,
+            "output_tokens_known": 1835,
+            "unknown_input_usage_calls": 1,
+            "unknown_output_usage_calls": 1,
+            "latency_seconds": 357.2330717
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "arm": "full",
+      "wall_seconds": 327.53099999999995,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 43913,
+            "output_tokens_known": 226,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 101.73742690000063
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4718,
+            "output_tokens_known": 1548,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 223.17460710000023
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "arm": "gepa",
+      "wall_seconds": 603.8910000000001,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 171693,
+            "output_tokens_known": 348,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 194.6722873000008
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1632,
+            "output_tokens_known": 2021,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 408.8681733000003
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "arm": "full",
+      "wall_seconds": 339.9369999999999,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 42312,
+            "output_tokens_known": 217,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 99.94570759999715
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4278,
+            "output_tokens_known": 1304,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 238.2289827999998
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "arm": "gepa",
+      "wall_seconds": 849.8130000000001,
+      "calls": {
+        "attempted_calls": 183,
+        "completed_calls": 183,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 180,
+            "failed_calls": 0,
+            "input_tokens_known": 167046,
+            "output_tokens_known": 372,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 236.44099359999927
+          },
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 3073,
+            "output_tokens_known": 2780,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 613.0034430999999
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "arm": "full",
+      "wall_seconds": 135.14000000000033,
+      "calls": {
+        "attempted_calls": 1,
+        "completed_calls": 1,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 1,
+            "failed_calls": 0,
+            "input_tokens_known": 647,
+            "output_tokens_known": 384,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 135.1300127000004
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "arm": "gepa",
+      "wall_seconds": 671.094,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 151155,
+            "output_tokens_known": 358,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 283.26712699999734
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1619,
+            "output_tokens_known": 1667,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 387.4959262000002
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "arm": "full",
+      "wall_seconds": 115.375,
+      "calls": {
+        "attempted_calls": 1,
+        "completed_calls": 1,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 1,
+            "failed_calls": 0,
+            "input_tokens_known": 639,
+            "output_tokens_known": 284,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 115.36442460000035
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "arm": "gepa",
+      "wall_seconds": 1064.641,
+      "calls": {
+        "attempted_calls": 136,
+        "completed_calls": 136,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 132,
+            "failed_calls": 0,
+            "input_tokens_known": 107857,
+            "output_tokens_known": 271,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 331.6697487000015
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 3616,
+            "output_tokens_known": 3557,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 732.6603236999999
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "arm": "full",
+      "wall_seconds": 346.4840000000004,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 42106,
+            "output_tokens_known": 224,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 90.24874799999725
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4941,
+            "output_tokens_known": 1432,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 253.84363010000106
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "arm": "gepa",
+      "wall_seconds": 500.71900000000005,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 143193,
+            "output_tokens_known": 367,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 162.90345950000528
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1632,
+            "output_tokens_known": 1518,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 337.48659990000033
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "arm": "full",
+      "wall_seconds": 226.21900000000005,
+      "calls": {
+        "attempted_calls": 3,
+        "completed_calls": 3,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 4193,
+            "output_tokens_known": 1115,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 225.4119343000002
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "arm": "gepa",
+      "wall_seconds": 888.031,
+      "calls": {
+        "attempted_calls": 183,
+        "completed_calls": 183,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 180,
+            "failed_calls": 0,
+            "input_tokens_known": 156419,
+            "output_tokens_known": 386,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 297.0588201999926
+          },
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 2741,
+            "output_tokens_known": 2691,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 590.6169855999997
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "arm": "full",
+      "wall_seconds": 274.6869999999999,
+      "calls": {
+        "attempted_calls": 4,
+        "completed_calls": 4,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 6531,
+            "output_tokens_known": 1374,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 273.9031649000008
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "arm": "gepa",
+      "wall_seconds": 800.4839999999995,
+      "calls": {
+        "attempted_calls": 186,
+        "completed_calls": 186,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 183,
+            "failed_calls": 0,
+            "input_tokens_known": 157380,
+            "output_tokens_known": 384,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 231.98600079999687
+          },
+          "teacher_optimization": {
+            "attempted_calls": 3,
+            "failed_calls": 0,
+            "input_tokens_known": 2710,
+            "output_tokens_known": 2616,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 568.1605318000002
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "arm": "full",
+      "wall_seconds": 304.5,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 41812,
+            "output_tokens_known": 232,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 95.23061150000922
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4283,
+            "output_tokens_known": 1717,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 207.43531390000135
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "arm": "gepa",
+      "wall_seconds": 1104.2350000000006,
+      "calls": {
+        "attempted_calls": 199,
+        "completed_calls": 199,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 195,
+            "failed_calls": 0,
+            "input_tokens_known": 176926,
+            "output_tokens_known": 404,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 317.73851029999787
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 3201,
+            "output_tokens_known": 3252,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 786.102673700002
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "arm": "full",
+      "wall_seconds": 323.3119999999999,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 42941,
+            "output_tokens_known": 241,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 86.46658939999907
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4718,
+            "output_tokens_known": 1393,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 234.96904079999877
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "arm": "gepa",
+      "wall_seconds": 526.9529999999995,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 152946,
+            "output_tokens_known": 370,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 164.13534770000115
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1632,
+            "output_tokens_known": 1691,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 362.50447410000106
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "arm": "full",
+      "wall_seconds": 332.8590000000004,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 41340,
+            "output_tokens_known": 226,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 88.94747440000538
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4278,
+            "output_tokens_known": 1304,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 242.2335673999969
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "arm": "gepa",
+      "wall_seconds": 601.1569999999992,
+      "calls": {
+        "attempted_calls": 176,
+        "completed_calls": 176,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 174,
+            "failed_calls": 0,
+            "input_tokens_known": 177714,
+            "output_tokens_known": 373,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 173.52010799999334
+          },
+          "teacher_optimization": {
+            "attempted_calls": 2,
+            "failed_calls": 0,
+            "input_tokens_known": 1618,
+            "output_tokens_known": 2138,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 427.30013959999997
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "arm": "full",
+      "wall_seconds": 322.09400000000096,
+      "calls": {
+        "attempted_calls": 112,
+        "completed_calls": 112,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 108,
+            "failed_calls": 0,
+            "input_tokens_known": 41747,
+            "output_tokens_known": 237,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 86.22149040000659
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 4264,
+            "output_tokens_known": 1292,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 234.1717665999986
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "arm": "gepa",
+      "wall_seconds": 1052.7029999999995,
+      "calls": {
+        "attempted_calls": 196,
+        "completed_calls": 196,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_optimization": {
+            "attempted_calls": 192,
+            "failed_calls": 0,
+            "input_tokens_known": 180219,
+            "output_tokens_known": 401,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 287.48440879999
+          },
+          "teacher_optimization": {
+            "attempted_calls": 4,
+            "failed_calls": 0,
+            "input_tokens_known": 3239,
+            "output_tokens_known": 3596,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 764.8592795000004
+          }
+        }
+      }
+    }
+  ],
+  "aggregate_preparation_costs": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "arm": "full",
+      "preparation_wall_seconds": 2245.5300000000016,
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 540,
+          "failed_calls": 0,
+          "input_tokens_known": 209946,
+          "output_tokens_known": 1160,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 447.1149137000175
+        },
+        "teacher_optimization": {
+          "attempted_calls": 28,
+          "failed_calls": 0,
+          "input_tokens_known": 33847,
+          "output_tokens_known": 9911,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1787.332842599998
+        }
+      },
+      "fallback_tasks": 3,
+      "native_edited_candidates": 0
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "arm": "gepa",
+      "preparation_wall_seconds": 6538.922999999999,
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 1404,
+          "failed_calls": 0,
+          "input_tokens_known": 1252654,
+          "output_tokens_known": 2956,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1966.4964039999786
+        },
+        "teacher_optimization": {
+          "attempted_calls": 24,
+          "failed_calls": 0,
+          "input_tokens_known": 20389,
+          "output_tokens_known": 21059,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 4569.691007900004
+        }
+      },
+      "fallback_tasks": 0,
+      "native_edited_candidates": 15
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "arm": "full",
+      "preparation_wall_seconds": 1594.0310000000004,
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 216,
+          "failed_calls": 0,
+          "input_tokens_known": 86225,
+          "output_tokens_known": 443,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 201.68313449999778
+        },
+        "teacher_optimization": {
+          "attempted_calls": 21,
+          "failed_calls": 0,
+          "input_tokens_known": 25535,
+          "output_tokens_known": 7548,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1384.5649406000007
+        }
+      },
+      "fallback_tasks": 6,
+      "native_edited_candidates": 0
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "arm": "gepa",
+      "preparation_wall_seconds": 5437.636860746386,
+      "roles": {
+        "solver_optimization": {
+          "attempted_calls": 1410,
+          "failed_calls": 0,
+          "input_tokens_known": 1313857,
+          "output_tokens_known": 2861,
+          "unknown_input_usage_calls": 0,
+          "unknown_output_usage_calls": 0,
+          "latency_seconds": 1905.1011220000053
+        },
+        "teacher_optimization": {
+          "attempted_calls": 19,
+          "failed_calls": 1,
+          "input_tokens_known": 15994,
+          "output_tokens_known": 16524,
+          "unknown_input_usage_calls": 1,
+          "unknown_output_usage_calls": 1,
+          "latency_seconds": 3529.8170656999946
+        }
+      },
+      "fallback_tasks": 0,
+      "native_edited_candidates": 16
+    }
+  ],
+  "final_costs": [
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "arm": "raw",
+      "wall_seconds": 68.375,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16099,
+            "output_tokens_known": 59,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 68.33191749999969
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "arm": "full",
+      "wall_seconds": 7.734999999999673,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16099,
+            "output_tokens_known": 59,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.67434360000334
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-000",
+      "arm": "gepa",
+      "wall_seconds": 7.858999999999469,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 27250,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.69086519999928
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "arm": "raw",
+      "wall_seconds": 8.67199999999957,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16489,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.613221299999168
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "arm": "full",
+      "wall_seconds": 8.734000000000378,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 8955,
+            "output_tokens_known": 58,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.283604600002036
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-001",
+      "arm": "gepa",
+      "wall_seconds": 7.717999999999847,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 24778,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.55113110000093
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "arm": "raw",
+      "wall_seconds": 9.844000000000051,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16371,
+            "output_tokens_known": 65,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.788180400000783
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "arm": "full",
+      "wall_seconds": 8.67199999999957,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16371,
+            "output_tokens_known": 65,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.597041900001386
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-002",
+      "arm": "gepa",
+      "wall_seconds": 8.20300000000043,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16371,
+            "output_tokens_known": 65,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.063999299997704
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "arm": "raw",
+      "wall_seconds": 10.45299999999952,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16315,
+            "output_tokens_known": 60,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 10.374989400001141
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "arm": "full",
+      "wall_seconds": 10.015000000000327,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16315,
+            "output_tokens_known": 60,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.905089699993368
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-003",
+      "arm": "gepa",
+      "wall_seconds": 8.561999999999898,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 29653,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.40657299999748
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "arm": "raw",
+      "wall_seconds": 8.32799999999952,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16103,
+            "output_tokens_known": 58,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.269624099999419
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "arm": "full",
+      "wall_seconds": 9.453999999999724,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 8938,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.01787559999866
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-004",
+      "arm": "gepa",
+      "wall_seconds": 9.109000000000378,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 28712,
+            "output_tokens_known": 60,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.899663399998644
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "arm": "raw",
+      "wall_seconds": 7.359000000000378,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16487,
+            "output_tokens_known": 59,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.308179099998597
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "arm": "full",
+      "wall_seconds": 9.469000000000051,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 8962,
+            "output_tokens_known": 55,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.993612200001735
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-005",
+      "arm": "gepa",
+      "wall_seconds": 9.905999999999949,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 30581,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.721872400000393
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "arm": "raw",
+      "wall_seconds": 7.890000000000327,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16308,
+            "output_tokens_known": 57,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.8353287000009
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "arm": "full",
+      "wall_seconds": 8.186999999999898,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 8887,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.820611499999359
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-006",
+      "arm": "gepa",
+      "wall_seconds": 7.342999999999847,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 28728,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.219148700000915
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "arm": "raw",
+      "wall_seconds": 9.421000000000276,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16315,
+            "output_tokens_known": 59,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.356473300000289
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "arm": "full",
+      "wall_seconds": 8.657000000000153,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 8838,
+            "output_tokens_known": 63,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.236943500000962
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "qwen2.5:3b",
+      "task_id": "policy-007",
+      "arm": "gepa",
+      "wall_seconds": 8.04699999999957,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 31003,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 7.855628100003742
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "arm": "raw",
+      "wall_seconds": 8.54699999999957,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16045,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.49406490000274
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "arm": "full",
+      "wall_seconds": 8.734000000000378,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16045,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.676371700003983
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-000",
+      "arm": "gepa",
+      "wall_seconds": 65.26499999999942,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 28168,
+            "output_tokens_known": 57,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 65.15959249999833
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "arm": "raw",
+      "wall_seconds": 8.265000000000327,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16435,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.214482600000338
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "arm": "full",
+      "wall_seconds": 9.016000000000531,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16435,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.934930099998383
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-001",
+      "arm": "gepa",
+      "wall_seconds": 8.936999999999898,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 36226,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.81853190000129
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "arm": "raw",
+      "wall_seconds": 8.5,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16317,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.447719599997981
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "arm": "full",
+      "wall_seconds": 8.686999999999898,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16317,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.612931100001333
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-002",
+      "arm": "gepa",
+      "wall_seconds": 8.655999999999949,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 26415,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.512019300002976
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "arm": "raw",
+      "wall_seconds": 8.57799999999952,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16261,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.519369999998162
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "arm": "full",
+      "wall_seconds": 8.70300000000043,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16261,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.619294299996909
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-003",
+      "arm": "gepa",
+      "wall_seconds": 8.485000000000582,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 38806,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.343178400000397
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "arm": "raw",
+      "wall_seconds": 8.17200000000048,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16049,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.122187699997085
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "arm": "full",
+      "wall_seconds": 8.45300000000043,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16049,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.390206299998681
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-004",
+      "arm": "gepa",
+      "wall_seconds": 8.42200000000048,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 29333,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.29517019999912
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "arm": "raw",
+      "wall_seconds": 9.875,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16433,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.81535519999943
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "arm": "full",
+      "wall_seconds": 9.45300000000043,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 9359,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.047953100001905
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-005",
+      "arm": "gepa",
+      "wall_seconds": 8.75,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 30554,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.58646310000131
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "arm": "raw",
+      "wall_seconds": 8.219000000000051,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16254,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.170620000000781
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "arm": "full",
+      "wall_seconds": 9.54700000000048,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 9090,
+            "output_tokens_known": 55,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 9.177780200000598
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-006",
+      "arm": "gepa",
+      "wall_seconds": 16.015000000000327,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 33696,
+            "output_tokens_known": 56,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 15.845109099999718
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "arm": "raw",
+      "wall_seconds": 8.57800000000043,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16261,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.525754500001312
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "arm": "full",
+      "wall_seconds": 8.610000000000582,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 16261,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.548442700000123
+          }
+        }
+      }
+    },
+    {
+      "solver_model": "llama3.2:3b",
+      "task_id": "policy-007",
+      "arm": "gepa",
+      "wall_seconds": 8.891000000000531,
+      "calls": {
+        "attempted_calls": 27,
+        "completed_calls": 27,
+        "failed_calls": 0,
+        "unfinished_calls": 0,
+        "roles": {
+          "solver_final": {
+            "attempted_calls": 27,
+            "failed_calls": 0,
+            "input_tokens_known": 29491,
+            "output_tokens_known": 54,
+            "unknown_input_usage_calls": 0,
+            "unknown_output_usage_calls": 0,
+            "latency_seconds": 8.725073100000373
+          }
+        }
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "protocol.json": "eb45a01916ede92063590745c3dabf0a07548a0a2f68896198edf7ecd0c09186",
+    "source_snapshot.json": "c2eb7d1943c0c567425929b839360fddeac22e5ff5b2a25344b93e3b4bbc0ab7",
+    "public_tasks.json": "eceab657c7eb35e8d64c2db970718f0ef77bb516f1fc0de8f68344d19c9f7a3a",
+    "sealed/final_cases.json": "0d314cd65504cfd7527235837c4e42ef55cfaf83e1cbe506b9fab1d2bb43fdee",
+    "case_commitment.json": "66e09268b3104a2fe76c973800c86c5370a8f01ae6c41a9171b737745f1e4cab",
+    "prepared_lock.json": "bdeccdc5d90cd96dc7b79d7343214a170bd72303999c981e11a479e4e7624656",
+    "final_opening.json": "d06208ba860ac01011985aef9bb0891ee790e5d54e34e870ff52e0c442c887b6",
+    "completion.json": "4ce0538d00aaea8b3378db8cb1c6fdceff5dc2da06ce2f575fb7b4461df2f5cf",
+    "model_identities.json": "1a7ec08a9981b18aa2e10e8df85bf4de692e0d9ed7fff7654363612e65d854c7",
+    "backend_identity.json": "1ef7137031a39a88d8d82e7ac6a6134310275aaaad077f8f7541cbbe1e0f8325",
+    "router_identity.json": "b9f40d4cf69688c488d8802d9b0de5402156466f52e96f5706d9baf2f716fe03",
+    "native_package_snapshot.json": "d66a9ed0e6b85a49a0ab8c7231770574911c30bf97cfcf57eedb5968f9ebb5f5",
+    "resource_scope.json": "0d841d22edd4d115df96a5a28f6ddfd92133a275cd3858724799123d5d14acf9",
+    "prepared\\llama3.2_3b-policy-000-full.json": "3bf1bfe1ed153bf7c834076bce17299d736848fbb6f9e1a587714793d9bfb026",
+    "prepared\\llama3.2_3b-policy-000-gepa.json": "cfc5a2aa06a64ef87a22dc0076ce3b8bca94bf82abcffe60c4b2ed680797ceea",
+    "prepared\\llama3.2_3b-policy-001-full.json": "2324a3113fd6cdea6b82d69c10d60d27ec019e0ef50b5112430be88e8eeee8d9",
+    "prepared\\llama3.2_3b-policy-001-gepa.json": "b6ca06fac90b188330229fc201c945df9471684ea67bf6b8c11a617fa0fefd57",
+    "prepared\\llama3.2_3b-policy-002-full.json": "a6a1533e70935c4462d8382a268a06d5d203a0f847c4497101f76c3550be8831",
+    "prepared\\llama3.2_3b-policy-002-gepa.json": "ba8f1cb516cfa3a05b80dd968a573346e067add89a14405a0fcc45bc32ce797a",
+    "prepared\\llama3.2_3b-policy-003-full.json": "58b08c79b69399bb3eeb31f0bbb0da7991c2a5391b517347283ce79bcdae5e95",
+    "prepared\\llama3.2_3b-policy-003-gepa.json": "66869d633a645e41ab1d16c86e04f0377521efcbf2ee0bc810774656bd4fded4",
+    "prepared\\llama3.2_3b-policy-004-full.json": "1d9df5abd1547ae2bcc5c695b825b86dbdd5248007f5fd2af2d4f8a2f359fc4b",
+    "prepared\\llama3.2_3b-policy-004-gepa.json": "584d3a118217da59d42e4f12fa9cb85549eed4802b315fbe5ba021780a327b2a",
+    "prepared\\llama3.2_3b-policy-005-full.json": "1f3cd623132efb35a1177f8a3ee9503d517a790610faa72ff83d90f696302169",
+    "prepared\\llama3.2_3b-policy-005-gepa.json": "5d1a875f961ea81e3a0a82de68f63c00778edaed329d37e2f4791e099524d494",
+    "prepared\\llama3.2_3b-policy-006-full.json": "32145dcf58905ab79a2171641406e0806180ccb204c6c6300b02cbc60262398b",
+    "prepared\\llama3.2_3b-policy-006-gepa.json": "3a5f84d87723bd89ce6906ca3d5a201217fbebbc34e83c08a7a29989ac0c16e2",
+    "prepared\\llama3.2_3b-policy-007-full.json": "87a1b395a8040c802768e7d721eefc2ed3fc1b075fcc27ab747d5177c1fdf448",
+    "prepared\\llama3.2_3b-policy-007-gepa.json": "9223ac304cb88c46225c86fb10594fc44fb137ab850f9b3160b08986276fac9f",
+    "prepared\\qwen2.5_3b-policy-000-full.json": "5063280f2cad8b44e895c506c365f5854c1c264deeeefab640cc25ee9e776ac0",
+    "prepared\\qwen2.5_3b-policy-000-gepa.json": "0d89a9ccb12bc3f2a5c25cc99f0fcb71ebbaa13d4771910b45fef45d542a316f",
+    "prepared\\qwen2.5_3b-policy-001-full.json": "fcb578060caf10176fce0dc796fcb286bade277a66ea6472ab3f2b11745a5b1b",
+    "prepared\\qwen2.5_3b-policy-001-gepa.json": "d2ab4dff6389a672cd34205b0ecbe802eff682a94a51bffca8bc3cf26efec5f8",
+    "prepared\\qwen2.5_3b-policy-002-full.json": "86b4114cc654309d83b5561a211f00af1c4d7929f6de973df9c760b38169034e",
+    "prepared\\qwen2.5_3b-policy-002-gepa.json": "efbc63af3750b5deab4e352cff811403f1328e26fc6e4d5592c6a659d5101b3f",
+    "prepared\\qwen2.5_3b-policy-003-full.json": "b4cae8f1ce852956436b906f3bd9fa78fcc9eced459d011fe07dd19dbe6a985f",
+    "prepared\\qwen2.5_3b-policy-003-gepa.json": "3221b3591df029d97d76c468f99973a991d895b69eb7f0d15da61a1c66010ea3",
+    "prepared\\qwen2.5_3b-policy-004-full.json": "475c9ba82979f19841638439890f2d4b0532d47df3c96294dae0c1b8f2785501",
+    "prepared\\qwen2.5_3b-policy-004-gepa.json": "92e33147fde284eaa4e3da64e47f783526d5fae791b813da3bd0d9464397fc76",
+    "prepared\\qwen2.5_3b-policy-005-full.json": "bea1be0f7d5c097d4cf3973bd2f6ea9b817e19343fd119cae3c111280848e009",
+    "prepared\\qwen2.5_3b-policy-005-gepa.json": "90b57cb827abffe21338378540331363eb4cc04a6482878b1a667d2a30ced897",
+    "prepared\\qwen2.5_3b-policy-006-full.json": "81073b26647dcbf41f73148fbe85209ad6eacf2b12de59c3eb69a167a190ea47",
+    "prepared\\qwen2.5_3b-policy-006-gepa.json": "ac5f891f52d45cdefd2c6978690fd965e2f9ebff3e8743593e52acc9b93c6f6e",
+    "prepared\\qwen2.5_3b-policy-007-full.json": "8e8faa6fbb98c69c95db2a8590f2cf2445630d6d91f2627ca0d3ec87d5fc7d81",
+    "prepared\\qwen2.5_3b-policy-007-gepa.json": "8b8cc6432ee4fbf5aa6fe1f39d3aac73a4b705dc1981a53a606c6791964638ea",
+    "final\\qwen2.5_3b-policy-000-raw.json": "7cdd5f4053c5ac85b5d7c472918148f6f067b7202162f16c3f3657ef58c72967",
+    "final\\qwen2.5_3b-policy-000-full.json": "b03d5db363bf14957c4d29519861aa1787123160343ce8daff14ecef99d09a6d",
+    "final\\qwen2.5_3b-policy-000-gepa.json": "9e36b6db96ac71f04345e49831d9c738fea63876733add098d6248a4041cb05e",
+    "final\\qwen2.5_3b-policy-000-direct_dsl.json": "7678f799e6e87d67503da0d8e470980fb43fdcaf12033aef8570024c52345539",
+    "final\\qwen2.5_3b-policy-001-raw.json": "a0faf46a6d9bcd311034799b6579bd3e3b440ce630b3f7d63c58e4393ac3c01e",
+    "final\\qwen2.5_3b-policy-001-full.json": "e4ba2ce8c1bf8360abd2aa165fd402e6efc601772941d0c83675005c0a114417",
+    "final\\qwen2.5_3b-policy-001-gepa.json": "3e2c0b0f075cf781b4aed76c47b75538ed08a4a391d6837f6f14f23cc99f47ec",
+    "final\\qwen2.5_3b-policy-001-direct_dsl.json": "c9c99e050a296e157622e870b0735c579b9ab9ed9a3bb4d2b039245c05dd8ce2",
+    "final\\qwen2.5_3b-policy-002-raw.json": "92ba5eb0b5d7455ecf0e71bd23494857ebdf95d5b7b811cb0ddfad6bab137aa7",
+    "final\\qwen2.5_3b-policy-002-full.json": "78b842fd565cdfb05be3ccd78458146fa10d52f0c08309e794ec4a09265457b0",
+    "final\\qwen2.5_3b-policy-002-gepa.json": "9ba9d73d497eea1fb64b9ef7f1328a5e240bc33df3a708bb7e7dc2292916a76f",
+    "final\\qwen2.5_3b-policy-002-direct_dsl.json": "7d8bdce145bd0ce2d1283b89816911688be8642bd4f72aabe47e93129a92e4b4",
+    "final\\qwen2.5_3b-policy-003-raw.json": "99b7cb2ea7d5dacafa25140774dd327a0f90e0001bca7252a5c5e18104b50ef1",
+    "final\\qwen2.5_3b-policy-003-full.json": "9c15a8babf34a44f146f535e816e0198250f2c109da9e4c1a623b947a807481a",
+    "final\\qwen2.5_3b-policy-003-gepa.json": "59fb7c6c9e4009f0387c22515413a532381a6232a919ec286e863287c6c7728b",
+    "final\\qwen2.5_3b-policy-003-direct_dsl.json": "2570d7e7a2862c4fdf677674eaf228788e8b13b65716d7cd02dd0a80a34f8690",
+    "final\\qwen2.5_3b-policy-004-raw.json": "d76b40dde8784be8a582f47c9e8c489c20e3c2d4c5a23ef36fe70cf96211bd3a",
+    "final\\qwen2.5_3b-policy-004-full.json": "962b685378f24dc840365b8a63e1473c1196e1d17f94d3ffe446387f2a44f39a",
+    "final\\qwen2.5_3b-policy-004-gepa.json": "bd02ded5efcd52cf913fbe6f53fe2488d8718596676ef9ba311bd234937cee1b",
+    "final\\qwen2.5_3b-policy-004-direct_dsl.json": "8e8897c4d89574faeb1a7b530f164a509b632c3ab0d5b0a511be440e265127f1",
+    "final\\qwen2.5_3b-policy-005-raw.json": "08bda586d43bf41f3c7cb69d6a780b171ccfdeb2158d4e398912d01589578f9e",
+    "final\\qwen2.5_3b-policy-005-full.json": "eaa24f09e2df34df8c3809041a809526cd1ad7b201310d1e342f113cf9c1d4ed",
+    "final\\qwen2.5_3b-policy-005-gepa.json": "2b43ed80b4c0e5e50459f27eaed7c980029d64fcb83521852200868ee0de6418",
+    "final\\qwen2.5_3b-policy-005-direct_dsl.json": "6c014af5af20432ab902ef98ef96a2c94bfffc8e1d3de73cdfd9ffb1704deb90",
+    "final\\qwen2.5_3b-policy-006-raw.json": "42d1e0414955652ed7182b00177950bfa5faee044c54d8cb6899c58b10b4c826",
+    "final\\qwen2.5_3b-policy-006-full.json": "236405708817eeef4ca96dc1bb37f770f996d29f59b8f828851b5f28b788c01d",
+    "final\\qwen2.5_3b-policy-006-gepa.json": "78515d8e749f6e115fbdc9912e92327fd6de2604742dd4fd8fc11d98bc64d1d0",
+    "final\\qwen2.5_3b-policy-006-direct_dsl.json": "1548ef24187be8b14a6d712c3b75ec2ebc54a821ec2f1ffcf98f5d588257002d",
+    "final\\qwen2.5_3b-policy-007-raw.json": "165f9a2e9403bf20cf3600b72d8c86b6da835c3d106cc8beb4d42a5f45742ec6",
+    "final\\qwen2.5_3b-policy-007-full.json": "95d0ab4e8191bbefe795687123d8e396cea61c95957c27183995b322cf6af389",
+    "final\\qwen2.5_3b-policy-007-gepa.json": "b51151ff6825d029bddc493ebb509d0006fa1a2da10ce6e151e80589665a6d5f",
+    "final\\qwen2.5_3b-policy-007-direct_dsl.json": "14ce246ba16ed40e16a8ebf9f45506ddc11eb35abcbecc66ac53bafa7b7fb436",
+    "final\\llama3.2_3b-policy-000-raw.json": "968c860a6055711cf11283818676a3c90876a767570d6ea432a73782593c7c5d",
+    "final\\llama3.2_3b-policy-000-full.json": "919f17c35863f1e5190dfc727b1f191fb9682d3a4319e8a6761c0becb104eaf1",
+    "final\\llama3.2_3b-policy-000-gepa.json": "09f89de2a7512a86e011bd5a53b6dc75e4aeeccd06d0ff8289994c7fa0a5c53f",
+    "final\\llama3.2_3b-policy-000-direct_dsl.json": "4a243841f52aea10b5fbc8e3c7bd2d018d55f68487de00e5f845db908c597587",
+    "final\\llama3.2_3b-policy-001-raw.json": "54bc73a39ec0294013ea1f5f5fe09bef5a9496dcdf4765961d2d0db8e7457394",
+    "final\\llama3.2_3b-policy-001-full.json": "97e87980df4a6633471a6dd0b0a9fecebc5c5e5ef793becf169b345e6d90b442",
+    "final\\llama3.2_3b-policy-001-gepa.json": "0e6c5281d41900ac82beb5a4efc7ec5f9778cac3863199dd9c7149f507b10ca9",
+    "final\\llama3.2_3b-policy-001-direct_dsl.json": "ca9c289577051a419247c7a75295d7838decccb23e394fc4c0c3b7872cb41c64",
+    "final\\llama3.2_3b-policy-002-raw.json": "143f97e7e1f249ac191282d2353ff0d8a811b919be6b74195ead439c1ec0f4f9",
+    "final\\llama3.2_3b-policy-002-full.json": "e09093d635f4ed8ffc4881a82a5f9da70d2c78b78cb4d66be0c5bc0056cddccd",
+    "final\\llama3.2_3b-policy-002-gepa.json": "761e41205ffb416b64b956198b9e23bf67616c3efc2ef485c6cfbed29ae4681c",
+    "final\\llama3.2_3b-policy-002-direct_dsl.json": "6f6410f93b0df6d2e24354763d9472fda0d2f568ff8d6b34e22b3b12dd5f7a77",
+    "final\\llama3.2_3b-policy-003-raw.json": "87f973bc8124783c09b70ab3820c8f18282522de4d21793cd3cb06af37787909",
+    "final\\llama3.2_3b-policy-003-full.json": "2b56d4d97b9c95c156117d90ab4da4995c41c5aad0cd46b62a27bebb257cafef",
+    "final\\llama3.2_3b-policy-003-gepa.json": "439e36995b13a0eec6ba96a57633760ebd2fd8322ae9dcea79d9ae94f81aa163",
+    "final\\llama3.2_3b-policy-003-direct_dsl.json": "2302861d6693f83df169bf517960274ef4b1752c33a95e0ca3adf9b49351f33f",
+    "final\\llama3.2_3b-policy-004-raw.json": "484ab7de81f5f57fe81c42ff0508f195eb520e967d97707451471842574b040b",
+    "final\\llama3.2_3b-policy-004-full.json": "f08e63015f730769bd0a00b091112355af192c73c7ac8c2753f649bb54d7000e",
+    "final\\llama3.2_3b-policy-004-gepa.json": "c6fe66bc4af8d6496d3b1fd3ec2d32089a73463c4171cc0ceddc15ae058500d0",
+    "final\\llama3.2_3b-policy-004-direct_dsl.json": "c94f3752a93122e1fa261672e2c52c9a4e74d406830b728c2d94dce959ddbea1",
+    "final\\llama3.2_3b-policy-005-raw.json": "99c7f3b0cc1af99043beade31ffb475d2d42d7ed0f7b2580e9a0a68bab5d8002",
+    "final\\llama3.2_3b-policy-005-full.json": "13d83892fe4817b0c3a3a910283194c3ee48b0c1d89f00c5aaecd17466eb98ac",
+    "final\\llama3.2_3b-policy-005-gepa.json": "b4b6a885bdacc1de081da410abc7afea00004fcda5bafc0a3f890367938c76cb",
+    "final\\llama3.2_3b-policy-005-direct_dsl.json": "be0aa1611a1f542b37e433841a05e3f095d7b45bd6796b16d383fc256236f750",
+    "final\\llama3.2_3b-policy-006-raw.json": "16eeb7e18b96131967278e1d188927716d1b51d3a2f478c81732baa3a49ee3ce",
+    "final\\llama3.2_3b-policy-006-full.json": "0ecf05af408c3b6f9a26d5770048b43f680706a3441f16690877d4b961d08b2b",
+    "final\\llama3.2_3b-policy-006-gepa.json": "c30cb430a01fa4391c7f7da8966f81ad60e4728522e660a1f79c548a4a041da3",
+    "final\\llama3.2_3b-policy-006-direct_dsl.json": "e6a9dcab54461481fd1a683c169760a979f0a2c6e617c42147beaa3faa596da9",
+    "final\\llama3.2_3b-policy-007-raw.json": "7d66a843a1685f4b7eda7ef6508a803dc799b3ccd6ef65eb814983ab79d777e7",
+    "final\\llama3.2_3b-policy-007-full.json": "a0a0883f79224bf15dcebe1d161f5f11fe65fb5220f488f37da3b2d9b8b12c89",
+    "final\\llama3.2_3b-policy-007-gepa.json": "d46f3732b6fa4d03efa18bed72a7829ae105729a7653f5d7bfad2587d6061da8",
+    "final\\llama3.2_3b-policy-007-direct_dsl.json": "f5ec291a81a43f9952014901635668d87544f495ce37072c9d3626a9acdcc269",
+    "calls\\llama3.2_3b-policy-000-full-final.jsonl": "3aa65d896d0cb363ab62958d66bd86bb919a4f08d98f660165bb03c82b032cfe",
+    "calls\\llama3.2_3b-policy-000-full.jsonl": "f90182cd79d826a57c1d60ea021cf89de1f46e1b5894491f8197ba0f3c594aa0",
+    "calls\\llama3.2_3b-policy-000-gepa-final.jsonl": "afa37ca29829d2dd2bffbe87795ebc02842ddb35c2879bfeb4704da1fc14b1e2",
+    "calls\\llama3.2_3b-policy-000-gepa.jsonl": "5a762ccff2cefe1b2ba445f75921d61c28bd09bd04aba2c4441f9ac8fadf3ea3",
+    "calls\\llama3.2_3b-policy-000-raw-final.jsonl": "d8c5abe09db4000f3b388adb0766b51c16e62bf6afe2b97d9ed5fa0bb2fa8709",
+    "calls\\llama3.2_3b-policy-001-full-final.jsonl": "55ef5c00f1024bf561972548aafcc8654dec765c7d0a08797472eb975fbb077a",
+    "calls\\llama3.2_3b-policy-001-full.jsonl": "67fe38e7d027172058c20607f04e3870efcdf8925ec0644db5888d46c67ec158",
+    "calls\\llama3.2_3b-policy-001-gepa-final.jsonl": "825f48860ea527349fb70646ad16875c22b75cbc5f92dad26ce969dc1250402e",
+    "calls\\llama3.2_3b-policy-001-gepa.jsonl": "b71f571e7d996b6ade18c4e5ddb4ceab0812e47d34baf8ae805606dda75cbff6",
+    "calls\\llama3.2_3b-policy-001-raw-final.jsonl": "3bc5d1ec634e52803b27ba0fae7914840e2f3f3ea7134fde9e5c4f1270882cd3",
+    "calls\\llama3.2_3b-policy-002-full-final.jsonl": "7f47cb464e4e2b67dce970956a8f0fe75772fe8fbc10c8eccbc52f14afdc2ae2",
+    "calls\\llama3.2_3b-policy-002-full.jsonl": "c04ab10d55f72ab0a4999f81d46a66c22131312e2f5979b31cfb336cf52dd824",
+    "calls\\llama3.2_3b-policy-002-gepa-final.jsonl": "1f8bc47fe5142db9421542a2cb63b2da1763e007b76c284554cae3a1479a49b8",
+    "calls\\llama3.2_3b-policy-002-gepa.jsonl": "b90256c5921c33abd3cc64bf9a0392d3647ecae6ed421e3759b8cd373b8de27d",
+    "calls\\llama3.2_3b-policy-002-raw-final.jsonl": "243312a9cd087d6af8f73580ea36906171958fd52e6f56cbef05f97c612de6a1",
+    "calls\\llama3.2_3b-policy-003-full-final.jsonl": "4a8dd3b95a3e86b816f9f895d4368726e2301eb7f985e5cc7e069dc96fd0e304",
+    "calls\\llama3.2_3b-policy-003-full.jsonl": "757ac4ba89aa837b11d1a00bb1107603b9122669e5d1f00ccb7554067ad4900d",
+    "calls\\llama3.2_3b-policy-003-gepa-final.jsonl": "c629449f95e357762acb99067d59e6d28abfc958653014888aef5f99ff40f8dc",
+    "calls\\llama3.2_3b-policy-003-gepa.jsonl": "49329080be449533e908ab8e73e6b824faf37c94188da5e89c2cb31c11d1696e",
+    "calls\\llama3.2_3b-policy-003-raw-final.jsonl": "7f9f3b00c9aaf559ada634a5b77bdfb8e8542df6bbed709a731ee60b80d2d0a4",
+    "calls\\llama3.2_3b-policy-004-full-final.jsonl": "a9a893e7f587583e4435658e36a8aca94feb01302b01efc36bc1ab0c80d6a87c",
+    "calls\\llama3.2_3b-policy-004-full.jsonl": "f9e83c629d7f1da29dfa25515d88485ca0a1e8e40f6d35d8a90b312be39fa8a5",
+    "calls\\llama3.2_3b-policy-004-gepa-final.jsonl": "64e94e90974ff0ddb13efa43aef8376716ed09097a1b386de464c02cf25dfb0f",
+    "calls\\llama3.2_3b-policy-004-gepa.jsonl": "7e858ad1c2d26ecd317b62983a64f96574d83ab6cc9ba3d167d735de836caeee",
+    "calls\\llama3.2_3b-policy-004-raw-final.jsonl": "78093b5745272bf04f773b9c1ebbea8f76af9f9c65c836aad17c97018e0e4c7e",
+    "calls\\llama3.2_3b-policy-005-full-final.jsonl": "73da7d780ea74d7064deeba2ae15a84b7967f30a65eeb5be5093b81128372f82",
+    "calls\\llama3.2_3b-policy-005-full.jsonl": "71b924b790a6490ad34b4357baa6b4d876bdbace1401b523096aff341b2555cd",
+    "calls\\llama3.2_3b-policy-005-gepa-final.jsonl": "cb04f2808f60777c65e40e807dba616a249126d9b140688b24ea68c9ebe325cd",
+    "calls\\llama3.2_3b-policy-005-gepa.jsonl": "40d53ee3a83b082bafeb29c51f4fadc0ca59b88c79e55904145db8e292919bbd",
+    "calls\\llama3.2_3b-policy-005-raw-final.jsonl": "2a285e87b999e4aea4b12d08d405a5ab9ae6d7e03ae7f0333e41955bc4c798fb",
+    "calls\\llama3.2_3b-policy-006-full-final.jsonl": "70e99237d143467036f5fd458ed4d3f05c6135fb03f52bd84fcd8a1c098dec68",
+    "calls\\llama3.2_3b-policy-006-full.jsonl": "f0c864b4534e4ac16f22c87dc78d710ffd9644df3b74a5b68d3e0498d9402363",
+    "calls\\llama3.2_3b-policy-006-gepa-final.jsonl": "5164cc762e30ffb85108a2252ae3473f71055be8054d2f078a272c3c55f80040",
+    "calls\\llama3.2_3b-policy-006-gepa.jsonl": "02410aa0052dab3fbe8ec973e12700bd2d34c977c70dd3319a542e5fa61a0d82",
+    "calls\\llama3.2_3b-policy-006-raw-final.jsonl": "794b3ac6eb1c700dab460535c53c30c83a85dd285322f0a6e51898a68c26cdb6",
+    "calls\\llama3.2_3b-policy-007-full-final.jsonl": "1ba9ffab679f0aa4714da4ffec695ba27a8596cfbae3090cd0b621475a636cfc",
+    "calls\\llama3.2_3b-policy-007-full.jsonl": "4deb4e5a477036d93f42030a1fd4db42f78f48a18e5d6cc330ecc8e2b25a2e19",
+    "calls\\llama3.2_3b-policy-007-gepa-final.jsonl": "87bbbab68af15f62eef0d2725db69fe1dd9825dfbae9b729824a67dd4b68f30f",
+    "calls\\llama3.2_3b-policy-007-gepa.jsonl": "d9c7ebc2eef7c435bfd3339571992b6447993453c66b9507570bb8be3611e20e",
+    "calls\\llama3.2_3b-policy-007-raw-final.jsonl": "358b5a98ee26c7a3e41e4a078ef0c357ca10301ee6b395512c86ff487eb7755f",
+    "calls\\qwen2.5_3b-policy-000-full-final.jsonl": "482ec71485fab44c9fd2fcf14478d729fcb5211d80e9f59866f3e1515765b316",
+    "calls\\qwen2.5_3b-policy-000-full.jsonl": "3f0ce3e08055bc1cd8e4ff1f02a6a6b4549e608b2ae1b1ec6b546143e8687903",
+    "calls\\qwen2.5_3b-policy-000-gepa-final.jsonl": "3dea4c679a32d241bf8b34556eed972b291ecef20fc1fd900940043a170d59fd",
+    "calls\\qwen2.5_3b-policy-000-gepa.jsonl": "c34fcd1335659d82258d3ada5ac02c67b170f8d44eb3ba74d0175f6e93940ca4",
+    "calls\\qwen2.5_3b-policy-000-raw-final.jsonl": "511958b9ee9ba1a7896707eeebf8e38abb8905383d56581e9b0424296796bfb5",
+    "calls\\qwen2.5_3b-policy-001-full-final.jsonl": "6bcf7f5627f1df75d328c2e3b0e33523a7876ec24cd5cf165417c49e9e81d465",
+    "calls\\qwen2.5_3b-policy-001-full.jsonl": "87d84debc81e88d9ac6cc74ae21829b3af5be8291abfb9ae1766877a231b50cf",
+    "calls\\qwen2.5_3b-policy-001-gepa-final.jsonl": "b834d96a8c3a98d7e28436d6c8424a2c713dbe6b78ad51b03aaf77c0aa97b03e",
+    "calls\\qwen2.5_3b-policy-001-gepa.jsonl": "9e8da5a0044202de1fc379e33b030a6f35d48ffc6206ca7c0407cdc320ee4261",
+    "calls\\qwen2.5_3b-policy-001-raw-final.jsonl": "11e1f2a46786d0fe52c3b0ed73b4273e05a501d56dd493a43153ea00163e7dcb",
+    "calls\\qwen2.5_3b-policy-002-full-final.jsonl": "007bfb8ca494059c2eff1361920fc4fe444ce59c073efd8ded0af69b2fb9d7f9",
+    "calls\\qwen2.5_3b-policy-002-full.jsonl": "a59fd6211098c55ea3f17ed29a79519f563a22498d25acc02d249bfda63f2430",
+    "calls\\qwen2.5_3b-policy-002-gepa-final.jsonl": "6947bb1ed42d2c1736616e72b15f47594a622d86b9af11d26c64bd7bfdb36da5",
+    "calls\\qwen2.5_3b-policy-002-gepa.jsonl": "1e24ae24397f705a996f513991d1d4fcef24174711234049b37330082446529e",
+    "calls\\qwen2.5_3b-policy-002-raw-final.jsonl": "2e9a7cabc619f746f3d7df7ed3c9d1562bdb0581b805df3c04e683838908374c",
+    "calls\\qwen2.5_3b-policy-003-full-final.jsonl": "d63ceb9c4cd016daa7fb05ef8c771bb7c58174758d6a5ba5a32573943cab91c0",
+    "calls\\qwen2.5_3b-policy-003-full.jsonl": "321518e1497349faf3bc4d18b068e44603bd239656a2ce86226780212b74375c",
+    "calls\\qwen2.5_3b-policy-003-gepa-final.jsonl": "079eba1accf3860d3641bc0b8ad990137c9b6c27ac652b98881324196a84f00d",
+    "calls\\qwen2.5_3b-policy-003-gepa.jsonl": "9904d01384379e6f881bb4ae47e9c449f53c819d093594a48ea9c704418feaab",
+    "calls\\qwen2.5_3b-policy-003-raw-final.jsonl": "17766f1cc82be3d8b6cde897b177d0e1ba6aad203ff0256bb484114ef9f53c14",
+    "calls\\qwen2.5_3b-policy-004-full-final.jsonl": "1c0eba25dc57ba408745e13d6cfe74594a281cc4834d7e2e843c7bab717a812a",
+    "calls\\qwen2.5_3b-policy-004-full.jsonl": "d6a172cefcff3d7c96490ef8f50aa43c2cf4aa101b3d015ff3319b7b6c9f3c22",
+    "calls\\qwen2.5_3b-policy-004-gepa-final.jsonl": "69d912f9f75b6eceff2a395d4e7a07b025b8da526fac6f106384fdb500825923",
+    "calls\\qwen2.5_3b-policy-004-gepa.jsonl": "980d87c7bbd33be3fca3d101f858822d65cbaafc6816fe4555bf6089b6e0082a",
+    "calls\\qwen2.5_3b-policy-004-raw-final.jsonl": "bb82244553501f3dde08b47d7e698269b9446808d3bb6fd4f4ec38dfde84f5ab",
+    "calls\\qwen2.5_3b-policy-005-full-final.jsonl": "ae7b95bcc8d9466a8e2e4086385d4bd41207ce6bd2e14ebfa51bbaf4ebec482a",
+    "calls\\qwen2.5_3b-policy-005-full.jsonl": "8a70b97d3633adee58242cc21ab759aae9165996353fbf6bf4727845422cb227",
+    "calls\\qwen2.5_3b-policy-005-gepa-final.jsonl": "1c91236300e66435138962398eeba87cb7e69206ae6f83c39f5c48000a701a7a",
+    "calls\\qwen2.5_3b-policy-005-gepa.jsonl": "4e765e5716857c13a5c91e38e7214c04880224c6f2442d9a752d04d39c478d67",
+    "calls\\qwen2.5_3b-policy-005-raw-final.jsonl": "ff254f200e13bfd088b3b89afa4c5939978553977981c888dccb1ce8e5946aeb",
+    "calls\\qwen2.5_3b-policy-006-full-final.jsonl": "d866e0dd0ef2850ef891e4bed98439024c30bfa9dba3a800d4d5b112995bed1d",
+    "calls\\qwen2.5_3b-policy-006-full.jsonl": "c0aad689cc3ec09ac56e2e796059cf82e170870ebba0f37bd5bcc59dc45ab760",
+    "calls\\qwen2.5_3b-policy-006-gepa-final.jsonl": "411d2db3dcf6ada6043716c2884c85a5019cb00c68af61aadef1bacedf191a42",
+    "calls\\qwen2.5_3b-policy-006-gepa.jsonl": "906d8c862570f0b0acfee6c454c1d8214d874b5d3fb55766898a1ffa19017472",
+    "calls\\qwen2.5_3b-policy-006-raw-final.jsonl": "160958c30c6f8b1913dfb0f4e95ad2a85371adda308eef18f141741514485486",
+    "calls\\qwen2.5_3b-policy-007-full-final.jsonl": "4b98c92cacf01dd9be5cc38a5b65d1a606c05f842122d039053e4b7db51c2d8c",
+    "calls\\qwen2.5_3b-policy-007-full.jsonl": "f38a4383bb938df3d1dcf85117b7c9c570e000d1eb13944d8f800844217f9c2e",
+    "calls\\qwen2.5_3b-policy-007-gepa-final.jsonl": "63c15a929edc20177e60f524b1c653471a58dc23e41b1d69b6bf60ddff56c7d8",
+    "calls\\qwen2.5_3b-policy-007-gepa.jsonl": "62a071ae84f725615698d9e5fafbd60eb1a071f8dfecabe65312e491530a9496",
+    "calls\\qwen2.5_3b-policy-007-raw-final.jsonl": "d43637a9dd87411870617a893dad809ab49505c7d4adde4581a5b5fa1e2c40bc"
+  },
+  "limitations": [
+    "This comparison tests the original pipeline with a matched local teacher and public information boundary; it is not a literal reproduction of the historical 70B-teacher result.",
+    "The compiler's finite-domain renderer may enumerate input states using its own learned program; this does not expose held-out reference labels.",
+    "Equal available public information and call ceilings do not imply equal realized expenditure or identical prompt spaces.",
+    "Neither winning this development panel nor implementing native GEPA establishes algorithmic novelty or publication readiness.",
+    "Report this as an amended development comparison with one lost teacher attempt, not an uninterrupted replication.",
+    "The lost attempt consumes GEPA's original allowance; its unknown tokens and duration are retained and cannot be set to zero actual cost.",
+    "A single interrupted cell and reused synthetic families limit efficacy conclusions. This does not establish novelty or publication readiness."
+  ],
+  "independence": "Eight related synthetic policy tasks per model; four reused families. Bootstrap is descriptive, not evidence of new-domain or independent-family superiority.",
+  "budget_match": "Same public information and model-call ceilings; actual calls, tokens, routing computation and latency can differ.",
+  "interruption_recovery": {
+    "amendment_id": "original-pipeline-native-gepa-continuation-20261006-v1",
+    "affected_cell": "llama3.2_3b-policy-004-gepa",
+    "completed_artifacts_reused_unchanged": 24,
+    "replayed_solver_responses_without_dispatch": 57,
+    "unobserved_teacher_attempts_charged": 1,
+    "unknown_token_usage_calls": 1,
+    "unknown_latency_calls": 1,
+    "predecessor_files_sha256": {
+      "backend_identity.json": "1ef7137031a39a88d8d82e7ac6a6134310275aaaad077f8f7541cbbe1e0f8325",
+      "calls/llama3.2_3b-policy-000-full.jsonl": "f90182cd79d826a57c1d60ea021cf89de1f46e1b5894491f8197ba0f3c594aa0",
+      "calls/llama3.2_3b-policy-000-gepa.jsonl": "5a762ccff2cefe1b2ba445f75921d61c28bd09bd04aba2c4441f9ac8fadf3ea3",
+      "calls/llama3.2_3b-policy-001-full.jsonl": "67fe38e7d027172058c20607f04e3870efcdf8925ec0644db5888d46c67ec158",
+      "calls/llama3.2_3b-policy-001-gepa.jsonl": "b71f571e7d996b6ade18c4e5ddb4ceab0812e47d34baf8ae805606dda75cbff6",
+      "calls/llama3.2_3b-policy-002-full.jsonl": "c04ab10d55f72ab0a4999f81d46a66c22131312e2f5979b31cfb336cf52dd824",
+      "calls/llama3.2_3b-policy-002-gepa.jsonl": "b90256c5921c33abd3cc64bf9a0392d3647ecae6ed421e3759b8cd373b8de27d",
+      "calls/llama3.2_3b-policy-003-full.jsonl": "757ac4ba89aa837b11d1a00bb1107603b9122669e5d1f00ccb7554067ad4900d",
+      "calls/llama3.2_3b-policy-003-gepa.jsonl": "49329080be449533e908ab8e73e6b824faf37c94188da5e89c2cb31c11d1696e",
+      "calls/llama3.2_3b-policy-004-gepa.jsonl": "75748f88a58754b9da802cd19f4920ef21cab247d4011fdb39c57433664fa6ef",
+      "calls/qwen2.5_3b-policy-000-full.jsonl": "3f0ce3e08055bc1cd8e4ff1f02a6a6b4549e608b2ae1b1ec6b546143e8687903",
+      "calls/qwen2.5_3b-policy-000-gepa.jsonl": "c34fcd1335659d82258d3ada5ac02c67b170f8d44eb3ba74d0175f6e93940ca4",
+      "calls/qwen2.5_3b-policy-001-full.jsonl": "87d84debc81e88d9ac6cc74ae21829b3af5be8291abfb9ae1766877a231b50cf",
+      "calls/qwen2.5_3b-policy-001-gepa.jsonl": "9e8da5a0044202de1fc379e33b030a6f35d48ffc6206ca7c0407cdc320ee4261",
+      "calls/qwen2.5_3b-policy-002-full.jsonl": "a59fd6211098c55ea3f17ed29a79519f563a22498d25acc02d249bfda63f2430",
+      "calls/qwen2.5_3b-policy-002-gepa.jsonl": "1e24ae24397f705a996f513991d1d4fcef24174711234049b37330082446529e",
+      "calls/qwen2.5_3b-policy-003-full.jsonl": "321518e1497349faf3bc4d18b068e44603bd239656a2ce86226780212b74375c",
+      "calls/qwen2.5_3b-policy-003-gepa.jsonl": "9904d01384379e6f881bb4ae47e9c449f53c819d093594a48ea9c704418feaab",
+      "calls/qwen2.5_3b-policy-004-full.jsonl": "d6a172cefcff3d7c96490ef8f50aa43c2cf4aa101b3d015ff3319b7b6c9f3c22",
+      "calls/qwen2.5_3b-policy-004-gepa.jsonl": "980d87c7bbd33be3fca3d101f858822d65cbaafc6816fe4555bf6089b6e0082a",
+      "calls/qwen2.5_3b-policy-005-full.jsonl": "8a70b97d3633adee58242cc21ab759aae9165996353fbf6bf4727845422cb227",
+      "calls/qwen2.5_3b-policy-005-gepa.jsonl": "4e765e5716857c13a5c91e38e7214c04880224c6f2442d9a752d04d39c478d67",
+      "calls/qwen2.5_3b-policy-006-full.jsonl": "c0aad689cc3ec09ac56e2e796059cf82e170870ebba0f37bd5bcc59dc45ab760",
+      "calls/qwen2.5_3b-policy-006-gepa.jsonl": "906d8c862570f0b0acfee6c454c1d8214d874b5d3fb55766898a1ffa19017472",
+      "calls/qwen2.5_3b-policy-007-full.jsonl": "f38a4383bb938df3d1dcf85117b7c9c570e000d1eb13944d8f800844217f9c2e",
+      "calls/qwen2.5_3b-policy-007-gepa.jsonl": "62a071ae84f725615698d9e5fafbd60eb1a071f8dfecabe65312e491530a9496",
+      "case_commitment.json": "66e09268b3104a2fe76c973800c86c5370a8f01ae6c41a9171b737745f1e4cab",
+      "dependencies/gepa/__init__.py": "61cdac47f24d1f24315b8beb8d65e834a67a2a7a6cf9b667ecf6c669ddc6f4a6",
+      "dependencies/gepa/adapters/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/adapters/anymaths_adapter/__init__.py": "121e49528d57b20e76150d409ed1a1ef8b0f08532fa0ad7dfd0a49263eb2fe71",
+      "dependencies/gepa/adapters/anymaths_adapter/anymaths_adapter.py": "70dc1619f8447b1beb8de354cd6cbdf9cf39b913f5b36b9a365eacad9827c3d3",
+      "dependencies/gepa/adapters/confidence_adapter/__init__.py": "d13275271f681d040c0905607bfac3fdf84f204fc8aebb5a144930b891e43223",
+      "dependencies/gepa/adapters/confidence_adapter/confidence_adapter.py": "b4b7c24d495e40cae61fb9f4b17b2f7fa951837e38d2fcfedc41f62dabd57e5a",
+      "dependencies/gepa/adapters/confidence_adapter/scoring.py": "e218f1dacf2497ab577e6f93fe39a98f7cd7cb66f14bae9b1f1c1845e5e82af2",
+      "dependencies/gepa/adapters/default_adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/adapters/default_adapter/default_adapter.py": "9583ceb97990d2230450410913d748761fdbf9f279b9e6dcd7011200dec8063e",
+      "dependencies/gepa/adapters/dspy_adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/adapters/dspy_adapter/dspy_adapter.py": "35d82248aef5a4ed9b6f88cfbe7fba9c04e8d653b4e49416158c3007dcce21d0",
+      "dependencies/gepa/adapters/dspy_adapter/instruction_proposal.py": "de61058caf84610b7e87635b1fe3fc848ab65318ef95d1a1e5a807e39f5b292d",
+      "dependencies/gepa/adapters/dspy_full_program_adapter/__init__.py": "93ca8fc801342d9f8a0181faf650cc0559d1d93ba6f475221f2f775ddec3bd42",
+      "dependencies/gepa/adapters/dspy_full_program_adapter/dspy_program_proposal_signature.py": "bf28deb7752bf27eb27f7b2917ce6525b3c9d06b0462a59ac430fce42b79b743",
+      "dependencies/gepa/adapters/dspy_full_program_adapter/full_program_adapter.py": "de8d2838d390aacbb8f0146625d7ba8778eb3dc6e9f4c96c968e6ea4823d0431",
+      "dependencies/gepa/adapters/generic_rag_adapter/__init__.py": "f30f03f9ec9b4b25f88ab76ab9a664c8b234e983a326efec73ad98cc93f04c58",
+      "dependencies/gepa/adapters/generic_rag_adapter/evaluation_metrics.py": "7fb9d73b48e9ed897ab52e9f03e1120c8b0eea23f5a489ca9a69d81721f06c34",
+      "dependencies/gepa/adapters/generic_rag_adapter/generic_rag_adapter.py": "cbe1152a045770022aa34fe5e0743561c0c76f6c581f6f63a9cbe5250b93c597",
+      "dependencies/gepa/adapters/generic_rag_adapter/rag_pipeline.py": "8dba4dc5fef4763d59f7f1f354f5a442738aef651dc15e7539e6974ae203eef7",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_store_interface.py": "a5d8b0f7bcbdf7750ae1a9a769bff741ad4469ecd91a08e5e858414b457e2bf3",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/__init__.py": "25006b3989e8b257028019b128739692b2345c2fd17ce46469066fd73ba06afb",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/chroma_store.py": "b8d527b8562577daf3d7beb2521c2c419735d4834626f0072ddea09ddefb3dc6",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/lancedb_store.py": "31fc5919c5b9251de60675ad126844885959abadf46f203d0d031d09e40ca804",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/milvus_store.py": "40b82f6464dbdf1f2161f3c5b080b37721224cbd7b73b6f20fbf7caebb35f777",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/qdrant_store.py": "4bd98e1973f44cfb011f1ae0d5d6693516a0f7521285fec5ee68cd75a0c85f8e",
+      "dependencies/gepa/adapters/generic_rag_adapter/vector_stores/weaviate_store.py": "75b1297a31964e6e392f181065a508b259d22afccb3a078fa3f5e5657024a80c",
+      "dependencies/gepa/adapters/langchain_adapter/__init__.py": "d7de53a334ab4775ebf71be526ff946af29c7eec0f0cf86f8bee54bce6a1dd8e",
+      "dependencies/gepa/adapters/langchain_adapter/langchain_adapter.py": "001ea36c4272a77add647fa2c4758c42b4590d001c02267a9b22a973c4d1f5db",
+      "dependencies/gepa/adapters/mcp_adapter/__init__.py": "516969aa27da083b8abeddc190af410bd46458f286915c6249edb5a52f8a5400",
+      "dependencies/gepa/adapters/mcp_adapter/mcp_adapter.py": "8366e013d5bcad90eb55b998aa6d2b81859c831c0d58b5d6eeb47c005ded2c65",
+      "dependencies/gepa/adapters/mcp_adapter/mcp_client.py": "f420efcb09ac01a9d6ed85a205eb2ca8a90de0b641bece22444a873e1b0d8653",
+      "dependencies/gepa/adapters/optimize_anything_adapter/optimize_anything_adapter.py": "36f27ae8fa7f96c550e1a298ba20d353fa846424cb457c727e2961a7aaf7e4d8",
+      "dependencies/gepa/adapters/terminal_bench_adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/adapters/terminal_bench_adapter/terminal_bench_adapter.py": "7d87934f5ffca6740a630ea981158db2407c5f5f2ce68cdb3806aab70c9a72d8",
+      "dependencies/gepa/api.py": "228c4f80c782dc36afc19492bbb023eba12f257aaa22b947009efc473c4572f9",
+      "dependencies/gepa/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/core/adapter.py": "51f47f94802987555202ba4bbe1f8dddf328fce822d1ec02b25a7a049320cef8",
+      "dependencies/gepa/core/callbacks.py": "7f1e8a8a40546e659b900b2e769ab231cb05c38f35bc8bb164df5f99f2cc01d4",
+      "dependencies/gepa/core/data_loader.py": "b1343c92ca654bca51d42819d1b2e4b0edfa3c40124e3316ed060297837810bd",
+      "dependencies/gepa/core/engine.py": "ba361b477de74c20eb813b277b0fb85b6898ca534e09c8e878604fb1c8980c53",
+      "dependencies/gepa/core/result.py": "5ee9ccfdf31e2d4d1262793c569e44ef7b39659a3e971e4f3dc7d656d69a1d85",
+      "dependencies/gepa/core/state.py": "9ad128c981c7344ba0e89d053c2fe33e98a2d74d830679d620cb7cd0d7b1820c",
+      "dependencies/gepa/examples/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/examples/aime.py": "75bba7b19456748529eba34b28b34efe64390ac921a4ee10b336ef58591327b6",
+      "dependencies/gepa/examples/anymaths-bench/eval_default.py": "8ba17775c96ff8e0c214f06c477b95854a53ace6b03a2344b8ac20fbb23b9322",
+      "dependencies/gepa/examples/anymaths-bench/train_anymaths.py": "09210464ce712b70eb5494a46175ecb1a1d62fdf73905b549741c701ed3cf0e8",
+      "dependencies/gepa/examples/mcp_adapter/__init__.py": "a1f9d400525fe9e53167a4c6446f89dc7c022bf5fcf0db76ee7b309f6ac4ffba",
+      "dependencies/gepa/examples/mcp_adapter/mcp_optimization_example.py": "053d70352444c5a7fe6724d666b16154b2ca2e0117c0159fd0f98d28dfde22ed",
+      "dependencies/gepa/examples/rag_adapter/__init__.py": "ec18895a1c95bda4ac9924ee9e38397372d037582577171990768da4652b7004",
+      "dependencies/gepa/examples/rag_adapter/rag_optimization.py": "dd38b601bdd9cac81f9090976ddf4f8d492d588a57bcc3e457f1fb35d132089e",
+      "dependencies/gepa/examples/terminal-bench/train_terminus.py": "682cfa266ce670bf5bcab108d46ab6159a4979fa759c32c90685c867d30626c3",
+      "dependencies/gepa/gepa_utils.py": "60aca7024e31a3e273a01187a6329f381f297a77ec7b6add4b9c90b4d64e9b6c",
+      "dependencies/gepa/gskill/__init__.py": "762995e85daa1619696e6084937ccc0ea7a408eaead55f93943f32b953e1f546",
+      "dependencies/gepa/gskill/gskill/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/gskill/gskill/cost_tracker.py": "e4b8d1856bd78a44ca5913948a7a1f6ff6f017c3ba8313b48fdb3cad67fcba74",
+      "dependencies/gepa/gskill/gskill/evaluate/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/gskill/gskill/evaluate/claude_code.py": "2d073fd336730288402f42fd42841fa3f03ca90d550fbb6df431168701067d71",
+      "dependencies/gepa/gskill/gskill/evaluate/claude_code_skills.py": "29782c68162e407d27788b89db98b5b340826915749b96d6cf1d9445c9badb66",
+      "dependencies/gepa/gskill/gskill/evaluate/mini_swe_agent.py": "da679ca79f70c8404966380cc01e422ec6b072fa20a7b9ce8b88732cb280ffb8",
+      "dependencies/gepa/gskill/gskill/experiment_logger.py": "e03c78cf1ad4760753f89a22bdcf4e4888b9b1a643a1daf9dac5a43693725ce6",
+      "dependencies/gepa/gskill/gskill/swe_fitness_fn.py": "6b8c6a7efd7696a60287371a8da98b6a5272a61925f3fac2a9d9b8c4e456c78f",
+      "dependencies/gepa/gskill/gskill/swe_harness.py": "34e783289e5172a33638a2e153c0e58eaeaf0f93aff2990da9e45e2dfab56e4c",
+      "dependencies/gepa/gskill/gskill/train_optimize_anything.py": "91c9750500fb733a24ea634bfab849bf3bc6130e2b8d138d25e5afe5d7d4b43f",
+      "dependencies/gepa/image.py": "9a567eb78747c365742e945aa8279007d7d38c2bd9163cdfb35f2191fd13d919",
+      "dependencies/gepa/lm.py": "ac3680ba1986a907b98b824165cfd9f6bdbb7c3e77caf76b5d97e029a82244d8",
+      "dependencies/gepa/logging/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/logging/experiment_tracker.py": "e6b6e54d18c9ced038c9c7d2f776183db7c9d928ba032673172504370b6d1dd2",
+      "dependencies/gepa/logging/logger.py": "10977fa9f2b28a708ad2416f00d129dfdfb18200883bee1c5d6fe0a91b003d4a",
+      "dependencies/gepa/logging/utils.py": "43f488abf884b363083d2f76b288cb517c30f03e893322321857a28aa9c2e536",
+      "dependencies/gepa/optimize_anything.py": "bd021ab277c44d5f988cf19a186127b9087b88d59656f560bb07e654524a7f26",
+      "dependencies/gepa/proposer/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/proposer/base.py": "75242e6c71758444d97949fb5c38ff84cd52f2f77f5464c894f6229c9beb210c",
+      "dependencies/gepa/proposer/merge.py": "cd0a3254927e399d0cae4a212076f7577161027b3c4ff19d03c3d2150408ee5a",
+      "dependencies/gepa/proposer/reflective_mutation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/proposer/reflective_mutation/base.py": "f183a12536999004eca9e0d889b53f82bea7e159b4f1c013a3e762251fe3afc1",
+      "dependencies/gepa/proposer/reflective_mutation/reflection_lm.py": "a7357585f90b9cae52c9930805c8020d982119489e4aaee853c3366df67bff85",
+      "dependencies/gepa/proposer/reflective_mutation/reflective_mutation.py": "73eac4a18249fdf84e4cd048bf9527cf9084a565424887a470e004ba047a6a87",
+      "dependencies/gepa/strategies/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencies/gepa/strategies/acceptance.py": "a6234c188fdeab0f7181dd1f01d767fc91779512773ed4ad952df68855c1d3a4",
+      "dependencies/gepa/strategies/batch_sampler.py": "9d009fb88a65663bf22681accfd198261d6689bf4a88931b74bbb76b6d1e2278",
+      "dependencies/gepa/strategies/candidate_selector.py": "c2565e251d0cdc00d7548dde7fd0316190c97a64bc130ea86ea6e2fc8a232cfd",
+      "dependencies/gepa/strategies/component_selector.py": "248cc6eb125eeddaa98f90b7780db2754ec0444a6143aeb1f97ff5660cf39568",
+      "dependencies/gepa/strategies/eval_policy.py": "a54c5969ac47b82c5699e2bc0077ed09efbb046fa077661c10e8ed5f356055ce",
+      "dependencies/gepa/strategies/instruction_proposal.py": "c3848586365c546afdbfb7ffd6f80b6f49def7575821ff352a29bbcf624bd977",
+      "dependencies/gepa/strategies/proposal_sampling.py": "6a00c84708698adf24c207fa4ea5fdbd8a98a31009a84ecf3fffec5b2e5b3dac",
+      "dependencies/gepa/strategies/proposal_selection.py": "8866ac697928ab0824653117876e08af7087d4cbfe24a4feaedb8ceef9b75b18",
+      "dependencies/gepa/utils/__init__.py": "bc700cabd70b16ebce92ea16b579a256a0fdbb31900f226ddc3d0e9446f1f2da",
+      "dependencies/gepa/utils/code_execution.py": "d21c5449193d8cb63a95593c9e3e7c450adea422b6f2453563eee9842efff8aa",
+      "dependencies/gepa/utils/stdio_capture.py": "e2a24d14eb8dd79644554d32ff453ad83f13ffd937f0d97979c99f0d91dd778c",
+      "dependencies/gepa/utils/stop_condition.py": "d33475e411a38353f34272b12b0b2a7af24bbbeca2c2e4fe6c204fa476e87fdb",
+      "dependencies/gepa/visualization.py": "57261cff28ec8bdb2c00a3cd2b461ad24c60e69614c8f44721a95ab2065026ca",
+      "dependencies/gepa-0.1.4.dist-info/METADATA": "aa4b0a523f88df5e65384b6d781f68cd2c4cbf9291b5a166b73742fbcf01b96f",
+      "dependencies/gepa-0.1.4.dist-info/RECORD": "cbcb42c818b3ed6343a4072fdbb276c4715d30c4328ea02e09c47e4edc558d68",
+      "model_identities.json": "1a7ec08a9981b18aa2e10e8df85bf4de692e0d9ed7fff7654363612e65d854c7",
+      "native_package_snapshot.json": "d66a9ed0e6b85a49a0ab8c7231770574911c30bf97cfcf57eedb5968f9ebb5f5",
+      "prepared/llama3.2_3b-policy-000-full.json": "3bf1bfe1ed153bf7c834076bce17299d736848fbb6f9e1a587714793d9bfb026",
+      "prepared/llama3.2_3b-policy-000-gepa.json": "cfc5a2aa06a64ef87a22dc0076ce3b8bca94bf82abcffe60c4b2ed680797ceea",
+      "prepared/llama3.2_3b-policy-001-full.json": "2324a3113fd6cdea6b82d69c10d60d27ec019e0ef50b5112430be88e8eeee8d9",
+      "prepared/llama3.2_3b-policy-001-gepa.json": "b6ca06fac90b188330229fc201c945df9471684ea67bf6b8c11a617fa0fefd57",
+      "prepared/llama3.2_3b-policy-002-full.json": "a6a1533e70935c4462d8382a268a06d5d203a0f847c4497101f76c3550be8831",
+      "prepared/llama3.2_3b-policy-002-gepa.json": "ba8f1cb516cfa3a05b80dd968a573346e067add89a14405a0fcc45bc32ce797a",
+      "prepared/llama3.2_3b-policy-003-full.json": "58b08c79b69399bb3eeb31f0bbb0da7991c2a5391b517347283ce79bcdae5e95",
+      "prepared/llama3.2_3b-policy-003-gepa.json": "66869d633a645e41ab1d16c86e04f0377521efcbf2ee0bc810774656bd4fded4",
+      "prepared/qwen2.5_3b-policy-000-full.json": "5063280f2cad8b44e895c506c365f5854c1c264deeeefab640cc25ee9e776ac0",
+      "prepared/qwen2.5_3b-policy-000-gepa.json": "0d89a9ccb12bc3f2a5c25cc99f0fcb71ebbaa13d4771910b45fef45d542a316f",
+      "prepared/qwen2.5_3b-policy-001-full.json": "fcb578060caf10176fce0dc796fcb286bade277a66ea6472ab3f2b11745a5b1b",
+      "prepared/qwen2.5_3b-policy-001-gepa.json": "d2ab4dff6389a672cd34205b0ecbe802eff682a94a51bffca8bc3cf26efec5f8",
+      "prepared/qwen2.5_3b-policy-002-full.json": "86b4114cc654309d83b5561a211f00af1c4d7929f6de973df9c760b38169034e",
+      "prepared/qwen2.5_3b-policy-002-gepa.json": "efbc63af3750b5deab4e352cff811403f1328e26fc6e4d5592c6a659d5101b3f",
+      "prepared/qwen2.5_3b-policy-003-full.json": "b4cae8f1ce852956436b906f3bd9fa78fcc9eced459d011fe07dd19dbe6a985f",
+      "prepared/qwen2.5_3b-policy-003-gepa.json": "3221b3591df029d97d76c468f99973a991d895b69eb7f0d15da61a1c66010ea3",
+      "prepared/qwen2.5_3b-policy-004-full.json": "475c9ba82979f19841638439890f2d4b0532d47df3c96294dae0c1b8f2785501",
+      "prepared/qwen2.5_3b-policy-004-gepa.json": "92e33147fde284eaa4e3da64e47f783526d5fae791b813da3bd0d9464397fc76",
+      "prepared/qwen2.5_3b-policy-005-full.json": "bea1be0f7d5c097d4cf3973bd2f6ea9b817e19343fd119cae3c111280848e009",
+      "prepared/qwen2.5_3b-policy-005-gepa.json": "90b57cb827abffe21338378540331363eb4cc04a6482878b1a667d2a30ced897",
+      "prepared/qwen2.5_3b-policy-006-full.json": "81073b26647dcbf41f73148fbe85209ad6eacf2b12de59c3eb69a167a190ea47",
+      "prepared/qwen2.5_3b-policy-006-gepa.json": "ac5f891f52d45cdefd2c6978690fd965e2f9ebff3e8743593e52acc9b93c6f6e",
+      "prepared/qwen2.5_3b-policy-007-full.json": "8e8faa6fbb98c69c95db2a8590f2cf2445630d6d91f2627ca0d3ec87d5fc7d81",
+      "prepared/qwen2.5_3b-policy-007-gepa.json": "8b8cc6432ee4fbf5aa6fe1f39d3aac73a4b705dc1981a53a606c6791964638ea",
+      "protocol.json": "eb45a01916ede92063590745c3dabf0a07548a0a2f68896198edf7ecd0c09186",
+      "public_tasks.json": "eceab657c7eb35e8d64c2db970718f0ef77bb516f1fc0de8f68344d19c9f7a3a",
+      "resource_scope.json": "0d841d22edd4d115df96a5a28f6ddfd92133a275cd3858724799123d5d14acf9",
+      "router_identity.json": "b9f40d4cf69688c488d8802d9b0de5402156466f52e96f5706d9baf2f716fe03",
+      "sealed/final_cases.json": "0d314cd65504cfd7527235837c4e42ef55cfaf83e1cbe506b9fab1d2bb43fdee",
+      "source/protocols/matched_original/development_20261005_v1.json": "eb45a01916ede92063590745c3dabf0a07548a0a2f68896198edf7ecd0c09186",
+      "source/scripts/matched_original.py": "894cf30ea98dbba34be08f338ccdbad6ea6baaf36887c5e72bca29d443e374aa",
+      "source/scripts/report_matched_original.py": "e4b810f90d76b4f77056f4bce946753e601d46941c871b501d869af3ca2654af",
+      "source/scripts/run_matched_original.py": "f17799efa8b3c5fb3c9b72264492b026ea2aeb7e5e28ba1de7d1f2e16c3740ad",
+      "source/src/taskcompiler/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/src/taskcompiler/benchmarks/__init__.py": "1dd871409093d43e4a4c92bac255bccb782bc4813aeb056929da08fc60ec90b7",
+      "source/src/taskcompiler/benchmarks/adaptive/__init__.py": "ba8126ae02a1a393183aca93b91420bd6d189d87c96364e3c75191b1867246ab",
+      "source/src/taskcompiler/benchmarks/adaptive/compiler.py": "4674815cc7a105b4d65fbb73a4e4f85d76af57b1e4caa5041f3800a71044d320",
+      "source/src/taskcompiler/benchmarks/adaptive/teaching.py": "b13587c24ad86a7b8517b13c4a8c05a92b775aa625f2d3ad1499e1e915cff719",
+      "source/src/taskcompiler/benchmarks/compiler.py": "b4dd4949e2be760dbf546777e376960e64c2d656db2531c2bde5197094d9036f",
+      "source/src/taskcompiler/benchmarks/composition/__init__.py": "34eee1d0741fa3fda07119f2ff26c7a5f4e146c3f36d28dbcd290d354847879a",
+      "source/src/taskcompiler/benchmarks/composition/compiler.py": "4c246c17417e062459cdd6729603957a052f7d758d4caf170f820c2ecca9f44d",
+      "source/src/taskcompiler/benchmarks/composition/linear_control.py": "be83ca86bc29cbe618f2e51630a49567e623ee6d1b80643436e866289d295923",
+      "source/src/taskcompiler/benchmarks/composition/public_cases.py": "d19eaf0abe65afbf27e0ca3d778e37d59713c0e732a630ed437def9c14f681fd",
+      "source/src/taskcompiler/benchmarks/composition/reporting.py": "6c7acd0a35bfedb057e76a246030cb94b070bcc80e0860410e57dc5d18219bc8",
+      "source/src/taskcompiler/benchmarks/composition/response_model.py": "aec2b1ee40286bdeee9992c1adc406c3373998cac09e03cf432e2eb58a969625",
+      "source/src/taskcompiler/benchmarks/composition/seed_values.py": "cfd5b68671082152c2f21607af0d54687fd212c52e4ed90ff5e0aab9b863ffd0",
+      "source/src/taskcompiler/benchmarks/datasets.py": "02dea9c6f09b2b45274e25d1f2106bb94ac34a2a555092c1fdb139d07d20d3f4",
+      "source/src/taskcompiler/benchmarks/dialogue/__init__.py": "08c1242ee5c9bbff0bebaee2ed930249092b549a5e94e0f973c2cd19f5db530e",
+      "source/src/taskcompiler/benchmarks/dialogue/catalog.py": "daaedee1e5a9079c1aae3d95db7e7253cfbf523cdb10498c4cdaaeda83540ff6",
+      "source/src/taskcompiler/benchmarks/dialogue/dataset.py": "ef53f2787f1c15b7053c4c4a18159f191a2af0b688c18f97f8faf6bb5848b0c3",
+      "source/src/taskcompiler/benchmarks/dialogue/metrics.py": "70aa92d8a7e5a31c7fc1e17d9df90e8f8d607da4e596027517712935577cc409",
+      "source/src/taskcompiler/benchmarks/evaluators.py": "2f40ee7b85a1f8b0fcf017ec743d67f5a55561da63a7c84b745741aefced0026",
+      "source/src/taskcompiler/benchmarks/interventions/__init__.py": "8348aa8ecdd58e74e798b30e5878518ff1f577695dffb6262fe305741d8fcf30",
+      "source/src/taskcompiler/benchmarks/interventions/compiler.py": "18fd70ff685a47de5036a37135b828ab1644d4ed6d0942c84e6858009333e075",
+      "source/src/taskcompiler/benchmarks/interventions/program.py": "f2c604968db5653c5f55a0992f27a919206847c7f90701b21989b56252eae7d8",
+      "source/src/taskcompiler/benchmarks/interventions/response.py": "2de70db1c3a16c031aa264dc2dd0bd46f0e955414cdfd3a1fa58f33c9d70525a",
+      "source/src/taskcompiler/benchmarks/interventions/teaching.py": "bb89231bfb14f860781c27a1961c9b14d438f656eb06b9c41019ec0bcf7f3876",
+      "source/src/taskcompiler/benchmarks/native_gepa.py": "c78442710ad4c20cea5874f71d5f61b489bab6eb1f8a7fac0d17e2b8f20ef45f",
+      "source/src/taskcompiler/benchmarks/relational/__init__.py": "2672835cf33898dca10264faeee18486ae3df8eb9ff0d18ad2b6c740f424f9f5",
+      "source/src/taskcompiler/benchmarks/relational/constraints.py": "5c05912dc4917cf5aaf351a9aaff5c0d1ec91098617d1e83b7d2b7368eaa7970",
+      "source/src/taskcompiler/benchmarks/relational/ranking.py": "8d520d2343ffb96fe22d8067ca596c3abcc1a278011b6659f9788fae04dc3e66",
+      "source/src/taskcompiler/benchmarks/teaching.py": "b8615bf131d67c460e387e77f724aee1ab3772478fc7db9646d80a2efe0f88bc",
+      "source/src/taskcompiler/config.py": "73c10171d9a5002321ba5153c6626a8a3f4a7486b08834f7358208d8da0c5282",
+      "source/src/taskcompiler/corrections/__init__.py": "cf9196973af9ef7b5f8f0903d64282372fa9b695f66a14de3624ec75155ab291",
+      "source/src/taskcompiler/corrections/baselines.py": "b666ac991df7ffb8e3cb358c95938db2d116afdf25520a41b9af990a61b1cef6",
+      "source/src/taskcompiler/corrections/experiment.py": "3c6929cef8a2afb97c99d6a0e63d72152d68cbf6fb2c98f1d23cf6553594a665",
+      "source/src/taskcompiler/corrections/prompts.py": "e4c44732868323995830f0caba94ffaa5e3339b47add8978503c60d7bded83bf",
+      "source/src/taskcompiler/corrections/schema.py": "005459baa6c4054fbafe939d98b45ade9b791e0cf801a4f4546fa4c32b5ad8ec",
+      "source/src/taskcompiler/dsl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/src/taskcompiler/dsl/ast.py": "5073d8d99c592623d210c08617ac755cca641aebc564d3ca29e8842287e78764",
+      "source/src/taskcompiler/dsl/interpreter.py": "21071677da1fd8de0c08f0df41b7b3a2730eaff8c577873713906d6f3acac690",
+      "source/src/taskcompiler/dsl/mutate.py": "8e76f308f333ba5904027e9feeb60356e20801ecff95d50b4687d46fe6326b6f",
+      "source/src/taskcompiler/dsl/parser.py": "14d7e8b2ee01b117f4ca026379a7120f2c15b8d5bb33e4a07a2e3fb1d8f79fc0",
+      "source/src/taskcompiler/evidence.py": "e20ed1032a12c35ad4d553fa54d40a5bb08a9858a594441092eaeb0a8aadc3c7",
+      "source/src/taskcompiler/guidance_track/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/src/taskcompiler/guidance_track/ape_baseline.py": "ea46d3e449c3fb1f9ae7992ef70447e54221f5b31913f52d3c5cb1badca937f1",
+      "source/src/taskcompiler/guidance_track/bbh.py": "6519cbb1ab8e4059ee246e17f46606aab834ae03884ede9451f944a67f7847a5",
+      "source/src/taskcompiler/guidance_track/gepa_baseline.py": "87c1981e1baf57639b4bd24e7b5f8a4cdd1e89ede096d9e8a37164399149f37d",
+      "source/src/taskcompiler/guidance_track/humaneval_exec.py": "7fe02b906a08c770ccab35c14f873638fd39be8c937136a24ed0a97ccad398f8",
+      "source/src/taskcompiler/guidance_track/pipeline.py": "ec31f9a4b724ad30225d8595d01ad2c4d13f02e7d9aa0eae73dad9f395759596",
+      "source/src/taskcompiler/guidance_track/rulearena.py": "7979fe8c6d001db12eb51e9b3fa98f1b60e4f6573df7840955edda93b700d145",
+      "source/src/taskcompiler/guidance_track/rulearena_compiler.py": "38bd71497a6322ab0140e9f3e64190453287a08ec336e5d581daf27235f21cf9",
+      "source/src/taskcompiler/guidance_track/slr_bench.py": "ee6d8ac00113847e8cb282b63047edc3f61795707cfe39e6b529cac89d299d77",
+      "source/src/taskcompiler/guidance_track/superni.py": "ff3b7d7a6d929037c0822c9efd69db68c7375d323e6fcba937e504b039c8f85c",
+      "source/src/taskcompiler/guidance_track/textgrad_baseline.py": "94144049604edaaaa624913a84f952886815fdc50d30aa08c765609a887c8431",
+      "source/src/taskcompiler/lineage.py": "58b9a7678e6a26a98848985e9e00314149fe9ae7843674f95f01d49c63e6855a",
+      "source/src/taskcompiler/metrics.py": "64c5465d228562bcff0534ed36e8589a256dda6bcfc571c01d07459a6e9d2829",
+      "source/src/taskcompiler/procedural/__init__.py": "b6760d911354922edb899b753fcc53ca9c7d55bfbc4435e4bb4ee1ac7cb57302",
+      "source/src/taskcompiler/procedural/__main__.py": "691327dc2a0b622a79ba3521b521ca6d2e89b83e877a610a5153559188bd0aec",
+      "source/src/taskcompiler/procedural/experiment.py": "68642d77a3b8c5190bf4c4a554d242b67e31c9e6929170b1960e2307363586b2",
+      "source/src/taskcompiler/procedural/gepa.py": "fa71e08276b2a5a66fe338f16861a4c48c704130550afc03a872829516d69686",
+      "source/src/taskcompiler/procedural/local_model.py": "11e7ea762eced32951a49970ea5a7b3fc80d63b11e26647450ee1583bedaa775",
+      "source/src/taskcompiler/procedural/mipro.py": "3b0c699b79e583593eae82b6a3d3b67d3713d372612931c6b8771159efbef081",
+      "source/src/taskcompiler/procedural/prompts.py": "40109ff6ebef8d6d7bacfc906bf5d479bff1ad0fe0ac5c6be1b005698ed36b66",
+      "source/src/taskcompiler/procedural/reporting.py": "043ed9996e5b378415a2e3de3ed5247dbbbf5621f4b1f6bc1897ccc96faec8d8",
+      "source/src/taskcompiler/procedural/schema.py": "38a412c81bbf4f0eb746d4ba49fe82cc4be700f352beb95a4d4c69e6d360e2d0",
+      "source/src/taskcompiler/route.py": "6d9b46d11190aea2e108946d41022e2d04ed60d9dc5fb25616a3e79b5a8f73f8",
+      "source/src/taskcompiler/rules_track/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source/src/taskcompiler/rules_track/contract_nli.py": "1f0d02ee85e35ad990174944467c67068eb2a40f191088a8b74e521c52558db8",
+      "source/src/taskcompiler/rules_track/contract_transfer.py": "593f37c034f626f4d992b8901e0c8f5d03610384704e49176c3b4e360faa3a6d",
+      "source/src/taskcompiler/rules_track/pipeline.py": "92c7237a204c3597edb123c6a8ad078574cc23fdb4374d551138905849158f41",
+      "source/src/taskcompiler/rules_track/prompts.py": "3b8fe0a8dfb680180e13b335dc3405eff54b7597010d8b7c8166f3d2db88987e",
+      "source/src/taskcompiler/rules_track/synthetic_policies.py": "12523aa7ee23f250ad6335d6d30235caefc820df1e25215ff5511cea22afb16a",
+      "source/src/taskcompiler/rules_track/text_predicates.py": "6604d9a07145eb0bb05791d2d0cc0901ad8b1f5503c4960b025f4db03c261012",
+      "source/src/taskcompiler/run.py": "a0142234c0256f4b7f304db94b90b1ac2d7a7086a6ffb76cf3d29c848ca7d110",
+      "source/src/taskcompiler/sandbox.py": "f1a14d7c03d22209e94528a353efdfb38968d07e4907fdcaf8c0d305825ec6c2",
+      "source/src/taskcompiler/schema.py": "c4f045f6a1a61f4e329f1050b7611766b464acc76a5dedeca34de68462476964",
+      "source/src/taskcompiler/spec_compiler.py": "ec18e67b98881073c1bf137a1c8cfa5514ecf7d03dbd095c9e061f78c52a54c4",
+      "source/src/taskcompiler/statistics.py": "e867c7c652dc86a6e5262e39f0bbdefa0ce75e3580ae83cd098909071c591758",
+      "source/src/taskcompiler/stub_track.py": "59d47f898a6b2eedef8c65687d0b6f7cc7c311d2a0bdaf05e036bffea064486c",
+      "source/src/taskcompiler/student.py": "b4d294f8b2d5645cf99733abfd95abe0dc0885fcbaee5f7432fba92af6d6568b",
+      "source/src/taskcompiler/teacher.py": "676e3eecac70e39e59b901f481eb6edf54dc31497740dc63983a45deb902453e",
+      "source/src/taskcompiler/translate.py": "9f42957fb3b404c8472320ee20aa9f5324c373b98b1ee3611b51e9fb598a6821",
+      "source/src/taskcompiler/verify.py": "38404d48a35ee9cd60c7d1bc03296b279ac0d8a9b13de93911a322bfb34cca57",
+      "source_snapshot.json": "c2eb7d1943c0c567425929b839360fddeac22e5ff5b2a25344b93e3b4bbc0ab7"
+    },
+    "recovery_source": {
+      "frozen_at": "2026-10-06T13:14:29.910773+00:00",
+      "commit": "082baa95c9693bc5018c7cc5b8392884d15feb6d",
+      "source_hashes": {
+        "scripts/continue_matched_original.py": "1ff932209958bf4425844159f116f7f2d658d979b2288f04ea10b3ffda870c87",
+        "scripts/report_matched_original_continuation.py": "3ecfcb5dd06b06e44e98210d58aa0bf8dc77eed63ce52aba46eaaa97f04a5b05",
+        "protocols/matched_original/continuation_20261006_v1.json": "f5e6907a6b088dafb433b02f2fa186588f2b90df543aeb3ed4ff82c9451461b4"
+      }
+    },
+    "limitations": [
+      "Report this as an amended development comparison with one lost teacher attempt, not an uninterrupted replication.",
+      "The lost attempt consumes GEPA's original allowance; its unknown tokens and duration are retained and cannot be set to zero actual cost.",
+      "A single interrupted cell and reused synthetic families limit efficacy conclusions. This does not establish novelty or publication readiness."
+    ],
+    "reader_amendment": {
+      "kind": "in_memory_inventory_separator_normalization",
+      "reason": "The frozen reader compared Windows backslash predecessor inventory keys with forward-slash ledger names, misclassifying the extended ledger and retained calls. Normalize only those relative keys in memory; preserve the original bytes and all underlying audits.",
+      "adapter_path": "scripts/report_matched_original_continuation_v2.py",
+      "adapter_sha256": "89d3e8f13af1d1eecbda8997404a3089451a54167ac6727f837106ee6cc74103",
+      "frozen_reporter_path": "scripts/report_matched_original_continuation.py",
+      "frozen_reporter_sha256": "3ecfcb5dd06b06e44e98210d58aa0bf8dc77eed63ce52aba46eaaa97f04a5b05",
+      "inventory_keys": 237,
+      "separator_changed_keys": 228,
+      "underlying_evidence_modified": false
+    },
+    "amendment_secondary_sensitivity": {
+      "solver_model": "llama3.2:3b",
+      "omitted_task": "policy-004",
+      "tasks": 7,
+      "mean_full_minus_gepa": 0.026455026455026454,
+      "scope": "Descriptive diagnostic specified after interruption but before final opening; primary remains all eight tasks."
+    }
+  }
+}

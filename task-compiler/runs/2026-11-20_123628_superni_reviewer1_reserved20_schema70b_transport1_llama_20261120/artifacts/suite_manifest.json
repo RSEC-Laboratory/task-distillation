@@ -1,0 +1,210 @@
+{
+  "benchmark": "Super-NaturalInstructions",
+  "source_repository": "allenai/natural-instructions",
+  "source_commit": "55a365637381ce7f3748fa2eac7aef1a113bbb82",
+  "split": "confirmation",
+  "official_instance_order": true,
+  "tasks": [
+    {
+      "task_id": "task242_tweetqa_classification",
+      "source_sha256": "81b43f318e84441f3b4ec6a725873fce8ce85d17e47ec6939e9b4d5854d124e1",
+      "sources": [
+        "tweetqa"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task1344_glue_entailment_classification",
+      "source_sha256": "6cc22a83fc6e7d0ddbe9a05248cfa4f6762fe9f34a1a55af42f881ad191a4351",
+      "sources": [
+        "rte"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task1439_doqa_cooking_isanswerable",
+      "source_sha256": "4dc08ad64090d80448ed0546a6f93eb2a9e5b9e31af8a3f3022b80f4e0570601",
+      "sources": [
+        "doqa"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task738_perspectrum_classification",
+      "source_sha256": "951d49f90084e392007871987befcfa65abdcf462d4c946466c66522d1a13822",
+      "sources": [
+        "perspectrum"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task1615_sick_tclassify_b_relation_a",
+      "source_sha256": "ee29ade9a6e29f6bee51c29aeab0a928bc590b608edb61dee3ef006cfef2b409",
+      "sources": [
+        "sick"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task879_schema_guided_dstc8_classification",
+      "source_sha256": "cc43ec3511ea8b86575fb0c15e79d72a2739fedce975db09a872c65c56a1fc4b",
+      "sources": [
+        "schema_guided_dstc8"
+      ],
+      "categories": [
+        "Dialogue Act Recognition"
+      ]
+    },
+    {
+      "task_id": "task1387_anli_r3_entailment",
+      "source_sha256": "63ba1fc8ac91f8cc81946e37d91cda981c8b80f857f8eeb4258c737ba32e2789",
+      "sources": [
+        "anli"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task642_esnli_classification",
+      "source_sha256": "8350fc2d6c9641d47063bd9f2eb4b770c30d7b5e134187fe96db1b0f68f9d57b",
+      "sources": [
+        "e_snli"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task1390_wscfixed_coreference",
+      "source_sha256": "0143a2e9ada228e560f8c78cf6e3812b139de68ed5dcf9f2e38c03d7ad2123ce",
+      "sources": [
+        "wsc_fiexed"
+      ],
+      "categories": [
+        "Coreference Resolution"
+      ]
+    },
+    {
+      "task_id": "task1640_aqa1.0_answerable_unanswerable_question_classification",
+      "source_sha256": "34d51dd4eb7677b777e530c9c975ba69a27d3b409b7c08a0c5ba1c8bf3c2fdbc",
+      "sources": [
+        "adversarial_qa"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task1388_cb_entailment",
+      "source_sha256": "5f107f045368b6a2e6f30f1330cc82f50b945f7e34941172f62adcaf643b1003",
+      "sources": [
+        "cb"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task1534_daily_dialog_question_classification",
+      "source_sha256": "babd6c94f5c876979164296c35828a1d39ac9a0f31ce49066d52443636d99ddb",
+      "sources": [
+        "dailydialog"
+      ],
+      "categories": [
+        "Dialogue Act Recognition"
+      ]
+    },
+    {
+      "task_id": "task232_iirc_link_number_classification",
+      "source_sha256": "1bd06c5e02c98431217cca7f5f8ca1a135cc9bc5d0dca4e455e92d4ecb1ba355",
+      "sources": [
+        "iirc"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task362_spolin_yesand_prompt_response_sub_classification",
+      "source_sha256": "5418a35b676da4db54e497c469dc3218956c7a985df48b74de622449fa333757",
+      "sources": [
+        "spolin"
+      ],
+      "categories": [
+        "Dialogue Act Recognition"
+      ]
+    },
+    {
+      "task_id": "task1554_scitail_classification",
+      "source_sha256": "305c619c8d96f6d0606647b404d769fd94d0e531429bb651c356f6f37049de8b",
+      "sources": [
+        "scitail"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task970_sherliic_causal_relationship",
+      "source_sha256": "47a9bdce537e124c4a13e822b1152dbd63cf41674470f5981d099f049fd14e73",
+      "sources": [
+        "sherliic"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task391_causal_relationship",
+      "source_sha256": "b9ecde60dd9468c68fe7a5a39b22928100368fae93871479f1e9a8403b1dd497",
+      "sources": [
+        "cod3s"
+      ],
+      "categories": [
+        "Cause Effect Classification"
+      ]
+    },
+    {
+      "task_id": "task220_rocstories_title_classification",
+      "source_sha256": "351875607f5de10a14b6bf156051f6c881cb28c2292bcb23fac79d08ee1fc1a9",
+      "sources": [
+        "rocstories"
+      ],
+      "categories": [
+        "Title Generation"
+      ]
+    },
+    {
+      "task_id": "task050_multirc_answerability",
+      "source_sha256": "8375a51cb0d04971ff7b5f1f1cc1551d335280bfa5890fde50cbe27d383cd69f",
+      "sources": [
+        "multirc"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task349_squad2.0_answerable_unanswerable_question_classification",
+      "source_sha256": "f41bba15ebf70dbd27a6020a123cb0f31d59e2ca1c5b08f027cc3f7cb383b8dc",
+      "sources": [
+        "squad2.0"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    }
+  ],
+  "manifest_sha256": "82d838be8918b1d7239d6e4f254acf82722d2295a8531ed85d7f95a04963d495"
+}

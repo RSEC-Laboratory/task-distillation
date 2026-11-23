@@ -1,0 +1,289 @@
+[
+  {
+    "fallback_tasks": [
+      "task201_mnli_neutral_classification",
+      "task893_gap_fill_the_blank_coreference_resolution",
+      "task1624_disfl_qa_question_yesno_classification"
+    ],
+    "final_answers_generated_locally": true,
+    "manifest_sha256": "d74452cbf4f045f72c29a635144abf0e04f0be443407dcc1918711702fb6d41d",
+    "run_id": "2026-07-27_171303_superni_superni_llama_development",
+    "source_commit": "55a365637381ce7f3748fa2eac7aef1a113bbb82",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task_metrics": [
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.35,
+            "correct": 7,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.35,
+            "correct": 7,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.3,
+            "correct": 6,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.3,
+            "correct": 6,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.3,
+            "correct": 6,
+            "total": 20
+          }
+        },
+        "task_id": "task201_mnli_neutral_classification"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.15,
+            "correct": 3,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.25,
+            "correct": 5,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.3,
+            "correct": 6,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.25,
+            "correct": 5,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.25,
+            "correct": 5,
+            "total": 20
+          }
+        },
+        "task_id": "task893_gap_fill_the_blank_coreference_resolution"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.0,
+            "correct": 0,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          }
+        },
+        "task_id": "task1624_disfl_qa_question_yesno_classification"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.8,
+            "correct": 16,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.5,
+            "correct": 10,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.65,
+            "correct": 13,
+            "total": 20
+          }
+        },
+        "task_id": "task935_defeasible_nli_atomic_classification"
+      }
+    ],
+    "teacher_calls": 11
+  },
+  {
+    "fallback_tasks": [
+      "task201_mnli_neutral_classification",
+      "task1624_disfl_qa_question_yesno_classification"
+    ],
+    "final_answers_generated_locally": true,
+    "manifest_sha256": "d74452cbf4f045f72c29a635144abf0e04f0be443407dcc1918711702fb6d41d",
+    "run_id": "2026-07-27_194026_superni_superni_gemma_development",
+    "source_commit": "55a365637381ce7f3748fa2eac7aef1a113bbb82",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task_metrics": [
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.05,
+            "correct": 1,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.1,
+            "correct": 2,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.05,
+            "correct": 1,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.1,
+            "correct": 2,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.1,
+            "correct": 2,
+            "total": 20
+          }
+        },
+        "task_id": "task201_mnli_neutral_classification"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.75,
+            "correct": 15,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.95,
+            "correct": 19,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.85,
+            "correct": 17,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.75,
+            "correct": 15,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.85,
+            "correct": 17,
+            "total": 20
+          }
+        },
+        "task_id": "task893_gap_fill_the_blank_coreference_resolution"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.8,
+            "correct": 16,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.75,
+            "correct": 15,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.0,
+            "correct": 0,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.75,
+            "correct": 15,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.75,
+            "correct": 15,
+            "total": 20
+          }
+        },
+        "task_id": "task1624_disfl_qa_question_yesno_classification"
+      },
+      {
+        "conditions": {
+          "parent_one_shot": {
+            "accuracy": 0.8,
+            "correct": 16,
+            "total": 20
+          },
+          "positive_examples": {
+            "accuracy": 0.85,
+            "correct": 17,
+            "total": 20
+          },
+          "raw_definition": {
+            "accuracy": 0.85,
+            "correct": 17,
+            "total": 20
+          },
+          "validated_full": {
+            "accuracy": 0.8,
+            "correct": 16,
+            "total": 20
+          },
+          "validated_routed": {
+            "accuracy": 0.8,
+            "correct": 16,
+            "total": 20
+          }
+        },
+        "task_id": "task935_defeasible_nli_atomic_classification"
+      }
+    ],
+    "teacher_calls": 8
+  }
+]

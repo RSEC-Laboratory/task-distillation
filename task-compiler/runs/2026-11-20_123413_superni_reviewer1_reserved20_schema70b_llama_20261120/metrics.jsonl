@@ -1,0 +1,2 @@
+{"stage": "load_superni_public_specifications", "elapsed_seconds": 0.75, "cpu_percent": 0.0, "ram_mb": 696.46484375, "gpu_util_percent": null, "gpu_mem_mb": null}
+{"stage": "compile_validate_and_freeze_all_tasks", "elapsed_seconds": 0.5939999999991414, "cpu_percent": 78.6, "ram_mb": 720.72265625, "gpu_util_percent": null, "gpu_mem_mb": null}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "rows": 2268,
+  "conditions": {
+    "llama/hamming_nearest_vote": {
+      "correct": 525,
+      "total": 648
+    },
+    "llama/minilm_1nn": {
+      "correct": 304,
+      "total": 648
+    },
+    "gemma/hamming_nearest_vote": {
+      "correct": 401,
+      "total": 486
+    },
+    "gemma/minilm_1nn": {
+      "correct": 228,
+      "total": 486
+    }
+  },
+  "checks": "Input/source locks, complete unique grid, Hamming distances and vote ties, copied public labels, final-label scoring. MiniLM numerical neighbor search is reproducible from the frozen encoder and runner; this audit validates its recorded label-copy operation.",
+  "new_model_generation_calls": 0
+}

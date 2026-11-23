@@ -1,0 +1,129 @@
+{
+  "task_id": "policy-004",
+  "solver_model": "llama3.2:3b",
+  "arm": "full",
+  "prepared_at": "2026-10-06T13:25:16.686016+00:00",
+  "method": {
+    "method": "full_dsl",
+    "task_id": "policy-004",
+    "public_task_hash": "9b01ddd5108e9bbc122d13b94fd183baf0eeeb09b105f553e8b8a90da0abc366",
+    "instructions": [
+      "Task: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004"
+    ],
+    "routed": false,
+    "status": "raw_fallback",
+    "trace": {
+      "failed_dsl_source": "predicate Critical(event):\n    event.risk == TRUE or event.action == change\n\npredicate UnknownExternal(event):\n    event.risk == UNKNOWN and event.context == sandbox\n\npredicate Trusted(event):\n    event.role == guest and event.context != sandbox\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\nrule UnknownRiskCase:\n    when not Critical(event) and event.risk == UNKNOWN and event.context != sandbox\n    then prefer label = review priority 90\n\nrule TrustedDelete:\n    when Trusted(event) and event.action == delete\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when event.action == approve and event.context == sandbox\n    then prefer label = deny priority 70\n\nrule AnalystOrInternal:\n    when event.role == analyst or event.context == internal\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when not Critical(event) and not Trusted(event) and not UnknownExternal(event)\n    then prefer label = allow priority 1\n\nrule RequiredLabelsOverride:\n    when require label = allow or require label = deny or require label = review\n    then abstain\n\nrule ConflictingRequiredLabels:\n    when require label = allow and require label = deny or require label = allow and require label = review or require label = deny and require label = review\n    then abstain\nrule ForbiddenLabelsRemoved:\n    when forbid label = review\n    then forbid label = review\n\nrule HighestPriorityPreference:\n    when prefer label = allow priority 1 and prefer label = review priority 40 and prefer label = deny priority 70 and prefer label = allow priority 80 and prefer label = review priority 90\n    then prefer label = review priority 90",
+      "failure": {
+        "fallback": "raw_task",
+        "message": "unexpected token in expression: Token('require', 'require')",
+        "stage": "teacher_syntax"
+      },
+      "final_access_during_optimization": false,
+      "initial_source_supplied": false,
+      "limits": {
+        "counterexample_patches": 3,
+        "max_instruction_words": 1800,
+        "reflection_minibatch_size": 3,
+        "representation_rounds": 3,
+        "seed": 20261005,
+        "semantic_repair_rounds": 3,
+        "solver_calls": 216,
+        "teacher_calls": 4,
+        "teacher_tokens": 2000,
+        "top_k": 6
+      },
+      "oracle_program_access": false,
+      "public_audit_refinement_case_ids": [
+        "policy-004-refinement-00",
+        "policy-004-refinement-01",
+        "policy-004-refinement-02",
+        "policy-004-refinement-03",
+        "policy-004-refinement-04",
+        "policy-004-refinement-05",
+        "policy-004-refinement-06",
+        "policy-004-refinement-07",
+        "policy-004-refinement-08",
+        "policy-004-refinement-09",
+        "policy-004-refinement-10",
+        "policy-004-refinement-11",
+        "policy-004-refinement-12",
+        "policy-004-refinement-13",
+        "policy-004-refinement-14",
+        "policy-004-refinement-15",
+        "policy-004-refinement-16",
+        "policy-004-refinement-17",
+        "policy-004-refinement-18",
+        "policy-004-refinement-19",
+        "policy-004-refinement-20",
+        "policy-004-refinement-21",
+        "policy-004-refinement-22",
+        "policy-004-refinement-23",
+        "policy-004-refinement-24",
+        "policy-004-refinement-25",
+        "policy-004-refinement-26"
+      ],
+      "public_build_case_ids": [
+        "policy-004-build-00",
+        "policy-004-build-01",
+        "policy-004-build-02",
+        "policy-004-build-03",
+        "policy-004-build-04",
+        "policy-004-build-05",
+        "policy-004-build-06",
+        "policy-004-build-07",
+        "policy-004-build-08",
+        "policy-004-build-09",
+        "policy-004-build-10",
+        "policy-004-build-11",
+        "policy-004-build-12",
+        "policy-004-build-13",
+        "policy-004-build-14",
+        "policy-004-build-15",
+        "policy-004-build-16",
+        "policy-004-build-17",
+        "policy-004-build-18",
+        "policy-004-build-19",
+        "policy-004-build-20",
+        "policy-004-build-21",
+        "policy-004-build-22",
+        "policy-004-build-23",
+        "policy-004-build-24",
+        "policy-004-build-25",
+        "policy-004-build-26"
+      ],
+      "router_identity": {
+        "backend": "sentence_transformers",
+        "local_snapshot": "<USER_HOME>\\.cache\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "teacher_calls": 1,
+      "teacher_raw_text": [
+        {
+          "phase": "initial",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    event.risk == TRUE or event.action == \\\"change\\\"\\n\\npredicate UnknownExternal(event):\\n    event.risk == \\\"UNKNOWN\\\" and event.context == \\\"sandbox\\\"\\n\\npredicate Trusted(event):\\n    event.role == \\\"guest\\\" and event.context != \\\"sandbox\\\"\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = deny\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then require label = uncertain\\n\\nrule UnknownRiskCase:\\n    when not Critical(event) and event.risk == \\\"UNKNOWN\\\" and event.context != \\\"sandbox\\\"\\n    then prefer label = review priority 90\\n\\nrule TrustedDelete:\\n    when Trusted(event) and event.action == \\\"delete\\\"\\n    then prefer label = allow priority 80\\n\\nrule ApproveInSandbox:\\n    when event.action == \\\"approve\\\" and event.context == \\\"sandbox\\\"\\n    then prefer label = deny priority 70\\n\\nrule AnalystOrInternal:\\n    when event.role == \\\"analyst\\\" or event.context == \\\"internal\\\"\\n    then prefer label = review priority 40\\n\\nrule TrustedForbidReview:\\n    when Trusted(event)\\n    then forbid label = review\\n\\nrule OtherRoles:\\n    when not Critical(event) and not Trusted(event) and not UnknownExternal(event)\\n    then prefer label = allow priority 1\\n\\nrule RequiredLabelsOverride:\\n    when require label = allow or require label = deny or require label = review\\n    then abstain\\n\\nrule ConflictingRequiredLabels:\\n    when require label = allow and require label = deny or require label = allow and require label = review or require label = deny and require label = review\\n    then require label = uncertain\\n\\nrule ForbiddenLabelsRemoved:\\n    when forbid label = review\\n    then forbid label = review\\n\\nrule HighestPriorityPreference:\\n    when prefer label = allow priority 1 and prefer label = review priority 40 and prefer label = deny priority 70 and prefer label = allow priority 80 and prefer label = review priority 90\\n    then prefer label = review priority 90\"\n}"
+        }
+      ]
+    },
+    "dsl_source": null
+  },
+  "preparation_wall_seconds": 123.67200000000003,
+  "call_summary": {
+    "attempted_calls": 1,
+    "completed_calls": 1,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "teacher_optimization": {
+        "attempted_calls": 1,
+        "failed_calls": 0,
+        "input_tokens_known": 639,
+        "output_tokens_known": 468,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 122.79047820000005
+      }
+    }
+  }
+}

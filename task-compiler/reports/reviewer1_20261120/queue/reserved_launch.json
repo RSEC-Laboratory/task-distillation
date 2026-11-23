@@ -1,0 +1,14 @@
+{
+  "at_utc": "2026-11-20T16:59:34.772967+00:00",
+  "command": [
+    "<USER_HOME>\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "<WORKSPACE>\\task-compiler\\scripts\\run_external_comparison.py",
+    "--config",
+    "<WORKSPACE>\\task-compiler\\configs\\reviewer1_20261120\\superni_reserved_llama.yaml",
+    "--protocol",
+    "<WORKSPACE>\\task-compiler\\protocols\\reviewer1_reserved_superni_20261120_v1.json"
+  ],
+  "trigger": "first-study operational end, independent of its scores",
+  "supervisor_sha256": "99f5f1f439c72eba1115a120adeec27eb88ef3a6faf47a37d1f769cae8328415"
+}

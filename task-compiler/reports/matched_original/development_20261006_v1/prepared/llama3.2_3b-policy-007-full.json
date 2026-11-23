@@ -1,0 +1,129 @@
+{
+  "task_id": "policy-007",
+  "solver_model": "llama3.2:3b",
+  "arm": "full",
+  "prepared_at": "2026-10-06T14:02:53.494955+00:00",
+  "method": {
+    "method": "full_dsl",
+    "task_id": "policy-007",
+    "public_task_hash": "49c6b095d068b22d7478583a6b529d45bb7ed8a507be66e2f643792b78dbe0ff",
+    "instructions": [
+      "Task: Compositional policy 007\n\nClassify one structured event using the following public policy. Critical means (risk TRUE for role auditor) or action inspect; critical cases require review. Unknown external: risk UNKNOWN in context internal returns uncertain. Unknown risk otherwise prefers deny at priority 90. Trusted means context sandbox with any role except auditor; a trusted approve prefers allow at priority 80. Action export in context internal prefers review at priority 70. Role guest and context external prefers deny at priority 40. Trusted cases forbid deny. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, review, deny\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"guest\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"export\",\"inspect\"]},{\"name\":\"Context\",\"values\":[\"sandbox\",\"external\",\"internal\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE for role auditor) or action inspect; critical cases require review.\nUnknown external: risk UNKNOWN in context internal returns uncertain.\nUnknown risk otherwise prefers deny at priority 90.\nTrusted means context sandbox with any role except auditor; a trusted approve prefers allow at priority 80.\nAction export in context internal prefers review at priority 70.\nRole guest and context external prefers deny at priority 40.\nTrusted cases forbid deny.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-3:task-007"
+    ],
+    "routed": false,
+    "status": "raw_fallback",
+    "trace": {
+      "failed_dsl_source": "predicate Critical(event):\n    (event.risk == TRUE and event.role == auditor) or event.action == inspect\n\npredicate UnknownExternal(event):\n    event.risk == UNKNOWN and event.context == internal\n\npredicate Trusted(event):\n    event.context == sandbox and event.role != auditor\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\nrule UnknownRiskCase:\n    when not Critical(event) and event.risk == UNKNOWN\n    then prefer label = deny priority 90\n\nrule TrustedApprove:\n    when Trusted(event) and event.action == approve\n    then prefer label = allow priority 80\n\nrule ExportInternal:\n    when event.action == export and event.context == internal\n    then prefer label = review priority 70\n\nrule GuestExternal:\n    when event.role == guest and event.context == external\n    then prefer label = deny priority 40\n\nrule TrustedForbidDeny:\n    when Trusted(event)\n    then forbid label = deny\n\nrule DefaultAllow:\n    when not Critical(event) and not Trusted(event) and not UnknownExternal(event) and event.role != guest and event.context != external\n    then prefer label = allow priority 1\n\nrule RequiredOverride:\n    when require label = allow or require label = deny or require label = review\n    then abstain\n\nrule ConflictingRequired:\n    when require label = allow and require label = deny or require label = allow and require label = review or require label = deny and require label = review\n    then abstain\nrule ForbiddenRemove:\n    when forbid label = deny\n    then abstain",
+      "failure": {
+        "fallback": "raw_task",
+        "message": "unexpected token in expression: Token('require', 'require')",
+        "stage": "teacher_syntax"
+      },
+      "final_access_during_optimization": false,
+      "initial_source_supplied": false,
+      "limits": {
+        "counterexample_patches": 3,
+        "max_instruction_words": 1800,
+        "reflection_minibatch_size": 3,
+        "representation_rounds": 3,
+        "seed": 20261005,
+        "semantic_repair_rounds": 3,
+        "solver_calls": 216,
+        "teacher_calls": 4,
+        "teacher_tokens": 2000,
+        "top_k": 6
+      },
+      "oracle_program_access": false,
+      "public_audit_refinement_case_ids": [
+        "policy-007-refinement-00",
+        "policy-007-refinement-01",
+        "policy-007-refinement-02",
+        "policy-007-refinement-03",
+        "policy-007-refinement-04",
+        "policy-007-refinement-05",
+        "policy-007-refinement-06",
+        "policy-007-refinement-07",
+        "policy-007-refinement-08",
+        "policy-007-refinement-09",
+        "policy-007-refinement-10",
+        "policy-007-refinement-11",
+        "policy-007-refinement-12",
+        "policy-007-refinement-13",
+        "policy-007-refinement-14",
+        "policy-007-refinement-15",
+        "policy-007-refinement-16",
+        "policy-007-refinement-17",
+        "policy-007-refinement-18",
+        "policy-007-refinement-19",
+        "policy-007-refinement-20",
+        "policy-007-refinement-21",
+        "policy-007-refinement-22",
+        "policy-007-refinement-23",
+        "policy-007-refinement-24",
+        "policy-007-refinement-25",
+        "policy-007-refinement-26"
+      ],
+      "public_build_case_ids": [
+        "policy-007-build-00",
+        "policy-007-build-01",
+        "policy-007-build-02",
+        "policy-007-build-03",
+        "policy-007-build-04",
+        "policy-007-build-05",
+        "policy-007-build-06",
+        "policy-007-build-07",
+        "policy-007-build-08",
+        "policy-007-build-09",
+        "policy-007-build-10",
+        "policy-007-build-11",
+        "policy-007-build-12",
+        "policy-007-build-13",
+        "policy-007-build-14",
+        "policy-007-build-15",
+        "policy-007-build-16",
+        "policy-007-build-17",
+        "policy-007-build-18",
+        "policy-007-build-19",
+        "policy-007-build-20",
+        "policy-007-build-21",
+        "policy-007-build-22",
+        "policy-007-build-23",
+        "policy-007-build-24",
+        "policy-007-build-25",
+        "policy-007-build-26"
+      ],
+      "router_identity": {
+        "backend": "sentence_transformers",
+        "local_snapshot": "<USER_HOME>\\.cache\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "teacher_calls": 1,
+      "teacher_raw_text": [
+        {
+          "phase": "initial",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    (event.risk == TRUE and event.role == auditor) or event.action == inspect\\n\\npredicate UnknownExternal(event):\\n    event.risk == UNKNOWN and event.context == internal\\n\\npredicate Trusted(event):\\n    event.context == sandbox and event.role != auditor\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = review\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then require label = uncertain\\n\\nrule UnknownRiskCase:\\n    when not Critical(event) and event.risk == UNKNOWN\\n    then prefer label = deny priority 90\\n\\nrule TrustedApprove:\\n    when Trusted(event) and event.action == approve\\n    then prefer label = allow priority 80\\n\\nrule ExportInternal:\\n    when event.action == export and event.context == internal\\n    then prefer label = review priority 70\\n\\nrule GuestExternal:\\n    when event.role == guest and event.context == external\\n    then prefer label = deny priority 40\\n\\nrule TrustedForbidDeny:\\n    when Trusted(event)\\n    then forbid label = deny\\n\\nrule DefaultAllow:\\n    when not Critical(event) and not Trusted(event) and not UnknownExternal(event) and event.role != guest and event.context != external\\n    then prefer label = allow priority 1\\n\\nrule RequiredOverride:\\n    when require label = allow or require label = deny or require label = review\\n    then abstain\\n\\nrule ConflictingRequired:\\n    when require label = allow and require label = deny or require label = allow and require label = review or require label = deny and require label = review\\n    then require label = uncertain\\n\\nrule ForbiddenRemove:\\n    when forbid label = deny\\n    then abstain\"\n}"
+        }
+      ]
+    },
+    "dsl_source": null
+  },
+  "preparation_wall_seconds": 135.14000000000033,
+  "call_summary": {
+    "attempted_calls": 1,
+    "completed_calls": 1,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "teacher_optimization": {
+        "attempted_calls": 1,
+        "failed_calls": 0,
+        "input_tokens_known": 647,
+        "output_tokens_known": 384,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 135.1300127000004
+      }
+    }
+  }
+}

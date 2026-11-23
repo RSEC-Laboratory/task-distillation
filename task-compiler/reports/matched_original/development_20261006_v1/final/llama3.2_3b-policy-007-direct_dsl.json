@@ -1,0 +1,172 @@
+{
+  "task_id": "policy-007",
+  "solver_model": "llama3.2:3b",
+  "arm": "direct_dsl",
+  "completed_at": "2026-10-06T14:23:12.532856+00:00",
+  "rows": [
+    {
+      "case_id": "policy-007-final-00",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-01",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-02",
+      "expected_label": "deny",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-03",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-04",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-05",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-06",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-07",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-08",
+      "expected_label": null,
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-09",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-10",
+      "expected_label": "deny",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-11",
+      "expected_label": null,
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-12",
+      "expected_label": null,
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-13",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-14",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-15",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-16",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-17",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-18",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-19",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-20",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-21",
+      "expected_label": "deny",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-22",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-23",
+      "expected_label": "allow",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-24",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-25",
+      "expected_label": "review",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    },
+    {
+      "case_id": "policy-007-final-26",
+      "expected_label": "deny",
+      "predicted_label": "__NO_VERIFIED_PROGRAM__",
+      "correct": false
+    }
+  ],
+  "program_available": false,
+  "additional_model_calls": 0
+}

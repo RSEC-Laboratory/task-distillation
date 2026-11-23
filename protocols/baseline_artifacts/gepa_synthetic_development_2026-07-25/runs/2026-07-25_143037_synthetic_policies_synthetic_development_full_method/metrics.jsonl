@@ -1,3 +1,0 @@
-{"stage": "compile_and_freeze_artifacts", "elapsed_seconds": 257.1090000000113, "cpu_percent": 0.0, "ram_mb": 461.80859375, "gpu_util_percent": null, "gpu_mem_mb": null}
-{"stage": "held_out_audit", "elapsed_seconds": 63.75, "cpu_percent": 0.5, "ram_mb": 461.79296875, "gpu_util_percent": null, "gpu_mem_mb": null}
-{"stage": "load_and_evaluate_locked_final", "elapsed_seconds": 63.437000000005355, "cpu_percent": 0.8, "ram_mb": 461.79296875, "gpu_util_percent": null, "gpu_mem_mb": null}

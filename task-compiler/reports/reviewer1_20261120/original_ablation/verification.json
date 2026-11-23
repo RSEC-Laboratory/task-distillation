@@ -1,0 +1,280 @@
+{
+  "status": "passed",
+  "primary_rows": 9072,
+  "sentinel_rows": 336,
+  "physical_attempts": 8058,
+  "physical_failures": 0,
+  "direct_teacher_program_with_identical_fresh_raw_fallback": {
+    "llama": {
+      "correct": 609,
+      "total": 648,
+      "accuracy": 0.9398148148148148,
+      "per_task": {
+        "policy-042": 0.8148148148148148,
+        "policy-043": 1.0,
+        "policy-044": 1.0,
+        "policy-046": 1.0,
+        "policy-048": 0.9259259259259259,
+        "policy-049": 0.9259259259259259,
+        "policy-051": 1.0,
+        "policy-056": 1.0,
+        "policy-057": 0.9259259259259259,
+        "policy-058": 1.0,
+        "policy-059": 1.0,
+        "policy-062": 0.25925925925925924,
+        "policy-063": 1.0,
+        "policy-064": 1.0,
+        "policy-065": 0.9629629629629629,
+        "policy-066": 0.9629629629629629,
+        "policy-068": 0.8148148148148148,
+        "policy-070": 0.9629629629629629,
+        "policy-071": 1.0,
+        "policy-072": 1.0,
+        "policy-073": 1.0,
+        "policy-075": 1.0,
+        "policy-076": 1.0,
+        "policy-079": 1.0
+      },
+      "approved_tasks": 23,
+      "fallback_tasks": 1
+    },
+    "gemma": {
+      "correct": 439,
+      "total": 486,
+      "accuracy": 0.9032921810699589,
+      "per_task": {
+        "policy-042": 1.0,
+        "policy-043": 0.9629629629629629,
+        "policy-044": 1.0,
+        "policy-046": 1.0,
+        "policy-049": 1.0,
+        "policy-051": 1.0,
+        "policy-056": 1.0,
+        "policy-058": 1.0,
+        "policy-059": 0.9259259259259259,
+        "policy-064": 1.0,
+        "policy-065": 1.0,
+        "policy-066": 0.9629629629629629,
+        "policy-068": 0.5185185185185185,
+        "policy-070": 1.0,
+        "policy-071": 0.5185185185185185,
+        "policy-072": 0.4074074074074074,
+        "policy-073": 0.9629629629629629,
+        "policy-076": 1.0
+      },
+      "approved_tasks": 15,
+      "fallback_tasks": 3
+    }
+  },
+  "approved_only_diagnostics": {
+    "llama": {
+      "tasks": 23,
+      "conditions": {
+        "raw_original": {
+          "correct": 104,
+          "total": 621
+        },
+        "raw_labels": {
+          "correct": 192,
+          "total": 621
+        },
+        "initial_prose": {
+          "correct": 303,
+          "total": 621
+        },
+        "initial_list": {
+          "correct": 403,
+          "total": 621
+        },
+        "final_prose": {
+          "correct": 294,
+          "total": 621
+        },
+        "final_list": {
+          "correct": 396,
+          "total": 621
+        },
+        "selected_full": {
+          "correct": 403,
+          "total": 621
+        },
+        "selected_routed": {
+          "correct": 505,
+          "total": 621
+        }
+      },
+      "contrasts": {
+        "raw_labels minus raw_original": {
+          "difference": 0.14170692431561993,
+          "descriptive_task_bootstrap_95": [
+            0.08051529790660222,
+            0.20611916264090177
+          ]
+        },
+        "initial_list minus initial_prose": {
+          "difference": 0.16103059581320447,
+          "descriptive_task_bootstrap_95": [
+            0.10628019323671496,
+            0.21578099838969403
+          ]
+        },
+        "final_list minus initial_list": {
+          "difference": -0.011272141706924315,
+          "descriptive_task_bootstrap_95": [
+            -0.041867954911433164,
+            0.022544283413848634
+          ]
+        },
+        "final_prose minus initial_prose": {
+          "difference": -0.014492753623188404,
+          "descriptive_task_bootstrap_95": [
+            -0.05152979066022544,
+            0.030595813204508857
+          ]
+        },
+        "final_list minus final_prose": {
+          "difference": 0.1642512077294686,
+          "descriptive_task_bootstrap_95": [
+            0.09500805152979065,
+            0.22548309178743906
+          ]
+        },
+        "selected_routed minus selected_full": {
+          "difference": 0.1642512077294686,
+          "descriptive_task_bootstrap_95": [
+            0.11433172302737521,
+            0.21743156199677885
+          ]
+        },
+        "selected_full minus final_list": {
+          "difference": 0.011272141706924315,
+          "descriptive_task_bootstrap_95": [
+            -0.037037037037037035,
+            0.05636070853462158
+          ]
+        },
+        "selected_routed minus raw_labels": {
+          "difference": 0.5040257648953301,
+          "descriptive_task_bootstrap_95": [
+            0.4428341384863123,
+            0.5652173913043478
+          ]
+        },
+        "selected_routed minus initial_prose": {
+          "difference": 0.3252818035426731,
+          "descriptive_task_bootstrap_95": [
+            0.2834138486312399,
+            0.36876006441223835
+          ]
+        }
+      },
+      "scope": "Conditional diagnostic on historically approved artifacts. All-task contrasts remain primary and include every failure/fallback."
+    },
+    "gemma": {
+      "tasks": 15,
+      "conditions": {
+        "raw_original": {
+          "correct": 165,
+          "total": 405
+        },
+        "raw_labels": {
+          "correct": 158,
+          "total": 405
+        },
+        "initial_prose": {
+          "correct": 225,
+          "total": 405
+        },
+        "initial_list": {
+          "correct": 313,
+          "total": 405
+        },
+        "final_prose": {
+          "correct": 231,
+          "total": 405
+        },
+        "final_list": {
+          "correct": 333,
+          "total": 405
+        },
+        "selected_full": {
+          "correct": 347,
+          "total": 405
+        },
+        "selected_routed": {
+          "correct": 380,
+          "total": 405
+        }
+      },
+      "contrasts": {
+        "raw_labels minus raw_original": {
+          "difference": -0.01728395061728395,
+          "descriptive_task_bootstrap_95": [
+            -0.059259259259259255,
+            0.024691358024691357
+          ]
+        },
+        "initial_list minus initial_prose": {
+          "difference": 0.21728395061728392,
+          "descriptive_task_bootstrap_95": [
+            0.15555555555555556,
+            0.2716049382716049
+          ]
+        },
+        "final_list minus initial_list": {
+          "difference": 0.04938271604938271,
+          "descriptive_task_bootstrap_95": [
+            0.009876543209876543,
+            0.09382716049382718
+          ]
+        },
+        "final_prose minus initial_prose": {
+          "difference": 0.014814814814814814,
+          "descriptive_task_bootstrap_95": [
+            -0.012345679012345678,
+            0.04444444444444443
+          ]
+        },
+        "final_list minus final_prose": {
+          "difference": 0.2518518518518518,
+          "descriptive_task_bootstrap_95": [
+            0.18265432098765433,
+            0.31604938271604943
+          ]
+        },
+        "selected_routed minus selected_full": {
+          "difference": 0.08148148148148149,
+          "descriptive_task_bootstrap_95": [
+            0.044444444444444446,
+            0.12098765432098764
+          ]
+        },
+        "selected_full minus final_list": {
+          "difference": 0.0345679012345679,
+          "descriptive_task_bootstrap_95": [
+            0.0,
+            0.08395061728395062
+          ]
+        },
+        "selected_routed minus raw_labels": {
+          "difference": 0.5481481481481482,
+          "descriptive_task_bootstrap_95": [
+            0.4987654320987654,
+            0.6049382716049383
+          ]
+        },
+        "selected_routed minus initial_prose": {
+          "difference": 0.3827160493827161,
+          "descriptive_task_bootstrap_95": [
+            0.3358024691358024,
+            0.42716049382716037
+          ]
+        }
+      },
+      "scope": "Conditional diagnostic on historically approved artifacts. All-task contrasts remain primary and include every failure/fallback."
+    }
+  },
+  "known_input_tokens": 3461442,
+  "known_output_tokens": 22886,
+  "sum_model_response_seconds": 7431.724999999998
+}

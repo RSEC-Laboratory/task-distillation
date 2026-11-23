@@ -1,0 +1,170 @@
+{
+  "protocol": {
+    "implementation": "official_textgrad_cached_source",
+    "textgrad_commit": "75e912e210864b61999781778cdf756d4468120f",
+    "batch_size": 3,
+    "epochs": 3,
+    "updates_per_epoch": 4,
+    "updates": 12,
+    "seed": 20260727,
+    "test_access_during_optimization": false,
+    "validation_selection": true,
+    "validation_examples": 100,
+    "validation_evaluations": 13,
+    "best_validation_accuracy": 0.68,
+    "deviation_from_published_script": "The test split is evaluated once after optimization instead of after every update."
+  },
+  "history": [
+    {
+      "step": 0,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [],
+      "validation_accuracy": 0.62,
+      "accepted": true
+    },
+    {
+      "step": 1,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-022-b2edabb27f",
+        "object_counting-048-15259166dd",
+        "object_counting-029-6818266893"
+      ],
+      "candidate_validation_accuracy": 0.56,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 2,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-035-92fb468094",
+        "object_counting-015-ca4988d195",
+        "object_counting-001-489a26757d"
+      ],
+      "candidate_validation_accuracy": 0.57,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 3,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-049-2b4a641638",
+        "object_counting-002-236b922938",
+        "object_counting-000-14c6adbe13"
+      ],
+      "candidate_validation_accuracy": 0.57,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 4,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-012-9bff7d69d1",
+        "object_counting-034-ff3cb9f030",
+        "object_counting-026-69877bc483"
+      ],
+      "candidate_validation_accuracy": 0.37,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 5,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-016-fc48d7fcc2",
+        "object_counting-045-63ee06c4d2",
+        "object_counting-034-ff3cb9f030"
+      ],
+      "candidate_validation_accuracy": 0.6,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 6,
+      "prompt": "You will answer a reasoning question. Think step by step. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-040-ef9bfeb47a",
+        "object_counting-013-16af6294cc",
+        "object_counting-011-7240244fb5"
+      ],
+      "candidate_validation_accuracy": 0.55,
+      "validation_accuracy": 0.62,
+      "accepted": false
+    },
+    {
+      "step": 7,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-035-92fb468094",
+        "object_counting-043-0eff34a094",
+        "object_counting-037-29243e3792"
+      ],
+      "candidate_validation_accuracy": 0.68,
+      "validation_accuracy": 0.68,
+      "accepted": true
+    },
+    {
+      "step": 8,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-044-1dbb9ca166",
+        "object_counting-027-efb9426434",
+        "object_counting-048-15259166dd"
+      ],
+      "candidate_validation_accuracy": 0.53,
+      "validation_accuracy": 0.68,
+      "accepted": false
+    },
+    {
+      "step": 9,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-007-a3976278a4",
+        "object_counting-019-6f41821093",
+        "object_counting-031-4b1476a604"
+      ],
+      "candidate_validation_accuracy": 0.58,
+      "validation_accuracy": 0.68,
+      "accepted": false
+    },
+    {
+      "step": 10,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-048-15259166dd",
+        "object_counting-001-489a26757d",
+        "object_counting-020-3ad07d9029"
+      ],
+      "candidate_validation_accuracy": 0.6,
+      "validation_accuracy": 0.68,
+      "accepted": false
+    },
+    {
+      "step": 11,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-042-c980d6149d",
+        "object_counting-017-6054adca1a",
+        "object_counting-043-0eff34a094"
+      ],
+      "candidate_validation_accuracy": 0.54,
+      "validation_accuracy": 0.68,
+      "accepted": false
+    },
+    {
+      "step": 12,
+      "prompt": "You will answer a reasoning question. Think step by step, carefully reading the input and identifying the relevant information for the calculation. Double-check your arithmetic calculations to ensure accuracy. Provide a clear and step-by-step explanation of your calculation, breaking down complex calculations into simpler steps. Support your answer with a brief explanation or justification for your calculation. Ensure that your answer is accurate and precise, and provide calculations that support your response. Reflect on your calculation and identify any potential errors or biases that may have influenced your answer. Please respond in a clear and concise manner, avoiding unnecessary jargon or technical terms. Use a friendly and approachable tone, as if you were explaining the solution to a non-expert. The last line of your response should be of the following format: 'Answer: $VALUE' where VALUE is a numerical value.",
+      "batch_item_ids": [
+        "object_counting-038-2a6d94bd43",
+        "object_counting-032-beb3140ccb",
+        "object_counting-037-29243e3792"
+      ],
+      "candidate_validation_accuracy": 0.44,
+      "validation_accuracy": 0.68,
+      "accepted": false
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+{
+  "id": "reviewer1-reserved-schema-superni-20261120-v1",
+  "frozen_at_utc": "2026-11-20T17:04:41.929606+00:00",
+  "question": "Evaluate the unchanged existing NLP adapter on the same reserved tasks using an endpoint that supports its original structured-output contract.",
+  "scope": "Existing adapter evaluation, explicitly distinct from the original executable DSL workflow. No final-SLM necessity claim relative to parser-executor follows.",
+  "config_sha256": {
+    "configs/reviewer1_20261120/superni_reserved_schema_llama.yaml": "89d442c24765b316cfaf360a0bbf0fbfbe2bc51e9c5d15bf1b702bf354cb721d"
+  },
+  "source_sha256": {
+    "src/taskcompiler/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/taskcompiler/benchmarks/__init__.py": "1dd871409093d43e4a4c92bac255bccb782bc4813aeb056929da08fc60ec90b7",
+    "src/taskcompiler/benchmarks/adaptive/__init__.py": "ba8126ae02a1a393183aca93b91420bd6d189d87c96364e3c75191b1867246ab",
+    "src/taskcompiler/benchmarks/adaptive/compiler.py": "4674815cc7a105b4d65fbb73a4e4f85d76af57b1e4caa5041f3800a71044d320",
+    "src/taskcompiler/benchmarks/adaptive/teaching.py": "b13587c24ad86a7b8517b13c4a8c05a92b775aa625f2d3ad1499e1e915cff719",
+    "src/taskcompiler/benchmarks/compiler.py": "b4dd4949e2be760dbf546777e376960e64c2d656db2531c2bde5197094d9036f",
+    "src/taskcompiler/benchmarks/composition/__init__.py": "34eee1d0741fa3fda07119f2ff26c7a5f4e146c3f36d28dbcd290d354847879a",
+    "src/taskcompiler/benchmarks/composition/compiler.py": "4c246c17417e062459cdd6729603957a052f7d758d4caf170f820c2ecca9f44d",
+    "src/taskcompiler/benchmarks/composition/linear_control.py": "be83ca86bc29cbe618f2e51630a49567e623ee6d1b80643436e866289d295923",
+    "src/taskcompiler/benchmarks/composition/public_cases.py": "d19eaf0abe65afbf27e0ca3d778e37d59713c0e732a630ed437def9c14f681fd",
+    "src/taskcompiler/benchmarks/composition/reporting.py": "6c7acd0a35bfedb057e76a246030cb94b070bcc80e0860410e57dc5d18219bc8",
+    "src/taskcompiler/benchmarks/composition/response_model.py": "aec2b1ee40286bdeee9992c1adc406c3373998cac09e03cf432e2eb58a969625",
+    "src/taskcompiler/benchmarks/composition/seed_values.py": "cfd5b68671082152c2f21607af0d54687fd212c52e4ed90ff5e0aab9b863ffd0",
+    "src/taskcompiler/benchmarks/datasets.py": "02dea9c6f09b2b45274e25d1f2106bb94ac34a2a555092c1fdb139d07d20d3f4",
+    "src/taskcompiler/benchmarks/dialogue/__init__.py": "08c1242ee5c9bbff0bebaee2ed930249092b549a5e94e0f973c2cd19f5db530e",
+    "src/taskcompiler/benchmarks/dialogue/catalog.py": "daaedee1e5a9079c1aae3d95db7e7253cfbf523cdb10498c4cdaaeda83540ff6",
+    "src/taskcompiler/benchmarks/dialogue/dataset.py": "ef53f2787f1c15b7053c4c4a18159f191a2af0b688c18f97f8faf6bb5848b0c3",
+    "src/taskcompiler/benchmarks/dialogue/metrics.py": "70aa92d8a7e5a31c7fc1e17d9df90e8f8d607da4e596027517712935577cc409",
+    "src/taskcompiler/benchmarks/evaluators.py": "2f40ee7b85a1f8b0fcf017ec743d67f5a55561da63a7c84b745741aefced0026",
+    "src/taskcompiler/benchmarks/interventions/__init__.py": "8348aa8ecdd58e74e798b30e5878518ff1f577695dffb6262fe305741d8fcf30",
+    "src/taskcompiler/benchmarks/interventions/compiler.py": "18fd70ff685a47de5036a37135b828ab1644d4ed6d0942c84e6858009333e075",
+    "src/taskcompiler/benchmarks/interventions/program.py": "f2c604968db5653c5f55a0992f27a919206847c7f90701b21989b56252eae7d8",
+    "src/taskcompiler/benchmarks/interventions/response.py": "2de70db1c3a16c031aa264dc2dd0bd46f0e955414cdfd3a1fa58f33c9d70525a",
+    "src/taskcompiler/benchmarks/interventions/teaching.py": "bb89231bfb14f860781c27a1961c9b14d438f656eb06b9c41019ec0bcf7f3876",
+    "src/taskcompiler/benchmarks/native_gepa.py": "c78442710ad4c20cea5874f71d5f61b489bab6eb1f8a7fac0d17e2b8f20ef45f",
+    "src/taskcompiler/benchmarks/relational/__init__.py": "2672835cf33898dca10264faeee18486ae3df8eb9ff0d18ad2b6c740f424f9f5",
+    "src/taskcompiler/benchmarks/relational/constraints.py": "5c05912dc4917cf5aaf351a9aaff5c0d1ec91098617d1e83b7d2b7368eaa7970",
+    "src/taskcompiler/benchmarks/relational/ranking.py": "8d520d2343ffb96fe22d8067ca596c3abcc1a278011b6659f9788fae04dc3e66",
+    "src/taskcompiler/benchmarks/teaching.py": "b8615bf131d67c460e387e77f724aee1ab3772478fc7db9646d80a2efe0f88bc",
+    "src/taskcompiler/config.py": "73c10171d9a5002321ba5153c6626a8a3f4a7486b08834f7358208d8da0c5282",
+    "src/taskcompiler/corrections/__init__.py": "cf9196973af9ef7b5f8f0903d64282372fa9b695f66a14de3624ec75155ab291",
+    "src/taskcompiler/corrections/baselines.py": "b666ac991df7ffb8e3cb358c95938db2d116afdf25520a41b9af990a61b1cef6",
+    "src/taskcompiler/corrections/experiment.py": "3c6929cef8a2afb97c99d6a0e63d72152d68cbf6fb2c98f1d23cf6553594a665",
+    "src/taskcompiler/corrections/prompts.py": "e4c44732868323995830f0caba94ffaa5e3339b47add8978503c60d7bded83bf",
+    "src/taskcompiler/corrections/schema.py": "005459baa6c4054fbafe939d98b45ade9b791e0cf801a4f4546fa4c32b5ad8ec",
+    "src/taskcompiler/dsl/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/taskcompiler/dsl/ast.py": "5073d8d99c592623d210c08617ac755cca641aebc564d3ca29e8842287e78764",
+    "src/taskcompiler/dsl/interpreter.py": "21071677da1fd8de0c08f0df41b7b3a2730eaff8c577873713906d6f3acac690",
+    "src/taskcompiler/dsl/mutate.py": "8e76f308f333ba5904027e9feeb60356e20801ecff95d50b4687d46fe6326b6f",
+    "src/taskcompiler/dsl/parser.py": "14d7e8b2ee01b117f4ca026379a7120f2c15b8d5bb33e4a07a2e3fb1d8f79fc0",
+    "src/taskcompiler/evidence.py": "e20ed1032a12c35ad4d553fa54d40a5bb08a9858a594441092eaeb0a8aadc3c7",
+    "src/taskcompiler/guidance_track/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/taskcompiler/guidance_track/ape_baseline.py": "ea46d3e449c3fb1f9ae7992ef70447e54221f5b31913f52d3c5cb1badca937f1",
+    "src/taskcompiler/guidance_track/bbh.py": "6519cbb1ab8e4059ee246e17f46606aab834ae03884ede9451f944a67f7847a5",
+    "src/taskcompiler/guidance_track/gepa_baseline.py": "87c1981e1baf57639b4bd24e7b5f8a4cdd1e89ede096d9e8a37164399149f37d",
+    "src/taskcompiler/guidance_track/humaneval_exec.py": "7fe02b906a08c770ccab35c14f873638fd39be8c937136a24ed0a97ccad398f8",
+    "src/taskcompiler/guidance_track/pipeline.py": "ec31f9a4b724ad30225d8595d01ad2c4d13f02e7d9aa0eae73dad9f395759596",
+    "src/taskcompiler/guidance_track/rulearena.py": "7979fe8c6d001db12eb51e9b3fa98f1b60e4f6573df7840955edda93b700d145",
+    "src/taskcompiler/guidance_track/rulearena_compiler.py": "38bd71497a6322ab0140e9f3e64190453287a08ec336e5d581daf27235f21cf9",
+    "src/taskcompiler/guidance_track/slr_bench.py": "ee6d8ac00113847e8cb282b63047edc3f61795707cfe39e6b529cac89d299d77",
+    "src/taskcompiler/guidance_track/superni.py": "ff3b7d7a6d929037c0822c9efd69db68c7375d323e6fcba937e504b039c8f85c",
+    "src/taskcompiler/guidance_track/textgrad_baseline.py": "94144049604edaaaa624913a84f952886815fdc50d30aa08c765609a887c8431",
+    "src/taskcompiler/lineage.py": "58b9a7678e6a26a98848985e9e00314149fe9ae7843674f95f01d49c63e6855a",
+    "src/taskcompiler/metrics.py": "64c5465d228562bcff0534ed36e8589a256dda6bcfc571c01d07459a6e9d2829",
+    "src/taskcompiler/procedural/__init__.py": "b6760d911354922edb899b753fcc53ca9c7d55bfbc4435e4bb4ee1ac7cb57302",
+    "src/taskcompiler/procedural/__main__.py": "691327dc2a0b622a79ba3521b521ca6d2e89b83e877a610a5153559188bd0aec",
+    "src/taskcompiler/procedural/experiment.py": "68642d77a3b8c5190bf4c4a554d242b67e31c9e6929170b1960e2307363586b2",
+    "src/taskcompiler/procedural/gepa.py": "fa71e08276b2a5a66fe338f16861a4c48c704130550afc03a872829516d69686",
+    "src/taskcompiler/procedural/local_model.py": "11e7ea762eced32951a49970ea5a7b3fc80d63b11e26647450ee1583bedaa775",
+    "src/taskcompiler/procedural/mipro.py": "3b0c699b79e583593eae82b6a3d3b67d3713d372612931c6b8771159efbef081",
+    "src/taskcompiler/procedural/prompts.py": "40109ff6ebef8d6d7bacfc906bf5d479bff1ad0fe0ac5c6be1b005698ed36b66",
+    "src/taskcompiler/procedural/reporting.py": "043ed9996e5b378415a2e3de3ed5247dbbbf5621f4b1f6bc1897ccc96faec8d8",
+    "src/taskcompiler/procedural/schema.py": "38a412c81bbf4f0eb746d4ba49fe82cc4be700f352beb95a4d4c69e6d360e2d0",
+    "src/taskcompiler/route.py": "6d9b46d11190aea2e108946d41022e2d04ed60d9dc5fb25616a3e79b5a8f73f8",
+    "src/taskcompiler/rules_track/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/taskcompiler/rules_track/contract_nli.py": "1f0d02ee85e35ad990174944467c67068eb2a40f191088a8b74e521c52558db8",
+    "src/taskcompiler/rules_track/contract_transfer.py": "593f37c034f626f4d992b8901e0c8f5d03610384704e49176c3b4e360faa3a6d",
+    "src/taskcompiler/rules_track/pipeline.py": "92c7237a204c3597edb123c6a8ad078574cc23fdb4374d551138905849158f41",
+    "src/taskcompiler/rules_track/prompts.py": "3b8fe0a8dfb680180e13b335dc3405eff54b7597010d8b7c8166f3d2db88987e",
+    "src/taskcompiler/rules_track/synthetic_policies.py": "12523aa7ee23f250ad6335d6d30235caefc820df1e25215ff5511cea22afb16a",
+    "src/taskcompiler/rules_track/text_predicates.py": "6604d9a07145eb0bb05791d2d0cc0901ad8b1f5503c4960b025f4db03c261012",
+    "src/taskcompiler/run.py": "a0142234c0256f4b7f304db94b90b1ac2d7a7086a6ffb76cf3d29c848ca7d110",
+    "src/taskcompiler/sandbox.py": "f1a14d7c03d22209e94528a353efdfb38968d07e4907fdcaf8c0d305825ec6c2",
+    "src/taskcompiler/schema.py": "c4f045f6a1a61f4e329f1050b7611766b464acc76a5dedeca34de68462476964",
+    "src/taskcompiler/spec_compiler.py": "ec18e67b98881073c1bf137a1c8cfa5514ecf7d03dbd095c9e061f78c52a54c4",
+    "src/taskcompiler/statistics.py": "e867c7c652dc86a6e5262e39f0bbdefa0ce75e3580ae83cd098909071c591758",
+    "src/taskcompiler/stub_track.py": "59d47f898a6b2eedef8c65687d0b6f7cc7c311d2a0bdaf05e036bffea064486c",
+    "src/taskcompiler/student.py": "b4d294f8b2d5645cf99733abfd95abe0dc0885fcbaee5f7432fba92af6d6568b",
+    "src/taskcompiler/teacher.py": "676e3eecac70e39e59b901f481eb6edf54dc31497740dc63983a45deb902453e",
+    "src/taskcompiler/translate.py": "9f42957fb3b404c8472320ee20aa9f5324c373b98b1ee3611b51e9fb598a6821",
+    "src/taskcompiler/verify.py": "38404d48a35ee9cd60c7d1bc03296b279ac0d8a9b13de93911a322bfb34cca57",
+    "scripts/run_external_comparison.py": "acca4de95f1a3322881584485d2e6304ca13a86f41efe4d65c9ca985bc1e165d",
+    "scripts/reviewer1_schema_configuration_20261120.py": "b405d55f0507e1ea603c21a5fb1ef60e9e3211b2554fa31282da42671caa795b"
+  },
+  "tasks": [
+    {
+      "task_id": "task242_tweetqa_classification",
+      "source_sha256": "81b43f318e84441f3b4ec6a725873fce8ce85d17e47ec6939e9b4d5854d124e1",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "tweetqa"
+      ]
+    },
+    {
+      "task_id": "task1344_glue_entailment_classification",
+      "source_sha256": "6cc22a83fc6e7d0ddbe9a05248cfa4f6762fe9f34a1a55af42f881ad191a4351",
+      "public_example_count": 6,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "rte"
+      ]
+    },
+    {
+      "task_id": "task1439_doqa_cooking_isanswerable",
+      "source_sha256": "4dc08ad64090d80448ed0546a6f93eb2a9e5b9e31af8a3f3022b80f4e0570601",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "doqa"
+      ]
+    },
+    {
+      "task_id": "task738_perspectrum_classification",
+      "source_sha256": "951d49f90084e392007871987befcfa65abdcf462d4c946466c66522d1a13822",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "perspectrum"
+      ]
+    },
+    {
+      "task_id": "task1615_sick_tclassify_b_relation_a",
+      "source_sha256": "ee29ade9a6e29f6bee51c29aeab0a928bc590b608edb61dee3ef006cfef2b409",
+      "public_example_count": 6,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "sick"
+      ]
+    },
+    {
+      "task_id": "task879_schema_guided_dstc8_classification",
+      "source_sha256": "cc43ec3511ea8b86575fb0c15e79d72a2739fedce975db09a872c65c56a1fc4b",
+      "public_example_count": 6,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "schema_guided_dstc8"
+      ]
+    },
+    {
+      "task_id": "task1387_anli_r3_entailment",
+      "source_sha256": "63ba1fc8ac91f8cc81946e37d91cda981c8b80f857f8eeb4258c737ba32e2789",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "anli"
+      ]
+    },
+    {
+      "task_id": "task642_esnli_classification",
+      "source_sha256": "8350fc2d6c9641d47063bd9f2eb4b770c30d7b5e134187fe96db1b0f68f9d57b",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "e_snli"
+      ]
+    },
+    {
+      "task_id": "task1390_wscfixed_coreference",
+      "source_sha256": "0143a2e9ada228e560f8c78cf6e3812b139de68ed5dcf9f2e38c03d7ad2123ce",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "wsc_fiexed"
+      ]
+    },
+    {
+      "task_id": "task1640_aqa1.0_answerable_unanswerable_question_classification",
+      "source_sha256": "34d51dd4eb7677b777e530c9c975ba69a27d3b409b7c08a0c5ba1c8bf3c2fdbc",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "adversarial_qa"
+      ]
+    },
+    {
+      "task_id": "task1388_cb_entailment",
+      "source_sha256": "5f107f045368b6a2e6f30f1330cc82f50b945f7e34941172f62adcaf643b1003",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "cb"
+      ]
+    },
+    {
+      "task_id": "task1534_daily_dialog_question_classification",
+      "source_sha256": "babd6c94f5c876979164296c35828a1d39ac9a0f31ce49066d52443636d99ddb",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "dailydialog"
+      ]
+    },
+    {
+      "task_id": "task232_iirc_link_number_classification",
+      "source_sha256": "1bd06c5e02c98431217cca7f5f8ca1a135cc9bc5d0dca4e455e92d4ecb1ba355",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "iirc"
+      ]
+    },
+    {
+      "task_id": "task362_spolin_yesand_prompt_response_sub_classification",
+      "source_sha256": "5418a35b676da4db54e497c469dc3218956c7a985df48b74de622449fa333757",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "spolin"
+      ]
+    },
+    {
+      "task_id": "task1554_scitail_classification",
+      "source_sha256": "305c619c8d96f6d0606647b404d769fd94d0e531429bb651c356f6f37049de8b",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "scitail"
+      ]
+    },
+    {
+      "task_id": "task970_sherliic_causal_relationship",
+      "source_sha256": "47a9bdce537e124c4a13e822b1152dbd63cf41674470f5981d099f049fd14e73",
+      "public_example_count": 5,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "sherliic"
+      ]
+    },
+    {
+      "task_id": "task391_causal_relationship",
+      "source_sha256": "b9ecde60dd9468c68fe7a5a39b22928100368fae93871479f1e9a8403b1dd497",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "cod3s"
+      ]
+    },
+    {
+      "task_id": "task220_rocstories_title_classification",
+      "source_sha256": "351875607f5de10a14b6bf156051f6c881cb28c2292bcb23fac79d08ee1fc1a9",
+      "public_example_count": 6,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "rocstories"
+      ]
+    },
+    {
+      "task_id": "task050_multirc_answerability",
+      "source_sha256": "8375a51cb0d04971ff7b5f1f1cc1551d335280bfa5890fde50cbe27d383cd69f",
+      "public_example_count": 4,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "multirc"
+      ]
+    },
+    {
+      "task_id": "task349_squad2.0_answerable_unanswerable_question_classification",
+      "source_sha256": "f41bba15ebf70dbd27a6020a123cb0f31d59e2ca1c5b08f027cc3f7cb383b8dc",
+      "public_example_count": 8,
+      "final_count": 20,
+      "exact_public_final_input_overlaps": 0,
+      "sources": [
+        "squad2.0"
+      ]
+    }
+  ],
+  "selection": "All twenty existing CONFIRMATION_TASKS, same order and first twenty instances each, without outcome-based filtering.",
+  "conditions": [
+    "raw_definition",
+    "positive_examples",
+    "parent_one_shot",
+    "validated_full",
+    "validated_routed"
+  ],
+  "primary_contrast": "validated_routed minus positive_examples",
+  "secondary_contrasts": [
+    "validated_routed minus raw_definition",
+    "validated_routed minus parent_one_shot",
+    "validated_routed minus validated_full"
+  ],
+  "unit": "Whole-task paired bootstrap, 100000 resamples; shared source families limit independence.",
+  "teacher_request_format": "Original teacher_structured_outputs=true; JSON-schema enforcement. DeepInfra advertises response_format and structured_outputs for Llama 3.3 70B.",
+  "teacher_information": "Public definition, positive/negative examples, and public positive-example student failures only. No official final instance is sent to the teacher.",
+  "limits": {
+    "teacher_attempts_maximum": 60,
+    "teacher_output_tokens_per_attempt": 1200,
+    "primary_final_logical_slots": 2000,
+    "student_public_validation_attempts_maximum": 600,
+    "wall_seconds": 7200
+  },
+  "stopping": "Complete fixed grid or stop on operational failure/resource bound. No task substitution, outcome-driven tuning, fresh retries, or final-answer-driven prompt selection.",
+  "fallback": "Existing positive-example fallback retained; identical requests reuse responses as the existing adapter implements.",
+  "runtime": "Same frozen Llama3.2:3b, CPU ranker and cases; launches only after the first reserved configuration, counting control and original-ablation continuation have ended.",
+  "new_framework_code": false,
+  "fresh_teacher_calls": true,
+  "historical_context": "Previous development results remain known and retained. These task IDs were reserved in existing source before the new experiment.",
+  "teacher_selection": "Existing manual configuration mode; Llama-family 70B teacher, not a claim of documented student-training-parent matching.",
+  "reason": "The first available Llama3.1 70B provider produced prose and representation-schema failures on public compilation prompts. This additional configuration is selected for API compatibility, before inspecting final-case responses or accuracy.",
+  "outcome_access": "Only initial-teacher public compilation responses/failure flags and operational event counts have been inspected from the first reserved run; no final-case responses, references or accuracy outputs have been inspected.",
+  "relation_to_first_configuration": "Additional endpoint/teacher configuration, not a replacement. Retain and score every first-configuration outcome and fallback. Same twenty task IDs and first twenty instances; no task selection or prompt retuning.",
+  "compatibility_source": "https://openrouter.ai/api/v1/models/meta-llama/llama-3.3-70b-instruct/endpoints",
+  "selection_rule": "Preserve 70B teacher scale and Llama family; choose the lowest-priced endpoint advertising both response_format and structured_outputs. No model accuracy probe was used.",
+  "further_configuration_search_allowed": false
+}

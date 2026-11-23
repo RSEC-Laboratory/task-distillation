@@ -1,0 +1,162 @@
+{
+  "task_id": "task1624_disfl_qa_question_yesno_classification",
+  "source_sha256": "b6e2277f34a70f6d0f630d245086f8a94531d0375a7d39549801ec92dd352586",
+  "parent_received_instances": false,
+  "student_validation_used_instances": false,
+  "initial_representation": {
+    "objective": "Classify whether a disfluent question is answerable based on a given context.",
+    "output_labels": [
+      "Yes",
+      "No"
+    ],
+    "decision_rules": [
+      "If the context explicitly answers the proper question, output 'Yes'.",
+      "If the context does not mention the topic of the proper question, output 'No'.",
+      "If the context mentions the topic but does not provide enough information to answer the proper question, output 'No'.",
+      "If the disfluent question contains a negation that changes the meaning of the proper question, apply the negation to the context and re-evaluate.",
+      "If the context is ambiguous or open to multiple interpretations, output 'No'.",
+      "If the proper question requires a specific role or reference that is not present in the context, output 'No'."
+    ],
+    "boundary_conditions": [
+      "If the context is empty or missing, output 'No'.",
+      "If the proper question is unclear or ambiguous, output 'No'.",
+      "If the disfluent question is identical to the proper question, apply the same rules as for the proper question."
+    ],
+    "counterfactual_constraints": [
+      "Changing the wording of the proper question without changing its meaning does not alter the output label.",
+      "Adding or removing irrelevant information from the context does not alter the output label.",
+      "Changing the topic of the proper question alters the output label."
+    ],
+    "verification_checks": [
+      "Check if the context explicitly answers the proper question.",
+      "Check if the context mentions the topic of the proper question.",
+      "Check if the disfluent question contains a negation that changes the meaning of the proper question.",
+      "Check if the context is ambiguous or open to multiple interpretations.",
+      "Check if the proper question requires a specific role or reference that is not present in the context."
+    ]
+  },
+  "final_representation": {
+    "objective": "Classify whether a disfluent question is answerable based on a given context.",
+    "output_labels": [
+      "Yes",
+      "No"
+    ],
+    "decision_rules": [
+      "If the context explicitly answers the proper question, output 'Yes'.",
+      "If the context does not mention the topic of the proper question, output 'No'.",
+      "If the context mentions the topic but does not provide enough information to answer the proper question, output 'No'.",
+      "If the disfluent question contains a negation that changes the meaning of the proper question, apply the negation to the context and re-evaluate.",
+      "If the context is ambiguous or open to multiple interpretations, output 'No'.",
+      "If the proper question requires a specific role or reference that is not present in the context, output 'No'."
+    ],
+    "boundary_conditions": [
+      "If the context is empty or missing, output 'No'.",
+      "If the proper question is unclear or ambiguous, output 'No'.",
+      "If the disfluent question is identical to the proper question, apply the same rules as for the proper question."
+    ],
+    "counterfactual_constraints": [
+      "Changing the wording of the proper question without changing its meaning does not alter the output label.",
+      "Adding or removing irrelevant information from the context does not alter the output label.",
+      "Changing the topic of the proper question alters the output label."
+    ],
+    "verification_checks": [
+      "Check if the context explicitly answers the proper question.",
+      "Check if the context mentions the topic of the proper question.",
+      "Check if the disfluent question contains a negation that changes the meaning of the proper question.",
+      "Check if the context is ambiguous or open to multiple interpretations.",
+      "Check if the proper question requires a specific role or reference that is not present in the context."
+    ]
+  },
+  "initial_raw_text": "{ \n  \"objective\": \"Classify whether a disfluent question is answerable based on a given context.\",\n  \"output_labels\": [\"Yes\", \"No\"],\n  \"decision_rules\": [\n    \"If the context explicitly answers the proper question, output 'Yes'.\",\n    \"If the context does not mention the topic of the proper question, output 'No'.\",\n    \"If the context mentions the topic but does not provide enough information to answer the proper question, output 'No'.\",\n    \"If the disfluent question contains a negation that changes the meaning of the proper question, apply the negation to the context and re-evaluate.\",\n    \"If the context is ambiguous or open to multiple interpretations, output 'No'.\",\n    \"If the proper question requires a specific role or reference that is not present in the context, output 'No'.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the context is empty or missing, output 'No'.\",\n    \"If the proper question is unclear or ambiguous, output 'No'.\",\n    \"If the disfluent question is identical to the proper question, apply the same rules as for the proper question.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the wording of the proper question without changing its meaning does not alter the output label.\",\n    \"Adding or removing irrelevant information from the context does not alter the output label.\",\n    \"Changing the topic of the proper question alters the output label.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the context explicitly answers the proper question.\",\n    \"Check if the context mentions the topic of the proper question.\",\n    \"Check if the disfluent question contains a negation that changes the meaning of the proper question.\",\n    \"Check if the context is ambiguous or open to multiple interpretations.\",\n    \"Check if the proper question requires a specific role or reference that is not present in the context.\"\n  ]\n}",
+  "final_raw_text": "{ \n  \"objective\": \"Classify whether a disfluent question is answerable based on a given context.\",\n  \"output_labels\": [\"Yes\", \"No\"],\n  \"decision_rules\": [\n    \"If the context explicitly answers the proper question, output 'Yes'.\",\n    \"If the context does not mention the topic of the proper question, output 'No'.\",\n    \"If the context mentions the topic but does not provide enough information to answer the proper question, output 'No'.\",\n    \"If the disfluent question contains a negation that changes the meaning of the proper question, apply the negation to the context and re-evaluate.\",\n    \"If the context is ambiguous or open to multiple interpretations, output 'No'.\",\n    \"If the proper question requires a specific role or reference that is not present in the context, output 'No'.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the context is empty or missing, output 'No'.\",\n    \"If the proper question is unclear or ambiguous, output 'No'.\",\n    \"If the disfluent question is identical to the proper question, apply the same rules as for the proper question.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the wording of the proper question without changing its meaning does not alter the output label.\",\n    \"Adding or removing irrelevant information from the context does not alter the output label.\",\n    \"Changing the topic of the proper question alters the output label.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the context explicitly answers the proper question.\",\n    \"Check if the context mentions the topic of the proper question.\",\n    \"Check if the disfluent question contains a negation that changes the meaning of the proper question.\",\n    \"Check if the context is ambiguous or open to multiple interpretations.\",\n    \"Check if the proper question requires a specific role or reference that is not present in the context.\"\n  ]\n}",
+  "initial_validation": [
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-00",
+      "expected": [
+        "Yes"
+      ],
+      "response": "Yes",
+      "correct": true,
+      "input_tokens": 638,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-01",
+      "expected": [
+        "No"
+      ],
+      "response": "No",
+      "correct": true,
+      "input_tokens": 825,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-02",
+      "expected": [
+        "No"
+      ],
+      "response": "No",
+      "correct": true,
+      "input_tokens": 721,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-03",
+      "expected": [
+        "Yes"
+      ],
+      "response": "Yes",
+      "correct": true,
+      "input_tokens": 624,
+      "output_tokens": 2
+    }
+  ],
+  "final_validation": [
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-00",
+      "expected": [
+        "Yes"
+      ],
+      "response": "Yes",
+      "correct": true,
+      "input_tokens": 638,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-01",
+      "expected": [
+        "No"
+      ],
+      "response": "No",
+      "correct": true,
+      "input_tokens": 825,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-02",
+      "expected": [
+        "No"
+      ],
+      "response": "No",
+      "correct": true,
+      "input_tokens": 721,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task1624_disfl_qa_question_yesno_classification-positive-03",
+      "expected": [
+        "Yes"
+      ],
+      "response": "Yes",
+      "correct": true,
+      "input_tokens": 624,
+      "output_tokens": 2
+    }
+  ],
+  "revisions": [],
+  "failure": null,
+  "teacher_calls": 1,
+  "teacher_input_tokens": 1615,
+  "teacher_output_tokens": 398,
+  "artifact_sha256": "600155a4fc69381758cd917dbc7cd00acd04d45c2bc031dadd082e07c8a2b7a6"
+}

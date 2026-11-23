@@ -1,0 +1,1400 @@
+{
+  "task_id": "policy-006",
+  "solver_model": "llama3.2:3b",
+  "arm": "full",
+  "completed_at": "2026-10-06T14:22:37.782869+00:00",
+  "rows": [
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-00",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=change, context=internal, role=operator, return review.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=operator, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          10,
+          11,
+          12,
+          24,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          24
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 332,
+      "output_tokens": 2,
+      "latency_seconds": 0.42801260000032926
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-01",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          11,
+          12,
+          16,
+          18,
+          20,
+          26
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 338,
+      "output_tokens": 2,
+      "latency_seconds": 0.3325795000000653
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-02",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=partner, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          7,
+          11,
+          16,
+          23,
+          25
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 337,
+      "output_tokens": 2,
+      "latency_seconds": 0.33844460000000254
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-03",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=change, role=operator, return review.\nIf risk=FALSE, action=change, context=partner, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=FALSE, action=change, context=internal, role=operator, return review.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          3,
+          4,
+          5,
+          16,
+          18,
+          23,
+          24
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 337,
+      "output_tokens": 2,
+      "latency_seconds": 0.3086119999998118
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-04",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          12
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.3446340999998938
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-05",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=approve, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=approve, context=sandbox, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          11,
+          14,
+          25,
+          27,
+          30
+        ],
+        "matching_rule_indices": [
+          27
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          27
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 350,
+      "output_tokens": 2,
+      "latency_seconds": 0.3291983999997683
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-06",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=approve, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          11,
+          14,
+          16,
+          25,
+          30
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 342,
+      "output_tokens": 2,
+      "latency_seconds": 0.27221340000050986
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-07",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=delete, context=partner, role=guest, return review.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          11,
+          16,
+          18,
+          19,
+          20,
+          25
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 341,
+      "output_tokens": 2,
+      "latency_seconds": 0.32726910000019416
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-08",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=approve, role=guest, return allow.\nIf risk=FALSE, action=approve, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          11,
+          14,
+          16,
+          25,
+          30
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 342,
+      "output_tokens": 2,
+      "latency_seconds": 0.33837119999952847
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-09",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=operator, return review.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=delete, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          9,
+          10,
+          11,
+          12,
+          18,
+          20
+        ],
+        "matching_rule_indices": [
+          9
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          9
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 347,
+      "output_tokens": 2,
+      "latency_seconds": 0.3589491000002454
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-10",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          11,
+          12,
+          16,
+          20,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 338,
+      "output_tokens": 2,
+      "latency_seconds": 0.3267982999996093
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-11",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=approve, role=admin, return allow.\nIf risk=FALSE, action=approve, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=admin, return allow.\nIf risk=FALSE, action=approve, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          8,
+          12,
+          14,
+          15,
+          16,
+          30,
+          31
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 338,
+      "output_tokens": 2,
+      "latency_seconds": 0.34999060000063764
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-12",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=delete, context=partner, role=guest, return review.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=FALSE, action=delete, context=sandbox, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          11,
+          17,
+          19,
+          20,
+          25
+        ],
+        "matching_rule_indices": [
+          17
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 329,
+      "output_tokens": 2,
+      "latency_seconds": 0.32532179999998334
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-13",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=FALSE, action=delete, context=sandbox, return deny.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          11,
+          12,
+          17,
+          20,
+          26
+        ],
+        "matching_rule_indices": [
+          17
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 326,
+      "output_tokens": 2,
+      "latency_seconds": 0.46175749999929394
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-14",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          11,
+          12,
+          16,
+          18,
+          20,
+          25
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 339,
+      "output_tokens": 2,
+      "latency_seconds": 0.3340708000005179
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-15",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=sandbox, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          22,
+          25
+        ],
+        "matching_rule_indices": [
+          22
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 328,
+      "output_tokens": 2,
+      "latency_seconds": 0.36366610000004584
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-16",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          5
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.33422150000023976
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-17",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=approve, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          11,
+          14,
+          25,
+          30
+        ],
+        "matching_rule_indices": [
+          30
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 334,
+      "output_tokens": 2,
+      "latency_seconds": 0.3165856999994503
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-18",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=delete, context=partner, role=guest, return review.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=delete, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          2,
+          4,
+          11,
+          18,
+          19,
+          20,
+          25
+        ],
+        "matching_rule_indices": [
+          2
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          2
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 349,
+      "output_tokens": 2,
+      "latency_seconds": 0.34790460000021994
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-19",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=operator, return review.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          11,
+          12,
+          16,
+          24,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 339,
+      "output_tokens": 2,
+      "latency_seconds": 0.328864799999792
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-20",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          16,
+          18,
+          20
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 339,
+      "output_tokens": 2,
+      "latency_seconds": 0.33242150000023685
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-21",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          16,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 339,
+      "output_tokens": 2,
+      "latency_seconds": 0.31878430000051594
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-22",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          26
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.3224079999999958
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-23",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=change, context=sandbox, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          11,
+          12,
+          16,
+          22,
+          25
+        ],
+        "matching_rule_indices": [
+          16
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          16
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 336,
+      "output_tokens": 2,
+      "latency_seconds": 0.3130851999994775
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-24",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=internal, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=internal, action=change, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=change, context=internal, role=guest, return allow.\nIf risk=FALSE, action=change, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=UNKNOWN, context=sandbox, return uncertain.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          1,
+          4,
+          5,
+          11,
+          12,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          1
+        ],
+        "matching_labels": [
+          "uncertain"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          1
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 343,
+      "output_tokens": 3,
+      "latency_seconds": 0.3519090999998298
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-25",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=UNKNOWN, context=partner, action=approve, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=approve, role=guest, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\nIf risk=FALSE, action=approve, context=internal, role=admin, return allow.\nIf risk=UNKNOWN, context=internal, action=approve, role=admin, return allow.\nIf risk=FALSE, action=approve, context=partner, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          7,
+          8,
+          15,
+          28,
+          31
+        ],
+        "matching_rule_indices": [
+          28
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 326,
+      "output_tokens": 2,
+      "latency_seconds": 0.34580210000058287
+    },
+    {
+      "task_id": "policy-006",
+      "method": "full_dsl",
+      "case_id": "policy-006-final-26",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "3717728c873570ce4870524541a4416e3ca01462d2d611a66c4cb5bc47d4d496",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf risk=FALSE, action=delete, context=partner, role=operator, return allow.\nIf risk=FALSE, action=delete, context=partner, role=admin, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=guest, return allow.\nIf risk=FALSE, action=delete, context=partner, role=guest, return review.\nIf risk=FALSE, action=change, context=partner, return allow.\nIf risk=UNKNOWN, context=partner, action=change, role=admin, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          18,
+          19,
+          20,
+          23
+        ],
+        "matching_rule_indices": [
+          18
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 328,
+      "output_tokens": 2,
+      "latency_seconds": 0.32590429999982007
+    }
+  ],
+  "final_wall_seconds": 9.54700000000048,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 9090,
+        "output_tokens_known": 55,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 9.177780200000598
+      }
+    }
+  }
+}

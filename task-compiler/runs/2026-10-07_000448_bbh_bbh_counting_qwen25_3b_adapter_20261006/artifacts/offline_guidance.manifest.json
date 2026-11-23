@@ -1,0 +1,9 @@
+{
+  "teacher_selection": "manual",
+  "teacher_backend": "openrouter",
+  "teacher_model": "meta-llama/llama-3.1-70b-instruct",
+  "student_model": "qwen2.5:3b",
+  "lineage": null,
+  "teacher_received_evaluation_examples": false,
+  "student_weights_updated": false
+}

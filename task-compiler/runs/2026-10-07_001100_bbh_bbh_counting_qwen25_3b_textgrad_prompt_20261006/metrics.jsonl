@@ -1,0 +1,2 @@
+{"stage": "load_textgrad_test_split", "elapsed_seconds": 0.014999999999417923, "cpu_percent": 0.0, "ram_mb": 568.140625, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "final_evaluation", "elapsed_seconds": 172.04699999999866, "cpu_percent": 0.2, "ram_mb": 568.58203125, "gpu_util_percent": null, "gpu_mem_mb": 0.0}

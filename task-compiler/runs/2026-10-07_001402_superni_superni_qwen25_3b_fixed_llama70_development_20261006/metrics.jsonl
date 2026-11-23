@@ -1,0 +1,3 @@
+{"stage": "load_superni_public_specifications", "elapsed_seconds": 0.2809999999954016, "cpu_percent": 0.0, "ram_mb": 643.97265625, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "compile_validate_and_freeze_all_tasks", "elapsed_seconds": 150.29699999999866, "cpu_percent": 1.7, "ram_mb": 755.671875, "gpu_util_percent": null, "gpu_mem_mb": 86.65185546875}
+{"stage": "evaluate_frozen_official_instances", "elapsed_seconds": 93.01499999999942, "cpu_percent": 1.4, "ram_mb": 1078.953125, "gpu_util_percent": null, "gpu_mem_mb": 94.77685546875}

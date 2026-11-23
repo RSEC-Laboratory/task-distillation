@@ -1,0 +1,1871 @@
+{
+  "task_id": "policy-001",
+  "solver_model": "qwen2.5:3b",
+  "arm": "gepa",
+  "prepared_at": "2026-10-06T00:58:14.193814+00:00",
+  "method": {
+    "method": "native_gepa",
+    "task_id": "policy-001",
+    "public_task_hash": "fd359f1326dcc1c7f5665504e5be230cd1940fb5a7ada8814002ce670aa0e11a",
+    "instructions": [
+      "Task: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+    ],
+    "routed": false,
+    "status": "prepared",
+    "trace": {
+      "best_candidate_index": 2,
+      "candidate_count": 3,
+      "candidate_word_guard": [],
+      "edited_candidate_count": 2,
+      "final_access_during_optimization": false,
+      "gepa_version": "0.1.4",
+      "implementation": "official_gepa_default_adapter",
+      "limits": {
+        "counterexample_patches": 3,
+        "max_instruction_words": 1800,
+        "reflection_minibatch_size": 3,
+        "representation_rounds": 3,
+        "seed": 20261005,
+        "semantic_repair_rounds": 3,
+        "solver_calls": 216,
+        "teacher_calls": 4,
+        "teacher_tokens": 2000,
+        "top_k": 6
+      },
+      "merge": false,
+      "metric_calls": 174,
+      "native_budget_interruption": null,
+      "native_history": [
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": false,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": false,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "review"
+            }
+          ],
+          "scores": [
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-03",
+            "policy-001-refinement-05",
+            "policy-001-build-17"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-03",
+            "policy-001-refinement-05",
+            "policy-001-build-17"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            }
+          ],
+          "scores": [
+            1.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "event": "reflection_completed",
+          "teacher_attempt": 1,
+          "text": "```  \nTask: Compositional Policy Classification (Task 001)\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts with specific priority rules.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nOutput Format:  \nA single label from the set: `deny`, `review`, `allow`, or `uncertain`.\n\nPolicy Rules (in priority order):\n\n1. **Critical Cases (highest priority):**  \n   - If `risk == \"TRUE\"` and `context == \"sandbox\"`, or  \n   - If `action == \"export\"`, then the label is `review`.\n\n2. **Unknown External Risk (context == \"sandbox\" and risk == \"UNKNOWN\"):**  \n   - Label is `uncertain`.\n\n3. **Unknown Risk (risk == \"UNKNOWN\") but not in the above case:**  \n   - Prefer `allow` at priority 90.\n\n4. **Trusted Cases:**  \n   - If `role == \"analyst\"` or (`context == \"internal\"` and `risk == \"FALSE\"`), then:  \n     - If the action is `approve`, prefer `deny` at priority 80.  \n     - Otherwise, prefer `allow` at priority 80.  \n   - **Trusted cases forbid `allow`.**\n\n5. **Action \"change\" in context \"sandbox\":**  \n   - Prefer `review` at priority 70.\n\n6. **Role \"admin\" or context \"partner\":**  \n   - Prefer `allow` at priority 40.\n\n7. **All other declared roles (not trusted, not admin, not partner):**  \n   - Prefer `deny` at priority 1.\n\n8. **Required Labels Override Preferences:**  \n   - If any required label is present, it overrides all preferences.  \n   - If there is abstention or conflicting required labels, the result is `uncertain`.\n\n9. **Forbidden Labels:**  \n   - If any forbidden label is present, it is removed.  \n   - The remaining label with the highest priority wins.\n\n10. **Default Behavior:**  \n    - If no rule applies, the result is `uncertain`.\n\nImportant Notes:  \n- Use all fields in the input event.  \n- Do not use any shortcuts or assumptions not explicitly stated in the rules.  \n- If multiple rules apply, use the one with the highest priority.  \n- If there is a conflict between rules, the rule with the highest priority wins.  \n- If a required label is present, it overrides all other rules.  \n- If required labels conflict, the result is `uncertain`.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n- Input: `{\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001\n```"
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional Policy Classification (Task 001)\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts with specific priority rules.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nOutput Format:  \nA single label from the set: `deny`, `review`, `allow`, or `uncertain`.\n\nPolicy Rules (in priority order):\n\n1. **Critical Cases (highest priority):**  \n   - If `risk == \"TRUE\"` and `context == \"sandbox\"`, or  \n   - If `action == \"export\"`, then the label is `review`.\n\n2. **Unknown External Risk (context == \"sandbox\" and risk == \"UNKNOWN\"):**  \n   - Label is `uncertain`.\n\n3. **Unknown Risk (risk == \"UNKNOWN\") but not in the above case:**  \n   - Prefer `allow` at priority 90.\n\n4. **Trusted Cases:**  \n   - If `role == \"analyst\"` or (`context == \"internal\"` and `risk == \"FALSE\"`), then:  \n     - If the action is `approve`, prefer `deny` at priority 80.  \n     - Otherwise, prefer `allow` at priority 80.  \n   - **Trusted cases forbid `allow`.**\n\n5. **Action \"change\" in context \"sandbox\":**  \n   - Prefer `review` at priority 70.\n\n6. **Role \"admin\" or context \"partner\":**  \n   - Prefer `allow` at priority 40.\n\n7. **All other declared roles (not trusted, not admin, not partner):**  \n   - Prefer `deny` at priority 1.\n\n8. **Required Labels Override Preferences:**  \n   - If any required label is present, it overrides all preferences.  \n   - If there is abstention or conflicting required labels, the result is `uncertain`.\n\n9. **Forbidden Labels:**  \n   - If any forbidden label is present, it is removed.  \n   - The remaining label with the highest priority wins.\n\n10. **Default Behavior:**  \n    - If no rule applies, the result is `uncertain`.\n\nImportant Notes:  \n- Use all fields in the input event.  \n- Do not use any shortcuts or assumptions not explicitly stated in the rules.  \n- If multiple rules apply, use the one with the highest priority.  \n- If there is a conflict between rules, the rule with the highest priority wins.  \n- If a required label is present, it overrides all other rules.  \n- If required labels conflict, the result is `uncertain`.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n- Input: `{\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "64eeb21b64ab159f32a1b3b285b6310715c99ed03853cb8700ba63c943a5be49",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-03",
+            "policy-001-refinement-05",
+            "policy-001-build-17"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "64eeb21b64ab159f32a1b3b285b6310715c99ed03853cb8700ba63c943a5be49",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-03",
+            "policy-001-refinement-05",
+            "policy-001-build-17"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            }
+          ],
+          "scores": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional Policy Classification (Task 001)\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts with specific priority rules.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nOutput Format:  \nA single label from the set: `deny`, `review`, `allow`, or `uncertain`.\n\nPolicy Rules (in priority order):\n\n1. **Critical Cases (highest priority):**  \n   - If `risk == \"TRUE\"` and `context == \"sandbox\"`, or  \n   - If `action == \"export\"`, then the label is `review`.\n\n2. **Unknown External Risk (context == \"sandbox\" and risk == \"UNKNOWN\"):**  \n   - Label is `uncertain`.\n\n3. **Unknown Risk (risk == \"UNKNOWN\") but not in the above case:**  \n   - Prefer `allow` at priority 90.\n\n4. **Trusted Cases:**  \n   - If `role == \"analyst\"` or (`context == \"internal\"` and `risk == \"FALSE\"`), then:  \n     - If the action is `approve`, prefer `deny` at priority 80.  \n     - Otherwise, prefer `allow` at priority 80.  \n   - **Trusted cases forbid `allow`.**\n\n5. **Action \"change\" in context \"sandbox\":**  \n   - Prefer `review` at priority 70.\n\n6. **Role \"admin\" or context \"partner\":**  \n   - Prefer `allow` at priority 40.\n\n7. **All other declared roles (not trusted, not admin, not partner):**  \n   - Prefer `deny` at priority 1.\n\n8. **Required Labels Override Preferences:**  \n   - If any required label is present, it overrides all preferences.  \n   - If there is abstention or conflicting required labels, the result is `uncertain`.\n\n9. **Forbidden Labels:**  \n   - If any forbidden label is present, it is removed.  \n   - The remaining label with the highest priority wins.\n\n10. **Default Behavior:**  \n    - If no rule applies, the result is `uncertain`.\n\nImportant Notes:  \n- Use all fields in the input event.  \n- Do not use any shortcuts or assumptions not explicitly stated in the rules.  \n- If multiple rules apply, use the one with the highest priority.  \n- If there is a conflict between rules, the rule with the highest priority wins.  \n- If a required label is present, it overrides all other rules.  \n- If required labels conflict, the result is `uncertain`.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n- Input: `{\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "64eeb21b64ab159f32a1b3b285b6310715c99ed03853cb8700ba63c943a5be49",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "64eeb21b64ab159f32a1b3b285b6310715c99ed03853cb8700ba63c943a5be49",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            }
+          ],
+          "scores": [
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-22",
+            "policy-001-build-13",
+            "policy-001-refinement-12"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "1501e9349a6aa447d6beb606ecab7c5ad28073e48345c38dabc2b344d7c930a3",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-22",
+            "policy-001-build-13",
+            "policy-001-refinement-12"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "uncertain"
+            }
+          ],
+          "scores": [
+            1.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "event": "reflection_completed",
+          "teacher_attempt": 2,
+          "text": "```  \nTask: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001  \n```"
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "9c0b07062d11dc801d537820c8b1f9ddd6e5796403205f341e93f6b444265d69",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-22",
+            "policy-001-build-13",
+            "policy-001-refinement-12"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "9c0b07062d11dc801d537820c8b1f9ddd6e5796403205f341e93f6b444265d69",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-22",
+            "policy-001-build-13",
+            "policy-001-refinement-12"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "allow"
+            }
+          ],
+          "scores": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "candidate": {
+            "system_prompt": "Task: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          },
+          "candidate_hash": "9c0b07062d11dc801d537820c8b1f9ddd6e5796403205f341e93f6b444265d69",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_requested"
+        },
+        {
+          "candidate_hash": "9c0b07062d11dc801d537820c8b1f9ddd6e5796403205f341e93f6b444265d69",
+          "capture_traces": true,
+          "case_ids": [
+            "policy-001-build-00",
+            "policy-001-build-01",
+            "policy-001-build-02",
+            "policy-001-build-03",
+            "policy-001-build-04",
+            "policy-001-build-05",
+            "policy-001-build-06",
+            "policy-001-build-07",
+            "policy-001-build-08",
+            "policy-001-build-09",
+            "policy-001-build-10",
+            "policy-001-build-11",
+            "policy-001-build-12",
+            "policy-001-build-13",
+            "policy-001-build-14",
+            "policy-001-build-15",
+            "policy-001-build-16",
+            "policy-001-build-17",
+            "policy-001-build-18",
+            "policy-001-build-19",
+            "policy-001-build-20",
+            "policy-001-build-21",
+            "policy-001-build-22",
+            "policy-001-build-23",
+            "policy-001-build-24",
+            "policy-001-build-25",
+            "policy-001-build-26",
+            "policy-001-refinement-00",
+            "policy-001-refinement-01",
+            "policy-001-refinement-02",
+            "policy-001-refinement-03",
+            "policy-001-refinement-04",
+            "policy-001-refinement-05",
+            "policy-001-refinement-06",
+            "policy-001-refinement-07",
+            "policy-001-refinement-08",
+            "policy-001-refinement-09",
+            "policy-001-refinement-10",
+            "policy-001-refinement-11",
+            "policy-001-refinement-12",
+            "policy-001-refinement-13",
+            "policy-001-refinement-14",
+            "policy-001-refinement-15",
+            "policy-001-refinement-16",
+            "policy-001-refinement-17",
+            "policy-001-refinement-18",
+            "policy-001-refinement-19",
+            "policy-001-refinement-20",
+            "policy-001-refinement-21",
+            "policy-001-refinement-22",
+            "policy-001-refinement-23",
+            "policy-001-refinement-24",
+            "policy-001-refinement-25",
+            "policy-001-refinement-26"
+          ],
+          "event": "evaluation_completed",
+          "outputs": [
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "deny"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "allow"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            },
+            {
+              "full_assistant_response": "review"
+            }
+          ],
+          "scores": [
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0,
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "native_logs": [
+        "Iteration 0: Base program full valset score: 0.42592592592592593 over 54 / 54 examples",
+        "Iteration 1: Selected program 0 score: 0.42592592592592593",
+        "Iteration 1: Proposed new text for system_prompt: Task: Compositional Policy Classification (Task 001)\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts with specific priority rules.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nOutput Format:  \nA single label from the set: `deny`, `review`, `allow`, or `uncertain`.\n\nPolicy Rules (in priority order):\n\n1. **Critical Cases (highest priority):**  \n   - If `risk == \"TRUE\"` and `context == \"sandbox\"`, or  \n   - If `action == \"export\"`, then the label is `review`.\n\n2. **Unknown External Risk (context == \"sandbox\" and risk == \"UNKNOWN\"):**  \n   - Label is `uncertain`.\n\n3. **Unknown Risk (risk == \"UNKNOWN\") but not in the above case:**  \n   - Prefer `allow` at priority 90.\n\n4. **Trusted Cases:**  \n   - If `role == \"analyst\"` or (`context == \"internal\"` and `risk == \"FALSE\"`), then:  \n     - If the action is `approve`, prefer `deny` at priority 80.  \n     - Otherwise, prefer `allow` at priority 80.  \n   - **Trusted cases forbid `allow`.**\n\n5. **Action \"change\" in context \"sandbox\":**  \n   - Prefer `review` at priority 70.\n\n6. **Role \"admin\" or context \"partner\":**  \n   - Prefer `allow` at priority 40.\n\n7. **All other declared roles (not trusted, not admin, not partner):**  \n   - Prefer `deny` at priority 1.\n\n8. **Required Labels Override Preferences:**  \n   - If any required label is present, it overrides all preferences.  \n   - If there is abstention or conflicting required labels, the result is `uncertain`.\n\n9. **Forbidden Labels:**  \n   - If any forbidden label is present, it is removed.  \n   - The remaining label with the highest priority wins.\n\n10. **Default Behavior:**  \n    - If no rule applies, the result is `uncertain`.\n\nImportant Notes:  \n- Use all fields in the input event.  \n- Do not use any shortcuts or assumptions not explicitly stated in the rules.  \n- If multiple rules apply, use the one with the highest priority.  \n- If there is a conflict between rules, the rule with the highest priority wins.  \n- If a required label is present, it overrides all other rules.  \n- If required labels conflict, the result is `uncertain`.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n- Input: `{\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001",
+        "Iteration 1: Accepted candidate (subsample score 2.0 -> 3.0); running full eval.",
+        "Iteration 1: Valset score for new program: 0.3333333333333333 (coverage 54 / 54)",
+        "Iteration 1: Val aggregate for new program: 0.3333333333333333",
+        "Iteration 1: Individual valset scores for new program: {0: 0.0, 1: 0.0, 2: 1.0, 3: 1.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 0.0, 14: 1.0, 15: 1.0, 16: 0.0, 17: 1.0, 18: 0.0, 19: 0.0, 20: 0.0, 21: 0.0, 22: 0.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 0.0, 32: 1.0, 33: 0.0, 34: 0.0, 35: 0.0, 36: 0.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 1.0, 44: 0.0, 45: 0.0, 46: 0.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 0.0, 51: 1.0, 52: 1.0, 53: 1.0}",
+        "Iteration 1: New valset pareto front scores: {0: 1.0, 1: 0.0, 2: 1.0, 3: 1.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 0.0, 10: 0.0, 11: 0.0, 12: 0.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 0.0, 17: 1.0, 18: 0.0, 19: 0.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 0.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 0.0, 32: 1.0, 33: 0.0, 34: 1.0, 35: 1.0, 36: 0.0, 37: 0.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 1.0, 44: 0.0, 45: 0.0, 46: 1.0, 47: 1.0, 48: 0.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0}",
+        "Iteration 1: Valset pareto front aggregate score: 0.5370370370370371",
+        "Iteration 1: Updated valset pareto front programs: {0: {0}, 1: {0, 1}, 2: {0, 1}, 3: {0, 1}, 4: {0, 1}, 5: {0, 1}, 6: {0, 1}, 7: {0, 1}, 8: {0, 1}, 9: {0, 1}, 10: {0, 1}, 11: {0, 1}, 12: {0, 1}, 13: {0}, 14: {0, 1}, 15: {0, 1}, 16: {0, 1}, 17: {0, 1}, 18: {0, 1}, 19: {0, 1}, 20: {0}, 21: {0, 1}, 22: {0}, 23: {1}, 24: {0, 1}, 25: {0, 1}, 26: {1}, 27: {0}, 28: {0, 1}, 29: {1}, 30: {0, 1}, 31: {0, 1}, 32: {1}, 33: {0, 1}, 34: {0}, 35: {0}, 36: {0, 1}, 37: {0, 1}, 38: {0, 1}, 39: {1}, 40: {0, 1}, 41: {0, 1}, 42: {0}, 43: {0, 1}, 44: {0, 1}, 45: {0, 1}, 46: {0}, 47: {0}, 48: {0, 1}, 49: {0, 1}, 50: {0}, 51: {0, 1}, 52: {1}, 53: {0, 1}}",
+        "Iteration 1: Best valset aggregate score so far: 0.42592592592592593",
+        "Iteration 1: Best program as per aggregate score on valset: 0",
+        "Iteration 1: Best score on valset: 0.42592592592592593",
+        "Iteration 1: Linear pareto front program index: 0",
+        "Iteration 1: New program candidate index: 1",
+        "Iteration 2: Selected program 0 score: 0.42592592592592593",
+        "Iteration 2: Proposed new text for system_prompt: Task: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001",
+        "Iteration 2: Accepted candidate (subsample score 2.0 -> 3.0); running full eval.",
+        "Iteration 2: Found a better program on the valset with score 0.5185185185185185.",
+        "Iteration 2: Valset score for new program: 0.5185185185185185 (coverage 54 / 54)",
+        "Iteration 2: Val aggregate for new program: 0.5185185185185185",
+        "Iteration 2: Individual valset scores for new program: {0: 0.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 0.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 0.0, 17: 0.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 0.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 0.0, 32: 1.0, 33: 0.0, 34: 0.0, 35: 0.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 0.0, 43: 1.0, 44: 0.0, 45: 0.0, 46: 1.0, 47: 0.0, 48: 0.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 0.0, 53: 1.0}",
+        "Iteration 2: New valset pareto front scores: {0: 1.0, 1: 1.0, 2: 1.0, 3: 1.0, 4: 0.0, 5: 0.0, 6: 0.0, 7: 0.0, 8: 0.0, 9: 1.0, 10: 1.0, 11: 0.0, 12: 0.0, 13: 1.0, 14: 1.0, 15: 1.0, 16: 0.0, 17: 1.0, 18: 1.0, 19: 0.0, 20: 1.0, 21: 0.0, 22: 1.0, 23: 1.0, 24: 1.0, 25: 1.0, 26: 1.0, 27: 1.0, 28: 1.0, 29: 1.0, 30: 0.0, 31: 0.0, 32: 1.0, 33: 0.0, 34: 1.0, 35: 1.0, 36: 1.0, 37: 1.0, 38: 1.0, 39: 1.0, 40: 0.0, 41: 1.0, 42: 1.0, 43: 1.0, 44: 0.0, 45: 0.0, 46: 1.0, 47: 1.0, 48: 0.0, 49: 0.0, 50: 1.0, 51: 1.0, 52: 1.0, 53: 1.0}",
+        "Iteration 2: Valset pareto front aggregate score: 0.6666666666666666",
+        "Iteration 2: Updated valset pareto front programs: {0: {0}, 1: {2}, 2: {0, 1, 2}, 3: {0, 1, 2}, 4: {0, 1, 2}, 5: {0, 1, 2}, 6: {0, 1, 2}, 7: {0, 1, 2}, 8: {0, 1, 2}, 9: {2}, 10: {2}, 11: {0, 1, 2}, 12: {0, 1, 2}, 13: {0, 2}, 14: {0, 1, 2}, 15: {0, 1, 2}, 16: {0, 1, 2}, 17: {0, 1}, 18: {2}, 19: {0, 1, 2}, 20: {0, 2}, 21: {0, 1, 2}, 22: {0, 2}, 23: {1, 2}, 24: {2}, 25: {0, 1, 2}, 26: {1, 2}, 27: {0}, 28: {0, 1, 2}, 29: {1, 2}, 30: {0, 1, 2}, 31: {0, 1, 2}, 32: {1, 2}, 33: {0, 1, 2}, 34: {0}, 35: {0}, 36: {2}, 37: {2}, 38: {0, 1, 2}, 39: {1, 2}, 40: {0, 1, 2}, 41: {0, 1, 2}, 42: {0}, 43: {0, 1, 2}, 44: {0, 1, 2}, 45: {0, 1, 2}, 46: {0, 2}, 47: {0}, 48: {0, 1, 2}, 49: {0, 1, 2}, 50: {0, 2}, 51: {0, 1, 2}, 52: {1}, 53: {0, 1, 2}}",
+        "Iteration 2: Best valset aggregate score so far: 0.5185185185185185",
+        "Iteration 2: Best program as per aggregate score on valset: 2",
+        "Iteration 2: Best score on valset: 0.5185185185185185",
+        "Iteration 2: Linear pareto front program index: 2",
+        "Iteration 2: New program candidate index: 2"
+      ],
+      "native_result": {
+        "_str_candidate_key": null,
+        "best_idx": 2,
+        "best_outputs_valset": null,
+        "candidates": [
+          {
+            "system_prompt": "Task: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001"
+          },
+          {
+            "system_prompt": "Task: Compositional Policy Classification (Task 001)\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules and conditions. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts with specific priority rules.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nOutput Format:  \nA single label from the set: `deny`, `review`, `allow`, or `uncertain`.\n\nPolicy Rules (in priority order):\n\n1. **Critical Cases (highest priority):**  \n   - If `risk == \"TRUE\"` and `context == \"sandbox\"`, or  \n   - If `action == \"export\"`, then the label is `review`.\n\n2. **Unknown External Risk (context == \"sandbox\" and risk == \"UNKNOWN\"):**  \n   - Label is `uncertain`.\n\n3. **Unknown Risk (risk == \"UNKNOWN\") but not in the above case:**  \n   - Prefer `allow` at priority 90.\n\n4. **Trusted Cases:**  \n   - If `role == \"analyst\"` or (`context == \"internal\"` and `risk == \"FALSE\"`), then:  \n     - If the action is `approve`, prefer `deny` at priority 80.  \n     - Otherwise, prefer `allow` at priority 80.  \n   - **Trusted cases forbid `allow`.**\n\n5. **Action \"change\" in context \"sandbox\":**  \n   - Prefer `review` at priority 70.\n\n6. **Role \"admin\" or context \"partner\":**  \n   - Prefer `allow` at priority 40.\n\n7. **All other declared roles (not trusted, not admin, not partner):**  \n   - Prefer `deny` at priority 1.\n\n8. **Required Labels Override Preferences:**  \n   - If any required label is present, it overrides all preferences.  \n   - If there is abstention or conflicting required labels, the result is `uncertain`.\n\n9. **Forbidden Labels:**  \n   - If any forbidden label is present, it is removed.  \n   - The remaining label with the highest priority wins.\n\n10. **Default Behavior:**  \n    - If no rule applies, the result is `uncertain`.\n\nImportant Notes:  \n- Use all fields in the input event.  \n- Do not use any shortcuts or assumptions not explicitly stated in the rules.  \n- If multiple rules apply, use the one with the highest priority.  \n- If there is a conflict between rules, the rule with the highest priority wins.  \n- If a required label is present, it overrides all other rules.  \n- If required labels conflict, the result is `uncertain`.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n- Input: `{\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          },
+          {
+            "system_prompt": "Task: Compositional Policy 001 - Event Classification\n\nObjective:  \nClassify a structured event into one of the declared labels: `deny`, `review`, or `allow`, based on a set of priority-based rules. The classification must follow the logic of the public policy, which includes handling risk states, roles, actions, and contexts.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `analyst`, `admin`, `auditor`  \n- `action`: one of `approve`, `change`, `export`  \n- `context`: one of `internal`, `partner`, `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, `UNKNOWN`  \n\nDeclared Labels:  \n- `deny`  \n- `review`  \n- `allow`  \n\nPolicy Rules (in priority order):  \n1. **Critical cases** (risk `TRUE` in `sandbox` context or action is `export`) require `review`.  \n2. **Unknown external risk** (risk `UNKNOWN` in `sandbox` context) returns `uncertain`.  \n3. **Unknown risk** (risk `UNKNOWN` in non-sandbox context) prefers `allow` at priority 90.  \n4. **Trusted cases** (role is `analyst` or context is `internal` with risk `FALSE`) prefer `deny` at priority 80.  \n5. **Action change** in `sandbox` context prefers `review` at priority 70.  \n6. **Role admin** and **context partner** prefer `allow` at priority 40.  \n7. **Trusted cases** forbid `allow`.  \n8. All other declared roles (not covered by above) prefer `deny` at priority 1.  \n9. **Required labels** override preferences.  \n10. **Abstention or conflicting required labels** returns `uncertain`.  \n11. **Forbidden labels** are removed; the remaining highest-priority preference wins.  \n\nForbidden Shortcuts:  \nUse every field named by a relevant rule. Do not skip or infer fields not explicitly mentioned in the rules.\n\nExamples:  \n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}` → Output: `review`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}` → Output: `deny`  \n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}` → Output: `allow`  \n\nInstructions for the Assistant:  \n1. Parse the input event and extract all relevant fields: `role`, `action`, `context`, and `risk`.  \n2. Apply the rules in priority order, starting from the highest priority (90) to the lowest (1).  \n3. Check for **required labels** and **forbidden labels**. If a required label is present, it overrides all preferences.  \n4. If there is **abstention** or **conflicting required labels**, return `uncertain`.  \n5. If **forbidden labels** are present, remove them and select the highest-priority remaining preference.  \n6. If no rule applies, default to `deny` (priority 1).  \n7. Ensure that all fields are used as per the rules and no shortcuts are taken.  \n\nPublic Source Identifier:  \ncompositional-policies-v2:family-1:task-001"
+          }
+        ],
+        "discovery_eval_counts": [
+          0,
+          60,
+          120
+        ],
+        "num_full_val_evals": 3,
+        "objective_pareto_front": null,
+        "parents": [
+          [
+            null
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "per_objective_best_candidates": null,
+        "per_val_instance_best_candidates": {
+          "0": [
+            0
+          ],
+          "1": [
+            2
+          ],
+          "10": [
+            2
+          ],
+          "11": [
+            0,
+            1,
+            2
+          ],
+          "12": [
+            0,
+            1,
+            2
+          ],
+          "13": [
+            0,
+            2
+          ],
+          "14": [
+            0,
+            1,
+            2
+          ],
+          "15": [
+            0,
+            1,
+            2
+          ],
+          "16": [
+            0,
+            1,
+            2
+          ],
+          "17": [
+            0,
+            1
+          ],
+          "18": [
+            2
+          ],
+          "19": [
+            0,
+            1,
+            2
+          ],
+          "2": [
+            0,
+            1,
+            2
+          ],
+          "20": [
+            0,
+            2
+          ],
+          "21": [
+            0,
+            1,
+            2
+          ],
+          "22": [
+            0,
+            2
+          ],
+          "23": [
+            1,
+            2
+          ],
+          "24": [
+            2
+          ],
+          "25": [
+            0,
+            1,
+            2
+          ],
+          "26": [
+            1,
+            2
+          ],
+          "27": [
+            0
+          ],
+          "28": [
+            0,
+            1,
+            2
+          ],
+          "29": [
+            1,
+            2
+          ],
+          "3": [
+            0,
+            1,
+            2
+          ],
+          "30": [
+            0,
+            1,
+            2
+          ],
+          "31": [
+            0,
+            1,
+            2
+          ],
+          "32": [
+            1,
+            2
+          ],
+          "33": [
+            0,
+            1,
+            2
+          ],
+          "34": [
+            0
+          ],
+          "35": [
+            0
+          ],
+          "36": [
+            2
+          ],
+          "37": [
+            2
+          ],
+          "38": [
+            0,
+            1,
+            2
+          ],
+          "39": [
+            1,
+            2
+          ],
+          "4": [
+            0,
+            1,
+            2
+          ],
+          "40": [
+            0,
+            1,
+            2
+          ],
+          "41": [
+            0,
+            1,
+            2
+          ],
+          "42": [
+            0
+          ],
+          "43": [
+            0,
+            1,
+            2
+          ],
+          "44": [
+            0,
+            1,
+            2
+          ],
+          "45": [
+            0,
+            1,
+            2
+          ],
+          "46": [
+            0,
+            2
+          ],
+          "47": [
+            0
+          ],
+          "48": [
+            0,
+            1,
+            2
+          ],
+          "49": [
+            0,
+            1,
+            2
+          ],
+          "5": [
+            0,
+            1,
+            2
+          ],
+          "50": [
+            0,
+            2
+          ],
+          "51": [
+            0,
+            1,
+            2
+          ],
+          "52": [
+            1
+          ],
+          "53": [
+            0,
+            1,
+            2
+          ],
+          "6": [
+            0,
+            1,
+            2
+          ],
+          "7": [
+            0,
+            1,
+            2
+          ],
+          "8": [
+            0,
+            1,
+            2
+          ],
+          "9": [
+            2
+          ]
+        },
+        "run_dir": null,
+        "seed": 20261005,
+        "total_metric_calls": 174,
+        "val_aggregate_scores": [
+          0.42592592592592593,
+          0.3333333333333333,
+          0.5185185185185185
+        ],
+        "val_aggregate_subscores": null,
+        "val_subscores": [
+          {
+            "0": 1.0,
+            "1": 0.0,
+            "10": 0.0,
+            "11": 0.0,
+            "12": 0.0,
+            "13": 1.0,
+            "14": 1.0,
+            "15": 1.0,
+            "16": 0.0,
+            "17": 1.0,
+            "18": 0.0,
+            "19": 0.0,
+            "2": 1.0,
+            "20": 1.0,
+            "21": 0.0,
+            "22": 1.0,
+            "23": 0.0,
+            "24": 0.0,
+            "25": 1.0,
+            "26": 0.0,
+            "27": 1.0,
+            "28": 1.0,
+            "29": 0.0,
+            "3": 1.0,
+            "30": 0.0,
+            "31": 0.0,
+            "32": 0.0,
+            "33": 0.0,
+            "34": 1.0,
+            "35": 1.0,
+            "36": 0.0,
+            "37": 0.0,
+            "38": 1.0,
+            "39": 0.0,
+            "4": 0.0,
+            "40": 0.0,
+            "41": 1.0,
+            "42": 1.0,
+            "43": 1.0,
+            "44": 0.0,
+            "45": 0.0,
+            "46": 1.0,
+            "47": 1.0,
+            "48": 0.0,
+            "49": 0.0,
+            "5": 0.0,
+            "50": 1.0,
+            "51": 1.0,
+            "52": 0.0,
+            "53": 1.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 0.0,
+            "10": 0.0,
+            "11": 0.0,
+            "12": 0.0,
+            "13": 0.0,
+            "14": 1.0,
+            "15": 1.0,
+            "16": 0.0,
+            "17": 1.0,
+            "18": 0.0,
+            "19": 0.0,
+            "2": 1.0,
+            "20": 0.0,
+            "21": 0.0,
+            "22": 0.0,
+            "23": 1.0,
+            "24": 0.0,
+            "25": 1.0,
+            "26": 1.0,
+            "27": 0.0,
+            "28": 1.0,
+            "29": 1.0,
+            "3": 1.0,
+            "30": 0.0,
+            "31": 0.0,
+            "32": 1.0,
+            "33": 0.0,
+            "34": 0.0,
+            "35": 0.0,
+            "36": 0.0,
+            "37": 0.0,
+            "38": 1.0,
+            "39": 1.0,
+            "4": 0.0,
+            "40": 0.0,
+            "41": 1.0,
+            "42": 0.0,
+            "43": 1.0,
+            "44": 0.0,
+            "45": 0.0,
+            "46": 0.0,
+            "47": 0.0,
+            "48": 0.0,
+            "49": 0.0,
+            "5": 0.0,
+            "50": 0.0,
+            "51": 1.0,
+            "52": 1.0,
+            "53": 1.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 0.0
+          },
+          {
+            "0": 0.0,
+            "1": 1.0,
+            "10": 1.0,
+            "11": 0.0,
+            "12": 0.0,
+            "13": 1.0,
+            "14": 1.0,
+            "15": 1.0,
+            "16": 0.0,
+            "17": 0.0,
+            "18": 1.0,
+            "19": 0.0,
+            "2": 1.0,
+            "20": 1.0,
+            "21": 0.0,
+            "22": 1.0,
+            "23": 1.0,
+            "24": 1.0,
+            "25": 1.0,
+            "26": 1.0,
+            "27": 0.0,
+            "28": 1.0,
+            "29": 1.0,
+            "3": 1.0,
+            "30": 0.0,
+            "31": 0.0,
+            "32": 1.0,
+            "33": 0.0,
+            "34": 0.0,
+            "35": 0.0,
+            "36": 1.0,
+            "37": 1.0,
+            "38": 1.0,
+            "39": 1.0,
+            "4": 0.0,
+            "40": 0.0,
+            "41": 1.0,
+            "42": 0.0,
+            "43": 1.0,
+            "44": 0.0,
+            "45": 0.0,
+            "46": 1.0,
+            "47": 0.0,
+            "48": 0.0,
+            "49": 0.0,
+            "5": 0.0,
+            "50": 1.0,
+            "51": 1.0,
+            "52": 0.0,
+            "53": 1.0,
+            "6": 0.0,
+            "7": 0.0,
+            "8": 0.0,
+            "9": 1.0
+          }
+        ],
+        "validation_schema_version": 2
+      },
+      "native_stop_reason": "insufficient_allowance_for_complete_native_iteration",
+      "oracle_program_access": false,
+      "public_train_case_ids": [
+        "policy-001-build-00",
+        "policy-001-build-01",
+        "policy-001-build-02",
+        "policy-001-build-03",
+        "policy-001-build-04",
+        "policy-001-build-05",
+        "policy-001-build-06",
+        "policy-001-build-07",
+        "policy-001-build-08",
+        "policy-001-build-09",
+        "policy-001-build-10",
+        "policy-001-build-11",
+        "policy-001-build-12",
+        "policy-001-build-13",
+        "policy-001-build-14",
+        "policy-001-build-15",
+        "policy-001-build-16",
+        "policy-001-build-17",
+        "policy-001-build-18",
+        "policy-001-build-19",
+        "policy-001-build-20",
+        "policy-001-build-21",
+        "policy-001-build-22",
+        "policy-001-build-23",
+        "policy-001-build-24",
+        "policy-001-build-25",
+        "policy-001-build-26",
+        "policy-001-refinement-00",
+        "policy-001-refinement-01",
+        "policy-001-refinement-02",
+        "policy-001-refinement-03",
+        "policy-001-refinement-04",
+        "policy-001-refinement-05",
+        "policy-001-refinement-06",
+        "policy-001-refinement-07",
+        "policy-001-refinement-08",
+        "policy-001-refinement-09",
+        "policy-001-refinement-10",
+        "policy-001-refinement-11",
+        "policy-001-refinement-12",
+        "policy-001-refinement-13",
+        "policy-001-refinement-14",
+        "policy-001-refinement-15",
+        "policy-001-refinement-16",
+        "policy-001-refinement-17",
+        "policy-001-refinement-18",
+        "policy-001-refinement-19",
+        "policy-001-refinement-20",
+        "policy-001-refinement-21",
+        "policy-001-refinement-22",
+        "policy-001-refinement-23",
+        "policy-001-refinement-24",
+        "policy-001-refinement-25",
+        "policy-001-refinement-26"
+      ],
+      "public_validation_case_ids": [
+        "policy-001-build-00",
+        "policy-001-build-01",
+        "policy-001-build-02",
+        "policy-001-build-03",
+        "policy-001-build-04",
+        "policy-001-build-05",
+        "policy-001-build-06",
+        "policy-001-build-07",
+        "policy-001-build-08",
+        "policy-001-build-09",
+        "policy-001-build-10",
+        "policy-001-build-11",
+        "policy-001-build-12",
+        "policy-001-build-13",
+        "policy-001-build-14",
+        "policy-001-build-15",
+        "policy-001-build-16",
+        "policy-001-build-17",
+        "policy-001-build-18",
+        "policy-001-build-19",
+        "policy-001-build-20",
+        "policy-001-build-21",
+        "policy-001-build-22",
+        "policy-001-build-23",
+        "policy-001-build-24",
+        "policy-001-build-25",
+        "policy-001-build-26",
+        "policy-001-refinement-00",
+        "policy-001-refinement-01",
+        "policy-001-refinement-02",
+        "policy-001-refinement-03",
+        "policy-001-refinement-04",
+        "policy-001-refinement-05",
+        "policy-001-refinement-06",
+        "policy-001-refinement-07",
+        "policy-001-refinement-08",
+        "policy-001-refinement-09",
+        "policy-001-refinement-10",
+        "policy-001-refinement-11",
+        "policy-001-refinement-12",
+        "policy-001-refinement-13",
+        "policy-001-refinement-14",
+        "policy-001-refinement-15",
+        "policy-001-refinement-16",
+        "policy-001-refinement-17",
+        "policy-001-refinement-18",
+        "policy-001-refinement-19",
+        "policy-001-refinement-20",
+        "policy-001-refinement-21",
+        "policy-001-refinement-22",
+        "policy-001-refinement-23",
+        "policy-001-refinement-24",
+        "policy-001-refinement-25",
+        "policy-001-refinement-26"
+      ],
+      "reflection_minibatch_size": 3,
+      "selection": "pareto",
+      "solver_attempts": 174,
+      "teacher_attempts": 2,
+      "validation_reused_for_optimization": true,
+      "whole_iteration_reservation": 60
+    },
+    "dsl_source": null
+  },
+  "preparation_wall_seconds": 500.71900000000005,
+  "call_summary": {
+    "attempted_calls": 176,
+    "completed_calls": 176,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_optimization": {
+        "attempted_calls": 174,
+        "failed_calls": 0,
+        "input_tokens_known": 143193,
+        "output_tokens_known": 367,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 162.90345950000528
+      },
+      "teacher_optimization": {
+        "attempted_calls": 2,
+        "failed_calls": 0,
+        "input_tokens_known": 1632,
+        "output_tokens_known": 1518,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 337.48659990000033
+      }
+    }
+  }
+}

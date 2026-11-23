@@ -1,0 +1,250 @@
+{
+  "task_id": "policy-044",
+  "suite_split": "validation",
+  "source": {
+    "task_name": "Compositional policy 044",
+    "description": "Classify one structured event using the following public policy. Critical means risk is TRUE or action is export; critical cases require deny. Unknown external: risk UNKNOWN in context internal returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is auditor outside context internal; a trusted delete prefers allow at priority 80. Action inspect in context internal prefers deny at priority 70. Role analyst or context external prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "allow",
+      "deny",
+      "review"
+    ],
+    "requirements": [
+      "Critical means risk is TRUE or action is export; critical cases require deny.",
+      "Unknown external: risk UNKNOWN in context internal returns uncertain.",
+      "Unknown risk otherwise prefers review at priority 90.",
+      "Trusted means role is auditor outside context internal; a trusted delete prefers allow at priority 80.",
+      "Action inspect in context internal prefers deny at priority 70.",
+      "Role analyst or context external prefers review at priority 40.",
+      "Trusted cases forbid review.",
+      "All other declared roles prefer allow at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-0:task-044"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "auditor",
+          "analyst",
+          "operator"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "delete",
+          "inspect",
+          "export"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "partner",
+          "external",
+          "internal"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "distillation_lineage": {
+    "local_model": "llama3.2:3b",
+    "canonical_student": "meta-llama/Llama-3.2-3B-Instruct",
+    "base_model": "pruned Llama 3.1-derived checkpoint; exact pruning source not isolated in the model card",
+    "distillation_teacher": "meta-llama/Llama-3.1-70B-Instruct (one of two documented logit teachers)",
+    "openrouter_teacher": "meta-llama/llama-3.1-70b-instruct",
+    "evidence_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+    "expected_ollama_basename": "Llama-3.2",
+    "alternate_openrouter_teachers": [
+      "meta-llama/llama-3.1-8b-instruct"
+    ]
+  },
+  "oracle_program_sha256": "fff56a2b3b59ad902d3fc76dbee87d142c86e5f19ae05ac7b5b58be10e09f2bc",
+  "teacher_compilation": {
+    "enabled": true,
+    "teacher_backend": "openrouter",
+    "teacher_model": "meta-llama/llama-3.1-70b-instruct",
+    "teacher_selection": "lineage_matched",
+    "initial_program_path": null,
+    "teacher_received_final_cases": false,
+    "teacher_received_private_deployment_data": false,
+    "audit_scenarios_used_for_refinement": true,
+    "source_derived_build_scenarios": 27,
+    "source_derived_audit_scenarios": 27,
+    "initial_program_sha256": "85eb8531a7da26355b47bae49887a4bbbd7e9e806d9824f5ecf39f90ae1a4807",
+    "final_program_sha256": "85eb8531a7da26355b47bae49887a4bbbd7e9e806d9824f5ecf39f90ae1a4807",
+    "initial_build_pass_rate": 1.0,
+    "final_build_pass_rate": 1.0,
+    "final_audit_pass_rate": 1.0,
+    "validation_gate": {
+      "build_pass_threshold": 1.0,
+      "audit_pass_threshold": 1.0,
+      "passed": true
+    },
+    "repairs": [],
+    "teacher_input_tokens": 624,
+    "teacher_output_tokens": 259,
+    "teacher_calls": 1
+  },
+  "compilation_failure": null,
+  "rendered_bundle": [
+    "Verified decision list. Find a line whose stated field conditions all match the input, then return its label. Unstated fields can have any value. Matching lines agree.",
+    "If role=auditor, action=delete, risk=FALSE, return allow.",
+    "If role=operator, action=inspect, context=partner, risk=FALSE, return allow.",
+    "If role=operator, action=delete, context=partner, risk=FALSE, return allow.",
+    "If role=operator, action=delete, context=internal, risk=FALSE, return allow.",
+    "If role=auditor, action=inspect, context=partner, risk=UNKNOWN, return allow.",
+    "If role=auditor, action=inspect, context=partner, risk=FALSE, return allow.",
+    "If role=auditor, action=inspect, context=external, risk=UNKNOWN, return allow.",
+    "If role=auditor, action=inspect, context=external, risk=FALSE, return allow.",
+    "If role=auditor, action=delete, context=partner, risk=UNKNOWN, return allow.",
+    "If role=auditor, action=delete, context=external, risk=UNKNOWN, return allow.",
+    "If risk=TRUE, return deny.",
+    "If action=export, risk=FALSE, return deny.",
+    "If action=export, context=partner, return deny.",
+    "If action=export, context=external, return deny.",
+    "If action=inspect, context=internal, risk=FALSE, return deny.",
+    "If role=analyst, action=delete, risk=FALSE, return review.",
+    "If role=operator, action=inspect, context=partner, risk=UNKNOWN, return review.",
+    "If role=operator, action=inspect, context=external, risk=UNKNOWN, return review.",
+    "If role=operator, action=inspect, context=external, risk=FALSE, return review.",
+    "If role=operator, action=delete, context=partner, risk=UNKNOWN, return review.",
+    "If role=operator, action=delete, context=external, risk=UNKNOWN, return review.",
+    "If role=operator, action=delete, context=external, risk=FALSE, return review.",
+    "If role=analyst, action=inspect, context=partner, risk=UNKNOWN, return review.",
+    "If role=analyst, action=inspect, context=partner, risk=FALSE, return review.",
+    "If role=analyst, action=inspect, context=external, risk=UNKNOWN, return review.",
+    "If role=analyst, action=inspect, context=external, risk=FALSE, return review.",
+    "If role=analyst, action=delete, context=partner, risk=UNKNOWN, return review.",
+    "If role=analyst, action=delete, context=external, risk=UNKNOWN, return review.",
+    "If context=internal, risk=UNKNOWN, return uncertain."
+  ],
+  "frozen_bundle": null,
+  "optimized_prompt_prefix": null,
+  "optimizer_protocol": null,
+  "verified_decision_list_certificate": {
+    "finite_domain_size": 81,
+    "decision_rule_count": 29,
+    "exhaustive_coverage": true,
+    "label_pure": true,
+    "semantically_equivalent": true,
+    "representation_sha256": "340f64f6f6a77a2deadf7aad1c7488fbc5d9f7f74bfa0fc897115b53ea702ff1",
+    "oracle_outcomes_sha256": "033ca2d59a1a50d4948c99d80274e24bcdeb360eae2d6364c99213fc27ace22f",
+    "representation_kind": "verified_decision_list"
+  },
+  "representation_kind": "verified_decision_list",
+  "local_instruction_routing": {
+    "enabled": true,
+    "top_k": 6,
+    "router": {
+      "backend": "sentence_transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+    }
+  },
+  "deployment_description": "Classify one structured event using the supplied compiled instructions. The allowed outputs are allow, deny, review, uncertain. These names are arbitrary symbols, so do not infer their meaning. Copy the output stated by the matching compiled instruction.",
+  "deployment_includes_full_task_spec": false,
+  "opaque_label_codebook": {
+    "enabled": false
+  },
+  "selected_verified_decision_list": true,
+  "num_obligations": 2,
+  "build_pass_rate": 0.8888888888888888,
+  "initial_build_pass_rate": 0.5185185185185185,
+  "compilation_rounds": [
+    {
+      "round_index": 0,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": true,
+      "objective_before": [
+        0.4814814814814815,
+        0.6666666666666667,
+        1.3333333333333335,
+        4,
+        190
+      ],
+      "objective_after": [
+        0.11111111111111116,
+        0.2222222222222222,
+        0.4444444444444444,
+        2,
+        216
+      ],
+      "edit": "certified:decision_list",
+      "protected_regressions": 0
+    },
+    {
+      "round_index": 1,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.4814814814814815,
+        0.6666666666666667,
+        1.3333333333333335,
+        4,
+        190
+      ],
+      "objective_after": [
+        0.2592592592592593,
+        0.4444444444444444,
+        0.8888888888888888,
+        3,
+        214
+      ],
+      "edit": "certified:decision_tree",
+      "protected_regressions": 2
+    },
+    {
+      "round_index": 2,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.4814814814814815,
+        0.6666666666666667,
+        1.3333333333333335,
+        4,
+        190
+      ],
+      "objective_after": [
+        0.2222222222222222,
+        0.33333333333333337,
+        0.6666666666666667,
+        2,
+        214
+      ],
+      "edit": "certified:decision_tree_reversed",
+      "protected_regressions": 2
+    }
+  ],
+  "compilation_student_calls": 108,
+  "artifact_sha256": "d5929674729b9551b2201b7e7cee3bbeb18fb6c264ed1a8181b169d475049206"
+}

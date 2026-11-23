@@ -1,0 +1,187 @@
+{
+  "task_id": "policy-062",
+  "suite_split": "validation",
+  "source": {
+    "task_name": "Compositional policy 062",
+    "description": "Classify one structured event using the following public policy. Critical means risk TRUE, or action change in context sandbox; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role guest or admin, except for action change; a trusted export prefers allow at priority 80. Action inspect in context sandbox prefers deny at priority 70. Role admin or context external prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "allow",
+      "deny",
+      "review"
+    ],
+    "requirements": [
+      "Critical means risk TRUE, or action change in context sandbox; critical cases require deny.",
+      "Unknown external: risk UNKNOWN in context sandbox returns uncertain.",
+      "Unknown risk otherwise prefers review at priority 90.",
+      "Trusted means role guest or admin, except for action change; a trusted export prefers allow at priority 80.",
+      "Action inspect in context sandbox prefers deny at priority 70.",
+      "Role admin or context external prefers review at priority 40.",
+      "Trusted cases forbid review.",
+      "All other declared roles prefer allow at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-2:task-062"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "guest",
+          "admin",
+          "operator"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "export",
+          "inspect",
+          "change"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "internal",
+          "external",
+          "sandbox"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "distillation_lineage": {
+    "local_model": "llama3.2:3b",
+    "canonical_student": "meta-llama/Llama-3.2-3B-Instruct",
+    "base_model": "pruned Llama 3.1-derived checkpoint; exact pruning source not isolated in the model card",
+    "distillation_teacher": "meta-llama/Llama-3.1-70B-Instruct (one of two documented logit teachers)",
+    "openrouter_teacher": "meta-llama/llama-3.1-70b-instruct",
+    "evidence_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+    "expected_ollama_basename": "Llama-3.2",
+    "alternate_openrouter_teachers": [
+      "meta-llama/llama-3.1-8b-instruct"
+    ]
+  },
+  "oracle_program_sha256": "09ccf7b1b5dab6ae9aa6f49fb3dca90189efbd35218b35091cc0b13284c5eeab",
+  "teacher_compilation": {
+    "enabled": true,
+    "teacher_backend": "openrouter",
+    "teacher_model": "meta-llama/llama-3.1-70b-instruct",
+    "teacher_selection": "lineage_matched",
+    "initial_program_path": null,
+    "teacher_received_final_cases": false,
+    "teacher_received_private_deployment_data": false,
+    "audit_scenarios_used_for_refinement": true,
+    "source_derived_build_scenarios": 27,
+    "source_derived_audit_scenarios": 27,
+    "initial_program_sha256": "2689b0038ded41b5f15e322a977440e248ac9dabc8f066ca8fb90fd84a47540c",
+    "final_program_sha256": "363c0fdf57c439ecc9379aa5ae88e2c1a7090b9e1635e27ca08813f1f80f2126",
+    "initial_build_pass_rate": 0.7407407407407407,
+    "final_build_pass_rate": 0.9629629629629629,
+    "final_audit_pass_rate": 0.8888888888888888,
+    "validation_gate": {
+      "build_pass_threshold": 1.0,
+      "audit_pass_threshold": 1.0,
+      "passed": false
+    },
+    "repairs": [
+      {
+        "rule_name": "local-exclusion:UnknownExternalCase",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n",
+        "accepted": true
+      },
+      {
+        "rule_name": "<complete-program>",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action!= change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule UnknownRiskSandbox:\n    when (event.risk == UNKNOWN) and (event.context == sandbox)\n    then abstain",
+        "accepted": false
+      },
+      {
+        "rule_name": "<complete-program>",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk == UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule Conflict:\n    when (event.risk == UNKNOWN) and (event.context == sandbox)\n    then abstain",
+        "accepted": false
+      },
+      {
+        "rule_name": "source-counterexample:SourceCounterexamplePatch1",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when (((event.role == admin) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n",
+        "accepted": true
+      },
+      {
+        "rule_name": "source-counterexample:SourceCounterexamplePatch2",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when (((event.role == admin) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when (((event.role == admin) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n\nrule SourceCounterexamplePatch2:\n    when (((event.role == guest) and (event.action == change)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n",
+        "accepted": true
+      },
+      {
+        "rule_name": "source-counterexample:SourceCounterexamplePatch3",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when (((event.role == admin) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n\nrule SourceCounterexamplePatch2:\n    when (((event.role == guest) and (event.action == change)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == change) and (event.context == sandbox))\n\npredicate Trusted(event):\n    ((event.role == guest) or (event.role == admin)) and (event.action != change)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when (UnknownExternal(event)) and (event.risk != UNKNOWN)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = review priority 90\n\nrule TrustedExport:\n    when (Trusted(event)) and (event.action == export)\n    then prefer label = allow priority 80\n\nrule InspectSandbox:\n    when (event.action == inspect) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule AdminOrExternal:\n    when (event.role == admin) or (event.context == external)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when event.role in {guest, admin, operator}\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when (((event.role == admin) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n\nrule SourceCounterexamplePatch2:\n    when (((event.role == guest) and (event.action == change)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n\nrule SourceCounterexamplePatch3:\n    when (((event.role == operator) and (event.action == export)) and (event.context == sandbox)) and (event.risk == UNKNOWN)\n    then abstain\n",
+        "accepted": true
+      }
+    ],
+    "teacher_input_tokens": 4611,
+    "teacher_output_tokens": 932,
+    "teacher_calls": 3
+  },
+  "compilation_failure": {
+    "stage": "teacher_validation_gate",
+    "message": "policy-062 parent program failed its source-derived validation gate: build=0.963, audit=0.889; required build=1.000, audit=1.000",
+    "fallback": "raw_task"
+  },
+  "rendered_bundle": [],
+  "frozen_bundle": null,
+  "optimized_prompt_prefix": null,
+  "optimizer_protocol": null,
+  "verified_decision_list_certificate": null,
+  "representation_kind": null,
+  "local_instruction_routing": {
+    "enabled": true,
+    "top_k": 6,
+    "router": {
+      "backend": "sentence_transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+    }
+  },
+  "deployment_description": "Classify one structured event using the following public policy. Critical means risk TRUE, or action change in context sandbox; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role guest or admin, except for action change; a trusted export prefers allow at priority 80. Action inspect in context sandbox prefers deny at priority 70. Role admin or context external prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+  "deployment_includes_full_task_spec": true,
+  "opaque_label_codebook": {
+    "enabled": false
+  },
+  "selected_verified_decision_list": false,
+  "num_obligations": 16,
+  "build_pass_rate": null,
+  "initial_build_pass_rate": null,
+  "compilation_rounds": [],
+  "compilation_student_calls": 0,
+  "artifact_sha256": "76ba7ac66307e6d5cada6ae9e9b3fc36f1145b20781ef2f7ab112018481dde43"
+}

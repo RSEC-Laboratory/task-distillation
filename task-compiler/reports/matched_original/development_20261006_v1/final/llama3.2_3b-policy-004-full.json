@@ -1,0 +1,782 @@
+{
+  "task_id": "policy-004",
+  "solver_model": "llama3.2:3b",
+  "arm": "full",
+  "completed_at": "2026-10-06T14:21:35.237871+00:00",
+  "rows": [
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-00",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.5747107999995933
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-01",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": null,
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.30802789999961533
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-02",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.30744879999929253
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-03",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": null,
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.29148220000024594
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-04",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.26318459999947663
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-05",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.26449069999944186
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-06",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.2689615999997841
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-07",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.2887903999999253
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-08",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.27842749999945227
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-09",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.3174508000001879
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-10",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": null,
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.29144429999996646
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-11",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.2854770000003555
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-12",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.29738199999974313
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-13",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.29952270000012504
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-14",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.283800400000473
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-15",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.28212279999934253
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-16",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.33859729999949195
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-17",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.32840680000026623
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-18",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.3254660000002332
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-19",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": null,
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.29792560000078083
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-20",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.3112298000005467
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-21",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.4065803000003143
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-22",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.3306240000001708
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-23",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.28832620000048337
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-24",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 594,
+      "output_tokens": 2,
+      "latency_seconds": 0.2683133000000453
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-25",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.30941600000005565
+    },
+    {
+      "task_id": "policy-004",
+      "method": "full_dsl",
+      "case_id": "policy-004-final-26",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "159dda656b0492116b836be806a2e26f05f80bcbee0a661019490c04a46e8b94",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional policy 004\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require deny. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80. Action approve in context sandbox prefers deny at priority 70. Role analyst or context internal prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, deny, review\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require deny.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers review at priority 90.\nTrusted means role is guest outside context sandbox; a trusted delete prefers allow at priority 80.\nAction approve in context sandbox prefers deny at priority 70.\nRole analyst or context internal prefers review at priority 40.\nTrusted cases forbid review.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-004\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 595,
+      "output_tokens": 2,
+      "latency_seconds": 0.28259649999927205
+    }
+  ],
+  "final_wall_seconds": 8.45300000000043,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 16049,
+        "output_tokens_known": 54,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 8.390206299998681
+      }
+    }
+  }
+}

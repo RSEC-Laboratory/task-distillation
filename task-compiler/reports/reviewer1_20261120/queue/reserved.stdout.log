@@ -1,0 +1,49 @@
+[11:59:45] audited run started: runs\2026-11-20_115943_superni_reviewer1_reserved20_llama_20261120
+[11:59:47] stage started: load_superni_public_specifications
+[11:59:48] stage finished: load_superni_public_specifications (0.72s)
+[11:59:49] stage started: compile_validate_and_freeze_all_tasks
+[11:59:49] SuperNI artifact 1/20: task242_tweetqa_classification
+[11:59:56] SuperNI artifact 2/20: task1344_glue_entailment_classification
+[12:00:03] SuperNI artifact 3/20: task1439_doqa_cooking_isanswerable
+[12:00:09] SuperNI artifact 4/20: task738_perspectrum_classification
+[12:00:16] SuperNI artifact 5/20: task1615_sick_tclassify_b_relation_a
+[12:00:23] SuperNI artifact 6/20: task879_schema_guided_dstc8_classification
+[12:00:30] SuperNI artifact 7/20: task1387_anli_r3_entailment
+[12:00:37] SuperNI artifact 8/20: task642_esnli_classification
+[12:00:47] SuperNI artifact 9/20: task1390_wscfixed_coreference
+[12:00:53] SuperNI artifact 10/20: task1640_aqa1.0_answerable_unanswerable_question_classification
+[12:01:00] SuperNI artifact 11/20: task1388_cb_entailment
+[12:01:07] SuperNI artifact 12/20: task1534_daily_dialog_question_classification
+[12:01:12] SuperNI artifact 13/20: task232_iirc_link_number_classification
+[12:01:19] SuperNI artifact 14/20: task362_spolin_yesand_prompt_response_sub_classification
+[12:01:25] SuperNI artifact 15/20: task1554_scitail_classification
+[12:01:32] SuperNI artifact 16/20: task970_sherliic_causal_relationship
+[12:01:40] SuperNI artifact 17/20: task391_causal_relationship
+[12:01:47] SuperNI artifact 18/20: task220_rocstories_title_classification
+[12:01:53] SuperNI artifact 19/20: task050_multirc_answerability
+[12:02:02] SuperNI artifact 20/20: task349_squad2.0_answerable_unanswerable_question_classification
+[12:02:08] stage finished: compile_validate_and_freeze_all_tasks (138.97s)
+[12:02:08] stage started: evaluate_frozen_official_instances
+[12:02:08] SuperNI final 1/20: task242_tweetqa_classification
+[12:02:26] SuperNI final 2/20: task1344_glue_entailment_classification
+[12:02:41] SuperNI final 3/20: task1439_doqa_cooking_isanswerable
+[12:02:59] SuperNI final 4/20: task738_perspectrum_classification
+[12:03:15] SuperNI final 5/20: task1615_sick_tclassify_b_relation_a
+[12:03:31] SuperNI final 6/20: task879_schema_guided_dstc8_classification
+[12:03:45] SuperNI final 7/20: task1387_anli_r3_entailment
+[12:04:01] SuperNI final 8/20: task642_esnli_classification
+[12:04:16] SuperNI final 9/20: task1390_wscfixed_coreference
+[12:04:30] SuperNI final 10/20: task1640_aqa1.0_answerable_unanswerable_question_classification
+[12:04:48] SuperNI final 11/20: task1388_cb_entailment
+[12:05:05] SuperNI final 12/20: task1534_daily_dialog_question_classification
+[12:05:19] SuperNI final 13/20: task232_iirc_link_number_classification
+[12:05:35] SuperNI final 14/20: task362_spolin_yesand_prompt_response_sub_classification
+[12:05:49] SuperNI final 15/20: task1554_scitail_classification
+[12:06:02] SuperNI final 16/20: task970_sherliic_causal_relationship
+[12:06:16] SuperNI final 17/20: task391_causal_relationship
+[12:06:29] SuperNI final 18/20: task220_rocstories_title_classification
+[12:06:43] SuperNI final 19/20: task050_multirc_answerability
+[12:06:56] SuperNI final 20/20: task349_squad2.0_answerable_unanswerable_question_classification
+[12:07:14] stage finished: evaluate_frozen_official_instances (305.72s)
+[12:07:15] run finished
+run finished: <WORKSPACE>\task-compiler\runs\2026-11-20_115943_superni_reviewer1_reserved20_llama_20261120

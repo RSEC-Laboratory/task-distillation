@@ -1,0 +1,25 @@
+{
+  "task_type": "Object counting",
+  "relevant_principles": [
+    "Categorization",
+    "Quantification",
+    "Numerical computation"
+  ],
+  "reasoning_plan": [
+    "Identify the category being asked about in the task",
+    "Locate all objects that belong to the specified category",
+    "Include stated quantities of objects in the category",
+    "Count the total number of objects in the category",
+    "Return the numerical total"
+  ],
+  "verification_checks": [
+    "Check that all objects in the count belong to the specified category",
+    "Verify that all stated quantities are included in the count",
+    "Confirm that the numerical total is accurate"
+  ],
+  "uncertainties": [
+    "Ambiguity in category definition",
+    "Incomplete or missing information about objects",
+    "Unclear or inconsistent quantification"
+  ]
+}

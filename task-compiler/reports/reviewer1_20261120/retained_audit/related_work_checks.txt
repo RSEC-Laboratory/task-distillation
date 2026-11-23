@@ -1,0 +1,19 @@
+Primary-source checks for the rebuttal, 20 November 2026
+
+HtT: Large Language Models can Learn Rules
+https://arxiv.org/html/2310.07064v3
+Sections 3.1-3.2 describe inducing textual rules from training question-answer examples, filtering by coverage and confidence, and using the resulting library during deduction. Relevant precedent: learning and transferring verified textual rules. Our comparison should identify the implemented DSL semantics, explicit repair acceptance, and conversion checks without claiming that verified-rule prompting itself is new.
+
+RuAG: Learned-rule-augmented Generation for Large Language Models
+https://arxiv.org/html/2411.03349v1
+Sections 3.1-3.3 describe LLM-assisted predicate/search formulation, MCTS rule mining from offline data, and translation of mined logic rules into natural-language prompts. Relevant distinction in our setting: interpreting a supplied task specification into a checked executable artifact, then repairing it against finite public labels. Do not claim that RuAG lacks symbolic logic or rule-to-text transfer.
+
+CoGenesis: A Framework Collaborating Large and Small Language Models for Secure Context-Aware Instruction Following
+https://aclanthology.org/2024.acl-long.235/
+The ACL paper describes cloud/local collaboration with sketch and logits variants for context-aware instruction following. Treat it as an important privacy-compatible collaboration precedent; do not imply that keeping context local is a new principle.
+
+Minions: Cost-efficient Collaboration Between On-device and Cloud Language Models
+https://arxiv.org/html/2502.15964v1
+Sections 4-5 describe interactive cloud/local protocols; the decomposition variant returns filtered local responses to the remote model for aggregation. Our deployment ends teacher participation before private query inference and uses a reusable public task artifact. This is an operational distinction, not a universal accuracy or privacy superiority claim.
+
+These checks support bounded comparisons, not a claim of priority over every related method. No text is quoted verbatim here.

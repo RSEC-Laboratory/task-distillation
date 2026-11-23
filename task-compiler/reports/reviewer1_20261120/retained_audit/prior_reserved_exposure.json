@@ -1,0 +1,207 @@
+{
+  "at_utc": "2026-11-20T15:48:24.760525+00:00",
+  "scope": "Available historical SuperNI run configurations, summaries, manifests and prediction records; excludes this newly frozen study.",
+  "historical_runs": [
+    "2026-07-27_170352_superni_superni_llama_development",
+    "2026-07-27_170419_superni_superni_llama_development",
+    "2026-07-27_170453_superni_superni_llama_development",
+    "2026-07-27_171303_superni_superni_llama_development",
+    "2026-07-27_193330_superni_superni_gemma_development",
+    "2026-07-27_193400_superni_superni_gemma_development",
+    "2026-07-27_193527_superni_superni_gemma_development",
+    "2026-07-27_194026_superni_superni_gemma_development",
+    "2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006"
+  ],
+  "files_checked": 32,
+  "reserved_tasks": 20,
+  "reserved_ids_in_prior_records": 0,
+  "prior_records_per_task": {
+    "task050_multirc_answerability": [],
+    "task1344_glue_entailment_classification": [],
+    "task1387_anli_r3_entailment": [],
+    "task1388_cb_entailment": [],
+    "task1390_wscfixed_coreference": [],
+    "task1439_doqa_cooking_isanswerable": [],
+    "task1534_daily_dialog_question_classification": [],
+    "task1554_scitail_classification": [],
+    "task1615_sick_tclassify_b_relation_a": [],
+    "task1640_aqa1.0_answerable_unanswerable_question_classification": [],
+    "task220_rocstories_title_classification": [],
+    "task232_iirc_link_number_classification": [],
+    "task242_tweetqa_classification": [],
+    "task349_squad2.0_answerable_unanswerable_question_classification": [],
+    "task362_spolin_yesand_prompt_response_sub_classification": [],
+    "task391_causal_relationship": [],
+    "task642_esnli_classification": [],
+    "task738_perspectrum_classification": [],
+    "task879_schema_guided_dstc8_classification": [],
+    "task970_sherliic_causal_relationship": []
+  },
+  "records": [
+    {
+      "path": "runs/2026-07-27_170352_superni_superni_llama_development/config.yaml",
+      "sha256": "44900dccb05c89a68bc913ab77af83ce92d0cf9023f3ac7bbe7fc54c1b852b85",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170352_superni_superni_llama_development/summary.json",
+      "sha256": "db9ac12f22a1b8545b834df7ff4a5d019208fa6f198073c5310c257f2752fbfa",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170352_superni_superni_llama_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170419_superni_superni_llama_development/config.yaml",
+      "sha256": "44900dccb05c89a68bc913ab77af83ce92d0cf9023f3ac7bbe7fc54c1b852b85",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170419_superni_superni_llama_development/summary.json",
+      "sha256": "ef57a4f50560aef32054c5df130d7066c28d200e624deebb1f5e5a2347fd4c4e",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170419_superni_superni_llama_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170453_superni_superni_llama_development/config.yaml",
+      "sha256": "44900dccb05c89a68bc913ab77af83ce92d0cf9023f3ac7bbe7fc54c1b852b85",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170453_superni_superni_llama_development/summary.json",
+      "sha256": "9d00334f47dee114521bcecd26b9d27c89acd0b593beec224ca2ef9aa97fa006",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170453_superni_superni_llama_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_170453_superni_superni_llama_development/artifacts/predictions.jsonl",
+      "sha256": "6370cbd882c39cf14e75debe149fef5ce3a519e30f16103adda79d01a241a1c6",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_171303_superni_superni_llama_development/config.yaml",
+      "sha256": "44900dccb05c89a68bc913ab77af83ce92d0cf9023f3ac7bbe7fc54c1b852b85",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_171303_superni_superni_llama_development/summary.json",
+      "sha256": "84c841e1462a3d0d9e611a4e7bca3e17b02ee56bc3e64177781e0448b764b4e0",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_171303_superni_superni_llama_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_171303_superni_superni_llama_development/artifacts/predictions.jsonl",
+      "sha256": "496e4f04bdb1a744124cdf211d3fbe96af27bfa047c0eae27652543c659cd3a7",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193330_superni_superni_gemma_development/config.yaml",
+      "sha256": "364bb199f31970bc7b54e0a5d3d9ac7a077677f80011b1c2bb4679c8fb574f09",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193330_superni_superni_gemma_development/summary.json",
+      "sha256": "dae5aaf51103e1e210db1e49f9e0163e71acafd6b0831d22bb178b8c684b60c7",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193330_superni_superni_gemma_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193400_superni_superni_gemma_development/config.yaml",
+      "sha256": "364bb199f31970bc7b54e0a5d3d9ac7a077677f80011b1c2bb4679c8fb574f09",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193400_superni_superni_gemma_development/summary.json",
+      "sha256": "b8bbc8591e2321263623d3c229515349b349f515f331230517ac733b4f6ce043",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193400_superni_superni_gemma_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193527_superni_superni_gemma_development/config.yaml",
+      "sha256": "364bb199f31970bc7b54e0a5d3d9ac7a077677f80011b1c2bb4679c8fb574f09",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193527_superni_superni_gemma_development/summary.json",
+      "sha256": "0006e0f48dcef2da2fdfd790ec8f307e6fcea3c5e7911b42470c563bf994c318",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193527_superni_superni_gemma_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_193527_superni_superni_gemma_development/artifacts/predictions.jsonl",
+      "sha256": "1d2fde08c85c40e1259344b0d012175dc9b0e2b4b676ebcd8b9019305f4ef771",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_194026_superni_superni_gemma_development/config.yaml",
+      "sha256": "364bb199f31970bc7b54e0a5d3d9ac7a077677f80011b1c2bb4679c8fb574f09",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_194026_superni_superni_gemma_development/summary.json",
+      "sha256": "509581b22006d36b73d1030af265cd85b33ea1a54e56a8d99c9b3d056949b548",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_194026_superni_superni_gemma_development/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-07-27_194026_superni_superni_gemma_development/artifacts/predictions.jsonl",
+      "sha256": "3b19e33c2c7d126d336e13f763dc381305b30671cffe164d075398e11323a0c3",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006/config.yaml",
+      "sha256": "24bb04f48db62742220635578270de7d0e4ea8dadac220ab7a8d8256ee253116",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006/summary.json",
+      "sha256": "acd5157b842422037c20a077c624a60c0d146aaa00d0d7b2bfe43ff3e10e0cc0",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006/artifacts/suite_manifest.json",
+      "sha256": "2f9ee5388f66636cc642b7166acf97960fed2ff3fbf040ebe9787aa589785879",
+      "reserved_ids_present": []
+    },
+    {
+      "path": "runs/2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006/artifacts/predictions.jsonl",
+      "sha256": "08a265bb902981cd891baa1dd99e0826a47abc4a7b8d746049be651e42f4fdcc",
+      "reserved_ids_present": []
+    }
+  ],
+  "limitations": [
+    "Absence from retained records does not establish absence of unrecorded author exposure.",
+    "Reserved tasks can share datasets and linguistic phenomena with development tasks."
+  ],
+  "model_calls": 0
+}

@@ -1,0 +1,129 @@
+{
+  "task_id": "policy-000",
+  "solver_model": "qwen2.5:3b",
+  "arm": "full",
+  "prepared_at": "2026-10-06T00:32:08.766974+00:00",
+  "method": {
+    "method": "full_dsl",
+    "task_id": "policy-000",
+    "public_task_hash": "1f763b34beb1c57489ab9b322356bf5f9dddf8a304614f82c769be454825a96a",
+    "instructions": [
+      "Task: Compositional policy 000\n\nClassify one structured event using the following public policy. Critical means risk is TRUE or action is change; critical cases require review. Unknown external: risk UNKNOWN in context internal returns uncertain. Unknown risk otherwise prefers deny at priority 90. Trusted means role is admin outside context internal; a trusted export prefers allow at priority 80. Action inspect in context internal prefers review at priority 70. Role operator or context partner prefers deny at priority 40. Trusted cases forbid deny. All other declared roles prefer allow at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: allow, review, deny\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"operator\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"export\",\"inspect\",\"change\"]},{\"name\":\"Context\",\"values\":[\"external\",\"partner\",\"internal\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means risk is TRUE or action is change; critical cases require review.\nUnknown external: risk UNKNOWN in context internal returns uncertain.\nUnknown risk otherwise prefers deny at priority 90.\nTrusted means role is admin outside context internal; a trusted export prefers allow at priority 80.\nAction inspect in context internal prefers review at priority 70.\nRole operator or context partner prefers deny at priority 40.\nTrusted cases forbid deny.\nAll other declared roles prefer allow at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-0:task-000"
+    ],
+    "routed": false,
+    "status": "raw_fallback",
+    "trace": {
+      "failed_dsl_source": "predicate Critical(event):\n    event.risk == TRUE or event.action == change\n\npredicate UnknownExternal(event):\n    event.risk == UNKNOWN and event.context == internal\n\npredicate Trusted(event):\n    event.role == admin and event.context == external\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\nrule UnknownRiskCase:\n    when event.risk == UNKNOWN and event.context != internal\n    then prefer label = deny priority 90\n\nrule TrustedExport:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule InspectInternal:\n    when event.action == inspect and event.context == internal\n    then prefer label = review priority 70\n\nrule OperatorOrPartner:\n    when event.role == operator or event.context == partner\n    then prefer label = deny priority 40\n\nrule TrustedForbidDeny:\n    when Trusted(event)\n    then forbid label = deny\n\nrule OtherRoles:\n    when not Trusted(event) and not OperatorOrPartner(event) and not Critical(event) and not UnknownExternal(event) and event.risk != UNKNOWN\n    then prefer label = allow priority 1",
+      "failure": {
+        "fallback": "raw_task",
+        "message": "rule OtherRoles calls undeclared predicate 'OperatorOrPartner'",
+        "stage": "teacher_syntax"
+      },
+      "final_access_during_optimization": false,
+      "initial_source_supplied": false,
+      "limits": {
+        "counterexample_patches": 3,
+        "max_instruction_words": 1800,
+        "reflection_minibatch_size": 3,
+        "representation_rounds": 3,
+        "seed": 20261005,
+        "semantic_repair_rounds": 3,
+        "solver_calls": 216,
+        "teacher_calls": 4,
+        "teacher_tokens": 2000,
+        "top_k": 6
+      },
+      "oracle_program_access": false,
+      "public_audit_refinement_case_ids": [
+        "policy-000-refinement-00",
+        "policy-000-refinement-01",
+        "policy-000-refinement-02",
+        "policy-000-refinement-03",
+        "policy-000-refinement-04",
+        "policy-000-refinement-05",
+        "policy-000-refinement-06",
+        "policy-000-refinement-07",
+        "policy-000-refinement-08",
+        "policy-000-refinement-09",
+        "policy-000-refinement-10",
+        "policy-000-refinement-11",
+        "policy-000-refinement-12",
+        "policy-000-refinement-13",
+        "policy-000-refinement-14",
+        "policy-000-refinement-15",
+        "policy-000-refinement-16",
+        "policy-000-refinement-17",
+        "policy-000-refinement-18",
+        "policy-000-refinement-19",
+        "policy-000-refinement-20",
+        "policy-000-refinement-21",
+        "policy-000-refinement-22",
+        "policy-000-refinement-23",
+        "policy-000-refinement-24",
+        "policy-000-refinement-25",
+        "policy-000-refinement-26"
+      ],
+      "public_build_case_ids": [
+        "policy-000-build-00",
+        "policy-000-build-01",
+        "policy-000-build-02",
+        "policy-000-build-03",
+        "policy-000-build-04",
+        "policy-000-build-05",
+        "policy-000-build-06",
+        "policy-000-build-07",
+        "policy-000-build-08",
+        "policy-000-build-09",
+        "policy-000-build-10",
+        "policy-000-build-11",
+        "policy-000-build-12",
+        "policy-000-build-13",
+        "policy-000-build-14",
+        "policy-000-build-15",
+        "policy-000-build-16",
+        "policy-000-build-17",
+        "policy-000-build-18",
+        "policy-000-build-19",
+        "policy-000-build-20",
+        "policy-000-build-21",
+        "policy-000-build-22",
+        "policy-000-build-23",
+        "policy-000-build-24",
+        "policy-000-build-25",
+        "policy-000-build-26"
+      ],
+      "router_identity": {
+        "backend": "sentence_transformers",
+        "local_snapshot": "<USER_HOME>\\.cache\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "teacher_calls": 1,
+      "teacher_raw_text": [
+        {
+          "phase": "initial",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    event.risk == TRUE or event.action == change\\n\\npredicate UnknownExternal(event):\\n    event.risk == UNKNOWN and event.context == internal\\n\\npredicate Trusted(event):\\n    event.role == admin and event.context == external\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = review\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then require label = uncertain\\n\\nrule UnknownRiskCase:\\n    when event.risk == UNKNOWN and event.context != internal\\n    then prefer label = deny priority 90\\n\\nrule TrustedExport:\\n    when Trusted(event)\\n    then prefer label = allow priority 80\\n\\nrule InspectInternal:\\n    when event.action == inspect and event.context == internal\\n    then prefer label = review priority 70\\n\\nrule OperatorOrPartner:\\n    when event.role == operator or event.context == partner\\n    then prefer label = deny priority 40\\n\\nrule TrustedForbidDeny:\\n    when Trusted(event)\\n    then forbid label = deny\\n\\nrule OtherRoles:\\n    when not Trusted(event) and not OperatorOrPartner(event) and not Critical(event) and not UnknownExternal(event) and event.risk != UNKNOWN\\n    then prefer label = allow priority 1\"\n}"
+        }
+      ]
+    },
+    "dsl_source": null
+  },
+  "preparation_wall_seconds": 115.375,
+  "call_summary": {
+    "attempted_calls": 1,
+    "completed_calls": 1,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "teacher_optimization": {
+        "attempted_calls": 1,
+        "failed_calls": 0,
+        "input_tokens_known": 639,
+        "output_tokens_known": 284,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 115.36442460000035
+      }
+    }
+  }
+}

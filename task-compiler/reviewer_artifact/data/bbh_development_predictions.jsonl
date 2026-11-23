@@ -1,0 +1,540 @@
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"i don t see a statement to evaluate as true or false please provide a statement and i ll be happy to help","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"therefore the answer is true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"so the answer is true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"so the answer is false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"so the answer is true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"true","student_family":"llama","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"the correct answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"the correct answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"the correct answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"the correct answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"the correct answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"the correct answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"the correct answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"b","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"the correct answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"the correct answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"the correct answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"c","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"the correct answer is a","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"c","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"the correct answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"the correct answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"however this option is not available in the given options","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"the answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"f","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"so the answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"december a","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"b","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"so the correct answer is a","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"so the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"so the answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"so the correct answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"therefore the correct answer is f","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"so the answer is e","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"so the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"so the answer is a","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"subtracting days from september th would take us back to august st","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"so the date days ago is may the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"so the answer is f","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"corrected once more","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"the correct option is d","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"however this contradicts our","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"the correct option is b","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"the final answer is a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"the only matching option is c","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"the correct option is b","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"the answer is d","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"the final answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"the correct answer is c","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"the only option that matches february th is a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"the correct answer is b","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"a","student_family":"llama","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"therefore the answer is f","student_family":"llama","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"in general an argument is deductively valid if its conclusion follows logically and necessarily from its premises in other words if the premises are true then the conclusion must also be true","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"in general to determine whether an argument is deductively valid or invalid we need to analyze the logical structure and implications of the premises a deductively valid argument is one where the conclusion logically follows from the premises whereas an invalid argument has a conclusion that does not follow logically from its premises","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"therefore the argument is deductively valid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"in each case the validity of the argument depends on whether the conclusion logically follows from the premises if the conclusion can be deduced using logical rules and the given premises then the argument is valid otherwise it is invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"there should be no ambiguity or vagueness in","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"q it is not always easy to grasp who is consuming which products the following argument pertains to this question every infrequent user of paul mitchell shampoo is either a rare consumer of nioxin shampoo or a loyal buyer of caress soap or both no regular consumer of lush soap is a rare consumer of nioxin shampoo","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"the","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"in each case the validity or invalidity of the argument depends on whether the conclusion can be logically deduced from the premises","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"furthermore premise states that being an expert of fk s duva is necessary for being a backer of hertha bsc berlin however this does not imply","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"in general an argument is valid if its conclusion logically follows from its premises and invalid otherwise","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"by and we cannot deduce that if x infrequent user paul mitchell then","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"argument valid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"if x infrequent user p","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"analysis by we have if x inf","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"the argument states that every fan of fc lugano is neither a devotee of pfc cska moskva nor an ex supporter of sv zulte waregem it","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"q invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"the argument states that it is not the case that coffee bean extract is an ingredient of go","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"valid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"in each case the validity or invalidity of the argument depends on whether the conclusion logically follows from the premises","student_family":"llama","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"in each case the validity of the argument depends on whether the conclusion logically follows from the premises if the conclusion can be deduced using logical rules and the given premises then the argument is valid otherwise it is invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"invalid","student_family":"llama","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"let me know if you d like to try another one","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"let me know if you d like to try another one","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"let me know if you d like to try another one","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"therefore false or not false or true is true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"let me know if you d like to try another one","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"therefore not true or true or false is false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"therefore the answer is true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"let me know if you d like to try another example","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"let me know if you d like to try another one","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"therefore the answer is true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"few_shot","correct":false,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"therefore false or true and not true is false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"false","student_family":"gemma","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"let me know if you have any other date calculations","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"let me know if you have any other questions","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"the correct answer is d","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"one year ago to find the date one year ago subtract one year from may this brings us to april","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"let me know if you have any other puzzles","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"let me know if you have any other time related puzzles","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"now we need to figure out the specific date in march since","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"one year ago from december th would be december th","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"adding hours to april th will result in april th","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":null,"student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"today is","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"hours after july th is july th","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"calculation since her birthday is on the last day of february tomorrow would be march st","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"let me know if you have any other date calculations","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"the correct answer is a","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"one week ago from today september th would be september st","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"let me know if you d like to try another date calculation","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"since we don t have a precise start date the most logical answer for tomorrow s date is f","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"b","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"let me know if you d like to try another date puzzle","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"let me know if you d like to try another date puzzle","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"b","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"let me know if you d like to try another date puzzle","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"c","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"let me know if you d like to try another date puzzle","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"b","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"e","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"b","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"a","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"c","student_family":"gemma","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"f","student_family":"gemma","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"therefore the argument is valid the conclusion logically follows from the premises","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"therefore the argument is deductively valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"let me know if you d like to work through more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"let me know if you d like to work through more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"therefore the argument is deductively valid the premises guarantee the truth of the conclusion","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"the challenge to determine validity you need to see if the premises logically lead to the conclusion that being an expert of fk s duva is necessary for being an opponent of as roma this involves carefully mapping out the relationships between all the","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"let me know if you have any other arguments you d like to analyze","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"let me know if you have any other arguments you d like to analyze","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"the premises allow for these scenarios meaning the conclusion doesn t necessarily follow","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"let me know if you have any other arguments you d like to analyze","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"let me know if you d like to explore more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"let me know if you d like to work through more examples","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"key point deductively valid arguments guarantee that if the premises are true the conclusion must also be true in this case the premises don t force the conclusion to be true","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"therefore the argument is invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"you re off to a good start with this","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"valid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"invalid","student_family":"gemma","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":true,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"few_shot","correct":true,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-050-f27092c348","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-051-84cd902bea","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-052-18681f285f","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-053-592fbf90fe","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-054-b9ad8ede3e","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-055-5a5cfe35a5","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-056-2cb313039f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-057-de9cdb45b0","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-058-1837a301a7","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-059-7836a965e8","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-060-3938abb64d","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-061-dc4f2bacfd","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-062-5b8576bc33","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-063-fdf2c16b9f","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"false","item_id":"boolean_expressions-064-2ea843701d","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-065-a6da14de11","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":true,"gold":"true","item_id":"boolean_expressions-066-583b707faa","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-067-24821cd515","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"true","item_id":"boolean_expressions-068-b79c2bb511","predicted":"false","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"compiled","correct":false,"gold":"false","item_id":"boolean_expressions-069-9022270043","predicted":"true","student_family":"qwen","task":"boolean_expressions"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":false,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"is it possible the text implies that today is dec or is today","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"so we are looking for a date around february march option a is","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"if we go back into february","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":false,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"the calculated date matches option e","student_family":"qwen","task":"date_understanding"}
+{"condition":"few_shot","correct":true,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-050-db59fb60db","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-051-ea455c9fc4","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-052-54a4e37483","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"b","item_id":"date_understanding-053-8005a5f9c8","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-054-60d261fdae","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"c","item_id":"date_understanding-055-e7be080891","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-056-bc17d8cffc","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"a","item_id":"date_understanding-057-449fa9bd30","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"f","item_id":"date_understanding-058-32410ba12a","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-059-22545fb4e5","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"e","item_id":"date_understanding-060-288e258220","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"b","item_id":"date_understanding-061-c962d7925f","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-062-1b35b5f640","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":false,"gold":"e","item_id":"date_understanding-063-58fa089dd7","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"d","item_id":"date_understanding-064-5683ed1833","predicted":"d","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"b","item_id":"date_understanding-065-dc5194d06f","predicted":"b","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"a","item_id":"date_understanding-066-3897781fa3","predicted":"a","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"c","item_id":"date_understanding-067-0b8a0b2043","predicted":"c","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"e","item_id":"date_understanding-068-2e46bc86fa","predicted":"e","student_family":"qwen","task":"date_understanding"}
+{"condition":"compiled","correct":true,"gold":"f","item_id":"date_understanding-069-236b760ecf","predicted":"f","student_family":"qwen","task":"date_understanding"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":false,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"raw","correct":true,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"premise steps","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"in standard propositional logic","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"so","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"formal","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"so it is true that not","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"in logic if the antecedent of an implication a implies b is false we cannot deduce anything about b the","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":true,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"let s test this with a counter example","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"few_shot","correct":false,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"from premise contrapositive since we have neg","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-050-cc71732ee8","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-051-05deab0af6","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-052-b3f9acb96b","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-053-19b81c8878","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-054-e3b9a0ac0d","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-055-1bae20f5a5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-056-fa0bb141fc","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-057-42dda6c29f","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-058-6d44761ba5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-059-1b7829cbb4","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-060-f494b415a5","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-061-15af455495","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"valid","item_id":"formal_fallacies-062-434758e216","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-063-1266c82380","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"invalid","item_id":"formal_fallacies-064-091ee58cf1","predicted":"invalid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-065-1db79313ac","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-066-e6ce05f4b1","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-067-fdcee0b7cf","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":false,"gold":"invalid","item_id":"formal_fallacies-068-955a98630d","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}
+{"condition":"compiled","correct":true,"gold":"valid","item_id":"formal_fallacies-069-d7a5ad6322","predicted":"valid","student_family":"qwen","task":"formal_fallacies"}

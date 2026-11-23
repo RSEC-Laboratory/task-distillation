@@ -1,0 +1,488 @@
+[
+  {
+    "condition": "raw",
+    "correct": 10,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_120722_bbh_bbh_boolean_llama32_3b_raw_dev20",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 13,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_184131_bbh_v3_dev20_boolean_expressions_llama3.2_3b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 14,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_183849_bbh_v3_dev20_boolean_expressions_llama3.2_3b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 3,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_120950_bbh_bbh_date_llama32_3b_raw_dev20",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 2,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_184152_bbh_v3_dev20_date_understanding_llama3.2_3b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 2,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_183909_bbh_v3_dev20_date_understanding_llama3.2_3b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 10,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_120807_bbh_bbh_fallacies_llama32_3b_raw_dev20",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 1,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_184205_bbh_v3_dev20_formal_fallacies_llama3.2_3b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 10,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_183933_bbh_v3_dev20_formal_fallacies_llama3.2_3b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "llama",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 15,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_182653_bbh_frozen_screen_boolean_expressions_gemma2_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 2,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_184252_bbh_v3_dev20_boolean_expressions_gemma2_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 15,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_185048_bbh_v3_dev20_boolean_expressions_gemma2_9b_compiled_unconstrained",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 3,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_182710_bbh_frozen_screen_date_understanding_gemma2_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 13,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_184336_bbh_v3_dev20_date_understanding_gemma2_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 12,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_185105_bbh_v3_dev20_date_understanding_gemma2_9b_compiled_unconstrained",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 8,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_182729_bbh_frozen_screen_formal_fallacies_gemma2_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 0,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_184401_bbh_v3_dev20_formal_fallacies_gemma2_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 7,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_185115_bbh_v3_dev20_formal_fallacies_gemma2_9b_compiled_unconstrained",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "gemma",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 15,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_183715_bbh_frozen_v3_screen_boolean_expressions_qwen3.5_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 20,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_184524_bbh_v3_dev20_boolean_expressions_qwen3.5_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 13,
+    "manifest_sha256": "8892984f14314d5fa51a5bfc116e739aec658aa126aaf82b3803e41ebc74001f",
+    "run_id": "2026-07-27_183945_bbh_v3_dev20_boolean_expressions_qwen3.5_9b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "boolean_expressions",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 15,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_183733_bbh_frozen_v3_screen_date_understanding_qwen3.5_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 15,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_184620_bbh_v3_dev20_date_understanding_qwen3.5_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 16,
+    "manifest_sha256": "28ba12d9420385d6a26988da891df2628a488c035f257b71f2fdbb0b74d4a52e",
+    "run_id": "2026-07-27_184006_bbh_v3_dev20_date_understanding_qwen3.5_9b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "date_understanding",
+    "total": 20
+  },
+  {
+    "condition": "raw",
+    "correct": 13,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_183740_bbh_frozen_v3_screen_formal_fallacies_qwen3.5_9b_seed0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "few_shot",
+    "correct": 12,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_184707_bbh_v3_dev20_formal_fallacies_qwen3.5_9b_fewshot",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "formal_fallacies",
+    "total": 20
+  },
+  {
+    "condition": "compiled",
+    "correct": 14,
+    "manifest_sha256": "9c532af93e59cde48a21ab95f9ed378ba50ff3f21497bbba3bf0ee6916840d31",
+    "run_id": "2026-07-27_184039_bbh_v3_dev20_formal_fallacies_qwen3.5_9b_compiled",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "model": "qwen3.5:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_family": "qwen",
+    "task": "formal_fallacies",
+    "total": 20
+  }
+]

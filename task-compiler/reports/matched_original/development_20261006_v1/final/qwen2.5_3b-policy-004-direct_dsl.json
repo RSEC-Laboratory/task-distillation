@@ -1,0 +1,172 @@
+{
+  "task_id": "policy-004",
+  "solver_model": "qwen2.5:3b",
+  "arm": "direct_dsl",
+  "completed_at": "2026-10-06T14:17:18.847574+00:00",
+  "rows": [
+    {
+      "case_id": "policy-004-final-00",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-01",
+      "expected_label": null,
+      "predicted_label": null,
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-02",
+      "expected_label": "review",
+      "predicted_label": "review",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-03",
+      "expected_label": null,
+      "predicted_label": null,
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-04",
+      "expected_label": "allow",
+      "predicted_label": "allow",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-05",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-06",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-07",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-08",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-09",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-10",
+      "expected_label": null,
+      "predicted_label": null,
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-11",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-12",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-13",
+      "expected_label": "review",
+      "predicted_label": "review",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-14",
+      "expected_label": "allow",
+      "predicted_label": null,
+      "correct": false
+    },
+    {
+      "case_id": "policy-004-final-15",
+      "expected_label": "review",
+      "predicted_label": "allow",
+      "correct": false
+    },
+    {
+      "case_id": "policy-004-final-16",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-17",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-18",
+      "expected_label": "allow",
+      "predicted_label": "allow",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-19",
+      "expected_label": null,
+      "predicted_label": null,
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-20",
+      "expected_label": "allow",
+      "predicted_label": "allow",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-21",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-22",
+      "expected_label": "allow",
+      "predicted_label": "allow",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-23",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-24",
+      "expected_label": "allow",
+      "predicted_label": null,
+      "correct": false
+    },
+    {
+      "case_id": "policy-004-final-25",
+      "expected_label": "review",
+      "predicted_label": "review",
+      "correct": true
+    },
+    {
+      "case_id": "policy-004-final-26",
+      "expected_label": "deny",
+      "predicted_label": "deny",
+      "correct": true
+    }
+  ],
+  "program_available": true,
+  "additional_model_calls": 0
+}

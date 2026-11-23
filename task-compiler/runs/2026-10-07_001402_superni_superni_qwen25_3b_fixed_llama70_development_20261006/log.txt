@@ -1,0 +1,16 @@
+[00:14:02] audited run started: runs\2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006
+[00:14:05] stage started: load_superni_public_specifications
+[00:14:06] stage finished: load_superni_public_specifications (0.28s)
+[00:14:08] stage started: compile_validate_and_freeze_all_tasks
+[00:14:08] SuperNI artifact 1/4: task201_mnli_neutral_classification
+[00:14:57] SuperNI artifact 2/4: task893_gap_fill_the_blank_coreference_resolution
+[00:15:43] SuperNI artifact 3/4: task1624_disfl_qa_question_yesno_classification
+[00:15:56] SuperNI artifact 4/4: task935_defeasible_nli_atomic_classification
+[00:16:38] stage finished: compile_validate_and_freeze_all_tasks (150.30s)
+[00:16:38] stage started: evaluate_frozen_official_instances
+[00:16:38] SuperNI final 1/4: task201_mnli_neutral_classification
+[00:16:59] SuperNI final 2/4: task893_gap_fill_the_blank_coreference_resolution
+[00:17:20] SuperNI final 3/4: task1624_disfl_qa_question_yesno_classification
+[00:17:51] SuperNI final 4/4: task935_defeasible_nli_atomic_classification
+[00:18:11] stage finished: evaluate_frozen_official_instances (93.01s)
+[00:18:11] run finished

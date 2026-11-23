@@ -1,0 +1,6 @@
+{
+  "committed_at": "2026-10-06T00:30:10.186801+00:00",
+  "public_tasks_sha256": "eceab657c7eb35e8d64c2db970718f0ef77bb516f1fc0de8f68344d19c9f7a3a",
+  "final_cases_sha256": "0d314cd65504cfd7527235837c4e42ef55cfaf83e1cbe506b9fab1d2bb43fdee",
+  "optimizer_access": "Only public_tasks.json DTOs; final inputs/labels and oracle AST excluded"
+}

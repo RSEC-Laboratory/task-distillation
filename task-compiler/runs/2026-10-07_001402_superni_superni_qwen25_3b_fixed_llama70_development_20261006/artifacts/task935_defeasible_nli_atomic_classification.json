@@ -1,0 +1,181 @@
+{
+  "task_id": "task935_defeasible_nli_atomic_classification",
+  "source_sha256": "5c69baca4739f6cffa6ca7686c6ec7c4cdf448470e1889ec8484148f9785a8cf",
+  "parent_received_instances": false,
+  "student_validation_used_instances": false,
+  "initial_representation": {
+    "objective": "Classify the effect of an update on a hypothesis given a premise",
+    "output_labels": [
+      "strengthener",
+      "weakener"
+    ],
+    "decision_rules": [
+      "If the update provides additional evidence supporting the hypothesis, output 'strengthener'.",
+      "If the update provides contradictory evidence or undermines the hypothesis, output 'weakener'.",
+      "If the update is neutral or unrelated to the hypothesis, output 'weakener'.",
+      "If the update is ambiguous or open to multiple interpretations, output 'weakener'.",
+      "If the premise or hypothesis is negated, reverse the output label.",
+      "If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis."
+    ],
+    "boundary_conditions": [
+      "If the premise or hypothesis is unclear or ambiguous, output 'weakener'.",
+      "If the update is missing or provides no new information, output 'weakener'.",
+      "If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect."
+    ],
+    "counterfactual_constraints": [
+      "Changing the update to provide stronger evidence would preserve the 'strengthener' label.",
+      "Changing the update to provide contradictory evidence would alter the label from 'strengthener' to 'weakener'.",
+      "Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener'."
+    ],
+    "verification_checks": [
+      "Check if the update provides new information relevant to the hypothesis.",
+      "Check if the update supports or contradicts the hypothesis.",
+      "Check if the premise or hypothesis is negated or ambiguous.",
+      "Check if the update changes the role or reference of a key entity."
+    ]
+  },
+  "final_representation": {
+    "objective": "Classify the effect of an update on a hypothesis given a premise",
+    "output_labels": [
+      "strengthener",
+      "weakener"
+    ],
+    "decision_rules": [
+      "If the update provides additional evidence supporting the hypothesis, output 'strengthener'.",
+      "If the update provides contradictory evidence or undermines the hypothesis, output 'weakener'.",
+      "If the update is neutral or unrelated to the hypothesis, output 'weakener'.",
+      "If the update is ambiguous or open to multiple interpretations, output 'weakener'.",
+      "If the premise or hypothesis is negated, reverse the output label.",
+      "If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis."
+    ],
+    "boundary_conditions": [
+      "If the premise or hypothesis is unclear or ambiguous, output 'weakener'.",
+      "If the update is missing or provides no new information, output 'weakener'.",
+      "If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect."
+    ],
+    "counterfactual_constraints": [
+      "Changing the update to provide stronger evidence would preserve the 'strengthener' label.",
+      "Changing the update to provide contradictory evidence would alter the label from 'strengthener' to 'weakener'.",
+      "Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener'."
+    ],
+    "verification_checks": [
+      "Check if the update provides new information relevant to the hypothesis.",
+      "Check if the update supports or contradicts the hypothesis.",
+      "Check if the premise or hypothesis is negated or ambiguous.",
+      "Check if the update changes the role or reference of a key entity."
+    ]
+  },
+  "initial_raw_text": "{ \n  \"objective\": \"Classify the effect of an update on a hypothesis given a premise\",\n  \"output_labels\": [\"strengthener\", \"weakener\"],\n  \"decision_rules\": [\n    \"If the update provides additional evidence supporting the hypothesis, output 'strengthener'.\",\n    \"If the update provides contradictory evidence or undermines the hypothesis, output 'weakener'.\",\n    \"If the update is neutral or unrelated to the hypothesis, output 'weakener'.\",\n    \"If the update is ambiguous or open to multiple interpretations, output 'weakener'.\",\n    \"If the premise or hypothesis is negated, reverse the output label.\",\n    \"If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the premise or hypothesis is unclear or ambiguous, output 'weakener'.\",\n    \"If the update is missing or provides no new information, output 'weakener'.\",\n    \"If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the update to provide stronger evidence would preserve the 'strengthener' label.\",\n    \"Changing the update to provide contradictory evidence would alter the label from 'strengthener' to 'weakener'.\",\n    \"Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener'.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the update provides new information relevant to the hypothesis.\",\n    \"Check if the update supports or contradicts the hypothesis.\",\n    \"Check if the premise or hypothesis is negated or ambiguous.\",\n    \"Check if the update changes the role or reference of a key entity.\"\n  ]\n}",
+  "final_raw_text": "{ \n  \"objective\": \"Classify the effect of an update on a hypothesis given a premise\",\n  \"output_labels\": [\"strengthener\", \"weakener\"],\n  \"decision_rules\": [\n    \"If the update provides additional evidence supporting the hypothesis, output 'strengthener'.\",\n    \"If the update provides contradictory evidence or undermines the hypothesis, output 'weakener'.\",\n    \"If the update is neutral or unrelated to the hypothesis, output 'weakener'.\",\n    \"If the update is ambiguous or open to multiple interpretations, output 'weakener'.\",\n    \"If the premise or hypothesis is negated, reverse the output label.\",\n    \"If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the premise or hypothesis is unclear or ambiguous, output 'weakener'.\",\n    \"If the update is missing or provides no new information, output 'weakener'.\",\n    \"If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the update to provide stronger evidence would preserve the 'strengthener' label.\",\n    \"Changing the update to provide contradictory evidence would alter the label from 'strengthener' to 'weakener'.\",\n    \"Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener'.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the update provides new information relevant to the hypothesis.\",\n    \"Check if the update supports or contradicts the hypothesis.\",\n    \"Check if the premise or hypothesis is negated or ambiguous.\",\n    \"Check if the update changes the role or reference of a key entity.\"\n  ]\n}",
+  "initial_validation": [
+    {
+      "item_id": "task935_defeasible_nli_atomic_classification-positive-00",
+      "expected": [
+        "strengthener"
+      ],
+      "response": "weakener",
+      "correct": false,
+      "input_tokens": 559,
+      "output_tokens": 3
+    },
+    {
+      "item_id": "task935_defeasible_nli_atomic_classification-positive-01",
+      "expected": [
+        "weakener"
+      ],
+      "response": "weakener",
+      "correct": true,
+      "input_tokens": 564,
+      "output_tokens": 3
+    }
+  ],
+  "final_validation": [
+    {
+      "item_id": "task935_defeasible_nli_atomic_classification-positive-00",
+      "expected": [
+        "strengthener"
+      ],
+      "response": "weakener",
+      "correct": false,
+      "input_tokens": 559,
+      "output_tokens": 3
+    },
+    {
+      "item_id": "task935_defeasible_nli_atomic_classification-positive-01",
+      "expected": [
+        "weakener"
+      ],
+      "response": "weakener",
+      "correct": true,
+      "input_tokens": 564,
+      "output_tokens": 3
+    }
+  ],
+  "revisions": [
+    {
+      "round": 1,
+      "text": "{\n  \"objective\": \"Classify the effect of an update on a hypothesis given a premise\",\n  \"output_labels\": [\"strengthener\", \"weakener\"],\n  \"decision_rules\": [\n    \"If the update provides additional evidence that directly supports the hypothesis, output 'strengthener'.\",\n    \"If the update provides contradictory evidence or directly undermines the hypothesis, output 'weakener'.\",\n    \"If the update is neutral or unrelated to the hypothesis, and does not provide any new information, output 'weakener'.\",\n    \"If the update is ambiguous or open to multiple interpretations, and does not provide clear evidence, output 'weakener'.\",\n    \"If the premise or hypothesis is negated, reverse the output label, unless the update directly addresses the negation.\",\n    \"If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis, considering the new context.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the premise or hypothesis is unclear or ambiguous, and the update does not provide clear evidence, output 'weakener'.\",\n    \"If the update is missing or provides no new information, and the premise does not strongly support or contradict the hypothesis, output 'weakener'.\",\n    \"If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect, unless it provides direct evidence.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the update to provide stronger direct evidence would preserve the 'strengthener' label.\",\n    \"Changing the update to provide contradictory evidence would alter the label from 'strengthener' to 'weakener'.\",\n    \"Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener', unless the update provides contradictory evidence.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the update provides new information relevant to the hypothesis, and if it directly supports or contradicts the hypothesis.\",\n    \"Check if the premise or hypothesis is negated or ambiguous, and if the update addresses the negation or ambiguity.\",\n    \"Check if the update changes the role or reference of a key entity, and re-evaluate the effect on the hypothesis.\",\n    \"Check if the update provides clear evidence, and if the premise or hypothesis is strongly supported or contradicted.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task935_defeasible_nli_atomic_classification-positive-00",
+          "expected": [
+            "strengthener"
+          ],
+          "response": "weakener",
+          "correct": false,
+          "input_tokens": 668,
+          "output_tokens": 3
+        },
+        {
+          "item_id": "task935_defeasible_nli_atomic_classification-positive-01",
+          "expected": [
+            "weakener"
+          ],
+          "response": "weakener",
+          "correct": true,
+          "input_tokens": 673,
+          "output_tokens": 3
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "text": "{\n  \"objective\": \"Classify the effect of an update on a hypothesis given a premise\",\n  \"output_labels\": [\"strengthener\", \"weakener\"],\n  \"decision_rules\": [\n    \"If the update provides additional evidence that directly supports the hypothesis, output 'strengthener'.\",\n    \"If the update provides contradictory evidence or directly undermines the hypothesis, output 'weakener'.\",\n    \"If the update is neutral or unrelated to the hypothesis, and does not provide any new relevant information, output 'weakener'.\",\n    \"If the update is ambiguous or open to multiple interpretations, and does not provide clear evidence for or against the hypothesis, output 'weakener'.\",\n    \"If the premise or hypothesis is negated, reverse the output label, unless the update provides strong evidence to the contrary.\",\n    \"If the update changes the role or reference of a key entity, re-evaluate the effect on the hypothesis, considering the new context.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the premise or hypothesis is unclear or ambiguous, and the update does not provide sufficient clarification, output 'weakener'.\",\n    \"If the update is missing or provides no new information relevant to the hypothesis, output 'weakener'.\",\n    \"If the hypothesis is already strongly supported or contradicted by the premise, the update has minimal effect, unless it provides strong new evidence to the contrary.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the update to provide stronger evidence that directly supports the hypothesis would preserve the 'strengthener' label.\",\n    \"Changing the update to provide contradictory evidence that directly undermines the hypothesis would alter the label from 'strengthener' to 'weakener'.\",\n    \"Changing the premise to make the hypothesis more plausible would make the update more likely to be a 'strengthener', unless the update provides strong evidence to the contrary.\"\n  ],\n  \"verification_checks\": [\n    \"Check if the update provides new information relevant to the hypothesis, and if it directly supports or contradicts the hypothesis.\",\n    \"Check if the premise or hypothesis is negated or ambiguous, and if the update provides sufficient clarification.\",\n    \"Check if the update changes the role or reference of a key entity, and re-evaluate the effect on the hypothesis considering the new context.\",\n    \"Check if the hypothesis is already strongly supported or contradicted by the premise, and if the update provides strong new evidence to the contrary.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task935_defeasible_nli_atomic_classification-positive-00",
+          "expected": [
+            "strengthener"
+          ],
+          "response": "weakener",
+          "correct": false,
+          "input_tokens": 690,
+          "output_tokens": 3
+        },
+        {
+          "item_id": "task935_defeasible_nli_atomic_classification-positive-01",
+          "expected": [
+            "weakener"
+          ],
+          "response": "weakener",
+          "correct": true,
+          "input_tokens": 695,
+          "output_tokens": 3
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "stage": "positive_example_certificate",
+    "message": "1/2 public positive examples passed",
+    "fallback": "positive_examples"
+  },
+  "teacher_calls": 3,
+  "teacher_input_tokens": 2562,
+  "teacher_output_tokens": 1340,
+  "artifact_sha256": "713a263daa099bd9a70345c6c3bd08bca8132f014a8294f11f63a1f363932e5f"
+}

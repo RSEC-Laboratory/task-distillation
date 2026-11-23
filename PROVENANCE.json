@@ -1,0 +1,247 @@
+{
+  "source": "Retained study records and byte-identical framework source.",
+  "transformations": [
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/continuation_start.json",
+      "original_sha256": "d97276f05d10e3d5a15bbefda92ad014c1759d9ef8c257ab317fbe80f8d9578a",
+      "released_sha256": "18ec6f050fdfb43fa0771a8fa7e7aaa51444d3c8f6215b4493232f4d1a5a05e5",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-000-full.json",
+      "original_sha256": "3bf1bfe1ed153bf7c834076bce17299d736848fbb6f9e1a587714793d9bfb026",
+      "released_sha256": "0c0e711875e34cc517e0fde2c6bb0886331c43cf2f637a386a777fb37c3ec4c7",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-001-full.json",
+      "original_sha256": "2324a3113fd6cdea6b82d69c10d60d27ec019e0ef50b5112430be88e8eeee8d9",
+      "released_sha256": "9330102ceec4efb5a24652f4f8f29e06167dcb9a17f2e763f6817919fbba74c8",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-002-full.json",
+      "original_sha256": "a6a1533e70935c4462d8382a268a06d5d203a0f847c4497101f76c3550be8831",
+      "released_sha256": "4663ac0ad658f08d4ff5070f8af7cafecd5b3f5b0c2b2ec1403fba0dff0100b6",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-003-full.json",
+      "original_sha256": "58b08c79b69399bb3eeb31f0bbb0da7991c2a5391b517347283ce79bcdae5e95",
+      "released_sha256": "c1e8ec1b2f2ee9265ed8cf5defc0491a37209c7c66e5b498afac103a7f2f89dc",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-004-full.json",
+      "original_sha256": "1d9df5abd1547ae2bcc5c695b825b86dbdd5248007f5fd2af2d4f8a2f359fc4b",
+      "released_sha256": "acbef525bb643b48cdda3470e3b7ff1927a9c833d7941392b00424be0d61767c",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-005-full.json",
+      "original_sha256": "1f3cd623132efb35a1177f8a3ee9503d517a790610faa72ff83d90f696302169",
+      "released_sha256": "859ea5dcbb6c560a338875f6bcbbe345ea2aae432167abba751a4991c8970d2c",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-006-full.json",
+      "original_sha256": "32145dcf58905ab79a2171641406e0806180ccb204c6c6300b02cbc60262398b",
+      "released_sha256": "73681a7682af9512963f43aa9773046e69e995c8eedbedd54a1b7241c3e7b0d9",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/llama3.2_3b-policy-007-full.json",
+      "original_sha256": "87a1b395a8040c802768e7d721eefc2ed3fc1b075fcc27ab747d5177c1fdf448",
+      "released_sha256": "e921b5aa980a4127f3ad67ed2d692ef3586bca5d0eb57180d07d55d71dc0626e",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-000-full.json",
+      "original_sha256": "5063280f2cad8b44e895c506c365f5854c1c264deeeefab640cc25ee9e776ac0",
+      "released_sha256": "bc672a1a12de81ad4f4abf492ad7b09268707046ec24b32e4911d07c468ace60",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-001-full.json",
+      "original_sha256": "fcb578060caf10176fce0dc796fcb286bade277a66ea6472ab3f2b11745a5b1b",
+      "released_sha256": "7efcf7e43fb7004787e05fcf758864b9502ab6ff6a899da8f17d47963e6f3f4b",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-002-full.json",
+      "original_sha256": "86b4114cc654309d83b5561a211f00af1c4d7929f6de973df9c760b38169034e",
+      "released_sha256": "2555e3131e82b4bed7ba007dafd4882fb36f992ad096ebe9a8a20ac8204386bd",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-003-full.json",
+      "original_sha256": "b4cae8f1ce852956436b906f3bd9fa78fcc9eced459d011fe07dd19dbe6a985f",
+      "released_sha256": "2a501dd8de2b82eadd2f322818d11337363d2f7b7ab228193fbf0d85da8ff6da",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-004-full.json",
+      "original_sha256": "475c9ba82979f19841638439890f2d4b0532d47df3c96294dae0c1b8f2785501",
+      "released_sha256": "a02403616b0ee672bb1370403a6f72c9b360019e0a6964fa725daf1f17d386b4",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-005-full.json",
+      "original_sha256": "bea1be0f7d5c097d4cf3973bd2f6ea9b817e19343fd119cae3c111280848e009",
+      "released_sha256": "6f8d430c0a38f9ad11db138dec40a015206a86e8394228e7a4d847825ca4b240",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-006-full.json",
+      "original_sha256": "81073b26647dcbf41f73148fbe85209ad6eacf2b12de59c3eb69a167a190ea47",
+      "released_sha256": "e50aedf28770aba9fb9190a5f2ee380ee73a110b35721b0da5a7e17fd4c1cba3",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/prepared/qwen2.5_3b-policy-007-full.json",
+      "original_sha256": "8e8faa6fbb98c69c95db2a8590f2cf2445630d6d91f2627ca0d3ec87d5fc7d81",
+      "released_sha256": "c4fadb264c7bb20adce2e19f6b95a8772b50c969bdb3e297b7ca60efce2d3476",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/matched_original/development_20261006_v1/router_identity.json",
+      "original_sha256": "b9f40d4cf69688c488d8802d9b0de5402156466f52e96f5706d9baf2f716fe03",
+      "released_sha256": "32b2b63d639791cb3b0041dcb400ae2d94fdb7a524fdcb1695f15d5739a79910",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue/reserved.stdout.log",
+      "original_sha256": "88db38a196579216885aee61a444266946d5cd575a54371fc7a93ee701c441d8",
+      "released_sha256": "c4a99761eee666c03c8c743e054e79576fdb1b528877592adc86f289849bd6c0",
+      "replacement_count": 1,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue/reserved_launch.json",
+      "original_sha256": "feedc4f4f4b51a50c18826666f93446424380334e3bb63beb4887caf712d6963",
+      "released_sha256": "6dfc1111117e73c5cc668ebcada61fd3045bb8730480f94c9a9e4aa78d02c09a",
+      "replacement_count": 4,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue_schema/launch.json",
+      "original_sha256": "4154008d2a881978fa1026238ea570b0a8d64ddef136da5edd8205cf222f9611",
+      "released_sha256": "81b8cd34a15f31b16754ecb916f44c367efda7c0902caa28203597e9e2baa1a3",
+      "replacement_count": 4,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue_schema/stderr.log",
+      "original_sha256": "38d943d7abdd73ccc12cf0cd22aeb1c49cdb24a64b698abf28b2cb23a00e5fcc",
+      "released_sha256": "41bdfcb128b13086f8e8ad6568605b26e54d4e37be63e5b4116e5862bc9956e7",
+      "replacement_count": 17,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue_schema_retry/launch.json",
+      "original_sha256": "2625a6df285d7a33adfecb90f8b2efcdd72e7e4e04f03498181ef41a0bacc567",
+      "released_sha256": "deac82ab48474feb0b29c034377e9bac58c5853f9b2b2d2a19d6c2ca8e26b562",
+      "replacement_count": 4,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/reviewer1_20261120/queue_schema_retry/stderr.log",
+      "original_sha256": "38d943d7abdd73ccc12cf0cd22aeb1c49cdb24a64b698abf28b2cb23a00e5fcc",
+      "released_sha256": "41bdfcb128b13086f8e8ad6568605b26e54d4e37be63e5b4116e5862bc9956e7",
+      "replacement_count": 17,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/runs/2026-11-20_115943_superni_reviewer1_reserved20_llama_20261120/artifacts/model_calls.jsonl",
+      "original_sha256": "9d3af0e350d32df060299481121d1ff16fe2af22095f5a95cde0b6f21d23d6f1",
+      "released_sha256": "beda5a2d532b24a6261700e628772677af5c44d7a9e0ee814eef2916e84ab569",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 820,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/runs/2026-11-20_123413_superni_reviewer1_reserved20_schema70b_llama_20261120/artifacts/model_calls.jsonl",
+      "original_sha256": "27ee0f553df9309d1c51f5241416e4539c53032556ab4ba4988d80ea2d8fd5db",
+      "released_sha256": "a9f61de71b864d2a66c55cff3fe226f7270da7056335b688d027b505b87c08d9",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 1,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/runs/2026-11-20_123628_superni_reviewer1_reserved20_schema70b_transport1_llama_20261120/artifacts/model_calls.jsonl",
+      "original_sha256": "ac8ed3668001c419b86cab589a447c87b1c0fd2cedd8548d1e29236598b954c4",
+      "released_sha256": "312d74c3fed53906ff8e795046caf18a6ce0cfe3a95a25f8f6b1457f9d512fa8",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 1,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/runs/2026-10-07_001402_superni_superni_qwen25_3b_fixed_llama70_development_20261006/artifacts/model_calls.jsonl",
+      "original_sha256": "33b783e958ad412bc68f1acdfb698606fadafa0e1b0fff90fac0ee9b33a3d84e",
+      "released_sha256": "245b96a67c16e5d6e91c6fbffe36a0cacdab4d9cb3e8b55952db0ab9c21bfe48",
+      "replacement_count": 0,
+      "upstream_request_prompts_omitted": 301,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    },
+    {
+      "path": "task-compiler/reports/qwen_external_20261006/summary.json",
+      "original_sha256": "4f2630d70fe599a384dcfdbec6e2be70fa6b87a4b9ab57515bbdadd466d1a252",
+      "released_sha256": "2fc0cd594a1d7d657765cd2530a164e303a7be0484ac20c7d502980850d15b2a",
+      "replacement_count": 5,
+      "upstream_request_prompts_omitted": 0,
+      "reason": "Identity-only absolute paths replaced; optional upstream NLP request texts replaced by digests. Predictions, references, chronology and call counts preserved; source code unchanged."
+    }
+  ],
+  "omitted_upstream_data": "Full SuperNI task instance files are external; external/superni.json pins source and hashes.",
+  "excluded_categories": [
+    "credentials",
+    "git history",
+    "environments",
+    "model weights",
+    "private author drafts",
+    "walkthrough media",
+    "unrelated development documents"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "qwen3:8b": {
+    "backend": "ollama",
+    "model": "qwen3:8b",
+    "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+    "endpoint": "http://127.0.0.1:11434",
+    "local_only": true,
+    "mode": "live",
+    "temperature": 0,
+    "seed": 20261005,
+    "max_output_tokens": 2000,
+    "context_tokens": 32768,
+    "thinking": false,
+    "structured_decoding": "per_request_output_schema"
+  },
+  "qwen2.5:3b": {
+    "backend": "ollama",
+    "model": "qwen2.5:3b",
+    "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "endpoint": "http://127.0.0.1:11434",
+    "local_only": true,
+    "mode": "live",
+    "temperature": 0,
+    "seed": 20261005,
+    "max_output_tokens": 16,
+    "context_tokens": 32768,
+    "thinking": false,
+    "structured_decoding": "per_request_output_schema"
+  },
+  "llama3.2:3b": {
+    "backend": "ollama",
+    "model": "llama3.2:3b",
+    "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "endpoint": "http://127.0.0.1:11434",
+    "local_only": true,
+    "mode": "live",
+    "temperature": 0,
+    "seed": 20261005,
+    "max_output_tokens": 16,
+    "context_tokens": 32768,
+    "thinking": false,
+    "structured_decoding": "per_request_output_schema"
+  }
+}

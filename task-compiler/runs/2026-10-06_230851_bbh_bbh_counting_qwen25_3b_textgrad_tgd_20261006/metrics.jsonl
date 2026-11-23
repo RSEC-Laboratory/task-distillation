@@ -1,0 +1,5 @@
+{"stage": "load_locked_textgrad_development_splits", "elapsed_seconds": 0.0, "cpu_percent": 0.0, "ram_mb": 568.359375, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "textgrad_initial_validation", "elapsed_seconds": 161.73399999999674, "cpu_percent": 0.2, "ram_mb": 570.0078125, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "textgrad_tgd_optimization", "elapsed_seconds": 2846.4689999999973, "cpu_percent": 0.2, "ram_mb": 574.234375, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "load_textgrad_test_split", "elapsed_seconds": 0.0, "cpu_percent": 0.0, "ram_mb": 574.2734375, "gpu_util_percent": null, "gpu_mem_mb": 0.0}
+{"stage": "final_evaluation", "elapsed_seconds": 320.4210000000021, "cpu_percent": 0.1, "ram_mb": 574.37109375, "gpu_util_percent": null, "gpu_mem_mb": 0.0}

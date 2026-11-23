@@ -1,0 +1,263 @@
+{
+  "task_id": "policy-076",
+  "suite_split": "validation",
+  "source": {
+    "task_name": "Compositional policy 076",
+    "description": "Classify one structured event using the following public policy. Critical means risk is TRUE or action is approve; critical cases require allow. Unknown external: risk UNKNOWN in context external returns uncertain. Unknown risk otherwise prefers review at priority 90. Trusted means role is admin outside context external; a trusted change prefers deny at priority 80. Action export in context external prefers allow at priority 70. Role analyst or context partner prefers review at priority 40. Trusted cases forbid review. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "deny",
+      "allow",
+      "review"
+    ],
+    "requirements": [
+      "Critical means risk is TRUE or action is approve; critical cases require allow.",
+      "Unknown external: risk UNKNOWN in context external returns uncertain.",
+      "Unknown risk otherwise prefers review at priority 90.",
+      "Trusted means role is admin outside context external; a trusted change prefers deny at priority 80.",
+      "Action export in context external prefers allow at priority 70.",
+      "Role analyst or context partner prefers review at priority 40.",
+      "Trusted cases forbid review.",
+      "All other declared roles prefer deny at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-0:task-076"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "admin",
+          "analyst",
+          "auditor"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "change",
+          "export",
+          "approve"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "internal",
+          "partner",
+          "external"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "distillation_lineage": {
+    "local_model": "llama3.2:3b",
+    "canonical_student": "meta-llama/Llama-3.2-3B-Instruct",
+    "base_model": "pruned Llama 3.1-derived checkpoint; exact pruning source not isolated in the model card",
+    "distillation_teacher": "meta-llama/Llama-3.1-70B-Instruct (one of two documented logit teachers)",
+    "openrouter_teacher": "meta-llama/llama-3.1-70b-instruct",
+    "evidence_url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+    "expected_ollama_basename": "Llama-3.2",
+    "alternate_openrouter_teachers": [
+      "meta-llama/llama-3.1-8b-instruct"
+    ]
+  },
+  "oracle_program_sha256": "89d4a96569884033d090d732b9cb074164963f6c9c978f5a99a791ef8b73b013",
+  "teacher_compilation": {
+    "enabled": true,
+    "teacher_backend": "openrouter",
+    "teacher_model": "meta-llama/llama-3.1-70b-instruct",
+    "teacher_selection": "lineage_matched",
+    "initial_program_path": null,
+    "teacher_received_final_cases": false,
+    "teacher_received_private_deployment_data": false,
+    "audit_scenarios_used_for_refinement": true,
+    "source_derived_build_scenarios": 27,
+    "source_derived_audit_scenarios": 27,
+    "initial_program_sha256": "57fbf2342fc0a16be913df7afd2b5c9d4d2ae3f930ef6218c02976da23f1b023",
+    "final_program_sha256": "064445239e28603a6d707ed5195fa5f4f18166384968164974c0a48875ab8d32",
+    "initial_build_pass_rate": 0.9629629629629629,
+    "final_build_pass_rate": 1.0,
+    "final_audit_pass_rate": 1.0,
+    "validation_gate": {
+      "build_pass_threshold": 1.0,
+      "audit_pass_threshold": 1.0,
+      "passed": true
+    },
+    "repairs": [
+      {
+        "rule_name": "<complete-program>",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or (event.action == approve)\n\npredicate Trusted(event):\n    (event.role == admin) and (event.context != external)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\npredicate UnknownRisk(event):\n    event.risk == UNKNOWN\n\npredicate AnalystOrPartner(event):\n    (event.role == analyst) or (event.context == partner)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = allow\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when (UnknownRisk(event)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedCase:\n    when Trusted(event)\n    then prefer label = deny priority 80, forbid label = review\n\nrule ExportExternalCase:\n    when (event.action == export) and (event.context == external)\n    then prefer label = allow priority 70\n\nrule AnalystOrPartnerCase:\n    when AnalystOrPartner(event)\n    then prefer label = review priority 40\n\nrule OtherRoleCase:\n    when ((event.role != admin) and (event.role != analyst)) and (event.context != partner)\n    then prefer label = deny priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or (event.action == approve)\n\npredicate Trusted(event):\n    (event.role == admin) and (event.context!= external)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\npredicate UnknownRisk(event):\n    event.risk == UNKNOWN\n\npredicate AnalystOrPartner(event):\n    (event.role == analyst) or (event.context == partner)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = allow\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when (UnknownRisk(event)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedCase:\n    when Trusted(event)\n    then prefer label = deny priority 80, forbid label = review\n\nrule ExportExternalCase:\n    when (event.action == export) and (event.context == external)\n    then prefer label = allow priority 70\n\nrule AnalystOrPartnerCase:\n    when AnalystOrPartner(event)\n    then prefer label = review priority 40\n\nrule OtherRoleCase:\n    when ((event.role!= admin) and (event.role!= analyst)) and (event.context!= partner)\n    then prefer label = deny priority 1\n\nrule DefaultDenyCase:\n    when (not (event.role == admin)) and (not (event.context == partner)) and (event.role!= auditor)\n    then prefer label = deny priority 1\n\nrule AuditorCase:\n    when event.role == auditor\n    then prefer label = deny priority 1",
+        "accepted": false
+      },
+      {
+        "rule_name": "<complete-program>",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or (event.action == approve)\n\npredicate Trusted(event):\n    (event.role == admin) and (event.context != external)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\npredicate UnknownRisk(event):\n    event.risk == UNKNOWN\n\npredicate AnalystOrPartner(event):\n    (event.role == analyst) or (event.context == partner)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = allow\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when (UnknownRisk(event)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedCase:\n    when Trusted(event)\n    then prefer label = deny priority 80, forbid label = review\n\nrule ExportExternalCase:\n    when (event.action == export) and (event.context == external)\n    then prefer label = allow priority 70\n\nrule AnalystOrPartnerCase:\n    when AnalystOrPartner(event)\n    then prefer label = review priority 40\n\nrule OtherRoleCase:\n    when ((event.role != admin) and (event.role != analyst)) and (event.context != partner)\n    then prefer label = deny priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or (event.action == approve)\n\npredicate Trusted(event):\n    (event.role == admin) and (event.context!= external)\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == external)\n\npredicate UnknownRisk(event):\n    event.risk == UNKNOWN\n\npredicate AnalystOrPartner(event):\n    (event.role == analyst) or (event.context == partner)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = allow\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when (UnknownRisk(event)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedCase:\n    when Trusted(event)\n    then prefer label = deny priority 80, forbid label = review\n\nrule ExportExternalCase:\n    when (event.action == export) and (event.context == external)\n    then prefer label = allow priority 70\n\nrule AnalystOrPartnerCase:\n    when AnalystOrPartner(event)\n    then prefer label = review priority 40\n\nrule OtherRoleCase:\n    when ((event.role!= admin) and (event.role!= analyst)) and (event.context!= partner)\n    then prefer label = deny priority 1\n\nrule AdminExternalCase:\n    when (event.role == admin) and (event.context == external)\n    then prefer label = deny priority 1",
+        "accepted": true
+      }
+    ],
+    "teacher_input_tokens": 2623,
+    "teacher_output_tokens": 994,
+    "teacher_calls": 3
+  },
+  "compilation_failure": null,
+  "rendered_bundle": [
+    "Verified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.",
+    "If risk=FALSE, action=approve, return allow.",
+    "If risk=FALSE, action=change, role=admin, return deny.",
+    "If risk=FALSE, action=change, role=analyst, return review.",
+    "If risk=FALSE, action=change, role=auditor, context=external, return deny.",
+    "If risk=FALSE, action=change, role=auditor, context=internal, return deny.",
+    "If risk=FALSE, action=change, role=auditor, context=partner, return review.",
+    "If risk=FALSE, action=export, context=external, return allow.",
+    "If risk=FALSE, action=export, context=internal, role=admin, return deny.",
+    "If risk=FALSE, action=export, context=internal, role=analyst, return review.",
+    "If risk=FALSE, action=export, context=internal, role=auditor, return deny.",
+    "If risk=FALSE, action=export, context=partner, role=admin, return deny.",
+    "If risk=FALSE, action=export, context=partner, role=analyst, return review.",
+    "If risk=FALSE, action=export, context=partner, role=auditor, return review.",
+    "If risk=TRUE, return allow.",
+    "If risk=UNKNOWN, context=external, return uncertain.",
+    "If risk=UNKNOWN, context=internal, action=approve, return allow.",
+    "If risk=UNKNOWN, context=internal, action=change, role=admin, return deny.",
+    "If risk=UNKNOWN, context=internal, action=change, role=analyst, return review.",
+    "If risk=UNKNOWN, context=internal, action=change, role=auditor, return review.",
+    "If risk=UNKNOWN, context=internal, action=export, role=admin, return deny.",
+    "If risk=UNKNOWN, context=internal, action=export, role=analyst, return review.",
+    "If risk=UNKNOWN, context=internal, action=export, role=auditor, return review.",
+    "If risk=UNKNOWN, context=partner, action=approve, return allow.",
+    "If risk=UNKNOWN, context=partner, action=change, role=admin, return deny.",
+    "If risk=UNKNOWN, context=partner, action=change, role=analyst, return review.",
+    "If risk=UNKNOWN, context=partner, action=change, role=auditor, return review.",
+    "If risk=UNKNOWN, context=partner, action=export, role=admin, return deny.",
+    "If risk=UNKNOWN, context=partner, action=export, role=analyst, return review.",
+    "If risk=UNKNOWN, context=partner, action=export, role=auditor, return review."
+  ],
+  "frozen_bundle": null,
+  "optimized_prompt_prefix": null,
+  "optimizer_protocol": null,
+  "verified_decision_list_certificate": {
+    "finite_domain_size": 81,
+    "decision_rule_count": 29,
+    "exhaustive_coverage": true,
+    "label_pure": true,
+    "semantically_equivalent": true,
+    "representation_sha256": "5e4e4d8a00d396576e31d41cfe15e5187135e81364fd0202519e126b2f0c4525",
+    "oracle_outcomes_sha256": "60acc567d896b4ec8a9447bd980eb1dd5a56712e9dd13fd3717332e9c73a3688",
+    "representation_kind": "verified_decision_tree"
+  },
+  "representation_kind": "verified_decision_tree",
+  "local_instruction_routing": {
+    "enabled": true,
+    "top_k": 6,
+    "router": {
+      "backend": "sentence_transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+    }
+  },
+  "deployment_description": "Classify one structured event using the supplied compiled instructions. The allowed outputs are deny, allow, review, uncertain. These names are arbitrary symbols, so do not infer their meaning. Copy the output stated by the matching compiled instruction.",
+  "deployment_includes_full_task_spec": false,
+  "opaque_label_codebook": {
+    "enabled": false
+  },
+  "selected_verified_decision_list": false,
+  "num_obligations": 0,
+  "build_pass_rate": 0.9259259259259259,
+  "initial_build_pass_rate": 0.6666666666666666,
+  "compilation_rounds": [
+    {
+      "round_index": 0,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.33333333333333337,
+        0.0,
+        0,
+        3,
+        221
+      ],
+      "objective_after": [
+        0.07407407407407407,
+        0.0,
+        0,
+        1,
+        216
+      ],
+      "edit": "certified:decision_list",
+      "protected_regressions": 1
+    },
+    {
+      "round_index": 1,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": true,
+      "objective_before": [
+        0.33333333333333337,
+        0.0,
+        0,
+        3,
+        221
+      ],
+      "objective_after": [
+        0.07407407407407407,
+        0.0,
+        0,
+        0,
+        214
+      ],
+      "edit": "certified:decision_tree",
+      "protected_regressions": 1
+    },
+    {
+      "round_index": 2,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.33333333333333337,
+        0.0,
+        0,
+        3,
+        221
+      ],
+      "objective_after": [
+        0.07407407407407407,
+        0.0,
+        0,
+        0,
+        214
+      ],
+      "edit": "certified:decision_tree_reversed",
+      "protected_regressions": 1
+    }
+  ],
+  "compilation_student_calls": 108,
+  "artifact_sha256": "9d5b9138c88fd9392207ee975ef1dcc481b9fe3191d02eb60441467b8054101b"
+}

@@ -1,0 +1,223 @@
+{
+  "task_id": "task893_gap_fill_the_blank_coreference_resolution",
+  "source_sha256": "1b576b794d93740a30178e00a481715d585d95f693721f028c2670b105632d59",
+  "parent_received_instances": false,
+  "student_validation_used_instances": false,
+  "initial_representation": {
+    "objective": "gap_fill_the_blank_coreference_resolution",
+    "output_labels": [
+      "her",
+      "him",
+      "he",
+      "she",
+      "his"
+    ],
+    "decision_rules": [
+      "If the target name is female and the blank is in a possessive context, output 'her'.",
+      "If the target name is male and the blank is in a possessive context, output 'his'.",
+      "If the target name is female and the blank is in a nominative context, output 'she'.",
+      "If the target name is male and the blank is in a nominative context, output 'he'.",
+      "If the target name is male and the blank is in an accusative context, output 'him'."
+    ],
+    "boundary_conditions": [
+      "If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.",
+      "If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.",
+      "If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him')."
+    ],
+    "counterfactual_constraints": [
+      "Changing the target name's gender changes the output label (e.g., 'her' to 'him').",
+      "Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him')."
+    ],
+    "verification_checks": [
+      "Check if the target name is mentioned in the passage.",
+      "Check if the blank is in a context that implies a specific grammatical case.",
+      "Check if the target name's gender is clear from the context.",
+      "Check if the output label is consistent with the passage's context."
+    ]
+  },
+  "final_representation": {
+    "objective": "gap_fill_the_blank_coreference_resolution",
+    "output_labels": [
+      "her",
+      "him",
+      "he",
+      "she",
+      "his"
+    ],
+    "decision_rules": [
+      "If the target name is female and the blank is in a possessive context, output 'her'.",
+      "If the target name is male and the blank is in a possessive context, output 'his'.",
+      "If the target name is female and the blank is in a nominative context, output 'she'.",
+      "If the target name is male and the blank is in a nominative context, output 'he'.",
+      "If the target name is male and the blank is in an accusative context, output 'him'."
+    ],
+    "boundary_conditions": [
+      "If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.",
+      "If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.",
+      "If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him')."
+    ],
+    "counterfactual_constraints": [
+      "Changing the target name's gender changes the output label (e.g., 'her' to 'him').",
+      "Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him')."
+    ],
+    "verification_checks": [
+      "Check if the target name is mentioned in the passage.",
+      "Check if the blank is in a context that implies a specific grammatical case.",
+      "Check if the target name's gender is clear from the context.",
+      "Check if the output label is consistent with the passage's context."
+    ]
+  },
+  "initial_raw_text": "{ \"objective\": \"gap_fill_the_blank_coreference_resolution\", \"output_labels\": [\"her\", \"him\", \"he\", \"she\", \"his\"], \"decision_rules\": [\n  \"If the target name is female and the blank is in a possessive context, output 'her'.\",\n  \"If the target name is male and the blank is in a possessive context, output 'his'.\",\n  \"If the target name is female and the blank is in a nominative context, output 'she'.\",\n  \"If the target name is male and the blank is in a nominative context, output 'he'.\",\n  \"If the target name is male and the blank is in an accusative context, output 'him'.\"\n], \"boundary_conditions\": [\n  \"If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.\",\n  \"If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.\",\n  \"If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him').\"\n], \"counterfactual_constraints\": [\n  \"Changing the target name's gender changes the output label (e.g., 'her' to 'him').\",\n  \"Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him').\"\n], \"verification_checks\": [\n  \"Check if the target name is mentioned in the passage.\",\n  \"Check if the blank is in a context that implies a specific grammatical case.\",\n  \"Check if the target name's gender is clear from the context.\",\n  \"Check if the output label is consistent with the passage's context.\"\n] }",
+  "final_raw_text": "{ \"objective\": \"gap_fill_the_blank_coreference_resolution\", \"output_labels\": [\"her\", \"him\", \"he\", \"she\", \"his\"], \"decision_rules\": [\n  \"If the target name is female and the blank is in a possessive context, output 'her'.\",\n  \"If the target name is male and the blank is in a possessive context, output 'his'.\",\n  \"If the target name is female and the blank is in a nominative context, output 'she'.\",\n  \"If the target name is male and the blank is in a nominative context, output 'he'.\",\n  \"If the target name is male and the blank is in an accusative context, output 'him'.\"\n], \"boundary_conditions\": [\n  \"If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.\",\n  \"If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.\",\n  \"If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him').\"\n], \"counterfactual_constraints\": [\n  \"Changing the target name's gender changes the output label (e.g., 'her' to 'him').\",\n  \"Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him').\"\n], \"verification_checks\": [\n  \"Check if the target name is mentioned in the passage.\",\n  \"Check if the blank is in a context that implies a specific grammatical case.\",\n  \"Check if the target name's gender is clear from the context.\",\n  \"Check if the output label is consistent with the passage's context.\"\n] }",
+  "initial_validation": [
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-00",
+      "expected": [
+        "her"
+      ],
+      "response": "her",
+      "correct": true,
+      "input_tokens": 553,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-01",
+      "expected": [
+        "he"
+      ],
+      "response": "his",
+      "correct": false,
+      "input_tokens": 610,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-02",
+      "expected": [
+        "him"
+      ],
+      "response": "his",
+      "correct": false,
+      "input_tokens": 557,
+      "output_tokens": 2
+    }
+  ],
+  "final_validation": [
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-00",
+      "expected": [
+        "her"
+      ],
+      "response": "her",
+      "correct": true,
+      "input_tokens": 553,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-01",
+      "expected": [
+        "he"
+      ],
+      "response": "his",
+      "correct": false,
+      "input_tokens": 610,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-02",
+      "expected": [
+        "him"
+      ],
+      "response": "his",
+      "correct": false,
+      "input_tokens": 557,
+      "output_tokens": 2
+    }
+  ],
+  "revisions": [
+    {
+      "round": 1,
+      "text": "{\n  \"objective\": \"gap_fill_the_blank_coreference_resolution\",\n  \"output_labels\": [\"her\", \"him\", \"he\", \"she\", \"his\"],\n  \"decision_rules\": [\n    \"If the target name is female and the blank is in a possessive context, output 'her'.\",\n    \"If the target name is male and the blank is in a possessive context, output 'his'.\",\n    \"If the target name is female and the blank is in a nominative context, output 'she'.\",\n    \"If the target name is male and the blank is in a nominative context, output 'he'.\",\n    \"If the target name is male and the blank is in an accusative context, output 'him'.\",\n    \"If the target name is male and the blank is in a context that implies a reflexive pronoun, output 'himself'.\",\n    \"If the target name is female and the blank is in a context that implies a reflexive pronoun, output 'herself'.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.\",\n    \"If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.\",\n    \"If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him').\",\n    \"If the passage contains multiple instances of the target name with different grammatical cases, prioritize the most recent instance.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the target name's gender changes the output label (e.g., 'her' to 'him').\",\n    \"Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him').\",\n    \"Changing the target name's grammatical case changes the output label (e.g., 'he' to 'himself').\"\n  ],\n  \"verification_checks\": [\n    \"Check if the target name is mentioned in the passage.\",\n    \"Check if the blank is in a context that implies a specific grammatical case.\",\n    \"Check if the target name's gender is clear from the context.\",\n    \"Check if the output label is consistent with the passage's context.\",\n    \"Check if the passage contains multiple instances of the target name with different grammatical cases.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-00",
+          "expected": [
+            "her"
+          ],
+          "response": "her",
+          "correct": true,
+          "input_tokens": 686,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-01",
+          "expected": [
+            "he"
+          ],
+          "response": "his",
+          "correct": false,
+          "input_tokens": 743,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-02",
+          "expected": [
+            "him"
+          ],
+          "response": "his",
+          "correct": false,
+          "input_tokens": 690,
+          "output_tokens": 2
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "text": "{\n  \"objective\": \"gap_fill_the_blank_coreference_resolution\",\n  \"output_labels\": [\"her\", \"him\", \"he\", \"she\", \"his\"],\n  \"decision_rules\": [\n    \"If the target name is female and the blank is in a possessive context, output 'her'.\",\n    \"If the target name is male and the blank is in a possessive context, output 'his'.\",\n    \"If the target name is female and the blank is in a nominative context, output 'she'.\",\n    \"If the target name is male and the blank is in a nominative context, output 'he'.\",\n    \"If the target name is male and the blank is in an accusative context, output 'him'.\",\n    \"If the target name is male and the blank is in a context that implies a direct object, output 'him'.\",\n    \"If the target name is male and the blank is in a context that implies a subject, output 'he'.\"\n  ],\n  \"boundary_conditions\": [\n    \"If the target name is ambiguous (e.g., 'Jordan'), output 'him' or 'her' based on contextual clues.\",\n    \"If the target name is missing or unknown, output 'him' or 'her' based on contextual clues.\",\n    \"If the blank is in a context that implies a different grammatical case (e.g., 'of _'), output the corresponding label (e.g., 'his' instead of 'him').\",\n    \"If the passage contains multiple pronouns that could refer to the target name, choose the one that is most consistent with the context.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing the target name's gender changes the output label (e.g., 'her' to 'him').\",\n    \"Changing the blank's grammatical case changes the output label (e.g., 'he' to 'him').\",\n    \"Changing the target name's grammatical role (e.g., from subject to object) changes the output label (e.g., 'he' to 'him').\"\n  ],\n  \"verification_checks\": [\n    \"Check if the target name is mentioned in the passage.\",\n    \"Check if the blank is in a context that implies a specific grammatical case.\",\n    \"Check if the target name's gender is clear from the context.\",\n    \"Check if the output label is consistent with the passage's context.\",\n    \"Check if the passage contains any ambiguous pronouns that could refer to the target name.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-00",
+          "expected": [
+            "her"
+          ],
+          "response": "her",
+          "correct": true,
+          "input_tokens": 690,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-01",
+          "expected": [
+            "he"
+          ],
+          "response": "his",
+          "correct": false,
+          "input_tokens": 747,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task893_gap_fill_the_blank_coreference_resolution-positive-02",
+          "expected": [
+            "him"
+          ],
+          "response": "his",
+          "correct": false,
+          "input_tokens": 694,
+          "output_tokens": 2
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "stage": "positive_example_certificate",
+    "message": "1/3 public positive examples passed",
+    "fallback": "positive_examples"
+  },
+  "teacher_calls": 3,
+  "teacher_input_tokens": 3767,
+  "teacher_output_tokens": 1416,
+  "artifact_sha256": "03adcf5011fc0d9f12a280fec79678e94a342ea16dc03c3cda14d0576b08bee7"
+}

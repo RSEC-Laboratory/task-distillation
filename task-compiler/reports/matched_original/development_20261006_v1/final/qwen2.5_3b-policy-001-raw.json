@@ -1,0 +1,782 @@
+{
+  "task_id": "policy-001",
+  "solver_model": "qwen2.5:3b",
+  "arm": "raw",
+  "completed_at": "2026-10-06T14:15:54.799683+00:00",
+  "rows": [
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-00",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.418618300000162
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-01",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.25688090000039665
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-02",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.26408619999983785
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-03",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.30467700000008335
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-04",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.28108419999989565
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-05",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.25439539999933913
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-06",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.25833480000073905
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-07",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.22651480000058655
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-08",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.24757679999947868
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-09",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.2476448999996137
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-10",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.2747524999995221
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-11",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.2567275999999765
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-12",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 3,
+      "latency_seconds": 0.27044149999983347
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-13",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.279588600000352
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-14",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.2980040000002191
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-15",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.27390159999958996
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-16",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.26639539999996487
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-17",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 3,
+      "latency_seconds": 0.270991999999751
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-18",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.27420489999985875
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-19",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.2659557999995741
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-20",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.28028549999999086
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-21",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.4199579000005542
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-22",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.37123109999993176
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-23",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.34895630000028177
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-24",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 610,
+      "output_tokens": 2,
+      "latency_seconds": 0.7704871999994793
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-25",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.587108800000351
+    },
+    {
+      "task_id": "policy-001",
+      "method": "raw",
+      "case_id": "policy-001-final-26",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": null,
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "71e59eaa2ad0e90434421e46f0a74d150478a0f3d327f20f6703f26ad163503d",
+      "system": "Perform task Compositional policy 001.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: deny, review, allow, uncertain.\n\nTask instructions:\nTask: Compositional policy 001\n\nClassify one structured event using the following public policy. Critical means (risk TRUE in context sandbox) or action export; critical cases require review. Unknown external: risk UNKNOWN in context sandbox returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80. Action change in context sandbox prefers review at priority 70. Role admin and context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nDeclared labels: deny, review, allow\n\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"analyst\",\"admin\",\"auditor\"]},{\"name\":\"Action\",\"values\":[\"approve\",\"change\",\"export\"]},{\"name\":\"Context\",\"values\":[\"internal\",\"partner\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\n\nRequirements:\nCritical means (risk TRUE in context sandbox) or action export; critical cases require review.\nUnknown external: risk UNKNOWN in context sandbox returns uncertain.\nUnknown risk otherwise prefers allow at priority 90.\nTrusted means role analyst, or context internal with FALSE risk; a trusted approve prefers deny at priority 80.\nAction change in context sandbox prefers review at priority 70.\nRole admin and context partner prefers allow at priority 40.\nTrusted cases forbid allow.\nAll other declared roles prefer deny at priority 1.\nRequired labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.\n\nForbidden shortcuts:\nUse every field named by a relevant rule.\n\nPublic source identifiers:\ncompositional-policies-v2:family-1:task-001\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 611,
+      "output_tokens": 2,
+      "latency_seconds": 0.3444172999998045
+    }
+  ],
+  "final_wall_seconds": 8.67199999999957,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 16489,
+        "output_tokens_known": 56,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 8.613221299999168
+      }
+    }
+  }
+}

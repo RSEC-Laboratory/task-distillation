@@ -1,0 +1,2610 @@
+{
+  "policy-000": [
+    {
+      "case_id": "policy-000-final-00",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-01",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-02",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-03",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-04",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-05",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-000-final-06",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-07",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-08",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-09",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-10",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-000-final-11",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-12",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-000-final-13",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-14",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-000-final-15",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-000-final-16",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-17",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-18",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-000-final-19",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-000-final-20",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-21",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-000-final-22",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-000-final-23",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-000-final-24",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-000-final-25",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-000-final-26",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    }
+  ],
+  "policy-001": [
+    {
+      "case_id": "policy-001-final-00",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-001-final-01",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-02",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-03",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-04",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-05",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-06",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-07",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-08",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-09",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-10",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-11",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-12",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-13",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-14",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-15",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-16",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-17",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-001-final-18",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-19",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "export",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-20",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-21",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-22",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-001-final-23",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-24",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-001-final-25",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-001-final-26",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    }
+  ],
+  "policy-002": [
+    {
+      "case_id": "policy-002-final-00",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-01",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-02",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-03",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-04",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-002-final-05",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-06",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-07",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-08",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-09",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-10",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-11",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-12",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-13",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-14",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-15",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-16",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-17",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-18",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-19",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-20",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-21",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-22",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-002-final-23",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-002-final-24",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-25",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-002-final-26",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    }
+  ],
+  "policy-003": [
+    {
+      "case_id": "policy-003-final-00",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-01",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-02",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-03",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-003-final-04",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-05",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-003-final-06",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-07",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-08",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-003-final-09",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-10",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-11",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-12",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-13",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-003-final-14",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-15",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-16",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-17",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-18",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-003-final-19",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "inspect",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-003-final-20",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-21",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-22",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-23",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-24",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-25",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-003-final-26",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    }
+  ],
+  "policy-004": [
+    {
+      "case_id": "policy-004-final-00",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-01",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-004-final-02",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-004-final-03",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-004-final-04",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-05",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-06",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-07",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-08",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-09",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-10",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-004-final-11",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-12",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-13",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-004-final-14",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-15",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-004-final-16",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-17",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-18",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-19",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-004-final-20",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-21",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-22",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-23",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-004-final-24",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-004-final-25",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-004-final-26",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    }
+  ],
+  "policy-005": [
+    {
+      "case_id": "policy-005-final-00",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-01",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-02",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-03",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-04",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-05",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-06",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-07",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-08",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-005-final-09",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-10",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-11",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-005-final-12",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-13",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-14",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-15",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-16",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-17",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-18",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-19",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-20",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-005-final-21",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-005-final-22",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-23",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-005-final-24",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-005-final-25",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-005-final-26",
+      "input_record": {
+        "event": {
+          "role": "analyst",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    }
+  ],
+  "policy-006": [
+    {
+      "case_id": "policy-006-final-00",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-006-final-01",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-02",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-03",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-04",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-05",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-06",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-07",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-08",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-09",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-006-final-10",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-11",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-12",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-13",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-14",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-15",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-16",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-17",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-18",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-006-final-19",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-20",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "delete",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-21",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-22",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-23",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-006-final-24",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-006-final-25",
+      "input_record": {
+        "event": {
+          "role": "admin",
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-006-final-26",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    }
+  ],
+  "policy-007": [
+    {
+      "case_id": "policy-007-final-00",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-01",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-02",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-007-final-03",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-04",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-05",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-06",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-07",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-08",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-007-final-09",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "inspect",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-10",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-007-final-11",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-007-final-12",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": null
+    },
+    {
+      "case_id": "policy-007-final-13",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-14",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-15",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "external",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-16",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-17",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-18",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-19",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-20",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "external",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-21",
+      "input_record": {
+        "event": {
+          "role": "auditor",
+          "action": "export",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    },
+    {
+      "case_id": "policy-007-final-22",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "export",
+          "context": "sandbox",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-23",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE"
+        }
+      },
+      "expected_label": "allow"
+    },
+    {
+      "case_id": "policy-007-final-24",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "inspect",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-25",
+      "input_record": {
+        "event": {
+          "role": "operator",
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "FALSE"
+        }
+      },
+      "expected_label": "review"
+    },
+    {
+      "case_id": "policy-007-final-26",
+      "input_record": {
+        "event": {
+          "role": "guest",
+          "action": "export",
+          "context": "external",
+          "risk": "UNKNOWN"
+        }
+      },
+      "expected_label": "deny"
+    }
+  ]
+}

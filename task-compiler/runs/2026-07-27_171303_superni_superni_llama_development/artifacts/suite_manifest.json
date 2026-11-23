@@ -1,0 +1,50 @@
+{
+  "benchmark": "Super-NaturalInstructions",
+  "source_repository": "allenai/natural-instructions",
+  "source_commit": "55a365637381ce7f3748fa2eac7aef1a113bbb82",
+  "split": "development",
+  "official_instance_order": true,
+  "tasks": [
+    {
+      "task_id": "task201_mnli_neutral_classification",
+      "source_sha256": "2fd722ad8508a8734ff9e1f1a7236d19280ae3b68f0d036e81253ce98afeeb91",
+      "sources": [
+        "multinli"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    },
+    {
+      "task_id": "task893_gap_fill_the_blank_coreference_resolution",
+      "source_sha256": "1b576b794d93740a30178e00a481715d585d95f693721f028c2670b105632d59",
+      "sources": [
+        "gap"
+      ],
+      "categories": [
+        "Coreference Resolution"
+      ]
+    },
+    {
+      "task_id": "task1624_disfl_qa_question_yesno_classification",
+      "source_sha256": "b6e2277f34a70f6d0f630d245086f8a94531d0375a7d39549801ec92dd352586",
+      "sources": [
+        "disfl_qa"
+      ],
+      "categories": [
+        "Answerability Classification"
+      ]
+    },
+    {
+      "task_id": "task935_defeasible_nli_atomic_classification",
+      "source_sha256": "5c69baca4739f6cffa6ca7686c6ec7c4cdf448470e1889ec8484148f9785a8cf",
+      "sources": [
+        "defeasible_nli_atomic"
+      ],
+      "categories": [
+        "Textual Entailment"
+      ]
+    }
+  ],
+  "manifest_sha256": "d74452cbf4f045f72c29a635144abf0e04f0be443407dcc1918711702fb6d41d"
+}

@@ -1,0 +1,1328 @@
+{
+  "status": "passed",
+  "mode": "offline saved-record rescoring; no inference or network",
+  "scoring_source_sha256": {
+    "src/taskcompiler/translate.py": "9f42957fb3b404c8472320ee20aa9f5324c373b98b1ee3611b51e9fb598a6821",
+    "src/taskcompiler/guidance_track/bbh.py": "6519cbb1ab8e4059ee246e17f46606aab834ae03884ede9451f944a67f7847a5",
+    "src/taskcompiler/guidance_track/superni.py": "ff3b7d7a6d929037c0822c9efd69db68c7375d323e6fcba937e504b039c8f85c"
+  },
+  "submitted": {
+    "main_llama": {
+      "tasks": 24,
+      "final_cases_per_condition": 648,
+      "correct": {
+        "raw": 107,
+        "one_shot": 311,
+        "full": 517
+      },
+      "accuracy": {
+        "raw": 0.16512345679012347,
+        "one_shot": 0.4799382716049383,
+        "full": 0.7978395061728395
+      },
+      "full_minus_raw": {
+        "estimate": 0.6327160493827161,
+        "bootstrap_95": [
+          0.5509259259259259,
+          0.7021604938271605
+        ]
+      },
+      "full_minus_one_shot": {
+        "estimate": 0.3179012345679012,
+        "bootstrap_95": [
+          0.26080246913580246,
+          0.3703703703703704
+        ]
+      },
+      "certified_tasks": 23,
+      "full_higher_than_both": 23,
+      "teacher_calls": 61,
+      "deterministic_corrections": 11,
+      "tasks_with_corrections": 6,
+      "fallback_tasks": [
+        62
+      ],
+      "student_calls": 6372,
+      "family_gain_ranges": {
+        "raw": [
+          0.5370370370370371,
+          0.7248677248677249
+        ],
+        "one_shot": [
+          0.25396825396825395,
+          0.4126984126984127
+        ]
+      },
+      "scope": "24 generated instances from four rule families",
+      "conditions": {
+        "raw": {
+          "correct": 107,
+          "total": 648,
+          "accuracy": 0.16512345679012347
+        },
+        "one_shot": {
+          "correct": 311,
+          "total": 648,
+          "accuracy": 0.4799382716049383
+        },
+        "full": {
+          "correct": 517,
+          "total": 648,
+          "accuracy": 0.7978395061728395
+        }
+      },
+      "direct_execution_historical_description_fallback": {
+        "correct": 610,
+        "total": 648,
+        "accuracy": 0.941358024691358
+      }
+    },
+    "main_gemma": {
+      "tasks": 18,
+      "complete_task_triplets": 16,
+      "imputed_fallback_tasks": [
+        68,
+        72
+      ],
+      "cases_per_condition_after_fallback": 486,
+      "correct": {
+        "raw": 202,
+        "one_shot": 264,
+        "full": 419
+      },
+      "accuracy": {
+        "raw": 0.4156378600823045,
+        "one_shot": 0.5432098765432098,
+        "full": 0.8621399176954733
+      },
+      "full_minus_controls": {
+        "raw": {
+          "estimate": 0.4465020576131687,
+          "bootstrap_95": [
+            0.33539094650205764,
+            0.5452674897119342
+          ]
+        },
+        "one_shot": {
+          "estimate": 0.31893004115226337,
+          "bootstrap_95": [
+            0.23868312757201643,
+            0.3909465020576131
+          ]
+        }
+      },
+      "certified_complete_tasks": 15,
+      "full_higher_than_both": 15,
+      "scope": "conservative registered-fallback sensitivity",
+      "conditions": {
+        "raw": {
+          "correct": 202,
+          "total": 486,
+          "accuracy": 0.4156378600823045
+        },
+        "one_shot": {
+          "correct": 264,
+          "total": 486,
+          "accuracy": 0.5432098765432098
+        },
+        "full": {
+          "correct": 419,
+          "total": 486,
+          "accuracy": 0.8621399176954733
+        }
+      }
+    },
+    "two_task_routing": {
+      "tasks": 2,
+      "cases": 54,
+      "correct": {
+        "full_list": 25,
+        "routed": 43
+      },
+      "mean_available_instructions": 29.0,
+      "mean_delivered_instructions": 7.62962962962963,
+      "instruction_reduction": 0.7369093231162196,
+      "scope": "development ablation with identical bundles"
+    },
+    "llama_counting": {
+      "task": "BBH Object Counting",
+      "test_examples": 100,
+      "method_correct": 85,
+      "textgrad_correct": 75,
+      "difference": 0.1,
+      "comparison_type": "matched local TextGrad adaptation",
+      "published_textgrad_score": 0.919,
+      "published_score_reproduction": false,
+      "prompt_transfer_correct": 76,
+      "paired_gains": 17,
+      "paired_losses": 7,
+      "exact_mcnemar_two_sided": 0.06391465663909912,
+      "tokens": {
+        "method_teacher": 349,
+        "method_student_test": 39800,
+        "textgrad_teacher": 145921,
+        "textgrad_student_total": 592241
+      },
+      "scope": "one previously explored test task; descriptive comparison",
+      "conditions": {
+        "adapter": {
+          "correct": 85,
+          "total": 100,
+          "accuracy": 0.85
+        },
+        "textgrad": {
+          "correct": 75,
+          "total": 100,
+          "accuracy": 0.75
+        },
+        "published_prompt": {
+          "correct": 76,
+          "total": 100,
+          "accuracy": 0.76
+        }
+      }
+    },
+    "historical_nlp_adapters": {
+      "students": {
+        "llama": {
+          "tasks": 4,
+          "cases": 80,
+          "positive_examples_correct": 38,
+          "recorded_routed_correct": 34,
+          "identical_prompt_corrected_routed": 35,
+          "uncertified_tasks": 3,
+          "conditions": {
+            "positive_examples": {
+              "correct": 38,
+              "total": 80,
+              "accuracy": 0.475
+            },
+            "routed_recorded": {
+              "correct": 34,
+              "total": 80,
+              "accuracy": 0.425
+            },
+            "routed_identical_prompt_fallback_corrected": {
+              "correct": 35,
+              "total": 80,
+              "accuracy": 0.4375
+            }
+          }
+        },
+        "gemma": {
+          "tasks": 4,
+          "cases": 80,
+          "positive_examples_correct": 53,
+          "recorded_routed_correct": 50,
+          "identical_prompt_corrected_routed": 50,
+          "uncertified_tasks": 2,
+          "conditions": {
+            "positive_examples": {
+              "correct": 53,
+              "total": 80,
+              "accuracy": 0.6625
+            },
+            "routed_recorded": {
+              "correct": 50,
+              "total": 80,
+              "accuracy": 0.625
+            },
+            "routed_identical_prompt_fallback_corrected": {
+              "correct": 50,
+              "total": 80,
+              "accuracy": 0.625
+            }
+          }
+        }
+      },
+      "pooled_positive_examples_correct": 91,
+      "pooled_corrected_routed_correct": 85,
+      "pooled_cases": 160,
+      "scope": "negative four-task development gates; confirmation stayed sealed"
+    },
+    "additional_bbh": {
+      "student_totals": {
+        "llama": {
+          "raw": 23,
+          "few_shot": 16,
+          "compiled": 26
+        },
+        "gemma": {
+          "raw": 26,
+          "few_shot": 15,
+          "compiled": 34
+        },
+        "qwen": {
+          "raw": 43,
+          "few_shot": 47,
+          "compiled": 43
+        }
+      },
+      "pooled_correct_of_180": {
+        "raw": 92,
+        "few_shot": 78,
+        "compiled": 103
+      },
+      "compiled_minus_controls": {
+        "raw": {
+          "estimate": 0.06111111111111109,
+          "bootstrap_95": [
+            -0.027777777777777776,
+            0.17777777777777773
+          ]
+        },
+        "few_shot": {
+          "estimate": 0.1388888888888889,
+          "bootstrap_95": [
+            -0.03888888888888891,
+            0.3277777777777778
+          ]
+        }
+      },
+      "scope": "exploratory development gate; intervals include zero"
+    },
+    "scope": "Submitted historical records; failed Gemma tasks use the recorded fallback estimates. NLP diagnostics retain the documented identical-prompt fallback correction."
+  },
+  "current_native_gepa": {
+    "students": {
+      "qwen2.5:3b": {
+        "conditions": {
+          "raw": {
+            "correct": 101,
+            "total": 216,
+            "accuracy": 0.4675925925925926
+          },
+          "full": {
+            "correct": 134,
+            "total": 216,
+            "accuracy": 0.6203703703703703
+          },
+          "gepa": {
+            "correct": 117,
+            "total": 216,
+            "accuracy": 0.5416666666666666
+          },
+          "direct_dsl": {
+            "correct": 127,
+            "total": 216,
+            "accuracy": 0.5879629629629629
+          },
+          "direct_matched_fallback": {
+            "correct": 155,
+            "total": 216,
+            "accuracy": 0.7175925925925926
+          }
+        },
+        "per_task": [
+          {
+            "task": "policy-000",
+            "correct": {
+              "raw": 6,
+              "full": 6,
+              "gepa": 16,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 6
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-001",
+            "correct": {
+              "raw": 11,
+              "full": 22,
+              "gepa": 12,
+              "direct_dsl": 25,
+              "direct_matched_fallback": 25
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-002",
+            "correct": {
+              "raw": 7,
+              "full": 7,
+              "gepa": 7,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 7
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-003",
+            "correct": {
+              "raw": 15,
+              "full": 15,
+              "gepa": 16,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 15
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-004",
+            "correct": {
+              "raw": 20,
+              "full": 18,
+              "gepa": 19,
+              "direct_dsl": 24,
+              "direct_matched_fallback": 24
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-005",
+            "correct": {
+              "raw": 11,
+              "full": 25,
+              "gepa": 16,
+              "direct_dsl": 26,
+              "direct_matched_fallback": 26
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-006",
+            "correct": {
+              "raw": 18,
+              "full": 25,
+              "gepa": 20,
+              "direct_dsl": 27,
+              "direct_matched_fallback": 27
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-007",
+            "correct": {
+              "raw": 13,
+              "full": 16,
+              "gepa": 11,
+              "direct_dsl": 25,
+              "direct_matched_fallback": 25
+            },
+            "program_available": true
+          }
+        ],
+        "full_minus_gepa": {
+          "difference": 0.07870370370370369,
+          "descriptive_95_interval": [
+            -0.08333333333333333,
+            0.2222222222222222
+          ],
+          "resamples": 10000,
+          "seed": 20261005,
+          "unit_count": 8,
+          "implementation": "Original native-report Python random.choices and indexed quantiles"
+        },
+        "preparation_attempts_by_role": {
+          "full": {
+            "teacher_optimization": 28,
+            "failed_attempts": 0,
+            "solver_optimization": 540
+          },
+          "gepa": {
+            "solver_optimization": 1404,
+            "teacher_optimization": 24,
+            "failed_attempts": 0
+          }
+        }
+      },
+      "llama3.2:3b": {
+        "conditions": {
+          "raw": {
+            "correct": 81,
+            "total": 216,
+            "accuracy": 0.375
+          },
+          "full": {
+            "correct": 107,
+            "total": 216,
+            "accuracy": 0.49537037037037035
+          },
+          "gepa": {
+            "correct": 105,
+            "total": 216,
+            "accuracy": 0.4861111111111111
+          },
+          "direct_dsl": {
+            "correct": 53,
+            "total": 216,
+            "accuracy": 0.24537037037037038
+          },
+          "direct_matched_fallback": {
+            "correct": 111,
+            "total": 216,
+            "accuracy": 0.5138888888888888
+          }
+        },
+        "per_task": [
+          {
+            "task": "policy-000",
+            "correct": {
+              "raw": 6,
+              "full": 6,
+              "gepa": 9,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 6
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-001",
+            "correct": {
+              "raw": 2,
+              "full": 2,
+              "gepa": 6,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 2
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-002",
+            "correct": {
+              "raw": 8,
+              "full": 8,
+              "gepa": 14,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 8
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-003",
+            "correct": {
+              "raw": 14,
+              "full": 14,
+              "gepa": 17,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 14
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-004",
+            "correct": {
+              "raw": 14,
+              "full": 14,
+              "gepa": 17,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 14
+            },
+            "program_available": false
+          },
+          {
+            "task": "policy-005",
+            "correct": {
+              "raw": 5,
+              "full": 24,
+              "gepa": 11,
+              "direct_dsl": 26,
+              "direct_matched_fallback": 26
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-006",
+            "correct": {
+              "raw": 18,
+              "full": 25,
+              "gepa": 20,
+              "direct_dsl": 27,
+              "direct_matched_fallback": 27
+            },
+            "program_available": true
+          },
+          {
+            "task": "policy-007",
+            "correct": {
+              "raw": 14,
+              "full": 14,
+              "gepa": 11,
+              "direct_dsl": 0,
+              "direct_matched_fallback": 14
+            },
+            "program_available": false
+          }
+        ],
+        "full_minus_gepa": {
+          "difference": 0.009259259259259259,
+          "descriptive_95_interval": [
+            -0.125,
+            0.17129629629629628
+          ],
+          "resamples": 10000,
+          "seed": 20261005,
+          "unit_count": 8,
+          "implementation": "Original native-report Python random.choices and indexed quantiles"
+        },
+        "preparation_attempts_by_role": {
+          "full": {
+            "teacher_optimization": 21,
+            "failed_attempts": 0,
+            "solver_optimization": 216
+          },
+          "gepa": {
+            "solver_optimization": 1410,
+            "teacher_optimization": 19,
+            "failed_attempts": 1
+          }
+        }
+      }
+    },
+    "scope": "Current native GEPA comparison: same 54 public labeled cases and call ceilings. All eight tasks retained. Execution-only and symmetric-fallback policies are reported separately.",
+    "boundary": "Saved output rescoring and call-budget checks. Does not rerun MiniLM routing or reproduce every original chronological/source-package audit."
+  },
+  "qwen_adapters": {
+    "counting": {
+      "counting_adapter": {
+        "correct": 86,
+        "total": 100,
+        "accuracy": 0.86,
+        "initial_correct": 61,
+        "local_corrections": 36,
+        "all_preparation_and_final_attempts": {
+          "attempted": 137,
+          "completed": 137,
+          "failed": 0,
+          "unfinished_outcome_unknown": 0,
+          "attempts_by_role": {
+            "teacher": 1,
+            "student": 136
+          },
+          "known_input_tokens": 20042,
+          "known_output_tokens": 16359,
+          "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+        }
+      },
+      "counting_textgrad": {
+        "correct": 65,
+        "total": 100,
+        "accuracy": 0.65,
+        "initial_correct": 65,
+        "local_corrections": 0,
+        "all_preparation_and_final_attempts": {
+          "attempted": 1520,
+          "completed": 1520,
+          "failed": 0,
+          "unfinished_outcome_unknown": 0,
+          "attempts_by_role": {
+            "student": 1436,
+            "teacher": 84
+          },
+          "known_input_tokens": 409917,
+          "known_output_tokens": 187203,
+          "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+        }
+      },
+      "counting_transfer": {
+        "correct": 60,
+        "total": 100,
+        "accuracy": 0.6,
+        "initial_correct": 60,
+        "local_corrections": 0,
+        "all_preparation_and_final_attempts": {
+          "attempted": 100,
+          "completed": 100,
+          "failed": 0,
+          "unfinished_outcome_unknown": 0,
+          "attempts_by_role": {
+            "student": 100
+          },
+          "known_input_tokens": 14415,
+          "known_output_tokens": 9167,
+          "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+        }
+      }
+    },
+    "nlp_conditions": {
+      "raw_definition": {
+        "correct": 22,
+        "total": 80,
+        "accuracy": 0.275
+      },
+      "positive_examples": {
+        "correct": 41,
+        "total": 80,
+        "accuracy": 0.5125
+      },
+      "parent_one_shot": {
+        "correct": 33,
+        "total": 80,
+        "accuracy": 0.4125
+      },
+      "validated_full": {
+        "correct": 40,
+        "total": 80,
+        "accuracy": 0.5
+      },
+      "validated_routed": {
+        "correct": 44,
+        "total": 80,
+        "accuracy": 0.55
+      }
+    },
+    "nlp_attempts": {
+      "attempted": 301,
+      "completed": 301,
+      "failed": 0,
+      "unfinished_outcome_unknown": 0,
+      "attempts_by_role": {
+        "teacher": 10,
+        "student": 291
+      },
+      "known_input_tokens": 216131,
+      "known_output_tokens": 5275,
+      "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+    },
+    "interrupted_predecessor_attempts": {
+      "attempted": 41,
+      "completed": 40,
+      "failed": 0,
+      "unfinished_outcome_unknown": 1,
+      "attempts_by_role": {
+        "student": 41
+      },
+      "known_input_tokens": 3393,
+      "known_output_tokens": 5349,
+      "scope": "Known usage only. Interrupted outstanding attempts are retained, not assigned zero usage."
+    },
+    "scope": "Submitted exploratory Qwen adapter panels; counting has unequal runtime assistance. Positive-example fallback is retained in the four-task NLP panel. Completed algorithm runs and interrupted project overhead are shown separately."
+  },
+  "new_rule_ablation": {
+    "cohorts": {
+      "llama": {
+        "tasks": 24,
+        "conditions": {
+          "raw_original": {
+            "correct": 112,
+            "total": 648,
+            "accuracy": 0.1728395061728395,
+            "invalid_labels": 277
+          },
+          "raw_labels": {
+            "correct": 199,
+            "total": 648,
+            "accuracy": 0.30709876543209874,
+            "invalid_labels": 0
+          },
+          "initial_prose": {
+            "correct": 316,
+            "total": 648,
+            "accuracy": 0.4876543209876543,
+            "invalid_labels": 0
+          },
+          "initial_list": {
+            "correct": 421,
+            "total": 648,
+            "accuracy": 0.6496913580246914,
+            "invalid_labels": 0
+          },
+          "final_prose": {
+            "correct": 301,
+            "total": 648,
+            "accuracy": 0.4645061728395062,
+            "invalid_labels": 0
+          },
+          "final_list": {
+            "correct": 403,
+            "total": 648,
+            "accuracy": 0.6219135802469136,
+            "invalid_labels": 0
+          },
+          "selected_full": {
+            "correct": 410,
+            "total": 648,
+            "accuracy": 0.6327160493827161,
+            "invalid_labels": 0
+          },
+          "selected_routed": {
+            "correct": 512,
+            "total": 648,
+            "accuracy": 0.7901234567901234,
+            "invalid_labels": 0
+          }
+        },
+        "contrasts": {
+          "raw_labels minus raw_original": {
+            "difference": 0.13425925925925924,
+            "descriptive_95_interval": [
+              0.07407407407407407,
+              0.19598765432098764
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "initial_list minus initial_prose": {
+            "difference": 0.16203703703703703,
+            "descriptive_95_interval": [
+              0.10802469135802469,
+              0.21450617283950615
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_list minus initial_list": {
+            "difference": -0.027777777777777776,
+            "descriptive_95_interval": [
+              -0.07407407407407407,
+              0.013888888888888888
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_prose minus initial_prose": {
+            "difference": -0.02314814814814815,
+            "descriptive_95_interval": [
+              -0.0632716049382716,
+              0.02314814814814815
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_list minus final_prose": {
+            "difference": 0.1574074074074074,
+            "descriptive_95_interval": [
+              0.08950617283950617,
+              0.21913580246913578
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus selected_full": {
+            "difference": 0.1574074074074074,
+            "descriptive_95_interval": [
+              0.10802469135802469,
+              0.2098765432098765
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_full minus final_list": {
+            "difference": 0.010802469135802469,
+            "descriptive_95_interval": [
+              -0.035493827160493825,
+              0.05401234567901234
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus raw_labels": {
+            "difference": 0.48302469135802467,
+            "descriptive_95_interval": [
+              0.4104938271604938,
+              0.5509259259259259
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus initial_prose": {
+            "difference": 0.3024691358024691,
+            "descriptive_95_interval": [
+              0.2376543209876543,
+              0.35802469135802467
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 24,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          }
+        },
+        "direct_execution_with_same_fresh_description_fallback": {
+          "correct": 609,
+          "total": 648,
+          "accuracy": 0.9398148148148148
+        },
+        "approved_tasks": 23
+      },
+      "gemma": {
+        "tasks": 18,
+        "conditions": {
+          "raw_original": {
+            "correct": 202,
+            "total": 486,
+            "accuracy": 0.4156378600823045,
+            "invalid_labels": 16
+          },
+          "raw_labels": {
+            "correct": 197,
+            "total": 486,
+            "accuracy": 0.4053497942386831,
+            "invalid_labels": 0
+          },
+          "initial_prose": {
+            "correct": 265,
+            "total": 486,
+            "accuracy": 0.5452674897119342,
+            "invalid_labels": 0
+          },
+          "initial_list": {
+            "correct": 356,
+            "total": 486,
+            "accuracy": 0.7325102880658436,
+            "invalid_labels": 0
+          },
+          "final_prose": {
+            "correct": 270,
+            "total": 486,
+            "accuracy": 0.5555555555555556,
+            "invalid_labels": 0
+          },
+          "final_list": {
+            "correct": 372,
+            "total": 486,
+            "accuracy": 0.7654320987654321,
+            "invalid_labels": 0
+          },
+          "selected_full": {
+            "correct": 386,
+            "total": 486,
+            "accuracy": 0.7942386831275721,
+            "invalid_labels": 0
+          },
+          "selected_routed": {
+            "correct": 419,
+            "total": 486,
+            "accuracy": 0.8621399176954733,
+            "invalid_labels": 0
+          }
+        },
+        "contrasts": {
+          "raw_labels minus raw_original": {
+            "difference": -0.0102880658436214,
+            "descriptive_95_interval": [
+              -0.04938271604938271,
+              0.028806584362139915
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "initial_list minus initial_prose": {
+            "difference": 0.18724279835390945,
+            "descriptive_95_interval": [
+              0.12757201646090535,
+              0.24279835390946503
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_list minus initial_list": {
+            "difference": 0.03292181069958847,
+            "descriptive_95_interval": [
+              -0.008230452674897118,
+              0.07613168724279834
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_prose minus initial_prose": {
+            "difference": 0.0102880658436214,
+            "descriptive_95_interval": [
+              -0.012345679012345678,
+              0.03497942386831275
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "final_list minus final_prose": {
+            "difference": 0.20987654320987653,
+            "descriptive_95_interval": [
+              0.13580246913580246,
+              0.279835390946502
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus selected_full": {
+            "difference": 0.06790123456790123,
+            "descriptive_95_interval": [
+              0.03497942386831275,
+              0.10493827160493827
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_full minus final_list": {
+            "difference": 0.028806584362139915,
+            "descriptive_95_interval": [
+              -0.0020576131687242796,
+              0.0720164609053498
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus raw_labels": {
+            "difference": 0.4567901234567901,
+            "descriptive_95_interval": [
+              0.345679012345679,
+              0.5555555555555556
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          },
+          "selected_routed minus initial_prose": {
+            "difference": 0.3168724279835391,
+            "descriptive_95_interval": [
+              0.23456790123456792,
+              0.3888888888888889
+            ],
+            "resamples": 10000,
+            "seed": 20261120,
+            "unit_count": 18,
+            "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+          }
+        },
+        "direct_execution_with_same_fresh_description_fallback": {
+          "correct": 439,
+          "total": 486,
+          "accuracy": 0.9032921810699589
+        },
+        "approved_tasks": 15
+      }
+    },
+    "primary_rows": 9072,
+    "diagnostic_sentinels": 336,
+    "physical_attempts": 8058,
+    "transport_failures": 0,
+    "scope": "Fresh inference on retained historical families. Intervals resample whole tasks; this is not independent-family confirmation."
+  },
+  "new_common_checker": {
+    "methods": {
+      "counting_guidance": {
+        "off": {
+          "correct": 74,
+          "total": 100,
+          "accuracy": 0.74
+        },
+        "on": {
+          "correct": 86,
+          "total": 100,
+          "accuracy": 0.86
+        },
+        "corrections": 18,
+        "parseable_ledgers": 96
+      },
+      "textgrad_guidance": {
+        "off": {
+          "correct": 72,
+          "total": 100,
+          "accuracy": 0.72
+        },
+        "on": {
+          "correct": 76,
+          "total": 100,
+          "accuracy": 0.76
+        },
+        "corrections": 5,
+        "parseable_ledgers": 18
+      }
+    },
+    "contrasts": {
+      "initial": {
+        "difference": 0.02,
+        "descriptive_95_interval": [
+          -0.06,
+          0.1
+        ],
+        "resamples": 10000,
+        "seed": 20261120,
+        "unit_count": 100,
+        "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+      },
+      "checked": {
+        "difference": 0.1,
+        "descriptive_95_interval": [
+          0.01,
+          0.19
+        ],
+        "resamples": 10000,
+        "seed": 20261120,
+        "unit_count": 100,
+        "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+      }
+    },
+    "physical_attempts": 223,
+    "transport_failures": 0,
+    "scope": "Frozen prompts on 100 historical Llama cases; same checker/at-most-one-correction policy, different realized call counts. Combined adapter result, not compilation-only gain."
+  },
+  "public_example_lookup": {
+    "conditions": {
+      "llama/hamming_nearest_vote": {
+        "correct": 525,
+        "total": 648,
+        "accuracy": 0.8101851851851852
+      },
+      "llama/minilm_1nn": {
+        "correct": 304,
+        "total": 648,
+        "accuracy": 0.4691358024691358
+      },
+      "gemma/hamming_nearest_vote": {
+        "correct": 401,
+        "total": 486,
+        "accuracy": 0.8251028806584362
+      },
+      "gemma/minilm_1nn": {
+        "correct": 228,
+        "total": 486,
+        "accuracy": 0.4691358024691358
+      }
+    },
+    "scope": "Both use 54 public labels. Supplementary protocol specified after observing the completed Llama cohort. Hamming selection recomputed; embedding labels checked against recorded neighbor IDs, without regenerating encoder embeddings."
+  },
+  "reserved_nlp": {
+    "conditions": {
+      "raw_definition": {
+        "correct": 233,
+        "total": 400,
+        "accuracy": 0.5825
+      },
+      "positive_examples": {
+        "correct": 210,
+        "total": 400,
+        "accuracy": 0.525
+      },
+      "parent_one_shot": {
+        "correct": 210,
+        "total": 400,
+        "accuracy": 0.525
+      },
+      "validated_full": {
+        "correct": 210,
+        "total": 400,
+        "accuracy": 0.525
+      },
+      "validated_routed": {
+        "correct": 210,
+        "total": 400,
+        "accuracy": 0.525
+      }
+    },
+    "fallback_tasks": 20,
+    "physical_attempts_by_role": {
+      "teacher": 20,
+      "student": 800
+    },
+    "contrasts": {
+      "validated_routed minus raw_definition": {
+        "difference": -0.05750000000000001,
+        "descriptive_95_interval": [
+          -0.14750000000000002,
+          0.062499999999999986
+        ],
+        "resamples": 100000,
+        "seed": 20260727,
+        "unit_count": 20,
+        "implementation": "Frozen NumPy PCG64-compatible choice stream and linear quantiles"
+      },
+      "validated_routed minus positive_examples": {
+        "difference": 0.0,
+        "descriptive_95_interval": [
+          0.0,
+          0.0
+        ],
+        "resamples": 100000,
+        "seed": 20260727,
+        "unit_count": 20,
+        "implementation": "Exact degenerate bootstrap distribution"
+      },
+      "validated_routed minus parent_one_shot": {
+        "difference": 0.0,
+        "descriptive_95_interval": [
+          0.0,
+          0.0
+        ],
+        "resamples": 100000,
+        "seed": 20260727,
+        "unit_count": 20,
+        "implementation": "Exact degenerate bootstrap distribution"
+      },
+      "validated_routed minus validated_full": {
+        "difference": 0.0,
+        "descriptive_95_interval": [
+          0.0,
+          0.0
+        ],
+        "resamples": 100000,
+        "seed": 20260727,
+        "unit_count": 20,
+        "implementation": "Exact degenerate bootstrap distribution"
+      }
+    },
+    "source_instance_validation": {
+      "tasks_checked": 0,
+      "expected_tasks": 20,
+      "status": "not_complete; saved-row references rescored, upstream files not redistributed"
+    },
+    "schema_enabled_configuration": {
+      "status": "unavailable",
+      "attempts": [
+        {
+          "failed_teacher_attempts": 1,
+          "successful_responses": 0,
+          "final_observations": 0
+        },
+        {
+          "failed_teacher_attempts": 1,
+          "successful_responses": 0,
+          "final_observations": 0
+        }
+      ],
+      "accuracy": null
+    },
+    "scope": "All twenty compilation-format failures and the two HTTP-429 attempts retained. No positive independent-transfer claim."
+  },
+  "program_repair_replay": {
+    "accepted_changes_replayed": 72,
+    "repair_counts": {
+      "llama/teacher": 21,
+      "llama/insertion": 11,
+      "llama/condition_narrowing": 4,
+      "gemma/condition_narrowing": 17,
+      "gemma/insertion": 18,
+      "gemma/teacher": 1
+    },
+    "program_only_scores_reexecuted": {
+      "llama": {
+        "initial_correct": 604,
+        "final_correct": 627,
+        "total": 648
+      },
+      "gemma": {
+        "initial_correct": 385,
+        "final_correct": 424,
+        "total": 432
+      }
+    },
+    "approved_decision_lists_checked_over_81_inputs": {
+      "llama": 23,
+      "gemma": 15
+    },
+    "scope": "All accepted changes executed on 54 public cases. Program-only totals reexecuted from saved DSL; include unapproved parsed candidates and exclude two missing Gemma programs. Conversion agrees with generated programs, not necessarily with reference labels everywhere."
+  },
+  "teacher_compilation_divergence": {
+    "tasks": [
+      {
+        "task": "policy-000",
+        "identical_initial_request": true,
+        "identical_initial_response": true,
+        "initial_program_available": [
+          false,
+          false
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": null
+      },
+      {
+        "task": "policy-001",
+        "identical_initial_request": true,
+        "identical_initial_response": false,
+        "initial_program_available": [
+          true,
+          true
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": 12
+      },
+      {
+        "task": "policy-002",
+        "identical_initial_request": true,
+        "identical_initial_response": true,
+        "initial_program_available": [
+          true,
+          true
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": 0
+      },
+      {
+        "task": "policy-003",
+        "identical_initial_request": true,
+        "identical_initial_response": true,
+        "initial_program_available": [
+          true,
+          true
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": 0
+      },
+      {
+        "task": "policy-004",
+        "identical_initial_request": true,
+        "identical_initial_response": false,
+        "initial_program_available": [
+          true,
+          false
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": null
+      },
+      {
+        "task": "policy-005",
+        "identical_initial_request": true,
+        "identical_initial_response": true,
+        "initial_program_available": [
+          true,
+          true
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": 0
+      },
+      {
+        "task": "policy-006",
+        "identical_initial_request": true,
+        "identical_initial_response": true,
+        "initial_program_available": [
+          true,
+          true
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": 0
+      },
+      {
+        "task": "policy-007",
+        "identical_initial_request": true,
+        "identical_initial_response": false,
+        "initial_program_available": [
+          true,
+          false
+        ],
+        "domain_inputs": 81,
+        "program_output_disagreements": null
+      }
+    ],
+    "scope": "Separate generated responses differed before student selection. This replay does not identify a hardware/kernel root cause."
+  }
+}

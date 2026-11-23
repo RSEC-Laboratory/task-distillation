@@ -1,0 +1,263 @@
+{
+  "task_id": "policy-058",
+  "suite_split": "validation",
+  "source": {
+    "task_name": "Compositional policy 058",
+    "description": "Classify one structured event using the following public policy. Critical means risk TRUE, or action export in context internal; critical cases require review. Unknown external: risk UNKNOWN in context internal returns uncertain. Unknown risk otherwise prefers allow at priority 90. Trusted means role guest or admin, except for action export; a trusted change prefers deny at priority 80. Action inspect in context internal prefers review at priority 70. Role admin or context partner prefers allow at priority 40. Trusted cases forbid allow. All other declared roles prefer deny at priority 1. Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins.",
+    "labels": [
+      "deny",
+      "review",
+      "allow"
+    ],
+    "requirements": [
+      "Critical means risk TRUE, or action export in context internal; critical cases require review.",
+      "Unknown external: risk UNKNOWN in context internal returns uncertain.",
+      "Unknown risk otherwise prefers allow at priority 90.",
+      "Trusted means role guest or admin, except for action export; a trusted change prefers deny at priority 80.",
+      "Action inspect in context internal prefers review at priority 70.",
+      "Role admin or context partner prefers allow at priority 40.",
+      "Trusted cases forbid allow.",
+      "All other declared roles prefer deny at priority 1.",
+      "Required labels override preferences. Abstention or conflicting required labels returns uncertain. Forbidden labels are removed; the remaining highest-priority preference wins."
+    ],
+    "forbidden_shortcuts": [
+      "Use every field named by a relevant rule."
+    ],
+    "sources": [
+      "compositional-policies-v2:family-2:task-058"
+    ],
+    "enums": [
+      {
+        "name": "Role",
+        "values": [
+          "guest",
+          "admin",
+          "operator"
+        ]
+      },
+      {
+        "name": "Action",
+        "values": [
+          "change",
+          "inspect",
+          "export"
+        ]
+      },
+      {
+        "name": "Context",
+        "values": [
+          "sandbox",
+          "partner",
+          "internal"
+        ]
+      }
+    ],
+    "records": [
+      {
+        "name": "Event",
+        "fields": [
+          {
+            "name": "role",
+            "type_name": "Role"
+          },
+          {
+            "name": "action",
+            "type_name": "Action"
+          },
+          {
+            "name": "context",
+            "type_name": "Context"
+          },
+          {
+            "name": "risk",
+            "type_name": "Boolean3"
+          }
+        ]
+      }
+    ]
+  },
+  "distillation_lineage": {
+    "local_model": "gemma2:9b",
+    "canonical_student": "google/gemma-2-9b-it",
+    "base_model": "google/gemma-2-9b",
+    "distillation_teacher": "google/gemma-2-27b",
+    "openrouter_teacher": "google/gemma-2-27b-it",
+    "evidence_url": "https://developers.googleblog.com/en/gemma-explained-new-in-gemma-2/",
+    "expected_ollama_basename": "Gemma2",
+    "alternate_openrouter_teachers": []
+  },
+  "oracle_program_sha256": "75ca14ab42776c72a4063977ffc6ef61544b3985fd2cc5f7ea554cf0e06032fb",
+  "teacher_compilation": {
+    "enabled": true,
+    "teacher_backend": "openrouter",
+    "teacher_model": "google/gemma-2-27b-it",
+    "teacher_selection": "lineage_matched",
+    "initial_program_path": null,
+    "teacher_received_final_cases": false,
+    "teacher_received_private_deployment_data": false,
+    "audit_scenarios_used_for_refinement": true,
+    "source_derived_build_scenarios": 27,
+    "source_derived_audit_scenarios": 27,
+    "initial_program_sha256": "823d89526b91f313db238d1d77d0530281f499e09b5ca0aabb49aa5403d124b3",
+    "final_program_sha256": "611ac03347f12e4ab9ce3a568342c51f109cbd067bd8ed1385bbff77e2aed118",
+    "initial_build_pass_rate": 0.8148148148148148,
+    "final_build_pass_rate": 1.0,
+    "final_audit_pass_rate": 1.0,
+    "validation_gate": {
+      "build_pass_threshold": 1.0,
+      "audit_pass_threshold": 1.0,
+      "passed": true
+    },
+    "repairs": [
+      {
+        "rule_name": "local-exclusion:TrustedForbidAllow",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == export) and (event.context == internal))\n\npredicate Trusted(event):\n    (event.role == guest) or (event.role == admin)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternal:\n    when (event.risk == UNKNOWN) and (event.context == internal)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = allow priority 90\n\nrule TrustedChange:\n    when (Trusted(event)) and (event.action != export)\n    then prefer label = deny priority 80\n\nrule InspectInternal:\n    when (event.action == inspect) and (event.context == internal)\n    then prefer label = review priority 70\n\nrule TrustedForbidAllow:\n    when Trusted(event)\n    then forbid label = allow\n\nrule AdminOrPartner:\n    when (event.role == admin) or (event.context == partner)\n    then prefer label = allow priority 40\n\nrule DefaultDeny:\n    when (event.role == guest) or (event.role != guest)\n    then prefer label = deny priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == export) and (event.context == internal))\n\npredicate Trusted(event):\n    (event.role == guest) or (event.role == admin)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternal:\n    when (event.risk == UNKNOWN) and (event.context == internal)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = allow priority 90\n\nrule TrustedChange:\n    when (Trusted(event)) and (event.action != export)\n    then prefer label = deny priority 80\n\nrule InspectInternal:\n    when (event.action == inspect) and (event.context == internal)\n    then prefer label = review priority 70\n\nrule TrustedForbidAllow:\n    when (Trusted(event)) and (event.action != export)\n    then forbid label = allow\n\nrule AdminOrPartner:\n    when (event.role == admin) or (event.context == partner)\n    then prefer label = allow priority 40\n\nrule DefaultDeny:\n    when (event.role == guest) or (event.role != guest)\n    then prefer label = deny priority 1\n",
+        "accepted": true
+      },
+      {
+        "rule_name": "local-exclusion:TrustedChange",
+        "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == export) and (event.context == internal))\n\npredicate Trusted(event):\n    (event.role == guest) or (event.role == admin)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternal:\n    when (event.risk == UNKNOWN) and (event.context == internal)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = allow priority 90\n\nrule TrustedChange:\n    when (Trusted(event)) and (event.action != export)\n    then prefer label = deny priority 80\n\nrule InspectInternal:\n    when (event.action == inspect) and (event.context == internal)\n    then prefer label = review priority 70\n\nrule TrustedForbidAllow:\n    when (Trusted(event)) and (event.action != export)\n    then forbid label = allow\n\nrule AdminOrPartner:\n    when (event.role == admin) or (event.context == partner)\n    then prefer label = allow priority 40\n\nrule DefaultDeny:\n    when (event.role == guest) or (event.role != guest)\n    then prefer label = deny priority 1\n",
+        "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == export) and (event.context == internal))\n\npredicate Trusted(event):\n    (event.role == guest) or (event.role == admin)\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = review\n\nrule UnknownExternal:\n    when (event.risk == UNKNOWN) and (event.context == internal)\n    then abstain\n\nrule UnknownRisk:\n    when event.risk == UNKNOWN\n    then prefer label = allow priority 90\n\nrule TrustedChange:\n    when ((Trusted(event)) and (event.action != export)) and (event.risk != FALSE)\n    then prefer label = deny priority 80\n\nrule InspectInternal:\n    when (event.action == inspect) and (event.context == internal)\n    then prefer label = review priority 70\n\nrule TrustedForbidAllow:\n    when (Trusted(event)) and (event.action != export)\n    then forbid label = allow\n\nrule AdminOrPartner:\n    when (event.role == admin) or (event.context == partner)\n    then prefer label = allow priority 40\n\nrule DefaultDeny:\n    when (event.role == guest) or (event.role != guest)\n    then prefer label = deny priority 1\n",
+        "accepted": true
+      }
+    ],
+    "teacher_input_tokens": 675,
+    "teacher_output_tokens": 250,
+    "teacher_calls": 1
+  },
+  "compilation_failure": null,
+  "rendered_bundle": [
+    "Verified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.",
+    "If risk=FALSE, action=change, context=internal, return deny.",
+    "If risk=FALSE, action=change, context=partner, role=admin, return deny.",
+    "If risk=FALSE, action=change, context=partner, role=guest, return deny.",
+    "If risk=FALSE, action=change, context=partner, role=operator, return allow.",
+    "If risk=FALSE, action=change, context=sandbox, return deny.",
+    "If risk=FALSE, action=export, context=internal, return review.",
+    "If risk=FALSE, action=export, context=partner, return allow.",
+    "If risk=FALSE, action=export, context=sandbox, role=admin, return allow.",
+    "If risk=FALSE, action=export, context=sandbox, role=guest, return deny.",
+    "If risk=FALSE, action=export, context=sandbox, role=operator, return deny.",
+    "If risk=FALSE, action=inspect, context=internal, return review.",
+    "If risk=FALSE, action=inspect, context=partner, role=admin, return deny.",
+    "If risk=FALSE, action=inspect, context=partner, role=guest, return deny.",
+    "If risk=FALSE, action=inspect, context=partner, role=operator, return allow.",
+    "If risk=FALSE, action=inspect, context=sandbox, return deny.",
+    "If risk=TRUE, return review.",
+    "If risk=UNKNOWN, context=internal, return uncertain.",
+    "If risk=UNKNOWN, context=partner, action=change, role=admin, return deny.",
+    "If risk=UNKNOWN, context=partner, action=change, role=guest, return deny.",
+    "If risk=UNKNOWN, context=partner, action=change, role=operator, return allow.",
+    "If risk=UNKNOWN, context=partner, action=export, return allow.",
+    "If risk=UNKNOWN, context=partner, action=inspect, role=admin, return deny.",
+    "If risk=UNKNOWN, context=partner, action=inspect, role=guest, return deny.",
+    "If risk=UNKNOWN, context=partner, action=inspect, role=operator, return allow.",
+    "If risk=UNKNOWN, context=sandbox, action=change, role=admin, return deny.",
+    "If risk=UNKNOWN, context=sandbox, action=change, role=guest, return deny.",
+    "If risk=UNKNOWN, context=sandbox, action=change, role=operator, return allow.",
+    "If risk=UNKNOWN, context=sandbox, action=export, return allow.",
+    "If risk=UNKNOWN, context=sandbox, action=inspect, role=admin, return deny.",
+    "If risk=UNKNOWN, context=sandbox, action=inspect, role=guest, return deny.",
+    "If risk=UNKNOWN, context=sandbox, action=inspect, role=operator, return allow."
+  ],
+  "frozen_bundle": null,
+  "optimized_prompt_prefix": null,
+  "optimizer_protocol": null,
+  "verified_decision_list_certificate": {
+    "finite_domain_size": 81,
+    "decision_rule_count": 31,
+    "exhaustive_coverage": true,
+    "label_pure": true,
+    "semantically_equivalent": true,
+    "representation_sha256": "d89d82cdfe98245e64c9ad2f9cbf5b231ffa3fedee8842972a3e139238d0fb48",
+    "oracle_outcomes_sha256": "93f3d062f4afca9cff37219dcdb230474387feece277452bae3bcde79495bdca",
+    "representation_kind": "verified_decision_tree"
+  },
+  "representation_kind": "verified_decision_tree",
+  "local_instruction_routing": {
+    "enabled": true,
+    "top_k": 6,
+    "router": {
+      "backend": "sentence_transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": null
+    }
+  },
+  "deployment_description": "Classify one structured event using the supplied compiled instructions. The allowed outputs are deny, review, allow, uncertain. These names are arbitrary symbols, so do not infer their meaning. Copy the output stated by the matching compiled instruction.",
+  "deployment_includes_full_task_spec": false,
+  "opaque_label_codebook": {
+    "enabled": false
+  },
+  "selected_verified_decision_list": false,
+  "num_obligations": 4,
+  "build_pass_rate": 0.9629629629629629,
+  "initial_build_pass_rate": 0.6296296296296297,
+  "compilation_rounds": [
+    {
+      "round_index": 0,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.37037037037037035,
+        1.0,
+        3.0,
+        2,
+        202
+      ],
+      "objective_after": [
+        0.11111111111111116,
+        0.25,
+        0.5,
+        0,
+        197
+      ],
+      "edit": "certified:decision_list",
+      "protected_regressions": 3
+    },
+    {
+      "round_index": 1,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": true,
+      "objective_before": [
+        0.37037037037037035,
+        1.0,
+        3.0,
+        2,
+        202
+      ],
+      "objective_after": [
+        0.03703703703703709,
+        0.0,
+        0.0,
+        0,
+        227
+      ],
+      "edit": "certified:decision_tree",
+      "protected_regressions": 0
+    },
+    {
+      "round_index": 2,
+      "targeted_obligation": "all:semantic_equivalence",
+      "accepted": false,
+      "objective_before": [
+        0.37037037037037035,
+        1.0,
+        3.0,
+        2,
+        202
+      ],
+      "objective_after": [
+        0.03703703703703709,
+        0.0,
+        0.0,
+        0,
+        227
+      ],
+      "edit": "certified:decision_tree_reversed",
+      "protected_regressions": 0
+    }
+  ],
+  "compilation_student_calls": 108,
+  "artifact_sha256": "18d409d23e610987a262e7432c92864b36d52e48374d0b6dfe2cdc857ac44b30"
+}

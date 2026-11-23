@@ -1,0 +1,2251 @@
+[
+  {
+    "condition": "raw",
+    "correct": 5,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "700f53bcc7fa857d173b8ea610bf4af6a04f195e976f1f4edc0b9573a37c3595",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "908b4f9590741555ce2bb14f890c3ad32201a0d4017f8ad0bebfc70d9ad2fa20",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-042",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164149_synthetic_policies_t14_gemma_raw_task042",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 42,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 12,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "13bc793cd88c1708b3558fdc5c27a3a4707094cef5e53d01ca5820b72bdf683e",
+      "audit_pass_rate": 0.5925925925925926,
+      "build_pass_rate": 0.6666666666666666,
+      "certificate_passed": false,
+      "final_program_sha256": "fc0fc80ec0c76b12537bb28059bc8c12c2fc77985a568dca4f8515c3fdd49797",
+      "initial_program_sha256": "fc0fc80ec0c76b12537bb28059bc8c12c2fc77985a568dca4f8515c3fdd49797",
+      "oracle_program_sha256": "908b4f9590741555ce2bb14f890c3ad32201a0d4017f8ad0bebfc70d9ad2fa20",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-042",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164256_synthetic_policies_t14_gemma_one_shot_task042",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 42,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 26,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "a38eb86e90e19c103eeae26296f3abe6398751d3ca17ede816beef6b3fd5b300",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "0a6818462af21ba1c5dec80d8a9db5032f61cd9f63fa2f94cd2cba8d928570c9",
+      "initial_program_sha256": "fc0fc80ec0c76b12537bb28059bc8c12c2fc77985a568dca4f8515c3fdd49797",
+      "oracle_program_sha256": "908b4f9590741555ce2bb14f890c3ad32201a0d4017f8ad0bebfc70d9ad2fa20",
+      "representation_certificate": {
+        "decision_rule_count": 31,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "7fb2c8830e7e608539dda2e3cfdef37488ab966392876b617c0f42e39bb85aea",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "56dda872e381db5e00e44aa82d618715a516d23b35b688465af6e6fd7046bcaa",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-042",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164203_synthetic_policies_t14_gemma_patched_cegis_task042",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 1,
+      "repairs": 4,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 42,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 10,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "e0f50d1f38477548cd0155e1f089b2c4adad5478384a98b4f55bfb2d22f97b3a",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "b908131dd211a150ebd00ebb00bf9f034e94c41e9a142d3ff596f67101ef3331",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-043",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162133_synthetic_policies_t14_gemma_raw_task043",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 43,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 14,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "40efae5793d64766c0001928965a11010a1d280ab1a221d5a8287effed86d2f9",
+      "audit_pass_rate": 0.9629629629629629,
+      "build_pass_rate": 0.8888888888888888,
+      "certificate_passed": false,
+      "final_program_sha256": "e6a4f1503a6742f7e8fb6dd594b8fb2c69934b8967214a68e5f5022802d6ebce",
+      "initial_program_sha256": "e6a4f1503a6742f7e8fb6dd594b8fb2c69934b8967214a68e5f5022802d6ebce",
+      "oracle_program_sha256": "b908131dd211a150ebd00ebb00bf9f034e94c41e9a142d3ff596f67101ef3331",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-043",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162308_synthetic_policies_t14_gemma_one_shot_task043",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 43,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 26,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "59dae3ed722fd32c02de266f35b97d406d289d13df01c0731a29b43219f63eb1",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "6d29ca5d049f72ec1b50faa25ebb4114560184bda77d5783e9b4b0aa37519ffa",
+      "initial_program_sha256": "e6a4f1503a6742f7e8fb6dd594b8fb2c69934b8967214a68e5f5022802d6ebce",
+      "oracle_program_sha256": "b908131dd211a150ebd00ebb00bf9f034e94c41e9a142d3ff596f67101ef3331",
+      "representation_certificate": {
+        "decision_rule_count": 33,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "aac270880f9077dc808cd9a182cf83a000b8bad027bec8063318b83e4453cfde",
+        "representation_kind": "verified_decision_tree_reversed",
+        "representation_sha256": "790216737c75c5e53fec3f73621dea948b4578dd5ef3f6c64c9871a8c138d6cc",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree_reversed",
+      "task_id": "policy-043",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162159_synthetic_policies_t14_gemma_patched_cegis_task043",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 3,
+      "repairs": 6,
+      "teacher_calls": 4
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 43,
+    "teacher_calls": 4,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 15,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "423c29a900e44c2e636a9066f005684ece5384e58d4e153f2c78f02564076c8d",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "fff56a2b3b59ad902d3fc76dbee87d142c86e5f19ae05ac7b5b58be10e09f2bc",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-044",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162630_synthetic_policies_t14_gemma_raw_task044",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 44,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "704419e0d6fde8557e7c569e935901b21c986ec36b056245e74e0427202faade",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "359a4635c0d74ce27f2020b55f32d88fb11428cf5e77d981611e838f63bcdd51",
+      "initial_program_sha256": "359a4635c0d74ce27f2020b55f32d88fb11428cf5e77d981611e838f63bcdd51",
+      "oracle_program_sha256": "fff56a2b3b59ad902d3fc76dbee87d142c86e5f19ae05ac7b5b58be10e09f2bc",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-044",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162737_synthetic_policies_t14_gemma_one_shot_task044",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 44,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 27,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "365f9a2975168b911d1a60915dcc7ebea44e10a763d59bbfb56a1c6f3c67f910",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "359a4635c0d74ce27f2020b55f32d88fb11428cf5e77d981611e838f63bcdd51",
+      "initial_program_sha256": "359a4635c0d74ce27f2020b55f32d88fb11428cf5e77d981611e838f63bcdd51",
+      "oracle_program_sha256": "fff56a2b3b59ad902d3fc76dbee87d142c86e5f19ae05ac7b5b58be10e09f2bc",
+      "representation_certificate": {
+        "decision_rule_count": 29,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "033ca2d59a1a50d4948c99d80274e24bcdeb360eae2d6364c99213fc27ace22f",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "340f64f6f6a77a2deadf7aad1c7488fbc5d9f7f74bfa0fc897115b53ea702ff1",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-044",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162644_synthetic_policies_t14_gemma_patched_cegis_task044",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 0,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 44,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 12,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "c689166f0bea346095c2b94d2a7fdb0f52f173622d3e1d190a039dafabd9edd8",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "4a859eb87768d9d376ebc809511119d31643d125a6f6176c55c65e3403f71379",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-046",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162912_synthetic_policies_t14_gemma_raw_task046",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 46,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 15,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "49655c9911798e54bb33f632fb52b586967e81306a7a3a6cb3fd7946e88070be",
+      "audit_pass_rate": 0.8518518518518519,
+      "build_pass_rate": 0.9259259259259259,
+      "certificate_passed": false,
+      "final_program_sha256": "dbb9f188d5f47a49e63c53160df6b5bce13a7ec38b37a5836b06b21dcf7399c1",
+      "initial_program_sha256": "dbb9f188d5f47a49e63c53160df6b5bce13a7ec38b37a5836b06b21dcf7399c1",
+      "oracle_program_sha256": "4a859eb87768d9d376ebc809511119d31643d125a6f6176c55c65e3403f71379",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-046",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163022_synthetic_policies_t14_gemma_one_shot_task046",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 46,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 27,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "43f89f8625633755c078b98f7310d2b61b72537197d97d6b04e2f74acbd26cf6",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "6f05032f3b9a841212805b0f00a87c6a46dde09817f27b793ad32e77ebe9b8de",
+      "initial_program_sha256": "dbb9f188d5f47a49e63c53160df6b5bce13a7ec38b37a5836b06b21dcf7399c1",
+      "oracle_program_sha256": "4a859eb87768d9d376ebc809511119d31643d125a6f6176c55c65e3403f71379",
+      "representation_certificate": {
+        "decision_rule_count": 31,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "02496ebfc3108a4c0ba206a9bf2f4b8554ccc6d5827dd91b57f61f084ca63e27",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "afe890fd8f350381717e014effcbff52ceb58e85650bc0959bfa5151ecbe8e44",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-046",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162927_synthetic_policies_t14_gemma_patched_cegis_task046",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 1,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 46,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 11,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "efc795fb5f68a111037a9d612ff798190f7865ad200562c11c76551aca5b7530",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "b14e515175f55a86e53ce3110985e8b6d27102a1fabd92a979e8fbd9922f57a5",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-049",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162448_synthetic_policies_t14_gemma_raw_task049",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 49,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 10,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "206f3a85aec8aa8014bda5c57f0f287da5e6fc93459fc11da3a805888f138ab1",
+      "audit_pass_rate": 0.5925925925925926,
+      "build_pass_rate": 0.8888888888888888,
+      "certificate_passed": false,
+      "final_program_sha256": "aa0c0943cf8eb65aa5980fdf4b751d17d168deee49640a3abd8399941a6cb73a",
+      "initial_program_sha256": "aa0c0943cf8eb65aa5980fdf4b751d17d168deee49640a3abd8399941a6cb73a",
+      "oracle_program_sha256": "b14e515175f55a86e53ce3110985e8b6d27102a1fabd92a979e8fbd9922f57a5",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-049",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162616_synthetic_policies_t14_gemma_one_shot_task049",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 49,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 24,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "204135c17861a58615f3de0d92d1b284ee72754bafd8b901492a86a34a2f08dc",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "be13afa61cfc41fd008c17ba4d06f90ee1fe34a5757461736b66e5ac2301cc6d",
+      "initial_program_sha256": "aa0c0943cf8eb65aa5980fdf4b751d17d168deee49640a3abd8399941a6cb73a",
+      "oracle_program_sha256": "b14e515175f55a86e53ce3110985e8b6d27102a1fabd92a979e8fbd9922f57a5",
+      "representation_certificate": {
+        "decision_rule_count": 27,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "d54dbaa9ba3975725fd895c20b233b06b47581fd303dd5e4951bb0e245cf6f8b",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "b3438aec05309100bb26691a4595649be30f7ba848b8a10a630f38904698fa3c",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-049",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162505_synthetic_policies_t14_gemma_patched_cegis_task049",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 1,
+      "repairs": 4,
+      "teacher_calls": 4
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 49,
+    "teacher_calls": 4,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 10,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "edf5dc3c05b0b037b43c163db5d2fbe5f0ff1cc64588e096dc4d3cb921992fe6",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "da3e009346eeb223ab2e7c6b47141bfa3751dd27a26ed3217ce93c86f69317e8",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-051",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163308_synthetic_policies_t14_gemma_raw_task051",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 51,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 15,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "3914dce7a825a0b82a71a22e36600e5845b88224b45abbde321db8a1da10de32",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "03bc7f5114681bfa02ce14c7b1589b16626b3ca7f86b28591a357d9f05a0a663",
+      "initial_program_sha256": "03bc7f5114681bfa02ce14c7b1589b16626b3ca7f86b28591a357d9f05a0a663",
+      "oracle_program_sha256": "da3e009346eeb223ab2e7c6b47141bfa3751dd27a26ed3217ce93c86f69317e8",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-051",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163428_synthetic_policies_t14_gemma_one_shot_task051",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 51,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 24,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "3de0b386e5b21bfbdc35318e783143a36fcb067b60b63e1ad0528db0c5e24cef",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "03bc7f5114681bfa02ce14c7b1589b16626b3ca7f86b28591a357d9f05a0a663",
+      "initial_program_sha256": "03bc7f5114681bfa02ce14c7b1589b16626b3ca7f86b28591a357d9f05a0a663",
+      "oracle_program_sha256": "da3e009346eeb223ab2e7c6b47141bfa3751dd27a26ed3217ce93c86f69317e8",
+      "representation_certificate": {
+        "decision_rule_count": 27,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "8bc74f14865b8d5c26c64a7970798f2874bf210483086961da17b50c715f67df",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "61bc8e01cb0a78660035d7c2c343c87a5af5b4374c4a147ec5e3a65c83649b02",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-051",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163335_synthetic_policies_t14_gemma_patched_cegis_task051",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 0,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 51,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 11,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "27f25cb4cd8f69757db4071e13a9b5e0ed3509a2b7338bd6ad30542792799ae6",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "90e40f652db3809c93c463c3c7de7beec80f709a5a89691e6383caf21ca87bc0",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-056",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164030_synthetic_policies_t14_gemma_raw_task056",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 56,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "d9779d3f3beb1348c64ae86f1e591a3728280ac71a6bacaeb15648b95ffb1a72",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "438bbf7c9057fc6edf44c5f6b2752dfecd707ff11a854c063d04503d00f95c94",
+      "initial_program_sha256": "438bbf7c9057fc6edf44c5f6b2752dfecd707ff11a854c063d04503d00f95c94",
+      "oracle_program_sha256": "90e40f652db3809c93c463c3c7de7beec80f709a5a89691e6383caf21ca87bc0",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-056",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164136_synthetic_policies_t14_gemma_one_shot_task056",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 56,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 27,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "55d01fb1a71bca27d671c2d6787227d2ee3832d5e83d48e85e36a71721daf0ce",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "438bbf7c9057fc6edf44c5f6b2752dfecd707ff11a854c063d04503d00f95c94",
+      "initial_program_sha256": "438bbf7c9057fc6edf44c5f6b2752dfecd707ff11a854c063d04503d00f95c94",
+      "oracle_program_sha256": "90e40f652db3809c93c463c3c7de7beec80f709a5a89691e6383caf21ca87bc0",
+      "representation_certificate": {
+        "decision_rule_count": 29,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "c82a2f1401b716006260e7464445c0220b6d94ab4145f3d16954f730f0c26439",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "282fcca5f0dc8c9e699584416c4775d60332484a42ea50c3414b34f62bc12458",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-056",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164044_synthetic_policies_t14_gemma_patched_cegis_task056",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 0,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 56,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 8,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "4673f2165945e4db46fce3d8a0d12d088e1783d747d8a354377a8f46647d9eac",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "75ca14ab42776c72a4063977ffc6ef61544b3985fd2cc5f7ea554cf0e06032fb",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-058",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163105_synthetic_policies_t14_gemma_raw_task058",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 58,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 15,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "245c08bd6f1a7b073dff2391fa623b779013b4be0ddbfa1761e0b547e1162031",
+      "audit_pass_rate": 0.8888888888888888,
+      "build_pass_rate": 0.8148148148148148,
+      "certificate_passed": false,
+      "final_program_sha256": "823d89526b91f313db238d1d77d0530281f499e09b5ca0aabb49aa5403d124b3",
+      "initial_program_sha256": "823d89526b91f313db238d1d77d0530281f499e09b5ca0aabb49aa5403d124b3",
+      "oracle_program_sha256": "75ca14ab42776c72a4063977ffc6ef61544b3985fd2cc5f7ea554cf0e06032fb",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-058",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163213_synthetic_policies_t14_gemma_one_shot_task058",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 58,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 27,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "18d409d23e610987a262e7432c92864b36d52e48374d0b6dfe2cdc857ac44b30",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "611ac03347f12e4ab9ce3a568342c51f109cbd067bd8ed1385bbff77e2aed118",
+      "initial_program_sha256": "823d89526b91f313db238d1d77d0530281f499e09b5ca0aabb49aa5403d124b3",
+      "oracle_program_sha256": "75ca14ab42776c72a4063977ffc6ef61544b3985fd2cc5f7ea554cf0e06032fb",
+      "representation_certificate": {
+        "decision_rule_count": 31,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "93f3d062f4afca9cff37219dcdb230474387feece277452bae3bcde79495bdca",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "d89d82cdfe98245e64c9ad2f9cbf5b231ffa3fedee8842972a3e139238d0fb48",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-058",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163119_synthetic_policies_t14_gemma_patched_cegis_task058",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 2,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 58,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 13,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "e5b19d9d19c884d654ea48b3c652c8a7284ee2cd9a28dff8727d6c1ca6f5f677",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "169911d3deba9db1787b28541332f514624c3a1cac0ab6ba0f46d5a6620e5b7a",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-059",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163610_synthetic_policies_t14_gemma_raw_task059",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 59,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "5c7020f1e688af3964b834562b7984fddbaf591aed14b4a793e8f3ac46e1b737",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 0.9259259259259259,
+      "certificate_passed": false,
+      "final_program_sha256": "ba4ee99afbb0dc0343fe2c27d1b086ce1d8224ae09788549d2ac12f626a342b3",
+      "initial_program_sha256": "ba4ee99afbb0dc0343fe2c27d1b086ce1d8224ae09788549d2ac12f626a342b3",
+      "oracle_program_sha256": "169911d3deba9db1787b28541332f514624c3a1cac0ab6ba0f46d5a6620e5b7a",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-059",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163716_synthetic_policies_t14_gemma_one_shot_task059",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 59,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 21,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "041b2d63932fc0a8c281632d88149b8484a201357cbf464703c5408841f083c0",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "814ff349288ccffd8d72a6d490f064aab6f2786c5b06d7ea71ff9c090135773b",
+      "initial_program_sha256": "ba4ee99afbb0dc0343fe2c27d1b086ce1d8224ae09788549d2ac12f626a342b3",
+      "oracle_program_sha256": "169911d3deba9db1787b28541332f514624c3a1cac0ab6ba0f46d5a6620e5b7a",
+      "representation_certificate": {
+        "decision_rule_count": 31,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "9eda650ec657ee42f9458c684b425949af993777d5bd34a0740f7e7446c0fd4f",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "45d8deda482dc65043842b7c0c7e461acd8d8a5480fd8a948afa3c33f23a2e98",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-059",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163624_synthetic_policies_t14_gemma_patched_cegis_task059",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 2,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 59,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 14,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "4b6ae3917dde68175f9708255ac752845a4639545807a954961528881a8c0af6",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "e0bbdaa589f3de41ef21481bea096010ce720d8b25226d249582a1f7232b5601",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-064",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164436_synthetic_policies_t14_gemma_raw_task064",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 64,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 19,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "cace353ef51a9a5262f39c1009fbe67e9521023b2828f23b8b98873868447662",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "cb44144b0959a5e3c337ee7804b11850d971d83720fd96556797c33299450b79",
+      "initial_program_sha256": "cb44144b0959a5e3c337ee7804b11850d971d83720fd96556797c33299450b79",
+      "oracle_program_sha256": "e0bbdaa589f3de41ef21481bea096010ce720d8b25226d249582a1f7232b5601",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-064",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164543_synthetic_policies_t14_gemma_one_shot_task064",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 64,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 27,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "512dbba41ed0895fbfdca397626cad71cacbf87e97027df1a5b22d2feb665cdf",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "cb44144b0959a5e3c337ee7804b11850d971d83720fd96556797c33299450b79",
+      "initial_program_sha256": "cb44144b0959a5e3c337ee7804b11850d971d83720fd96556797c33299450b79",
+      "oracle_program_sha256": "e0bbdaa589f3de41ef21481bea096010ce720d8b25226d249582a1f7232b5601",
+      "representation_certificate": {
+        "decision_rule_count": 29,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "f19fcbdcc6b442d3edbcc9b140b58cca1fb1960163ea05ca30671fffb500ee86",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "59f5fbb158c9b27439f57b6b113f60c5ffff611d1149de386238c365728935da",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-064",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164450_synthetic_policies_t14_gemma_patched_cegis_task064",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 0,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 64,
+    "teacher_calls": 1,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 11,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "51168d1174999c9137e9f6b90d14a0d7b2032de0b9cd92bb4c5d1c456ab0b88e",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "f872e6dd36105a3ba3388875b0f780a0ae33a3b35ea7b03b5ac877492aa6b570",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-065",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163730_synthetic_policies_t14_gemma_raw_task065",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 65,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 13,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "81ffb70d344b1ed6e414269405fac48061fd48735a4faa070d12b41f5dad7fd2",
+      "audit_pass_rate": 0.8518518518518519,
+      "build_pass_rate": 0.8518518518518519,
+      "certificate_passed": false,
+      "final_program_sha256": "799eec1d88ed2934ad8d4e52dde408381cff0836223fc831cbf937d6279473cb",
+      "initial_program_sha256": "799eec1d88ed2934ad8d4e52dde408381cff0836223fc831cbf937d6279473cb",
+      "oracle_program_sha256": "f872e6dd36105a3ba3388875b0f780a0ae33a3b35ea7b03b5ac877492aa6b570",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-065",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163846_synthetic_policies_t14_gemma_one_shot_task065",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 65,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 25,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "585893a70b4b4a58168ca5356fb6e6fa9e33247cdfce07ff074a29633e842b18",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "d5f80c9953f9be7324f21d4b26430e3757509e8c8df89c52177cd4590b523342",
+      "initial_program_sha256": "799eec1d88ed2934ad8d4e52dde408381cff0836223fc831cbf937d6279473cb",
+      "oracle_program_sha256": "f872e6dd36105a3ba3388875b0f780a0ae33a3b35ea7b03b5ac877492aa6b570",
+      "representation_certificate": {
+        "decision_rule_count": 27,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "4d8216df7feb6171f7402d0c371bd5025962d5de543b7a52d5a2f2fd12b6a07d",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "fbba0ded592f6f6cbc34e72c857ff3e2f92ab5d27b8b3a7ced23cd0145f4bebe",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-065",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163744_synthetic_policies_t14_gemma_patched_cegis_task065",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 3,
+      "repairs": 6,
+      "teacher_calls": 3
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 65,
+    "teacher_calls": 3,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 10,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "332cd0e19faf97c9274921dc067ed83ad23ff76eb99f1cc28094e7323d7e9eca",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "63b41c013f33582b4fbbc244c77ec3e61a6f8f059a8f7daf142e8b1c752fad25",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-066",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164310_synthetic_policies_t14_gemma_raw_task066",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 66,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "fef7d89cc55efc718cf381f366a90d2bea96b7d435b0a1d5513ddca59124708f",
+      "audit_pass_rate": 0.8888888888888888,
+      "build_pass_rate": 0.8518518518518519,
+      "certificate_passed": false,
+      "final_program_sha256": "8e05d2e04c3441e357b5df9721efe2a8e3b4e019b19110e7da80e8e0a4e72401",
+      "initial_program_sha256": "8e05d2e04c3441e357b5df9721efe2a8e3b4e019b19110e7da80e8e0a4e72401",
+      "oracle_program_sha256": "63b41c013f33582b4fbbc244c77ec3e61a6f8f059a8f7daf142e8b1c752fad25",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-066",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164423_synthetic_policies_t14_gemma_one_shot_task066",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 66,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 25,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "9c04216b6a21c3c5ad4875ebd58b62f89e2c8c0f9e098666f78e2a22d253c29e",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "54bf1ec9ae07f96f5a57509c2272afa0534fd42433885209b336f678b44774dd",
+      "initial_program_sha256": "8e05d2e04c3441e357b5df9721efe2a8e3b4e019b19110e7da80e8e0a4e72401",
+      "oracle_program_sha256": "63b41c013f33582b4fbbc244c77ec3e61a6f8f059a8f7daf142e8b1c752fad25",
+      "representation_certificate": {
+        "decision_rule_count": 26,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "ce2d16b732c8694dd6a54627e6236afb761dce079ef3b5cb6de9278df0582914",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "e876e141adf5e8ef6053acb31f671218e00f474eae024c80156cf345098ee1b6",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-066",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_164324_synthetic_policies_t14_gemma_patched_cegis_task066",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 3,
+      "teacher_calls": 2
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 66,
+    "teacher_calls": 2,
+    "total": 27
+  },
+  {
+    "error_type": "DslSyntaxError",
+    "failed_run_id": "2026-07-27_163050_synthetic_policies_t14_gemma_patched_cegis_task068",
+    "failed_teacher_tokens": {
+      "input": 2567,
+      "output": 674
+    },
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "raw_correct": 11,
+    "raw_run_id": "2026-07-27_163036_synthetic_policies_t14_gemma_raw_task068",
+    "registered_fallback": "raw_for_all_conditions",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "status": "syntax_failure",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 68,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 7,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "50b1c209525256f93476dbf7309fd02a3af64323d8abd4c4ce4d5f2909cfefbf",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "173b8c8bcff552fca9b8ecb2ae7b5724c500a4d53639a6565334f251206387ae",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-070",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163441_synthetic_policies_t14_gemma_raw_task070",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 70,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 17,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "ce8fbe7600f1fbe2b4963e0fa1ef14796972b037d5bd798039e955563c3a9f8a",
+      "audit_pass_rate": 0.9629629629629629,
+      "build_pass_rate": 0.7037037037037037,
+      "certificate_passed": false,
+      "final_program_sha256": "4343f681c01abb04063e7c81c5941eca56826099460e5ed8f34234b2e1492b00",
+      "initial_program_sha256": "4343f681c01abb04063e7c81c5941eca56826099460e5ed8f34234b2e1492b00",
+      "oracle_program_sha256": "173b8c8bcff552fca9b8ecb2ae7b5724c500a4d53639a6565334f251206387ae",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-070",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163557_synthetic_policies_t14_gemma_one_shot_task070",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 70,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 25,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "d17b6a55e0edd96541fb7231c1d18a0b819e909f8d917f1861bd3faacddc8eed",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "f7e009b9dab0475ca7122723ea9e50467a5f52f26b87df606b7274b6cf0bacf8",
+      "initial_program_sha256": "4343f681c01abb04063e7c81c5941eca56826099460e5ed8f34234b2e1492b00",
+      "oracle_program_sha256": "173b8c8bcff552fca9b8ecb2ae7b5724c500a4d53639a6565334f251206387ae",
+      "representation_certificate": {
+        "decision_rule_count": 27,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "c030b8c84a49835b1359e7950afa8aafd46ddbd0e7e6a7b277cb9858833c0d1b",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "5ff4d1f4e760018ceb7033914c4d8549a0b399c8d90cbbd3cad5580e143df4ef",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-070",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163457_synthetic_policies_t14_gemma_patched_cegis_task070",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 2,
+      "repairs": 5,
+      "teacher_calls": 2
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 70,
+    "teacher_calls": 2,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "222b36e26756d0fa5cff4de0c5e4b54ef36ae0b889dbd6c12f7d08c88daf7675",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "bed8eed57a6b6d94dee2a5b0f0f52e98cffbeaf34e68178a99da6003b0726dbf",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-071",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163859_synthetic_policies_t14_gemma_raw_task071",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 71,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "aba808fe967984b418e9abb01ca69e4e7475bd21b2f8f4d15a1f0cdbb3cd46a8",
+      "audit_pass_rate": 0.7407407407407407,
+      "build_pass_rate": 0.9259259259259259,
+      "certificate_passed": false,
+      "final_program_sha256": "04bec55fc78ba114fecd6aeb56dd68bd1f1029a4ef437e6cb7a688a27ee01a21",
+      "initial_program_sha256": "04bec55fc78ba114fecd6aeb56dd68bd1f1029a4ef437e6cb7a688a27ee01a21",
+      "oracle_program_sha256": "bed8eed57a6b6d94dee2a5b0f0f52e98cffbeaf34e68178a99da6003b0726dbf",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-071",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163946_synthetic_policies_t14_gemma_one_shot_task071",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 71,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "241797627d6b98ef16f51462b49bf32b2cbe3160b334a631d16687c6ca47ae6b",
+      "audit_pass_rate": 0.8888888888888888,
+      "build_pass_rate": 1.0,
+      "certificate_passed": false,
+      "final_program_sha256": "f24bd6bfd9ab8eb13f1b552760021cce1e38d5598d43ff74a71f49ba78899e0d",
+      "initial_program_sha256": "04bec55fc78ba114fecd6aeb56dd68bd1f1029a4ef437e6cb7a688a27ee01a21",
+      "oracle_program_sha256": "bed8eed57a6b6d94dee2a5b0f0f52e98cffbeaf34e68178a99da6003b0726dbf",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-071",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_163913_synthetic_policies_t14_gemma_patched_cegis_task071",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 0.8888888888888888,
+      "build": 1.0,
+      "patches": 4,
+      "repairs": 7,
+      "teacher_calls": 3
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 71,
+    "teacher_calls": 3,
+    "total": 27
+  },
+  {
+    "error_type": "DslSyntaxError",
+    "failed_run_id": "2026-07-27_164013_synthetic_policies_t14_gemma_patched_cegis_task072",
+    "failed_teacher_tokens": {
+      "input": 2617,
+      "output": 747
+    },
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "raw_correct": 11,
+    "raw_run_id": "2026-07-27_163959_synthetic_policies_t14_gemma_raw_task072",
+    "registered_fallback": "raw_for_all_conditions",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "status": "syntax_failure",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 72,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 11,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "294948e251830d198e2a899e193d8dcf5d53e6c2c8ed2f19b9acac3caaf6c71c",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "f4e99ea824365ac335b18134a78f4e7447d4dcc1f8f87c74c21d971933013274",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-073",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162322_synthetic_policies_t14_gemma_raw_task073",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 73,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 14,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "a0d1b56ed7f0c0129e0fd605e5f6462965b392e043a95c9dcd95d26421f7c4ae",
+      "audit_pass_rate": 0.7037037037037037,
+      "build_pass_rate": 0.7037037037037037,
+      "certificate_passed": false,
+      "final_program_sha256": "8f21f26cfd38ff7e8fcdbf7d6f13df7677032052e79cb559fbd291f0450ea441",
+      "initial_program_sha256": "8f21f26cfd38ff7e8fcdbf7d6f13df7677032052e79cb559fbd291f0450ea441",
+      "oracle_program_sha256": "f4e99ea824365ac335b18134a78f4e7447d4dcc1f8f87c74c21d971933013274",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-073",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162435_synthetic_policies_t14_gemma_one_shot_task073",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 73,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 25,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "2953b58f93d616c5d0a57a4ab18826b370485a1b777ff27a5bf3626c34af1b12",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "ced008f39f6acf15540b877524db8ba62826f959842efe00e1e1d1d58763591d",
+      "initial_program_sha256": "8f21f26cfd38ff7e8fcdbf7d6f13df7677032052e79cb559fbd291f0450ea441",
+      "oracle_program_sha256": "f4e99ea824365ac335b18134a78f4e7447d4dcc1f8f87c74c21d971933013274",
+      "representation_certificate": {
+        "decision_rule_count": 27,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "5c58443dea74ba05bb4c502bcca83fc3de824d149ef59b245852c5a2fdb9b3ef",
+        "representation_kind": "verified_decision_list",
+        "representation_sha256": "bcda8a553048caf7ce062e44533a305c3e8cb417eb2a0cc3570b96fb2c99c2f9",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_list",
+      "task_id": "policy-073",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162336_synthetic_policies_t14_gemma_patched_cegis_task073",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 4,
+      "repairs": 7,
+      "teacher_calls": 2
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 73,
+    "teacher_calls": 2,
+    "total": 27
+  },
+  {
+    "condition": "raw",
+    "correct": 16,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "a952f744b395bfa9e241c605980613b767b338129198dbfe28ad35c61b2269a7",
+      "audit_pass_rate": null,
+      "build_pass_rate": null,
+      "certificate_passed": null,
+      "final_program_sha256": null,
+      "initial_program_sha256": null,
+      "oracle_program_sha256": "89d4a96569884033d090d732b9cb074164963f6c9c978f5a99a791ef8b73b013",
+      "representation_certificate": null,
+      "representation_kind": null,
+      "task_id": "policy-076",
+      "teacher_received_final_cases": null,
+      "teacher_received_private_data": null
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162751_synthetic_policies_t14_gemma_raw_task076",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 76,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "one_shot",
+    "correct": 18,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "fbda5789d968ce2add668934a2152502720e19d06b481f9af4cf0392ea8ef886",
+      "audit_pass_rate": 0.9629629629629629,
+      "build_pass_rate": 0.8888888888888888,
+      "certificate_passed": false,
+      "final_program_sha256": "434920aef335999ea420a1513219a19e13cd211c7a46f4a58b61028b138dc0f5",
+      "initial_program_sha256": "434920aef335999ea420a1513219a19e13cd211c7a46f4a58b61028b138dc0f5",
+      "oracle_program_sha256": "89d4a96569884033d090d732b9cb074164963f6c9c978f5a99a791ef8b73b013",
+      "representation_certificate": null,
+      "representation_kind": "rule_render",
+      "task_id": "policy-076",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162857_synthetic_policies_t14_gemma_one_shot_task076",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": null,
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 0,
+      "final": 27
+    },
+    "task": 76,
+    "teacher_calls": 0,
+    "total": 27
+  },
+  {
+    "condition": "full",
+    "correct": 25,
+    "manifest_sha256": "bfbd57bf8682d5a5c10245937c4ea5fcedf23fddcb6a258795d1f16ec06766f6",
+    "policy": {
+      "artifact_sha256": "d5ee30781479eadc6eee27f21bd20a330e7e95d97bc9ca54f5991df1af69b176",
+      "audit_pass_rate": 1.0,
+      "build_pass_rate": 1.0,
+      "certificate_passed": true,
+      "final_program_sha256": "fa23b5562dab8ae3f2d2525fcab11b2c93a50faaeb34908d7d12ff7d4ee044ea",
+      "initial_program_sha256": "434920aef335999ea420a1513219a19e13cd211c7a46f4a58b61028b138dc0f5",
+      "oracle_program_sha256": "89d4a96569884033d090d732b9cb074164963f6c9c978f5a99a791ef8b73b013",
+      "representation_certificate": {
+        "decision_rule_count": 29,
+        "exhaustive_coverage": true,
+        "finite_domain_size": 81,
+        "label_pure": true,
+        "oracle_outcomes_sha256": "60acc567d896b4ec8a9447bd980eb1dd5a56712e9dd13fd3717332e9c73a3688",
+        "representation_kind": "verified_decision_tree",
+        "representation_sha256": "5e4e4d8a00d396576e31d41cfe15e5187135e81364fd0202519e126b2f0c4525",
+        "semantically_equivalent": true
+      },
+      "representation_kind": "verified_decision_tree",
+      "task_id": "policy-076",
+      "teacher_received_final_cases": false,
+      "teacher_received_private_data": false
+    },
+    "remote_student_calls": 0,
+    "run_id": "2026-07-27_162805_synthetic_policies_t14_gemma_patched_cegis_task076",
+    "source_snapshot_sha256": "3a2ec1385158e112d36c1245db7a5588dad0b9eb94de10439243c5d26346aa93",
+    "source_verification": {
+      "audit": 1.0,
+      "build": 1.0,
+      "patches": 0,
+      "repairs": 1,
+      "teacher_calls": 1
+    },
+    "status": "complete",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "ff02c3702f322b9e075e9568332d96c0a7028002f1a5a056e0a6784320a4db0b",
+      "model": "gemma2:9b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "student_calls": {
+      "audit": 27,
+      "compilation": 108,
+      "final": 27
+    },
+    "task": 76,
+    "teacher_calls": 1,
+    "total": 27
+  }
+]

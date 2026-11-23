@@ -1,0 +1,782 @@
+{
+  "task_id": "policy-006",
+  "solver_model": "qwen2.5:3b",
+  "arm": "gepa",
+  "completed_at": "2026-10-06T14:18:09.739976+00:00",
+  "rows": [
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-00",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.45620529999996506
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-01",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.21576860000004672
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-02",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2384329999995316
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-03",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.22929999999996653
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-04",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.23017819999950007
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-05",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24644890000035957
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-06",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.22321970000029978
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-07",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.23165900000003603
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-08",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.21488270000008924
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-09",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2495483000002423
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-10",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24609079999936512
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-11",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24808829999983573
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-12",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24850919999971666
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-13",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.257477199999812
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-14",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2532229999997071
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-15",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24886100000003353
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-16",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.24915620000047056
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-17",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2941119000006438
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-18",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2574300000005678
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-19",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2597729999997682
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-20",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.30124960000011924
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-21",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3186248000001797
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-22",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2938616000001275
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-23",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.28354620000027353
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-24",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": null,
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2959835000001476
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-25",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.277333500000168
+    },
+    {
+      "task_id": "policy-006",
+      "method": "native_gepa",
+      "case_id": "policy-006-final-26",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "6d727dce20aba77f3e25aac3d56358fa5bc7845ff9c6287688eaf3886ce1670c",
+      "system": "Perform task Compositional policy 006.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"admin\",\"guest\",\"operator\"]},{\"name\":\"Action\",\"values\":[\"change\",\"approve\",\"delete\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\n# Task: Compositional Policy 006 - Event Classification\n\n## Overview\nYou are to classify a structured event using a predefined set of rules and priorities. The classification must consider the event's role, action, context, and risk, and apply the appropriate label (allow, deny, review, or uncertain) based on the rules provided.\n\n## Input Format\nThe input is a JSON object containing an event with the following fields:\n- `role`: One of `admin`, `guest`, or `operator`\n- `action`: One of `change`, `approve`, or `delete`\n- `context`: One of `partner`, `internal`, or `sandbox`\n- `risk`: One of `TRUE`, `FALSE`, or `UNKNOWN`\n\n## Rules and Priorities\n\n### 1. Critical Cases\n- **Critical means**: `risk == TRUE` **or** `action == delete` **and** `context == sandbox`\n- **Critical cases require**: `deny` (priority 100)\n\n### 2. Unknown External Risk\n- If `risk == UNKNOWN` **and** `context == sandbox`, return `uncertain` (priority 90)\n\n### 3. Unknown Risk (Not External)\n- If `risk == UNKNOWN` **and** `context != sandbox`, prefer `review` (priority 90)\n\n### 4. Trusted Roles\n- **Trusted means**: `role == admin` **or** `role == guest`, **except** when `action == delete`\n- If `role` is trusted and `action != delete`, prefer `allow` (priority 80)\n- **Trusted cases forbid review** (i.e., if a rule would suggest `review`, it is overridden)\n\n### 5. Action Approve in Sandbox\n- If `action == approve` **and** `context == sandbox`, prefer `deny` (priority 70)\n\n### 6. Role Guest or Context Internal\n- If `role == guest` **or** `context == internal`, prefer `review` (priority 40)\n\n### 7. All Other Declared Roles\n- If none of the above rules apply, prefer `allow` (priority 1)\n\n### 8. Required Labels\n- If any required label is present, it **overrides** all preferences.\n- If there is **abstention** or **conflicting required labels**, return `uncertain`\n- **Forbidden labels** are removed; the remaining highest-priority preference wins.\n\n## Output Format\n- Return one of the following labels: `allow`, `deny`, `review`, or `uncertain`\n\n## Forbidden Shortcuts\n- Use **every field** named by a relevant rule. Do not skip or infer fields.\n\n## Public Source Identifier\ncompositional-policies-v2:family-2:task-006\n\n## Examples\n### Example 1\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}\n```\n**Expected Output**: `review`  \n**Feedback**: Incorrect. Parsed semantic label: None. Public reference label: review.\n\n### Example 2\n**Input**:  \n```json\n{\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}\n```\n**Expected Output**: `uncertain`  \n**Feedback**: Correct. Parsed semantic label: None. Public reference label: uncertain.\n\n### Example 3\n**Input**:  \n```json\n{\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}\n```\n**Expected Output**: `allow`  \n**Feedback**: Correct. Parsed semantic label: 'allow'. Public reference label: allow.\n\n## Instructions for the Assistant\n1. Parse the input event and extract the `role`, `action`, `context`, and `risk` values.\n2. Apply the rules in the order of priority (highest to lowest).\n3. Check for any required labels and override preferences if necessary.\n4. If there are conflicting or missing labels, return `uncertain`.\n5. If a forbidden label is present, remove it and proceed with the highest-priority valid rule.\n6. Return the final classification label: `allow`, `deny`, `review`, or `uncertain`.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3501851999999417
+    }
+  ],
+  "final_wall_seconds": 7.342999999999847,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 28728,
+        "output_tokens_known": 54,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 7.219148700000915
+      }
+    }
+  }
+}

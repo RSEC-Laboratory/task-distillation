@@ -1,0 +1,1335 @@
+{
+  "task_id": "policy-006",
+  "solver_model": "qwen2.5:3b",
+  "arm": "full",
+  "prepared_at": "2026-10-06T02:23:42.256517+00:00",
+  "method": {
+    "method": "full_dsl",
+    "task_id": "policy-006",
+    "public_task_hash": "33c525548830a26618a3f8c90ed873a26848c6a07ea7c10ff36c598f062eda5a",
+    "instructions": [
+      "Verified decision list. Find a line whose stated field conditions all match the input, then return its label. Unstated fields can have any value. Matching lines agree.",
+      "If action=change, context=sandbox, risk=FALSE, return allow.",
+      "If action=change, context=partner, risk=FALSE, return allow.",
+      "If action=approve, context=partner, risk=FALSE, return allow.",
+      "If action=change, risk=FALSE, role=guest, return allow.",
+      "If action=change, risk=FALSE, role=admin, return allow.",
+      "If context=partner, risk=FALSE, role=operator, return allow.",
+      "If context=partner, risk=FALSE, role=admin, return allow.",
+      "If action=change, context=partner, risk=UNKNOWN, role=guest, return allow.",
+      "If action=change, context=partner, risk=UNKNOWN, role=admin, return allow.",
+      "If action=change, context=internal, risk=UNKNOWN, role=guest, return allow.",
+      "If action=change, context=internal, risk=UNKNOWN, role=admin, return allow.",
+      "If action=approve, context=partner, risk=UNKNOWN, role=guest, return allow.",
+      "If action=approve, context=partner, risk=UNKNOWN, role=admin, return allow.",
+      "If action=approve, context=internal, risk=UNKNOWN, role=guest, return allow.",
+      "If action=approve, context=internal, risk=UNKNOWN, role=admin, return allow.",
+      "If action=approve, context=internal, risk=FALSE, role=guest, return allow.",
+      "If action=approve, context=internal, risk=FALSE, role=admin, return allow.",
+      "If risk=TRUE, return deny.",
+      "If action=delete, context=sandbox, risk=FALSE, return deny.",
+      "If action=approve, context=sandbox, risk=FALSE, return deny.",
+      "If action=delete, context=partner, risk=UNKNOWN, return review.",
+      "If action=delete, context=internal, risk=UNKNOWN, return review.",
+      "If action=delete, context=internal, risk=FALSE, return review.",
+      "If context=partner, risk=UNKNOWN, role=operator, return review.",
+      "If context=internal, risk=UNKNOWN, role=operator, return review.",
+      "If context=internal, risk=FALSE, role=operator, return review.",
+      "If action=delete, context=partner, risk=FALSE, role=guest, return review.",
+      "If context=sandbox, risk=UNKNOWN, return uncertain."
+    ],
+    "routed": true,
+    "status": "prepared",
+    "trace": {
+      "behavioral": {
+        "build_accuracy": 0.7777777777777778,
+        "initial_build_results": [
+          {
+            "expected_label": null,
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-00",
+            "student_label": null
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "ApproveInSandbox:condition:true",
+              "ApproveInSandbox:effect:prefer:deny",
+              "SourceCounterexamplePatch2:condition:true",
+              "SourceCounterexamplePatch2:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-01",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-02",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-03",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-04",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-05",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-06",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-07",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-08",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-09",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-10",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-11",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-12",
+            "student_label": "review"
+          },
+          {
+            "expected_label": null,
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "ApproveInSandbox:condition:true",
+              "ApproveInSandbox:effect:prefer:deny",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review",
+              "SourceCounterexamplePatch2:condition:true",
+              "SourceCounterexamplePatch2:effect:require:deny"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-13",
+            "student_label": null
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-14",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-15",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-16",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-17",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-18",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-19",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": null,
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-20",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-21",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-22",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-23",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-24",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 545,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-25",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 545,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-26",
+            "student_label": "deny"
+          }
+        ],
+        "representation_kind": "verified_decision_list",
+        "rounds": [
+          {
+            "accepted": true,
+            "edit": "certified:decision_list",
+            "objective_after": [
+              0.2222222222222222,
+              0.5714285714285714,
+              3.5624649859943975,
+              1,
+              203
+            ],
+            "objective_before": [
+              0.33333333333333337,
+              0.4285714285714286,
+              4.296358543417368,
+              1,
+              240
+            ],
+            "protected_regressions": 3,
+            "round_index": 0,
+            "targeted_obligation": "all:semantic_equivalence"
+          },
+          {
+            "accepted": false,
+            "edit": "certified:decision_tree",
+            "objective_after": [
+              0.2962962962962963,
+              0.6666666666666667,
+              3.7563025210084033,
+              2,
+              227
+            ],
+            "objective_before": [
+              0.33333333333333337,
+              0.4285714285714286,
+              4.296358543417368,
+              1,
+              240
+            ],
+            "protected_regressions": 2,
+            "round_index": 1,
+            "targeted_obligation": "all:semantic_equivalence"
+          },
+          {
+            "accepted": false,
+            "edit": "certified:decision_tree_reversed",
+            "objective_after": [
+              0.33333333333333337,
+              0.6666666666666667,
+              4.159663865546218,
+              2,
+              227
+            ],
+            "objective_before": [
+              0.33333333333333337,
+              0.4285714285714286,
+              4.296358543417368,
+              1,
+              240
+            ],
+            "protected_regressions": 3,
+            "round_index": 2,
+            "targeted_obligation": "all:semantic_equivalence"
+          }
+        ],
+        "selected_build_results": [
+          {
+            "expected_label": null,
+            "input_tokens": 333,
+            "matched": true,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-00",
+            "student_label": null
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 336,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "ApproveInSandbox:condition:true",
+              "ApproveInSandbox:effect:prefer:deny",
+              "SourceCounterexamplePatch2:condition:true",
+              "SourceCounterexamplePatch2:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-01",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 341,
+            "matched": true,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-02",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 327,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-03",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 329,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-04",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 334,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-05",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 318,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-06",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 329,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-07",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 335,
+            "matched": true,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-08",
+            "student_label": "review"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 321,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-09",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 329,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-10",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 336,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-11",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 322,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-12",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": null,
+            "input_tokens": 338,
+            "matched": true,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "ApproveInSandbox:condition:true",
+              "ApproveInSandbox:effect:prefer:deny",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review",
+              "SourceCounterexamplePatch2:condition:true",
+              "SourceCounterexamplePatch2:effect:require:deny"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-13",
+            "student_label": null
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 321,
+            "matched": true,
+            "obligations": [
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-14",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 329,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-15",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 320,
+            "matched": true,
+            "obligations": [
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-16",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 334,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-17",
+            "student_label": "deny"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 340,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-18",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 341,
+            "matched": true,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-19",
+            "student_label": "review"
+          },
+          {
+            "expected_label": null,
+            "input_tokens": 332,
+            "matched": false,
+            "obligations": [
+              "UnknownExternalCase:condition:true",
+              "UnknownExternalCase:effect:abstain:none",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-20",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 344,
+            "matched": false,
+            "obligations": [
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-21",
+            "student_label": null
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 344,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-22",
+            "student_label": null
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 318,
+            "matched": true,
+            "obligations": [
+              "OtherRoles:condition:true",
+              "OtherRoles:effect:prefer:allow"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-23",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "review",
+            "input_tokens": 341,
+            "matched": false,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review"
+            ],
+            "output_tokens": 3,
+            "probe_id": "policy-006-build-24",
+            "student_label": null
+          },
+          {
+            "expected_label": "allow",
+            "input_tokens": 330,
+            "matched": true,
+            "obligations": [
+              "UnknownRiskCase:condition:true",
+              "UnknownRiskCase:effect:prefer:review",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-25",
+            "student_label": "allow"
+          },
+          {
+            "expected_label": "deny",
+            "input_tokens": 327,
+            "matched": true,
+            "obligations": [
+              "CriticalCase:condition:true",
+              "CriticalCase:effect:require:deny",
+              "TrustedChange:condition:true",
+              "TrustedChange:effect:prefer:allow",
+              "GuestOrInternal:condition:true",
+              "GuestOrInternal:effect:prefer:review",
+              "TrustedForbidReview:condition:true",
+              "TrustedForbidReview:effect:forbid:review"
+            ],
+            "output_tokens": 2,
+            "probe_id": "policy-006-build-26",
+            "student_label": "deny"
+          }
+        ],
+        "semantic_certificate": {
+          "decision_rule_count": 28,
+          "exhaustive_coverage": true,
+          "finite_domain_size": 81,
+          "label_pure": true,
+          "oracle_outcomes_sha256": "91948e8bf74e0f582efc7436b56a87f5e0490c0c96602037060ff897c8c981df",
+          "representation_kind": "verified_decision_list",
+          "representation_sha256": "d1989d8a7382de0e53ccf796d0dd5667fd4c318db5181d5fff12c3b6099370cf",
+          "semantically_equivalent": true
+        },
+        "student_calls": 108
+      },
+      "behavioral_obligations": {
+        "policy-006-build-00": [
+          "UnknownExternalCase:condition:true",
+          "UnknownExternalCase:effect:abstain:none",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-01": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "ApproveInSandbox:condition:true",
+          "ApproveInSandbox:effect:prefer:deny",
+          "SourceCounterexamplePatch2:condition:true",
+          "SourceCounterexamplePatch2:effect:require:deny"
+        ],
+        "policy-006-build-02": [
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-03": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-04": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-05": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-06": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-07": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny"
+        ],
+        "policy-006-build-08": [
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-09": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny"
+        ],
+        "policy-006-build-10": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-11": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-12": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-13": [
+          "UnknownExternalCase:condition:true",
+          "UnknownExternalCase:effect:abstain:none",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "ApproveInSandbox:condition:true",
+          "ApproveInSandbox:effect:prefer:deny",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review",
+          "SourceCounterexamplePatch2:condition:true",
+          "SourceCounterexamplePatch2:effect:require:deny"
+        ],
+        "policy-006-build-14": [
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-15": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-16": [
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-17": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-18": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review"
+        ],
+        "policy-006-build-19": [
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-20": [
+          "UnknownExternalCase:condition:true",
+          "UnknownExternalCase:effect:abstain:none",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-21": [
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-22": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-23": [
+          "OtherRoles:condition:true",
+          "OtherRoles:effect:prefer:allow"
+        ],
+        "policy-006-build-24": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review"
+        ],
+        "policy-006-build-25": [
+          "UnknownRiskCase:condition:true",
+          "UnknownRiskCase:effect:prefer:review",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ],
+        "policy-006-build-26": [
+          "CriticalCase:condition:true",
+          "CriticalCase:effect:require:deny",
+          "TrustedChange:condition:true",
+          "TrustedChange:effect:prefer:allow",
+          "GuestOrInternal:condition:true",
+          "GuestOrInternal:effect:prefer:review",
+          "TrustedForbidReview:condition:true",
+          "TrustedForbidReview:effect:forbid:review"
+        ]
+      },
+      "behavioral_probe_ids": [
+        "policy-006-build-00",
+        "policy-006-build-01",
+        "policy-006-build-02",
+        "policy-006-build-03",
+        "policy-006-build-04",
+        "policy-006-build-05",
+        "policy-006-build-06",
+        "policy-006-build-07",
+        "policy-006-build-08",
+        "policy-006-build-09",
+        "policy-006-build-10",
+        "policy-006-build-11",
+        "policy-006-build-12",
+        "policy-006-build-13",
+        "policy-006-build-14",
+        "policy-006-build-15",
+        "policy-006-build-16",
+        "policy-006-build-17",
+        "policy-006-build-18",
+        "policy-006-build-19",
+        "policy-006-build-20",
+        "policy-006-build-21",
+        "policy-006-build-22",
+        "policy-006-build-23",
+        "policy-006-build-24",
+        "policy-006-build-25",
+        "policy-006-build-26"
+      ],
+      "dsl": {
+        "final_audit": {
+          "failures": [],
+          "passed": 27,
+          "total": 27
+        },
+        "final_build": {
+          "failures": [],
+          "passed": 27,
+          "total": 27
+        },
+        "final_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when ((event.context == partner) and (event.risk == FALSE)) and (event.role == admin)\n    then require label = allow\n\nrule SourceCounterexamplePatch2:\n    when (event.action == approve) and (event.context == sandbox)\n    then require label = deny\n",
+        "initial_build": {
+          "failures": [],
+          "passed": 27,
+          "total": 27
+        },
+        "initial_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n",
+        "public_verification_passed": true,
+        "repairs": [
+          {
+            "accepted": false,
+            "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n",
+            "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1",
+            "rule_name": "<complete-program>"
+          },
+          {
+            "accepted": false,
+            "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n",
+            "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1",
+            "rule_name": "<complete-program>"
+          },
+          {
+            "accepted": false,
+            "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n",
+            "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1",
+            "rule_name": "<complete-program>"
+          },
+          {
+            "accepted": true,
+            "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n",
+            "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when ((event.context == partner) and (event.risk == FALSE)) and (event.role == admin)\n    then require label = allow\n",
+            "rule_name": "source-counterexample:SourceCounterexamplePatch1"
+          },
+          {
+            "accepted": true,
+            "original_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when ((event.context == partner) and (event.risk == FALSE)) and (event.role == admin)\n    then require label = allow\n",
+            "proposed_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when ((event.context == partner) and (event.risk == FALSE)) and (event.role == admin)\n    then require label = allow\n\nrule SourceCounterexamplePatch2:\n    when (event.action == approve) and (event.context == sandbox)\n    then require label = deny\n",
+            "rule_name": "source-counterexample:SourceCounterexamplePatch2"
+          }
+        ],
+        "teacher_calls": 4
+      },
+      "final_access_during_optimization": false,
+      "initial_source_supplied": false,
+      "limits": {
+        "counterexample_patches": 3,
+        "max_instruction_words": 1800,
+        "reflection_minibatch_size": 3,
+        "representation_rounds": 3,
+        "seed": 20261005,
+        "semantic_repair_rounds": 3,
+        "solver_calls": 216,
+        "teacher_calls": 4,
+        "teacher_tokens": 2000,
+        "top_k": 6
+      },
+      "oracle_program_access": false,
+      "public_audit_refinement_case_ids": [
+        "policy-006-refinement-00",
+        "policy-006-refinement-01",
+        "policy-006-refinement-02",
+        "policy-006-refinement-03",
+        "policy-006-refinement-04",
+        "policy-006-refinement-05",
+        "policy-006-refinement-06",
+        "policy-006-refinement-07",
+        "policy-006-refinement-08",
+        "policy-006-refinement-09",
+        "policy-006-refinement-10",
+        "policy-006-refinement-11",
+        "policy-006-refinement-12",
+        "policy-006-refinement-13",
+        "policy-006-refinement-14",
+        "policy-006-refinement-15",
+        "policy-006-refinement-16",
+        "policy-006-refinement-17",
+        "policy-006-refinement-18",
+        "policy-006-refinement-19",
+        "policy-006-refinement-20",
+        "policy-006-refinement-21",
+        "policy-006-refinement-22",
+        "policy-006-refinement-23",
+        "policy-006-refinement-24",
+        "policy-006-refinement-25",
+        "policy-006-refinement-26"
+      ],
+      "public_build_case_ids": [
+        "policy-006-build-00",
+        "policy-006-build-01",
+        "policy-006-build-02",
+        "policy-006-build-03",
+        "policy-006-build-04",
+        "policy-006-build-05",
+        "policy-006-build-06",
+        "policy-006-build-07",
+        "policy-006-build-08",
+        "policy-006-build-09",
+        "policy-006-build-10",
+        "policy-006-build-11",
+        "policy-006-build-12",
+        "policy-006-build-13",
+        "policy-006-build-14",
+        "policy-006-build-15",
+        "policy-006-build-16",
+        "policy-006-build-17",
+        "policy-006-build-18",
+        "policy-006-build-19",
+        "policy-006-build-20",
+        "policy-006-build-21",
+        "policy-006-build-22",
+        "policy-006-build-23",
+        "policy-006-build-24",
+        "policy-006-build-25",
+        "policy-006-build-26"
+      ],
+      "router_identity": {
+        "backend": "sentence_transformers",
+        "local_snapshot": "<USER_HOME>\\.cache\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "model": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+      },
+      "teacher_raw_text": [
+        {
+          "phase": "initial",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    (event.risk == TRUE) or (event.action == delete and event.context == sandbox)\\n\\npredicate UnknownExternal(event):\\n    event.risk == UNKNOWN and event.context == sandbox\\n\\npredicate Trusted(event):\\n    (event.role == admin or event.role == guest) and not (event.action == delete)\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = deny\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then require label = uncertain\\n\\nrule UnknownRiskCase:\\n    when not Critical(event) and event.risk == UNKNOWN and not UnknownExternal(event)\\n    then prefer label = review priority 90\\n\\nrule TrustedChange:\\n    when Trusted(event)\\n    then prefer label = allow priority 80\\n\\nrule ApproveInSandbox:\\n    when event.action == approve and event.context == sandbox\\n    then prefer label = deny priority 70\\n\\nrule GuestOrInternal:\\n    when event.role == guest or event.context == internal\\n    then prefer label = review priority 40\\n\\nrule TrustedForbidReview:\\n    when Trusted(event)\\n    then forbid label = review\\n\\nrule OtherRoles:\\n    when not Critical(event) and not Trusted(event) and event.role != guest and event.role != admin\\n    then prefer label = allow priority 1\\n\"\n}"
+        },
+        {
+          "phase": "repair-1",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\\n\\npredicate UnknownExternal(event):\\n    (event.risk == UNKNOWN) and (event.context == sandbox)\\n\\npredicate Trusted(event):\\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = deny\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then abstain\\n\\nrule UnknownRiskCase:\\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\\n    then prefer label = review priority 90\\n\\nrule TrustedChange:\\n    when Trusted(event)\\n    then prefer label = allow priority 80\\n\\nrule ApproveInSandbox:\\n    when (event.action == approve) and (event.context == sandbox)\\n    then prefer label = deny priority 70\\n\\nrule GuestOrInternal:\\n    when (event.role == guest) or (event.context == internal)\\n    then prefer label = review priority 40\\n\\nrule TrustedForbidReview:\\n    when Trusted(event)\\n    then forbid label = review\\n\\nrule OtherRoles:\\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\\n    then prefer label = allow priority 1\"\n}"
+        },
+        {
+          "phase": "repair-2",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\\n\\npredicate UnknownExternal(event):\\n    (event.risk == UNKNOWN) and (event.context == sandbox)\\n\\npredicate Trusted(event):\\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = deny\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then abstain\\n\\nrule UnknownRiskCase:\\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\\n    then prefer label = review priority 90\\n\\nrule TrustedChange:\\n    when Trusted(event)\\n    then prefer label = allow priority 80\\n\\nrule ApproveInSandbox:\\n    when (event.action == approve) and (event.context == sandbox)\\n    then prefer label = deny priority 70\\n\\nrule GuestOrInternal:\\n    when (event.role == guest) or (event.context == internal)\\n    then prefer label = review priority 40\\n\\nrule TrustedForbidReview:\\n    when Trusted(event)\\n    then forbid label = review\\n\\nrule OtherRoles:\\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\\n    then prefer label = allow priority 1\"\n}"
+        },
+        {
+          "phase": "repair-3",
+          "text": "{\n  \"program\": \"predicate Critical(event):\\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\\n\\npredicate UnknownExternal(event):\\n    (event.risk == UNKNOWN) and (event.context == sandbox)\\n\\npredicate Trusted(event):\\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\\n\\nrule CriticalCase:\\n    when Critical(event)\\n    then require label = deny\\n\\nrule UnknownExternalCase:\\n    when UnknownExternal(event)\\n    then abstain\\n\\nrule UnknownRiskCase:\\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\\n    then prefer label = review priority 90\\n\\nrule TrustedChange:\\n    when Trusted(event)\\n    then prefer label = allow priority 80\\n\\nrule ApproveInSandbox:\\n    when (event.action == approve) and (event.context == sandbox)\\n    then prefer label = deny priority 70\\n\\nrule GuestOrInternal:\\n    when (event.role == guest) or (event.context == internal)\\n    then prefer label = review priority 40\\n\\nrule TrustedForbidReview:\\n    when Trusted(event)\\n    then forbid label = review\\n\\nrule OtherRoles:\\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\\n    then prefer label = allow priority 1\"\n}"
+        }
+      ]
+    },
+    "dsl_source": "predicate Critical(event):\n    (event.risk == TRUE) or ((event.action == delete) and (event.context == sandbox))\n\npredicate UnknownExternal(event):\n    (event.risk == UNKNOWN) and (event.context == sandbox)\n\npredicate Trusted(event):\n    ((event.role == admin) or (event.role == guest)) and (not (event.action == delete))\n\nrule CriticalCase:\n    when Critical(event)\n    then require label = deny\n\nrule UnknownExternalCase:\n    when UnknownExternal(event)\n    then abstain\n\nrule UnknownRiskCase:\n    when ((not (Critical(event))) and (event.risk == UNKNOWN)) and (not (UnknownExternal(event)))\n    then prefer label = review priority 90\n\nrule TrustedChange:\n    when Trusted(event)\n    then prefer label = allow priority 80\n\nrule ApproveInSandbox:\n    when (event.action == approve) and (event.context == sandbox)\n    then prefer label = deny priority 70\n\nrule GuestOrInternal:\n    when (event.role == guest) or (event.context == internal)\n    then prefer label = review priority 40\n\nrule TrustedForbidReview:\n    when Trusted(event)\n    then forbid label = review\n\nrule OtherRoles:\n    when (((not (Critical(event))) and (not (Trusted(event)))) and (event.role != guest)) and (event.role != admin)\n    then prefer label = allow priority 1\n\nrule SourceCounterexamplePatch1:\n    when ((event.context == partner) and (event.risk == FALSE)) and (event.role == admin)\n    then require label = allow\n\nrule SourceCounterexamplePatch2:\n    when (event.action == approve) and (event.context == sandbox)\n    then require label = deny\n"
+  },
+  "preparation_wall_seconds": 332.8590000000004,
+  "call_summary": {
+    "attempted_calls": 112,
+    "completed_calls": 112,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_optimization": {
+        "attempted_calls": 108,
+        "failed_calls": 0,
+        "input_tokens_known": 41340,
+        "output_tokens_known": 226,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 88.94747440000538
+      },
+      "teacher_optimization": {
+        "attempted_calls": 4,
+        "failed_calls": 0,
+        "input_tokens_known": 4278,
+        "output_tokens_known": 1304,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 242.2335673999969
+      }
+    }
+  }
+}

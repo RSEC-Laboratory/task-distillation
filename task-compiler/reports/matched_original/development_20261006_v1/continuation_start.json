@@ -1,0 +1,8 @@
+{
+  "started_at": "2026-10-06T13:14:29.948770+00:00",
+  "cause_of_process_loss": "unknown",
+  "predecessor_path": "<WORKSPACE>\\task-compiler\\reports\\matched_original\\development_20261005_v1",
+  "original_final_cases_opened": false,
+  "unknown_request_duration": true,
+  "additional_wall_allowance_seconds": 21600
+}

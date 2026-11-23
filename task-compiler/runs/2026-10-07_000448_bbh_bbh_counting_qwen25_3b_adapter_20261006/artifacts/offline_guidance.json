@@ -1,0 +1,26 @@
+{
+  "task_type": "Object Counting",
+  "relevant_principles": [
+    "Categorization",
+    "Quantity Identification"
+  ],
+  "reasoning_plan": [
+    "Read the category asked about",
+    "Identify objects that belong to the specified category",
+    "Extract stated quantities related to the identified objects",
+    "Sum the quantities to obtain the total count",
+    "Check if the total count is a non-negative integer",
+    "Output the total count if it is a non-negative integer, otherwise report an error"
+  ],
+  "verification_checks": [
+    "Is the category asked about clearly specified?",
+    "Are all objects that belong to the category identified?",
+    "Are stated quantities correctly extracted and summed?",
+    "Is the total count a non-negative integer?"
+  ],
+  "uncertainties": [
+    "Ambiguity in category definition",
+    "Incomplete or missing information about objects",
+    "Unclear or inconsistent quantity statements"
+  ]
+}

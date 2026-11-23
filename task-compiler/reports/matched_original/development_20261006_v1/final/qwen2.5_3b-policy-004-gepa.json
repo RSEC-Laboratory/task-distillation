@@ -1,0 +1,782 @@
+{
+  "task_id": "policy-004",
+  "solver_model": "qwen2.5:3b",
+  "arm": "gepa",
+  "completed_at": "2026-10-06T14:17:18.841483+00:00",
+  "rows": [
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-00",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.5498358000004373
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-01",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "admin"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 3,
+      "latency_seconds": 0.4981289999996079
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-02",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3125739999995858
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-03",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 3,
+      "latency_seconds": 0.3171590000001743
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-04",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.27130120000038005
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-05",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.3011544999999387
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-06",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.365387699999701
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-07",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.3200029999998151
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-08",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3196733000004315
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-09",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.38449490000039077
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-10",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 3,
+      "latency_seconds": 0.321649399999842
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-11",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.31306450000010955
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-12",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.2948612999998659
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-13",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.37098100000002887
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-14",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.4118122999998377
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-15",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3565288999998302
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-16",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.26339310000003024
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-17",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.3151934999996229
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-18",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.2773943000001964
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-19",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": null,
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 3,
+      "latency_seconds": 0.3250806999994893
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-20",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 3,
+      "latency_seconds": 0.28448350000053324
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-21",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.27925630000027013
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-22",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "admin"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"admin\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.27682089999962045
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-23",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2834191000001738
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-24",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "guest"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"guest\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1063,
+      "output_tokens": 2,
+      "latency_seconds": 0.29605350000019826
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-25",
+      "input_record": {
+        "event": {
+          "action": "approve",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"approve\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 3,
+      "latency_seconds": 0.3075145999991946
+    },
+    {
+      "task_id": "policy-004",
+      "method": "native_gepa",
+      "case_id": "policy-004-final-26",
+      "input_record": {
+        "event": {
+          "action": "delete",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "b43f39f3a773fd1e98bb25a869191249039731738d4320edc861a6a07e17590f",
+      "system": "Perform task Compositional policy 004.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"guest\",\"analyst\",\"admin\"]},{\"name\":\"Action\",\"values\":[\"delete\",\"approve\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: allow, deny, review, uncertain.\n\nTask instructions:\nTask: Compositional Policy 004 - Event Classification\n\nObjective:  \nClassify a structured event into one of the following labels: `allow`, `deny`, or `uncertain`, based on a set of priority-based rules and conditions. The classification must follow the logic of the provided public policy, which includes role, action, context, and risk attributes.\n\nInput Format:  \nA JSON object containing an event with the following fields:  \n- `role`: one of `guest`, `analyst`, or `admin`  \n- `action`: one of `delete`, `approve`, or `change`  \n- `context`: one of `partner`, `internal`, or `sandbox`  \n- `risk`: one of `TRUE`, `FALSE`, or `UNKNOWN`  \n\nOutput Format:  \nA single label: `allow`, `deny`, or `uncertain`.\n\nRules and Logic:\n\n1. **Critical Cases**:  \n   - If `risk` is `TRUE` or `action` is `change`, the event is considered **critical**.  \n   - Critical cases **must be classified as `deny`**.\n\n2. **Unknown Risk in Context Sandbox**:  \n   - If `risk` is `UNKNOWN` and `context` is `sandbox`, the classification is **`uncertain`**.\n\n3. **Unknown Risk (Outside Sandbox)**:  \n   - If `risk` is `UNKNOWN` and `context` is not `sandbox`, the classification **prefers `review`** at priority 90.\n\n4. **Trusted Cases**:  \n   - If `role` is `guest` and `context` is **not** `sandbox`, the case is **trusted**.  \n   - A trusted case **forbids review**.  \n   - A trusted `delete` action **prefers `allow`** at priority 80.\n\n5. **Approve in Sandbox**:  \n   - If `action` is `approve` and `context` is `sandbox`, the classification **prefers `deny`** at priority 70.\n\n6. **Analyst or Internal Context**:  \n   - If `role` is `analyst` or `context` is `internal`, the classification **prefers `review`** at priority 40.\n\n7. **Other Roles**:  \n   - All other declared roles (not covered by the above rules) **prefer `allow`** at priority 1.\n\n8. **Priority and Conflicts**:  \n   - **Required labels override preferences**.  \n   - If there is **abstention** or **conflicting required labels**, the classification is **`uncertain`**.  \n   - **Forbidden labels are removed**, and the **highest-priority remaining preference** wins.\n\n9. **Forbidden Shortcuts**:  \n   - Use **every field named by a relevant rule**. Do not skip or infer fields not explicitly mentioned in the rules.\n\n10. **Final Decision**:  \n    - If no rule applies, or if there is a conflict between rules, the classification is **`uncertain`**.\n\nDeclared Labels:  \n- `allow`  \n- `deny`  \n- `uncertain`\n\nPublic Source Identifier:  \ncompositional-policies-v2:family-0:task-004\n\nExamples for Guidance:\n\n- Input: `{\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `deny`  \n  Reason: `action` is `change` → critical case → `deny`.\n\n- Input: `{\"event\":{\"action\":\"approve\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `context` is `internal` → prefers `review` (priority 40), but no conflicting rules → `allow`.\n\n- Input: `{\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"guest\"}}`  \n  Output: `allow`  \n  Reason: `role` is `guest` and `context` is `internal` → no trusted case, so `allow` is preferred.\n\nNote:  \nThe assistant must apply the rules in order of priority, and resolve conflicts by removing forbidden labels and selecting the highest-priority valid rule.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"delete\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": null,
+      "input_tokens": 1064,
+      "output_tokens": 2,
+      "latency_seconds": 0.2824440999993385
+    }
+  ],
+  "final_wall_seconds": 9.109000000000378,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 28712,
+        "output_tokens_known": 60,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 8.899663399998644
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "superni": [
+    {
+      "task": "task1624_disfl_qa_question_yesno_classification",
+      "official_evaluation_count": 20,
+      "public_example_overlap_count": 0,
+      "distinct_evaluation_inputs": 20
+    },
+    {
+      "task": "task201_mnli_neutral_classification",
+      "official_evaluation_count": 20,
+      "public_example_overlap_count": 0,
+      "distinct_evaluation_inputs": 20
+    },
+    {
+      "task": "task893_gap_fill_the_blank_coreference_resolution",
+      "official_evaluation_count": 20,
+      "public_example_overlap_count": 0,
+      "distinct_evaluation_inputs": 20
+    },
+    {
+      "task": "task935_defeasible_nli_atomic_classification",
+      "official_evaluation_count": 20,
+      "public_example_overlap_count": 0,
+      "distinct_evaluation_inputs": 20
+    }
+  ]
+}

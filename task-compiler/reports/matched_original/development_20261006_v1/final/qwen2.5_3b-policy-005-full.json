@@ -1,0 +1,1394 @@
+{
+  "task_id": "policy-005",
+  "solver_model": "qwen2.5:3b",
+  "arm": "full",
+  "completed_at": "2026-10-06T14:17:38.524031+00:00",
+  "rows": [
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-00",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=sandbox, risk=FALSE, action=inspect, return review.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=sandbox, risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          10,
+          16,
+          21,
+          22,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          26
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          26
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.4573286000004373
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-01",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=TRUE, return review.\nIf context=internal, action=export, role=analyst, risk=FALSE, return review.\nIf context=internal, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          1,
+          2,
+          3,
+          4,
+          9,
+          15,
+          20
+        ],
+        "matching_rule_indices": [
+          1
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          1
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 345,
+      "output_tokens": 2,
+      "latency_seconds": 0.33871219999946334
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-02",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=export, risk=TRUE, return review.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=FALSE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          13
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          13
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 338,
+      "output_tokens": 2,
+      "latency_seconds": 0.31415930000002845
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-03",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=sandbox, risk=FALSE, action=change, return deny.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=export, role=operator, return review.\nIf context=sandbox, risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          6,
+          16,
+          17,
+          21,
+          22,
+          23,
+          26
+        ],
+        "matching_rule_indices": [
+          26
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          26
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 332,
+      "output_tokens": 2,
+      "latency_seconds": 0.28366950000054203
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-04",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=inspect, role=operator, return review.\nIf context=internal, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          1,
+          5,
+          10,
+          11,
+          16,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          1
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          1
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.3071776000006139
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-05",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=inspect, role=analyst, risk=FALSE, return review.\nIf context=partner, action=inspect, risk=FALSE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          7,
+          9,
+          15,
+          18,
+          20,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          18
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          18
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 348,
+      "output_tokens": 2,
+      "latency_seconds": 0.3143866000000344
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-06",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=inspect, role=analyst, risk=FALSE, return review.\nIf context=internal, action=inspect, role=analyst, risk=TRUE, return review.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          8,
+          9,
+          20,
+          22
+        ],
+        "matching_rule_indices": [
+          7
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 332,
+      "output_tokens": 2,
+      "latency_seconds": 0.30353009999998903
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-07",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "uncertain",
+      "predicted_label": null,
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=TRUE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          14,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          17
+        ],
+        "matching_labels": [
+          "uncertain"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 322,
+      "output_tokens": 3,
+      "latency_seconds": 0.35709099999985483
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-08",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": null,
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": false,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=sandbox, risk=FALSE, action=change, return deny.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=sandbox, risk=UNKNOWN, return uncertain.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          16,
+          17,
+          21,
+          22,
+          23,
+          27
+        ],
+        "matching_rule_indices": [
+          27
+        ],
+        "matching_labels": [
+          "uncertain"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          27
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 337,
+      "output_tokens": 2,
+      "latency_seconds": 0.319026500000291
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-09",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=TRUE, return review.\nIf context=partner, action=inspect, risk=FALSE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          10,
+          16,
+          18,
+          19,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          19
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 318,
+      "output_tokens": 2,
+      "latency_seconds": 0.3040415000004941
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-10",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "partner",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=inspect, risk=TRUE, return review.\nIf context=partner, action=inspect, risk=FALSE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"partner\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          18
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 320,
+      "output_tokens": 2,
+      "latency_seconds": 0.3001982000005228
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-11",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=TRUE, return review.\nIf context=internal, action=export, role=analyst, risk=FALSE, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          2,
+          3,
+          4,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          4
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 332,
+      "output_tokens": 2,
+      "latency_seconds": 0.3364943000005951
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-12",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=internal, action=export, role=operator, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          6,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          6
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 322,
+      "output_tokens": 2,
+      "latency_seconds": 0.3604081000003134
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-13",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=inspect, role=operator, return review.\nIf context=internal, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          1,
+          5,
+          10,
+          11,
+          16,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          1
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          1
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 331,
+      "output_tokens": 2,
+      "latency_seconds": 0.4091684000004534
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-14",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          9,
+          12,
+          15,
+          17,
+          20,
+          22
+        ],
+        "matching_rule_indices": [
+          12
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          12
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 343,
+      "output_tokens": 2,
+      "latency_seconds": 0.3855960999999297
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-15",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=inspect, role=analyst, risk=TRUE, return review.\nIf context=internal, action=inspect, role=analyst, risk=FALSE, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=sandbox, risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          8,
+          9,
+          15,
+          20,
+          26
+        ],
+        "matching_rule_indices": [
+          26
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          26
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 345,
+      "output_tokens": 2,
+      "latency_seconds": 0.36611899999934394
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-16",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          10,
+          12,
+          16,
+          17,
+          20,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          12
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          12
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 339,
+      "output_tokens": 2,
+      "latency_seconds": 0.39968320000025415
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-17",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=operator, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          5,
+          6,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          6
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 322,
+      "output_tokens": 2,
+      "latency_seconds": 0.3649406000004092
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-18",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "UNKNOWN",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"UNKNOWN\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          12,
+          15,
+          16,
+          17,
+          20,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          12
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          12
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 342,
+      "output_tokens": 2,
+      "latency_seconds": 0.3684628999999404
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-19",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "sandbox",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=inspect, role=operator, return review.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=sandbox, risk=FALSE, action=inspect, return review.\nIf context=sandbox, risk=TRUE, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"sandbox\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          9,
+          10,
+          11,
+          21,
+          22,
+          25,
+          26
+        ],
+        "matching_rule_indices": [
+          26
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          26
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 329,
+      "output_tokens": 2,
+      "latency_seconds": 0.39035409999996773
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-20",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=internal, action=inspect, role=operator, return review.\nIf context=partner, action=inspect, risk=TRUE, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          10,
+          11,
+          19,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          10
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 314,
+      "output_tokens": 2,
+      "latency_seconds": 0.32306679999965127
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-21",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=inspect, role=analyst, risk=TRUE, return review.\nIf context=internal, action=inspect, role=analyst, risk=FALSE, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          4,
+          7,
+          8,
+          9,
+          15,
+          20
+        ],
+        "matching_rule_indices": [
+          9
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 333,
+      "output_tokens": 2,
+      "latency_seconds": 0.2742417999997997
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-22",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "TRUE",
+          "role": "operator"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=inspect, role=operator, return review.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"TRUE\",\"role\":\"operator\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          9,
+          10,
+          11,
+          20,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          11
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 322,
+      "output_tokens": 2,
+      "latency_seconds": 0.29908439999962866
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-23",
+      "input_record": {
+        "event": {
+          "action": "export",
+          "context": "internal",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "review",
+      "student_text": "review",
+      "predicted_label": "review",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=TRUE, return review.\nIf context=internal, action=export, role=analyst, risk=FALSE, return review.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"export\",\"context\":\"internal\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          2,
+          3,
+          4,
+          15,
+          16,
+          17
+        ],
+        "matching_rule_indices": [
+          2
+        ],
+        "matching_labels": [
+          "review"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 332,
+      "output_tokens": 2,
+      "latency_seconds": 0.3083498999994845
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-24",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "partner",
+          "risk": "TRUE",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=partner, action=inspect, risk=TRUE, return review.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=operator, return uncertain.\nIf context=partner, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"partner\",\"risk\":\"TRUE\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          10,
+          12,
+          16,
+          17,
+          19,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          12
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          12
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 334,
+      "output_tokens": 2,
+      "latency_seconds": 0.27732019999984914
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-25",
+      "input_record": {
+        "event": {
+          "action": "inspect",
+          "context": "internal",
+          "risk": "UNKNOWN",
+          "role": "auditor"
+        }
+      },
+      "expected_label": "allow",
+      "student_text": "allow",
+      "predicted_label": "allow",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=auditor, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=operator, return review.\nIf context=internal, action=export, role=auditor, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=auditor, return allow.\nIf context=internal, action=inspect, role=operator, return review.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"inspect\",\"context\":\"internal\",\"risk\":\"UNKNOWN\",\"role\":\"auditor\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          5,
+          10,
+          11,
+          16,
+          21,
+          22
+        ],
+        "matching_rule_indices": [
+          10
+        ],
+        "matching_labels": [
+          "allow"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 319,
+      "output_tokens": 2,
+      "latency_seconds": 0.27119560000028287
+    },
+    {
+      "task_id": "policy-005",
+      "method": "full_dsl",
+      "case_id": "policy-005-final-26",
+      "input_record": {
+        "event": {
+          "action": "change",
+          "context": "sandbox",
+          "risk": "FALSE",
+          "role": "analyst"
+        }
+      },
+      "expected_label": "deny",
+      "student_text": "deny",
+      "predicted_label": "deny",
+      "correct": true,
+      "invalid": false,
+      "model_failed": false,
+      "backend_failed": false,
+      "failure_kind": null,
+      "prepared_hash": "aa19ea2d45d1fa6ea49f76da9f4fab2324cb57be44b84550ff6fd2b2501d7366",
+      "system": "Perform task Compositional policy 005.\nPublic input schema: {\"enums\":[{\"name\":\"Role\",\"values\":[\"operator\",\"auditor\",\"analyst\"]},{\"name\":\"Action\",\"values\":[\"inspect\",\"export\",\"change\"]},{\"name\":\"Context\",\"values\":[\"partner\",\"internal\",\"sandbox\"]}],\"records\":[{\"fields\":[{\"name\":\"role\",\"type_name\":\"Role\"},{\"name\":\"action\",\"type_name\":\"Action\"},{\"name\":\"context\",\"type_name\":\"Context\"},{\"name\":\"risk\",\"type_name\":\"Boolean3\"}],\"name\":\"Event\"}]}\nAllowed labels: review, deny, allow, uncertain.\n\nTask instructions:\nVerified decision tree. Match the one leaf whose field conditions all hold, then return its label. Every declared input matches exactly one leaf.\nIf context=internal, action=inspect, role=analyst, risk=UNKNOWN, return allow.\nIf context=internal, action=export, role=analyst, risk=UNKNOWN, return allow.\nIf context=partner, action=inspect, risk=UNKNOWN, role=analyst, return allow.\nIf context=partner, action=export, risk=UNKNOWN, role=analyst, return allow.\nIf context=internal, action=export, role=analyst, risk=TRUE, return review.\nIf context=internal, action=export, role=analyst, risk=FALSE, return review.\nIf context=sandbox, risk=FALSE, action=change, return deny.\n\nOutput contract: return exactly one declared label, or uncertain if the task does not decide. Do not include reasoning or formatting.",
+      "prompt": "Input: {\"event\":{\"action\":\"change\",\"context\":\"sandbox\",\"risk\":\"FALSE\",\"role\":\"analyst\"}}",
+      "routing_certificate": {
+        "applicable": true,
+        "top_k": 6,
+        "selected_rule_indices": [
+          2,
+          3,
+          4,
+          9,
+          15,
+          20,
+          23
+        ],
+        "matching_rule_indices": [
+          23
+        ],
+        "matching_labels": [
+          "deny"
+        ],
+        "coverage_closed": true,
+        "label_pure": true,
+        "closure_added_rule_indices": [
+          23
+        ],
+        "opaque_label_encoding": false
+      },
+      "input_tokens": 349,
+      "output_tokens": 2,
+      "latency_seconds": 0.2598056999995606
+    }
+  ],
+  "final_wall_seconds": 9.469000000000051,
+  "call_summary": {
+    "attempted_calls": 27,
+    "completed_calls": 27,
+    "failed_calls": 0,
+    "unfinished_calls": 0,
+    "roles": {
+      "solver_final": {
+        "attempted_calls": 27,
+        "failed_calls": 0,
+        "input_tokens_known": 8962,
+        "output_tokens_known": 55,
+        "unknown_input_usage_calls": 0,
+        "unknown_output_usage_calls": 0,
+        "latency_seconds": 8.993612200001735
+      }
+    }
+  }
+}

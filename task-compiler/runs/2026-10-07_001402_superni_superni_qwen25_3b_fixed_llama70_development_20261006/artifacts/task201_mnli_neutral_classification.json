@@ -1,0 +1,267 @@
+{
+  "task_id": "task201_mnli_neutral_classification",
+  "source_sha256": "2fd722ad8508a8734ff9e1f1a7236d19280ae3b68f0d036e81253ce98afeeb91",
+  "parent_received_instances": false,
+  "student_validation_used_instances": false,
+  "initial_representation": {
+    "objective": "neutral choice classification",
+    "output_labels": [
+      "1",
+      "2",
+      "3"
+    ],
+    "decision_rules": [
+      "If a choice directly contradicts the statement, it is not neutral.",
+      "If a choice is a paraphrase or a direct inference from the statement, it is not neutral.",
+      "If a choice provides additional information not present in the statement, it is neutral if the information does not contradict the statement.",
+      "If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.",
+      "If a choice uses negation, it is not neutral if the negation directly contradicts the statement.",
+      "If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral."
+    ],
+    "boundary_conditions": [
+      "If two or more choices are equally neutral, the task is ambiguous.",
+      "If no choice is neutral, the task is unsolvable.",
+      "If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral."
+    ],
+    "counterfactual_constraints": [
+      "Changing a choice's wording to make it more direct or explicit does not alter its neutrality.",
+      "Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.",
+      "Swapping the roles or references of entities in a choice may alter its neutrality."
+    ],
+    "verification_checks": [
+      "Check if a choice directly contradicts the statement.",
+      "Check if a choice is a paraphrase or direct inference from the statement.",
+      "Check if a choice provides additional information not present in the statement.",
+      "Check if a choice changes the role or reference of an entity in the statement.",
+      "Check if a choice uses negation that contradicts the statement.",
+      "Check if a choice is ambiguous or lacks sufficient information."
+    ]
+  },
+  "final_representation": {
+    "objective": "neutral choice classification",
+    "output_labels": [
+      "1",
+      "2",
+      "3"
+    ],
+    "decision_rules": [
+      "If a choice directly contradicts the statement, it is not neutral.",
+      "If a choice is a paraphrase or a direct inference from the statement, it is not neutral.",
+      "If a choice provides additional information not present in the statement, it is neutral if the information does not contradict the statement.",
+      "If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.",
+      "If a choice uses negation, it is not neutral if the negation directly contradicts the statement.",
+      "If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral."
+    ],
+    "boundary_conditions": [
+      "If two or more choices are equally neutral, the task is ambiguous.",
+      "If no choice is neutral, the task is unsolvable.",
+      "If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral."
+    ],
+    "counterfactual_constraints": [
+      "Changing a choice's wording to make it more direct or explicit does not alter its neutrality.",
+      "Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.",
+      "Swapping the roles or references of entities in a choice may alter its neutrality."
+    ],
+    "verification_checks": [
+      "Check if a choice directly contradicts the statement.",
+      "Check if a choice is a paraphrase or direct inference from the statement.",
+      "Check if a choice provides additional information not present in the statement.",
+      "Check if a choice changes the role or reference of an entity in the statement.",
+      "Check if a choice uses negation that contradicts the statement.",
+      "Check if a choice is ambiguous or lacks sufficient information."
+    ]
+  },
+  "initial_raw_text": "{ \n  \"objective\": \"neutral choice classification\",\n  \"output_labels\": [\"1\", \"2\", \"3\"],\n  \"decision_rules\": [\n    \"If a choice directly contradicts the statement, it is not neutral.\",\n    \"If a choice is a paraphrase or a direct inference from the statement, it is not neutral.\",\n    \"If a choice provides additional information not present in the statement, it is neutral if the information does not contradict the statement.\",\n    \"If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.\",\n    \"If a choice uses negation, it is not neutral if the negation directly contradicts the statement.\",\n    \"If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral.\"\n  ],\n  \"boundary_conditions\": [\n    \"If two or more choices are equally neutral, the task is ambiguous.\",\n    \"If no choice is neutral, the task is unsolvable.\",\n    \"If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing a choice's wording to make it more direct or explicit does not alter its neutrality.\",\n    \"Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.\",\n    \"Swapping the roles or references of entities in a choice may alter its neutrality.\"\n  ],\n  \"verification_checks\": [\n    \"Check if a choice directly contradicts the statement.\",\n    \"Check if a choice is a paraphrase or direct inference from the statement.\",\n    \"Check if a choice provides additional information not present in the statement.\",\n    \"Check if a choice changes the role or reference of an entity in the statement.\",\n    \"Check if a choice uses negation that contradicts the statement.\",\n    \"Check if a choice is ambiguous or lacks sufficient information.\"\n  ]\n}",
+  "final_raw_text": "{ \n  \"objective\": \"neutral choice classification\",\n  \"output_labels\": [\"1\", \"2\", \"3\"],\n  \"decision_rules\": [\n    \"If a choice directly contradicts the statement, it is not neutral.\",\n    \"If a choice is a paraphrase or a direct inference from the statement, it is not neutral.\",\n    \"If a choice provides additional information not present in the statement, it is neutral if the information does not contradict the statement.\",\n    \"If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.\",\n    \"If a choice uses negation, it is not neutral if the negation directly contradicts the statement.\",\n    \"If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral.\"\n  ],\n  \"boundary_conditions\": [\n    \"If two or more choices are equally neutral, the task is ambiguous.\",\n    \"If no choice is neutral, the task is unsolvable.\",\n    \"If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing a choice's wording to make it more direct or explicit does not alter its neutrality.\",\n    \"Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.\",\n    \"Swapping the roles or references of entities in a choice may alter its neutrality.\"\n  ],\n  \"verification_checks\": [\n    \"Check if a choice directly contradicts the statement.\",\n    \"Check if a choice is a paraphrase or direct inference from the statement.\",\n    \"Check if a choice provides additional information not present in the statement.\",\n    \"Check if a choice changes the role or reference of an entity in the statement.\",\n    \"Check if a choice uses negation that contradicts the statement.\",\n    \"Check if a choice is ambiguous or lacks sufficient information.\"\n  ]\n}",
+  "initial_validation": [
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-00",
+      "expected": [
+        "1"
+      ],
+      "response": "2",
+      "correct": false,
+      "input_tokens": 626,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-01",
+      "expected": [
+        "2"
+      ],
+      "response": "2",
+      "correct": true,
+      "input_tokens": 598,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-02",
+      "expected": [
+        "2"
+      ],
+      "response": "3",
+      "correct": false,
+      "input_tokens": 620,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-03",
+      "expected": [
+        "1"
+      ],
+      "response": "2",
+      "correct": false,
+      "input_tokens": 623,
+      "output_tokens": 2
+    }
+  ],
+  "final_validation": [
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-00",
+      "expected": [
+        "1"
+      ],
+      "response": "2",
+      "correct": false,
+      "input_tokens": 626,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-01",
+      "expected": [
+        "2"
+      ],
+      "response": "2",
+      "correct": true,
+      "input_tokens": 598,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-02",
+      "expected": [
+        "2"
+      ],
+      "response": "3",
+      "correct": false,
+      "input_tokens": 620,
+      "output_tokens": 2
+    },
+    {
+      "item_id": "task201_mnli_neutral_classification-positive-03",
+      "expected": [
+        "1"
+      ],
+      "response": "2",
+      "correct": false,
+      "input_tokens": 623,
+      "output_tokens": 2
+    }
+  ],
+  "revisions": [
+    {
+      "round": 1,
+      "text": "{\n  \"objective\": \"neutral choice classification\",\n  \"output_labels\": [\"1\", \"2\", \"3\"],\n  \"decision_rules\": [\n    \"If a choice explicitly contradicts the statement, it is not neutral.\",\n    \"If a choice is a paraphrase or direct logical consequence of the statement, it is not neutral.\",\n    \"If a choice provides additional information not present in the statement and does not contradict it, it is neutral.\",\n    \"If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.\",\n    \"If a choice uses negation that directly contradicts the statement, it is not neutral.\",\n    \"If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral.\",\n    \"If a choice is a partial match to the statement but introduces contradictory information, it is not neutral.\"\n  ],\n  \"boundary_conditions\": [\n    \"If two or more choices are equally neutral, the task is ambiguous.\",\n    \"If no choice is neutral, the task is unsolvable.\",\n    \"If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral.\",\n    \"If a choice is a near paraphrase but introduces minor irrelevant information, it may still be non-neutral.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing a choice's wording to make it more direct or explicit does not alter its neutrality.\",\n    \"Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.\",\n    \"Swapping the roles or references of entities in a choice may alter its neutrality.\",\n    \"Minor rewording of a choice that preserves its meaning does not alter its neutrality.\"\n  ],\n  \"verification_checks\": [\n    \"Check if a choice explicitly contradicts the statement.\",\n    \"Check if a choice is a paraphrase or direct logical consequence of the statement.\",\n    \"Check if a choice provides additional information not present in the statement.\",\n    \"Check if a choice changes the role or reference of an entity in the statement.\",\n    \"Check if a choice uses negation that contradicts the statement.\",\n    \"Check if a choice is ambiguous or lacks sufficient information.\",\n    \"Check if a choice is a partial match to the statement but introduces contradictory information.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-00",
+          "expected": [
+            "1"
+          ],
+          "response": "2",
+          "correct": false,
+          "input_tokens": 709,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-01",
+          "expected": [
+            "2"
+          ],
+          "response": "2",
+          "correct": true,
+          "input_tokens": 681,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-02",
+          "expected": [
+            "2"
+          ],
+          "response": "3",
+          "correct": false,
+          "input_tokens": 703,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-03",
+          "expected": [
+            "1"
+          ],
+          "response": "2",
+          "correct": false,
+          "input_tokens": 706,
+          "output_tokens": 2
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "text": "{\n  \"objective\": \"neutral choice classification\",\n  \"output_labels\": [\"1\", \"2\", \"3\"],\n  \"decision_rules\": [\n    \"If a choice directly contradicts the statement, it is not neutral.\",\n    \"If a choice is a paraphrase or a direct inference from the statement, it is not neutral.\",\n    \"If a choice provides additional information not present in the statement, it is neutral if the information does not contradict the statement and is not a direct inference.\",\n    \"If a choice changes the role or reference of an entity in the statement, it is not neutral unless the change is irrelevant to the statement's meaning.\",\n    \"If a choice uses negation, it is not neutral if the negation directly contradicts the statement.\",\n    \"If a choice is ambiguous or lacks sufficient information to determine its relationship to the statement, it is not neutral.\",\n    \"If a choice is a general statement that does not provide specific information related to the statement, it is neutral.\"\n  ],\n  \"boundary_conditions\": [\n    \"If two or more choices are equally neutral, the task is ambiguous.\",\n    \"If no choice is neutral, the task is unsolvable.\",\n    \"If a choice is partially supported by the statement but also introduces contradictory information, it is not neutral.\",\n    \"If a choice is a general statement that is not related to the statement, it is neutral.\"\n  ],\n  \"counterfactual_constraints\": [\n    \"Changing a choice's wording to make it more direct or explicit does not alter its neutrality.\",\n    \"Adding or removing information from a choice that does not affect its relationship to the statement preserves its neutrality.\",\n    \"Swapping the roles or references of entities in a choice may alter its neutrality.\",\n    \"Changing a choice's wording to make it more general does not alter its neutrality if the general statement is not related to the statement.\"\n  ],\n  \"verification_checks\": [\n    \"Check if a choice directly contradicts the statement.\",\n    \"Check if a choice is a paraphrase or direct inference from the statement.\",\n    \"Check if a choice provides additional information not present in the statement.\",\n    \"Check if a choice changes the role or reference of an entity in the statement.\",\n    \"Check if a choice uses negation that contradicts the statement.\",\n    \"Check if a choice is ambiguous or lacks sufficient information.\",\n    \"Check if a choice is a general statement that does not provide specific information related to the statement.\"\n  ]\n}",
+      "accepted": false,
+      "parse_error": null,
+      "validation": [
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-00",
+          "expected": [
+            "1"
+          ],
+          "response": "2",
+          "correct": false,
+          "input_tokens": 732,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-01",
+          "expected": [
+            "2"
+          ],
+          "response": "2",
+          "correct": true,
+          "input_tokens": 704,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-02",
+          "expected": [
+            "2"
+          ],
+          "response": "3",
+          "correct": false,
+          "input_tokens": 726,
+          "output_tokens": 2
+        },
+        {
+          "item_id": "task201_mnli_neutral_classification-positive-03",
+          "expected": [
+            "1"
+          ],
+          "response": "2",
+          "correct": false,
+          "input_tokens": 729,
+          "output_tokens": 2
+        }
+      ]
+    }
+  ],
+  "failure": {
+    "stage": "positive_example_certificate",
+    "message": "1/4 public positive examples passed",
+    "fallback": "positive_examples"
+  },
+  "teacher_calls": 3,
+  "teacher_input_tokens": 4126,
+  "teacher_output_tokens": 1393,
+  "artifact_sha256": "569c1c5516e0cebd8808585179b72f5d7559f760213cc530eb3a43a88e0b5fc5"
+}

@@ -1,0 +1,258 @@
+{
+  "new_model_calls": 0,
+  "checks": [
+    {
+      "cohort": "llama",
+      "task_id": "policy-042",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-043",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-044",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-046",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-048",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-049",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-051",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-056",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-057",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-058",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-059",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-062",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-063",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-064",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-065",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-066",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-068",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-070",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-071",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-072",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-073",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-075",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-076",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "llama",
+      "task_id": "policy-079",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-042",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-043",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-044",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-046",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-049",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-051",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-056",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-058",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-059",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-064",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-065",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-066",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-068",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-070",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-071",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-072",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-073",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    },
+    {
+      "cohort": "gemma",
+      "task_id": "policy-076",
+      "same_historical_final_inputs": true,
+      "historical_build_audit_final_disjoint": true
+    }
+  ],
+  "all_passed": true
+}

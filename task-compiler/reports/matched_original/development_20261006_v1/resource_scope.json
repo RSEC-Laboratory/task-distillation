@@ -1,0 +1,15 @@
+{
+  "declared_at": "2026-10-06T00:29:57.685635+00:00",
+  "prospective": true,
+  "scope": "All local preparation and final evaluation; model identity queries included in wall time.",
+  "costs": "Every model attempt, token usage where available and model latency; per-cell wall time includes Full routing.",
+  "limitations": "No energy measurement or exact GPU utilization attribution; equal total compute is not claimed.",
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "gepa": "0.1.4",
+    "torch": "2.5.1+cu121",
+    "sentence-transformers": "5.2.0",
+    "psutil": "6.1.1"
+  }
+}

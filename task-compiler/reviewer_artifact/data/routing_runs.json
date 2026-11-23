@@ -1,0 +1,100 @@
+[
+  {
+    "available_instructions": 30,
+    "bundle_sha256": "3164c62971e2fda7a0072515668c1595b2b92f7f751d79cb1a6f7b004b7cd707",
+    "condition": "full_list",
+    "correct": 12,
+    "manifest_sha256": "5178717ac578469da4eea18f168f4af0a49a0315b2e1eec5708356f840647c2f",
+    "routing": {
+      "enabled": false
+    },
+    "run_id": "2026-07-27_130140_synthetic_policies_abstract_t1c_llama32_same_bundle_full_task0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 0,
+    "total": 27
+  },
+  {
+    "available_instructions": 30,
+    "bundle_sha256": "3164c62971e2fda7a0072515668c1595b2b92f7f751d79cb1a6f7b004b7cd707",
+    "condition": "routed",
+    "correct": 25,
+    "manifest_sha256": "5178717ac578469da4eea18f168f4af0a49a0315b2e1eec5708356f840647c2f",
+    "routing": {
+      "closure_add_rate": 0.7037037037037037,
+      "coverage_rate": 1.0,
+      "enabled": true,
+      "mean_instruction_count": 7.703703703703703,
+      "opaque_labels": false,
+      "top_k": 6
+    },
+    "run_id": "2026-07-27_130240_synthetic_policies_abstract_t1c_llama32_same_bundle_route_task0",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 0,
+    "total": 27
+  },
+  {
+    "available_instructions": 28,
+    "bundle_sha256": "c444f42c07add21526b93317f36d7c0af3f32be1f26b0d12c941eacd9d6312c0",
+    "condition": "full_list",
+    "correct": 13,
+    "manifest_sha256": "5178717ac578469da4eea18f168f4af0a49a0315b2e1eec5708356f840647c2f",
+    "routing": {
+      "enabled": false
+    },
+    "run_id": "2026-07-27_130204_synthetic_policies_abstract_t1c_llama32_same_bundle_full_task26",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 26,
+    "total": 27
+  },
+  {
+    "available_instructions": 28,
+    "bundle_sha256": "c444f42c07add21526b93317f36d7c0af3f32be1f26b0d12c941eacd9d6312c0",
+    "condition": "routed",
+    "correct": 18,
+    "manifest_sha256": "5178717ac578469da4eea18f168f4af0a49a0315b2e1eec5708356f840647c2f",
+    "routing": {
+      "closure_add_rate": 0.5555555555555556,
+      "coverage_rate": 1.0,
+      "enabled": true,
+      "mean_instruction_count": 7.555555555555555,
+      "opaque_labels": false,
+      "top_k": 6
+    },
+    "run_id": "2026-07-27_130308_synthetic_policies_abstract_t1c_llama32_same_bundle_route_task26",
+    "student": {
+      "backend": "ollama",
+      "context_tokens": 8192,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "model": "llama3.2:3b",
+      "seed": 0,
+      "temperature": 0,
+      "thinking": false
+    },
+    "task": 26,
+    "total": 27
+  }
+]

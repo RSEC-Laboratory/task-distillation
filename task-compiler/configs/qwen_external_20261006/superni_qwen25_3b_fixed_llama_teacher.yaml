@@ -1,0 +1,31 @@
+# Fresh Qwen development run through the existing SuperNI adapter.
+# The fixed teacher matches the retained Llama study; no Qwen lineage claim.
+track: guidance_track
+dataset: superni
+baseline: superni_compiler_matrix
+run_label: superni_qwen25_3b_fixed_llama70_development_20261006
+num_examples: 20
+num_tasks: 4
+teacher_model: meta-llama/llama-3.1-70b-instruct
+teacher_backend: openrouter
+teacher_selection: manual
+teacher_timeout_seconds: 180
+teacher_structured_outputs: true
+student_model: qwen2.5:3b
+student_backend: ollama
+ollama_base_url: http://127.0.0.1:11434
+ollama_timeout_seconds: 180
+student_context_tokens: 8192
+student_thinking: false
+retriever_model: sentence-transformers/all-MiniLM-L6-v2
+retriever_revision: null
+top_k_rules: 6
+token_budget: 1200
+max_teacher_repair_rounds: 2
+max_answer_tokens: 32
+seed: 20260727
+student_seed: 0
+benchmark_split: development
+open_final_evaluation: true
+# SuperNI fixes failed compilation/certification to public-positive-example
+# fallback internally. The generic compilation_failure_fallback flag is unused.
